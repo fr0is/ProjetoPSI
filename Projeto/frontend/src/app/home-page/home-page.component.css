@@ -14,9 +14,11 @@
 }
 
 #textoLogo {
-    position: relative;
+    position: absolute;
     color: white;
     font-size: 40px;
+    left: 42%;
+    top: 0.5%;
 }
 
 #logo {
