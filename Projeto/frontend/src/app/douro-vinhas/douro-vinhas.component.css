@@ -1,18 +1,49 @@
 .hotelPage {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 10% auto 10%;
+    grid-template-rows: 50% auto 10%;
 }
 
 .topo {
     grid-row-start: 1;
     grid-row-end: 1;
     text-align: center;
-    padding: 1%;
+    background-image: url(src/assets/Imagens/HotelDV/backTop.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
-#logo {
-    padding-right: 5%;
+.logo {
+    float: left;
+    width: auto;
+    color: white;
+    max-width: 15%;
+    max-height: 100%;
+    margin-top: 0.5%;
+}
+
+.nomeHotel {
+    color: white;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    font-size: 250%;
+    margin-top: 2%;
+    height: 100%;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}
+
+.topNav {
+    color: white;
+    float: right;
+    padding-right: 10%;
+    padding-top: 2%;
+    font-size: 250%;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+}
+
+a {
+    padding: 5%;
 }
 
 .telefone {
@@ -20,6 +51,10 @@
     height: 5%;
 }
 
-.contactos {
-    background: linear-gradient(to bottom right, #006600 0%, #ffffff 100%);
+.botBar {
+    background: black;
+}
+
+.nr {
+    color: white;
 }
