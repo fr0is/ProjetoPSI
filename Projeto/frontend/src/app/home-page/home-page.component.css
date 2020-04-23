@@ -1,7 +1,13 @@
+* {
+    overflow: hidden;
+    margin: 0;
+    height: 100%;
+}
+
 .hoteis {
     display: grid;
     grid-template-columns: 33.333% 33.333% 33.333%;
-    grid-template-rows: 7% auto;
+    grid-template-rows: 0.09fr 0.91fr;
     background-color: black;
 }
 
@@ -10,21 +16,22 @@
     grid-column-end: span 3;
     grid-row-start: 1;
     grid-row-end: 1;
-    text-align: center;
 }
 
 #textoLogo {
-    position: absolute;
+    position: relative;
     color: white;
     font-size: 40px;
-    left: 42%;
-    top: 0.5%;
+    margin-top: 1%;
+    text-align: center;
 }
 
 #logo {
     position: absolute;
-    left: 0px;
-    margin: 2px;
+    top: 0;
+    left: 0;
+    height: 6.2%;
+    margin: 0.5%;
 }
 
 .texto {
