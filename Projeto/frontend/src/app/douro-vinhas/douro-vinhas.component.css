@@ -1,7 +1,7 @@
 .hotelPage {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 180px auto 10%;
+    grid-template-rows: 180px auto;
 }
 
 .topo {
@@ -43,7 +43,7 @@
     padding-top: 2%;
 }
 
-a {
+.topNavA {
     padding: 5%;
 }
 
@@ -53,9 +53,28 @@ a {
 }
 
 .botBar {
-    background: black;
+    background-color: black;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 5%;
 }
 
-.nr {
+.botBar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+#nrTelefone,
+#mail {
     color: white;
+}
+
+.icon {
+    width: 10%;
 }
