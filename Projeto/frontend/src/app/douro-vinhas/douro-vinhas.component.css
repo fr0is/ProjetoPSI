@@ -1,0 +1,16 @@
+.hotelPage {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+.topo {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    text-align: center;
+    padding: 2%;
+}
+
+#logo {
+    padding: 5%;
+}
