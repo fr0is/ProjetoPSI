@@ -1,7 +1,7 @@
 .hotelPage {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto;
+    grid-template-rows: 10% auto 10%;
 }
 
 .topo {
@@ -15,7 +15,11 @@
     padding-right: 5%;
 }
 
-#iconTelemovel {
-    width: 1%;
+.telefone {
+    width: 5%;
     height: 5%;
+}
+
+.contactos {
+    background: linear-gradient(to bottom right, #006600 0%, #ffffff 100%);
 }
