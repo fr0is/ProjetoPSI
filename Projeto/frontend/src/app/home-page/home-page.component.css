@@ -16,6 +16,7 @@
     grid-column-end: span 3;
     grid-row-start: 1;
     grid-row-end: 1;
+    text-align: center;
 }
 
 #textoLogo {
@@ -23,15 +24,15 @@
     color: white;
     font-size: 40px;
     margin-top: 1%;
-    text-align: center;
 }
 
 #logo {
     position: absolute;
     top: 0;
     left: 0;
-    height: 6.2%;
-    margin: 0.5%;
+    height: 7%;
+    width: 7%;
+    margin: 1%;
 }
 
 .texto {
@@ -45,6 +46,8 @@
     text-align: center;
     font-size: 35px;
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+    height: auto;
+    width: auto;
 }
 
 .hotel:hover .texto {
@@ -55,7 +58,8 @@
 .hotel {
     transition: 0.5s;
     color: white;
-    margin: 5px;
+    margin: 1%;
+    padding-bottom: 5%;
 }
 
 .hotel:hover {
@@ -86,7 +90,7 @@
 
 #hotel1Img {
     width: 100%;
-    height: 95%;
+    height: 97%;
     margin: 0px;
 }
 
@@ -109,7 +113,7 @@
 
 #hotel2Img {
     width: 100%;
-    height: 95%;
+    height: 97%;
 }
 
 #hotel3 {
@@ -131,5 +135,5 @@
 
 #hotel3Img {
     width: 100%;
-    height: 95%;
+    height: 97%;
 }
