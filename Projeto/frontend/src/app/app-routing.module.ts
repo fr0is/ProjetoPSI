@@ -5,11 +5,22 @@ import {HomePageComponent} from './home-page/home-page.component';
 import {DouroVinhasComponent} from './douro-vinhas/douro-vinhas.component';
 import {AVerOMarComponent} from './a-ver-omar/a-ver-omar.component';
 import {MediterraneoComponent} from './mediterraneo/mediterraneo.component';
-
+import {DVQuartosComponent} from './dvquartos/dvquartos.component';
+import {DvHomeComponent} from './dv-home/dv-home.component'
 const routes: Routes = [
   { path: '', redirectTo: '/homePage', pathMatch: 'full' },
   { path: 'homePage', component: HomePageComponent },
-  { path: 'douroVinhas', component: DouroVinhasComponent },
+  { path: 'douroVinhas', component: DouroVinhasComponent,
+  children: [
+    {
+      path: 'quartos', // child route path
+      component: DVQuartosComponent // child route component that the router renders
+    },
+    {
+      path: 'home', // child route path
+      component: DvHomeComponent// child route component that the router renders
+    }
+  ] },
   { path: 'aVerOMar', component: AVerOMarComponent },
   { path: 'mediterraneo', component: MediterraneoComponent }
 ];

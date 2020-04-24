@@ -7,6 +7,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { DouroVinhasComponent } from './douro-vinhas/douro-vinhas.component';
 import { AVerOMarComponent } from './a-ver-omar/a-ver-omar.component';
 import { MediterraneoComponent } from './mediterraneo/mediterraneo.component';
+import { DVQuartosComponent } from './dvquartos/dvquartos.component';
+import { DvHomeComponent } from './dv-home/dv-home.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { MediterraneoComponent } from './mediterraneo/mediterraneo.component';
     HomePageComponent,
     DouroVinhasComponent,
     AVerOMarComponent,
-    MediterraneoComponent
+    MediterraneoComponent,
+    DVQuartosComponent,
+    DvHomeComponent
   ],
   imports: [
     BrowserModule,
