@@ -10,7 +10,9 @@
     grid-row-end: 1;
     text-align: center;
     background-color: black;
-    background-size: 100%;
+
+    background-repeat: no-repeat;
+
 }
 
 .logo {
@@ -19,7 +21,9 @@
     color: white;
     max-width: 15%;
     max-height: 100%;
-    margin-top: 0.1%;
+
+    margin-top: 0.25%;
+
     z-index: 10;
     cursor: pointer;
     text-decoration: none;
@@ -30,25 +34,27 @@
     color: white;
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
     z-index: 0;
-    left: 40%;
     cursor: pointer;
     text-decoration: none;
+    font-size: 250%;
+    text-align: center;
+    padding-top: 2%;
+    left: 43%;
 }
 
 .topNav {
     color: white;
     float: right;
-    padding-right: 0;
     top: 0;
     text-align: center;
-    font-size: 225%;
-    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
-    width: 35%;
+    font-size: 175%;
     padding-top: 2%;
+    padding-right: 4%;
+    z-index: 10;
 }
 
 .topNavA {
-    padding: 5%;
+    padding: 2%;
     text-decoration: none;
     color: white;
 }

@@ -1,0 +1,18 @@
+.quartos {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    padding: 0;
+}
+
+#barraProcura {
+    display: inline-block;
+}
+
+#procuraQ {
+    grid-column-start: 2;
+    grid-column-end: span 1;
+}
+
+#serviços {
+    float: right;
+}
