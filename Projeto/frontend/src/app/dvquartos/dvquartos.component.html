@@ -2,10 +2,30 @@
     <div id="procuraQ">
         <div id="barraProcura">
             <div id="procura">
-                <div class="custom-slider">
-                    <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
-                </div>
-                <button routerLink="/douroVinhas/quartos/servicos">Serviços</button>
+                <a id="filtro">
+                    <div class="custom-slider">
+                        <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+                    </div>
+                    <div id="Epoca">
+                        <div class="middle">
+                            <h1>Época</h1>
+                            <label>
+                            <input type="radio" name="radio" checked/>
+                            <div class="front-end box">
+                              <span>Alta</span>
+                            </div>
+                          </label>
+
+                            <label>
+                            <input type="radio" name="radio"/>
+                            <div class="back-end box">
+                              <span>Baixa</span>
+                            </div>
+                          </label>
+                        </div>
+                    </div>
+                </a>
+                <a id="servicos" routerLink="/douroVinhas/quartos/servicos"><strong>Serviços</strong></a>
             </div>
             <div id="quartosVisao"></div>
         </div>

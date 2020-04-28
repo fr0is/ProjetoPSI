@@ -1,7 +1,7 @@
     .quartos {
         display: grid;
         grid-template-columns: 15% 70% 15%;
-        padding: 0;
+        padding: 2%;
     }
     
     #procuraQ {
@@ -9,6 +9,155 @@
         grid-column-end: span 1;
     }
     
-    #serviços {
-        float: right;
+    #procura {
+        display: grid;
+        grid-template-columns: 80% 20%;
+        border-bottom: solid 2px #ccc;
+        padding-bottom: 2%;
+    }
+    
+    #filtro {
+        padding-right: 2%;
+    }
+    
+    #servicos {
+        grid-column-start: 2;
+        grid-column-end: span 1;
+        margin: auto;
+        height: 100%;
+        width: 100%;
+        text-decoration: none;
+        color: black;
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        text-align: center;
+        font-size: 25px;
+        border-left: solid 2px #ccc;
+    }
+    
+    #servicosT {
+        margin: auto;
+        height: 100%;
+        width: 100%;
+    }
+    /***********ÉPOCA***************/
+    
+    .middle {
+        width: 100%;
+    }
+    
+    .middle h1 {
+        font-family: "Dax", sans-serif;
+        color: #fff;
+    }
+    
+    .middle input[type="radio"] {
+        display: none;
+    }
+    
+    .middle input[type="radio"]:checked+.box {
+        background-color: black;
+    }
+    
+    .middle input[type="radio"]:checked+.box span {
+        color: white;
+        transform: translateY(70px);
+    }
+    
+    .middle input[type="radio"]:checked+.box span:before {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    
+    .middle .box {
+        width: 20%;
+        height: 200px;
+        background-color: #fff;
+        transition: all 250ms ease;
+        will-change: transition;
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        font-weight: 900;
+    }
+    
+    .middle .box:active {
+        transform: translateY(10px);
+    }
+    
+    .middle .box span {
+        position: absolute;
+        transform: translate(0, 60px);
+        left: 0;
+        right: 0;
+        transition: all 300ms ease;
+        font-size: 25px;
+        user-select: none;
+        color: black;
+    }
+    
+    .middle .box span:before {
+        font-size: 25px;
+        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+        display: block;
+        transform: translateY(-80px);
+        opacity: 0;
+        transition: all 300ms ease-in-out;
+        font-weight: normal;
+        color: white;
+    }
+    
+    .middle .front-end span:before {
+        content: url("src/assets/Imagens/Icones/EpAlta.png");
+    }
+    
+    .middle .back-end span:before {
+        content: url("src/assets/Imagens/Icones/EpBaixa.png");
+    }
+    /************Slider***************/
+    
+    .ng5-slider::ng-deep .ng5-slider-bar {
+        background: #ccc;
+        height: 2px;
+    }
+    
+    .ng5-slider::ng-deep .ng5-slider-selection {
+        background: black;
+    }
+    
+    .ng5-slider::ng-deep .ng5-slider-pointer {
+        width: 8px;
+        height: 16px;
+        top: auto;
+        bottom: 0;
+        background-color: #333;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
+    
+    .ng5-slider::ng-deep .ng5-slider-pointer:after {
+        display: none;
+    }
+    
+    .ng5-slider::ng-deep .ng5-slider-bubble {
+        bottom: 14px;
+    }
+    
+    .ng5-slider::ng-deep .ng5-slider-limit {
+        font-weight: bold;
+        color: black;
+    }
+    
+    .ng5-slider::ng-deep .ng5-slider-tick {
+        width: 1px;
+        height: 10px;
+        margin-left: 4px;
+        border-radius: 0;
+        background: #ccc;
+        top: -1px;
+    }
+    
+    .ng5-slider::ng-deep .ng5-slider-tick.ng5-slider-selected {
+        background: black;
     }
