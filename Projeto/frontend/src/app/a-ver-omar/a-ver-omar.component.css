@@ -11,7 +11,11 @@
     text-align: center;
     background-color: black;
 
+
     background-repeat: no-repeat;
+
+
+    background-size: 100%;
 
 }
 
@@ -22,7 +26,11 @@
     max-width: 15%;
     max-height: 100%;
 
+
     margin-top: 0.25%;
+
+
+    margin-top: 0.1%;
 
     z-index: 10;
     cursor: pointer;
@@ -34,17 +42,24 @@
     color: white;
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
     z-index: 0;
+
     cursor: pointer;
     text-decoration: none;
     font-size: 250%;
     text-align: center;
     padding-top: 2%;
     left: 43%;
+
+    left: 40%;
+    cursor: pointer;
+    text-decoration: none;
+
 }
 
 .topNav {
     color: white;
     float: right;
+
     top: 0;
     text-align: center;
     font-size: 175%;
@@ -55,6 +70,19 @@
 
 .topNavA {
     padding: 2%;
+
+    padding-right: 0;
+    top: 0;
+    text-align: center;
+    font-size: 225%;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+    width: 35%;
+    padding-top: 2%;
+}
+
+.topNavA {
+    padding: 5%;
+
     text-decoration: none;
     color: white;
 }

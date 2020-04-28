@@ -10,6 +10,7 @@ import {DvHomeComponent} from './dv-home/dv-home.component';
 import {DVQuartosServicosComponent} from './dvquartos-servicos/dvquartos-servicos.component';
 import {MarHomeComponent} from './mar-home/mar-home.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/homePage', pathMatch: 'full' },
   { path: 'homePage', component: HomePageComponent },
