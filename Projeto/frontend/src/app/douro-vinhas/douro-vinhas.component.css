@@ -10,8 +10,9 @@
     grid-row-end: 1;
     text-align: center;
     background-color: black;
+
     background-repeat: no-repeat;
-    background-size: 100%;
+
 }
 
 .logo {
@@ -20,7 +21,9 @@
     color: white;
     max-width: 15%;
     max-height: 100%;
+
     margin-top: 0.25%;
+
     z-index: 10;
     cursor: pointer;
     text-decoration: none;
