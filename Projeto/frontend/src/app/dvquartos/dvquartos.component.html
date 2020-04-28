@@ -2,12 +2,11 @@
     <div id="procuraQ">
         <div id="barraProcura">
             <div id="procura">
-                Filtro
-            </div>
-            <div id="servicos">
+                <div class="custom-slider">
+                    <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+                </div>
                 <button routerLink="/douroVinhas/quartos/servicos">Serviços</button>
             </div>
+            <div id="quartosVisao"></div>
         </div>
-        <div id="quartosVisao"></div>
     </div>
-</div>
