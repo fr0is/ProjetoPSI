@@ -6,8 +6,9 @@ import {DouroVinhasComponent} from './douro-vinhas/douro-vinhas.component';
 import {AVerOMarComponent} from './a-ver-omar/a-ver-omar.component';
 import {MediterraneoComponent} from './mediterraneo/mediterraneo.component';
 import {DVQuartosComponent} from './dvquartos/dvquartos.component';
-import {DvHomeComponent} from './dv-home/dv-home.component'
+import {DvHomeComponent} from './dv-home/dv-home.component';
 import {DVQuartosServicosComponent} from './dvquartos-servicos/dvquartos-servicos.component';
+import {MarHomeComponent} from './mar-home/mar-home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/homePage', pathMatch: 'full' },
@@ -27,7 +28,13 @@ const routes: Routes = [
       component: DvHomeComponent// child route component that the router renders
     }
   ] },
-  { path: 'aVerOMar', component: AVerOMarComponent },
+  { path: 'aVerOMar', component: AVerOMarComponent,
+  children: [
+    {
+      path: 'home', // child route path
+      component: MarHomeComponent// child route component that the router renders
+    }
+  ] },
   { path: 'mediterraneo', component: MediterraneoComponent }
 ];
 

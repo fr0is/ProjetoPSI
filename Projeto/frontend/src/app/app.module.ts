@@ -10,6 +10,7 @@ import { MediterraneoComponent } from './mediterraneo/mediterraneo.component';
 import { DVQuartosComponent } from './dvquartos/dvquartos.component';
 import { DvHomeComponent } from './dv-home/dv-home.component';
 import { DVQuartosServicosComponent } from './dvquartos-servicos/dvquartos-servicos.component';
+import { MarHomeComponent } from './mar-home/mar-home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DVQuartosServicosComponent } from './dvquartos-servicos/dvquartos-servi
     MediterraneoComponent,
     DVQuartosComponent,
     DvHomeComponent,
-    DVQuartosServicosComponent
+    DVQuartosServicosComponent,
+    MarHomeComponent
   ],
   imports: [
     BrowserModule,
