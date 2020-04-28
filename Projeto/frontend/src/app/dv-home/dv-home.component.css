@@ -3,6 +3,7 @@
     /* Hide horizontal scrollbar */
     padding: 2%;
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    text-align: justify;
 }
 
 .descricao {
