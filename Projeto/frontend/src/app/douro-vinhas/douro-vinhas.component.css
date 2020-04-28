@@ -31,25 +31,27 @@
     color: white;
     text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
     z-index: 0;
-    left: 40%;
     cursor: pointer;
     text-decoration: none;
+    font-size: 250%;
+    text-align: center;
+    padding-top: 2%;
+    left: 43%;
 }
 
 .topNav {
     color: white;
     float: right;
-    padding-right: 0;
     top: 0;
     text-align: center;
-    font-size: 225%;
-    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
-    width: 35%;
-    padding-top: 2.5%;
+    font-size: 175%;
+    padding-top: 2%;
+    padding-right: 4%;
+    z-index: 10;
 }
 
 .topNavA {
-    padding: 5%;
+    padding: 2%;
     text-decoration: none;
     color: white;
 }
