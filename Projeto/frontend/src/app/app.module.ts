@@ -9,6 +9,7 @@ import { AVerOMarComponent } from './a-ver-omar/a-ver-omar.component';
 import { MediterraneoComponent } from './mediterraneo/mediterraneo.component';
 import { DVQuartosComponent } from './dvquartos/dvquartos.component';
 import { DvHomeComponent } from './dv-home/dv-home.component';
+import { DVQuartosServicosComponent } from './dvquartos-servicos/dvquartos-servicos.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DvHomeComponent } from './dv-home/dv-home.component';
     AVerOMarComponent,
     MediterraneoComponent,
     DVQuartosComponent,
-    DvHomeComponent
+    DvHomeComponent,
+    DVQuartosServicosComponent
   ],
   imports: [
     BrowserModule,
