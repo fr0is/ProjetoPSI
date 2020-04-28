@@ -1,25 +1,30 @@
-<div class="hotel2">
-    <div class="top">
-        <div id= logo routerLink="/">
-            <img style="display:inline; width: 45%" src="assets/Imagens/logoVerOMar.png">
-        </div>
-        <div class="nomeHotel">
-            A Ver o Mar
-        </div>
-        <div class="topNav">
-            <a>Quartos</a>
-            <a>Fotos</a>
-            <a>|</a>
-            <a>Login</a>
-        </div>
-    </div>
-    <div class="content">Jose</div>
-    <footer>
-        <div class="botBar">
-            <div class="telefone">
-                <img id="iconTelemovel" src="assets/Imagens/Icones/IconTelOceano.png">
-                <div class="nr">(+351) 254 249 000</div>
+<div id="home">
+    <div class="hotelPage">
+        <div class="topo">
+            <div class="logo">
+                <img routerLink="/" style="display:inline; width: 45%" src="assets/Imagens/logoVerOMar.png">
+            </div>
+            <div class="topNav">
+                <div class="nomeHotel" routerLink="./home">
+                    A Ver o Mar
+                </div>
+                <a routerLink="./quartos" class="topNavA">Quartos</a>
+                <a class="topNavA">Fotos</a>
+                <a class="topNavA">|</a>
+                <a class="topNavA">Login</a>
             </div>
         </div>
-    </footer>  
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="botBar">
+            <ul>
+                <li id="contactos"> <a class="textoBot">Contactos:</a></li>
+                <li id="nrTelefone"><img class="icon" id="iconTelefone" src="assets/Imagens/Icones/telefone.png"><a class="textoBot"> (+351) 261 869 700</a></li>
+                <li id="mail"><img class="icon" id="iconMail" src="assets/Imagens/Icones/mail.png">
+                    <a class="textoBot"> averomar@hoteispsi.com</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
