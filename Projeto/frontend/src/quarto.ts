@@ -4,5 +4,5 @@ export interface Quarto {
     tipo: string;
     precoAlta: number;
     precoBaixa: number;
-    hotel: string[];
+    hotel: string;
   }

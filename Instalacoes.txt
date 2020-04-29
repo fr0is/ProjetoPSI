@@ -5,3 +5,6 @@ npm install --save ng5-slider
 
 BACKEND
 npm install eslint --save-dev
+npm i cors
+npm i compression
+npm i helmet

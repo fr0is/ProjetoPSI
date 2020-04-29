@@ -11,6 +11,7 @@ var catalogRouter = require('./routes/catalog'); //Import routes for "catalog" a
 var compression = require('compression');
 var helmet = require('helmet');
 
+var app = express();
 
 // Set up mongoose connection
 var mongoose = require('mongoose');
@@ -21,7 +22,6 @@ mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

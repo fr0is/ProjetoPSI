@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Options, LabelType } from 'ng5-slider';
 
+import { QuartoService } from './../quarto.service';
+import { Quarto } from '../../quarto';
+
 @Component({
   selector: 'app-dvquartos',
   templateUrl: './dvquartos.component.html',
   styleUrls: ['./dvquartos.component.css']
 })
 export class DVQuartosComponent implements OnInit {
-  
+  quartos: Quarto[] = [];
+  quartosHotel: Quarto[] = [];
   valueMin;
   valueMax;
   
@@ -47,11 +51,22 @@ export class DVQuartosComponent implements OnInit {
     this.valueMax = value;
   }
 
-
-
-  constructor() { }
+  constructor(private quartoService: QuartoService) { }
 
   ngOnInit(): void {
+    this.showQuartos();
+  }
+
+  showQuartos() {
+    this.quartoService.getQuartos().subscribe(quartoList => {
+      this.quartos = quartoList as Quarto[];
+    });
+     console.log(this.quartos);
+  }
+
+  teste() {
+    this.quartosHotel = this.quartos;
+    console.log(this.quartosHotel);
   }
 
 }
