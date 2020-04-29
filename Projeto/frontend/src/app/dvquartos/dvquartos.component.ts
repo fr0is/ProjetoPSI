@@ -25,12 +25,10 @@ export class DVQuartosComponent implements OnInit {
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          this.precoMuda(value);
-          this.filtrarPreco();
+          this.precoMuda(value);         
           return value + '€';
         case LabelType.High:
           this.precoMuda2(value);
-          this.filtrarPreco();
           return value + '€';
         default:
           return '€' + value;
@@ -41,11 +39,10 @@ export class DVQuartosComponent implements OnInit {
   epoca = 0;
   EpBaixa(){
     this.epoca =1;
-    this.filtrarPreco();
   }
+  
   EpAlta(){
     this.epoca =0;
-    this.filtrarPreco();
   }
 
   precoMuda(value){
@@ -55,18 +52,11 @@ export class DVQuartosComponent implements OnInit {
     this.valueMax = value;
   }
 
-  filtrarPreco(){
-    if(this.epoca === 0){
-      console.log(this.epoca);
-    }else{
-      console.log(this.valueMax);
-    }
-  }
+
 
   constructor() { }
 
   ngOnInit(): void {
-    this.filtrarPreco();
   }
 
 }
