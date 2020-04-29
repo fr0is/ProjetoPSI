@@ -1,3 +1,7 @@
 ng-5 slider -- npm i ng5-slider
 
 npm install --save ng5-slider
+
+
+BACKEND
+npm install eslint --save-dev
