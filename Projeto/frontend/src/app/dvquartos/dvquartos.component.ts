@@ -12,16 +12,25 @@ export class DVQuartosComponent implements OnInit {
   options: Options = {
     floor: 0,
     ceil: 500,
+    step: 50,
     translate: (value: number, label: LabelType): string => {
       switch (label) {
         case LabelType.Low:
-          return '<b>Min price:</b> $' + value;
+          return '<b>Preço Mínimo:</b> €' + value;
         case LabelType.High:
-          return '<b>Max price:</b> $' + value;
+          return '<b>Preço Máximo:</b> €' + value;
         default:
-          return '$' + value;
+          return '€' + value;
       }
     }
+  }
+
+  epoca = 0;
+  EpBaixa(){
+    this.epoca =1;
+  }
+  EpAlta(){
+    this.epoca =0;
   }
 
   constructor() { }

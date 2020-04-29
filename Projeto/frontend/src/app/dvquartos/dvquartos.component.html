@@ -4,21 +4,22 @@
             <div id="procura">
                 <a id="filtro">
                     <div class="custom-slider">
+                        <h3>Preço:</h3>
                         <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
                     </div>
                     <div id="Epoca">
+                        <h3>Época:</h3>
                         <div class="middle">
-                            <h1>Época</h1>
                             <label>
                             <input type="radio" name="radio" checked/>
-                            <div class="front-end box">
+                            <div (click)="EpAlta()" class="front-end box">
                               <span>Alta</span>
                             </div>
                           </label>
 
                             <label>
                             <input type="radio" name="radio"/>
-                            <div class="back-end box">
+                            <div (click)="EpBaixa()" class="back-end box">
                               <span>Baixa</span>
                             </div>
                           </label>
@@ -27,6 +28,39 @@
                 </a>
                 <a id="servicos" routerLink="/douroVinhas/quartos/servicos"><strong>Serviços</strong></a>
             </div>
-            <div id="quartosVisao"></div>
+            <ol id="quartosVisao">
+                <li class="quarto" id="quarto1">
+                    <div id="nomeQ"><strong>Standard</strong></div>
+                    <img class="imagemQuarto" src="/assets/Imagens/HotelDV/standard.jpg">
+                    <div id="preco">
+                        <div *ngIf="epoca=== 0; else epocaBaixa">Preço: 270€</div>
+                        <ng-template #epocaBaixa>Preço: 180€</ng-template>
+                    </div>
+                </li>
+                <li class="quarto" id="quarto2">
+                    <div id="nomeQ"><strong>Suíte</strong></div>
+                    <img class="imagemQuarto" src="/assets/Imagens/HotelDV/suite.jpg">
+                    <div id="preco">
+                        <div *ngIf="epoca=== 0; else epocaBaixa2">Preço: 330€</div>
+                        <ng-template #epocaBaixa2>Preço: 250€</ng-template>
+                    </div>
+                </li>
+                <li class="quarto" id="quarto3">
+                    <div id="nomeQ"><strong>Suíte Duplex</strong></div>
+                    <img class="imagemQuarto" src="/assets/Imagens/HotelDV/suiteDuplex.jpg">
+                    <div id="preco">
+                        <div *ngIf="epoca=== 0; else epocaBaixa3">Preço: 350€</div>
+                        <ng-template #epocaBaixa3>Preço: 270€</ng-template>
+                    </div>
+                </li>
+                <li class="quarto" id="quarto4">
+                    <div id="nomeQ"><strong>Suíte Deluxe</strong></div>
+                    <img class="imagemQuarto" src="/assets/Imagens/HotelDV/suiteDeluxe.jpg">
+                    <div id="preco">
+                        <div *ngIf="epoca=== 0; else epocaBaixa4">Preço: 450€</div>
+                        <ng-template #epocaBaixa4>Preço: 310€</ng-template>
+                    </div>
+                </li>
+            </ol>
         </div>
     </div>
