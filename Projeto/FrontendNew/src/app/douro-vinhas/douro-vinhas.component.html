@@ -1,0 +1,31 @@
+<div id="home">
+    <div class="hotelPage">
+        <div class="topo">
+            <div class="logo">
+                <img routerLink="/" style="display:inline; width: 45%" src="assets/Imagens/logoVinha.png">
+            </div>
+            <div class="nomeHotel" routerLink="./home">
+                Douro Vinhas
+            </div>
+            <div class="topNav">
+                <a routerLink="./quartos" class="topNavA">Quartos</a>
+                <a class="topNavA">Fotos</a>
+                <a class="topNavA">|</a>
+                <a class="topNavA">Login</a>
+            </div>
+        </div>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="botBar">
+            <ul>
+                <li id="contactos"> <a class="textoBot">Contactos:</a></li>
+                <li id="nrTelefone"><img class="icon" id="iconTelefone" src="assets/Imagens/Icones/telefone.png"><a class="textoBot"> (+351) 254 249 000</a></li>
+                <li id="mail"><img class="icon" id="iconMail" src="assets/Imagens/Icones/mail.png">
+                    <a class="textoBot"> dourovinhas@hoteispsi.com</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
