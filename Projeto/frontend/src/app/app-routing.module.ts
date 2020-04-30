@@ -8,6 +8,10 @@ import {MediterraneoComponent} from './mediterraneo/mediterraneo.component';
 import {DVQuartosComponent} from './dvquartos/dvquartos.component';
 import {DvHomeComponent} from './dv-home/dv-home.component';
 import {DVQuartosServicosComponent} from './dvquartos-servicos/dvquartos-servicos.component';
+import {DVStandardComponent} from './dvstandard/dvstandard.component';
+import {DVSuiteComponent} from './dvsuite/dvsuite.component';
+import {DVSuiteDeluxeComponent} from './dvsuite-deluxe/dvsuite-deluxe.component';
+import {DVSuiteDuplexComponent} from './dvsuite-duplex/dvsuite-duplex.component';
 import {MarHomeComponent} from './mar-home/mar-home.component';
 
 
@@ -20,6 +24,22 @@ const routes: Routes = [
       path: 'quartos/servicos', // child route path
       component: DVQuartosServicosComponent // child route component that the router renders
       },
+      {
+        path: 'quartos/Standard', // child route path
+        component: DVStandardComponent // child route component that the router renders
+        },
+        {
+          path: 'quartos/Suite', // child route path
+          component: DVSuiteComponent // child route component that the router renders
+          },
+          {
+            path: 'quartos/Suite Duplex', // child route path
+            component: DVSuiteDuplexComponent // child route component that the router renders
+            },
+            {
+              path: 'quartos/Suite Deluxe', // child route path
+              component: DVSuiteDeluxeComponent // child route component that the router renders
+              },
     {
       path: 'quartos', // child route path
       component: DVQuartosComponent, // child route component that the router renders
