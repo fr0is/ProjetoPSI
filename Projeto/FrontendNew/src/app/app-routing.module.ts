@@ -23,23 +23,23 @@ const routes: Routes = [
     {
       path: 'quartos/servicos', // child route path
       component: DVQuartosServicosComponent // child route component that the router renders
-      },
-      {
-        path: 'quartos/Standard', // child route path
-        component: DvstandardComponent // child route component that the router renders
-        },
-        {
-          path: 'quartos/Suite', // child route path
-          component: DvsuiteComponent // child route component that the router renders
-          },
-          {
-            path: 'quartos/Suite Duplex', // child route path
-            component: DvsuiteDuplexComponent // child route component that the router renders
-            },
-            {
-              path: 'quartos/Suite Deluxe', // child route path
-              component: DvsuiteDeluxeComponent // child route component that the router renders
-              },
+    },
+    {
+      path: 'quartos/Standard', // child route path
+      component: DvstandardComponent // child route component that the router renders
+    },
+    {
+      path: 'quartos/Suite', // child route path
+      component: DvsuiteComponent // child route component that the router renders
+    },
+    {
+      path: 'quartos/Suite Duplex', // child route path
+      component: DvsuiteDuplexComponent // child route component that the router renders
+    },
+    {
+      path: 'quartos/Suite Deluxe', // child route path
+      component: DvsuiteDeluxeComponent // child route component that the router renders
+    },
     {
       path: 'quartos', // child route path
       component: DVQuartosComponent, // child route component that the router renders

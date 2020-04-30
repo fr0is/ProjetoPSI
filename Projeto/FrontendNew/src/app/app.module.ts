@@ -18,6 +18,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MarHomeComponent } from './mar-home/mar-home.component';
 import { MediterraneoComponent } from './mediterraneo/mediterraneo.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,7 @@ import { MediterraneoComponent } from './mediterraneo/mediterraneo.component';
     DvsuiteDuplexComponent,
     HomePageComponent,
     MarHomeComponent,
-    MediterraneoComponent
+    MediterraneoComponent,
   ],
   imports: [
     BrowserModule,
