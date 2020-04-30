@@ -11,23 +11,18 @@ import { Quarto } from '../../quarto';
 })
 export class DVQuartosComponent implements OnInit {
   quartos: Quarto[] = [];
-  quartosHotel: Quarto[] = [];
-  valueMin;
-  valueMax;
   
   minValue: number = 100;
-  maxValue: number = 400;
+  maxValue: number = 450;
   options: Options = {
     floor: 0,
     ceil: 500,
     step: 50,
     translate: (value: number, label: LabelType): string => {
       switch (label) {
-        case LabelType.Low:
-          this.precoMuda(value);         
+        case LabelType.Low:     
           return value + '€';
         case LabelType.High:
-          this.precoMuda2(value);
           return value + '€';
         default:
           return '€' + value;
@@ -44,13 +39,6 @@ export class DVQuartosComponent implements OnInit {
     this.epoca =0;
   }
 
-  precoMuda(value){
-    this.valueMin = value;
-  }
-  precoMuda2(value){
-    this.valueMax = value;
-  }
-
   constructor(private quartoService: QuartoService) { }
 
   ngOnInit(): void {
@@ -61,13 +49,6 @@ export class DVQuartosComponent implements OnInit {
     this.quartoService.getQuartos().subscribe(quartoList => {
       this.quartos = quartoList as Quarto[];
     });
-     console.log(this.quartos);
   }
-
-  teste() {
-    this.quartosHotel = this.quartos;
-    console.log(this.quartosHotel);
-  }
-
 }
 

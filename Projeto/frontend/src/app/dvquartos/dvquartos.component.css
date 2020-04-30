@@ -26,8 +26,8 @@
             grid-column-start: 2;
             grid-column-end: span 1;
             margin: auto;
-            height: 100%;
             width: 100%;
+            height: 100%;
             text-decoration: none;
             color: black;
             font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
@@ -38,8 +38,7 @@
         
         #servicosT {
             margin: auto;
-            height: 100%;
-            width: 100%;
+            padding-top: 19%;
         }
         /***********ÉPOCA***************/
         
