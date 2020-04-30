@@ -33,7 +33,7 @@
             <ol id="quartosVisao">
                 <ng-container *ngFor="let room of quartos">
                     <li class="quarto" *ngIf="room.hotel === '5ea9c87364860653f800f74c' && ((epoca === 0 && room.precoAlta>=minValue && room.precoAlta <= maxValue) 
-                        || (epoca === 1 && room.precoBaixa >=minValue && room.precoBaixa <= maxValue))">
+                        || (epoca === 1 && room.precoBaixa >=minValue && room.precoBaixa <= maxValue))" routerLink="/douroVinhas/quartos/{{room.tipo}}">
                         <div id="nomeQ"><strong>{{room.tipo}}</strong></div>
                         <div id="img">
                             <div *ngIf="room.tipo === 'Standard';else mudaQuarto">
