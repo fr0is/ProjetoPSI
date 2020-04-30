@@ -1,8 +1,8 @@
 export interface Quarto {
     _id: string;
+    servicos: string[];
     tipo: string;
-    nrQuartos: number;
     precoAlta: number;
     precoBaixa: number;
-    servicos: [string];
+    hotel: string;
   }

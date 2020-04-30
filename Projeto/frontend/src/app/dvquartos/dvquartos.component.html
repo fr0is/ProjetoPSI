@@ -26,45 +26,42 @@
                         </div>
                     </div>
                 </a>
-                <a id="servicos" routerLink="/douroVinhas/quartos/servicos"><strong>Serviços</strong></a>
+                <a id="servicos" routerLink="/douroVinhas/quartos/servicos">
+                    <div id="servicosT"><strong>Serviços</strong></div>
+                </a>
             </div>
             <ol id="quartosVisao">
-                <li class="quarto" id="quarto1">
-                    <div id="nomeQ"><strong>Standard</strong></div>
-                    <img class="imagemQuarto" src="/assets/Imagens/HotelDV/standard.jpg">
-                    <div id="preco">
-                        Preço:
-                        <div id="precoEpAlta" style="display: inline" *ngIf="epoca=== 0; else epocaBaixa1">270</div>
-                        <ng-template id="precoEpBaixa" #epocaBaixa1>180</ng-template>€
-                    </div>
-                </li>
-                <li class="quarto" id="quarto2">
-                    <div id="nomeQ"><strong>Suíte</strong></div>
-                    <img class="imagemQuarto" src="/assets/Imagens/HotelDV/suite.jpg">
-                    <div id="preco">
-                        Preço:
-                        <div id="precoEpAlta2" style="display: inline" *ngIf="epoca=== 0; else epocaBaixa2">330</div>
-                        <ng-template id="precoEpBaixa2" #epocaBaixa2>250</ng-template>€
-                    </div>
-                </li>
-                <li class="quarto" id="quarto3">
-                    <div id="nomeQ"><strong>Suíte Duplex</strong></div>
-                    <img class="imagemQuarto" src="/assets/Imagens/HotelDV/suiteDuplex.jpg">
-                    <div id="preco">
-                        Preço:
-                        <div id="precoEpAlta3" style="display: inline" *ngIf="epoca=== 0; else epocaBaixa3">350</div>
-                        <ng-template id="precoEpBaixa3" #epocaBaixa3>270</ng-template>€
-                    </div>
-                </li>
-                <li class="quarto" id="quarto4">
-                    <div id="nomeQ"><strong>Suíte Deluxe</strong></div>
-                    <img class="imagemQuarto" src="/assets/Imagens/HotelDV/suiteDeluxe.jpg">
-                    <div id="preco">
-                        Preço:
-                        <div id="precoEpAlta4" style="display: inline" *ngIf="epoca === 0; else epocaBaixa4">450</div>
-                        <ng-template id="precoEpBaixa4" #epocaBaixa4>310</ng-template>€
-                    </div>
-                </li>
+                <ng-container *ngFor="let room of quartos">
+                    <li class="quarto" *ngIf="room.hotel === '5ea9c87364860653f800f74c' && ((epoca === 0 && room.precoAlta>=minValue && room.precoAlta <= maxValue) 
+                        || (epoca === 1 && room.precoBaixa >=minValue && room.precoBaixa <= maxValue))">
+                        <div id="nomeQ"><strong>{{room.tipo}}</strong></div>
+                        <div id="img">
+                            <div *ngIf="room.tipo === 'Standard';else mudaQuarto">
+                                <img class="imagemQuarto" src="/assets/Imagens/HotelDV/standard.jpg">
+                            </div>
+                            <ng-template #mudaQuarto>
+                                <div *ngIf="room.tipo === 'Suite';else mudaQuarto2">
+                                    <img class="imagemQuarto" src="/assets/Imagens/HotelDV/suite.jpg">
+                                </div>
+                            </ng-template>
+                            <ng-template #mudaQuarto2>
+                                <div *ngIf="room.tipo === 'Suite Duplex';else mudaQuarto3">
+                                    <img class="imagemQuarto" src="/assets/Imagens/HotelDV/suiteDuplex.jpg">
+                                </div>
+                            </ng-template>
+                            <ng-template #mudaQuarto3>
+                                <div *ngIf="room.tipo === 'Suite Deluxe'">
+                                    <img class="imagemQuarto " src="/assets/Imagens/HotelDV/suiteDeluxe.jpg ">
+                                </div>
+                            </ng-template>
+                        </div>
+                        <div id="preco ">
+                            Preço:
+                            <div id="precoEpAlta4 " style="display: inline " *ngIf="epoca===0 ; else epocaBaixa ">{{room.precoAlta}}</div>
+                            <ng-template id="precoEpBaixa4 " #epocaBaixa>{{room.precoBaixa}}</ng-template>€
+                        </div>
+                    </li>
+                </ng-container>
             </ol>
         </div>
     </div>

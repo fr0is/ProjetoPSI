@@ -9,9 +9,10 @@ export class QuartoService {
 
   baseUrl = 'http://localhost:3000/catalog/';
   quartosUrl = this.baseUrl + 'quartos/';
+
   constructor(private http: HttpClient) { }
 
-  getAuthors() {
+  getQuartos() {
     return this.http.get(this.quartosUrl);
   }
 
