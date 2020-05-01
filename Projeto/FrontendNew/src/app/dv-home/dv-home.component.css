@@ -26,7 +26,17 @@
 .hotelDetails a {
     font-size: 20px;
     margin: auto;
-    padding: 2%;
+    padding-top: 2%;
+    margin-right: 2%;
+    text-decoration: none;
+    color: white;
+}
+
+.hotelDetails a:hover {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    animation-duration: 0.25s;
+    border-bottom: 3px solid white;
 }
 
 .descricao {
