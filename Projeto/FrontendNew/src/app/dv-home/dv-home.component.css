@@ -8,7 +8,13 @@
 .descricao {
     display: grid;
     grid-template-columns: 15% 40% 30% 15%;
-    padding: 0;
+    padding-bottom: 2%;
+}
+
+.descricao2 {
+    display: grid;
+    grid-template-columns: 15% 40% 30% 15%;
+    padding-top: 2%;
 }
 
 .descricao1 {
@@ -18,7 +24,8 @@
 }
 
 #descricaoFinal {
-    padding: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .desc {
@@ -49,13 +56,14 @@
     grid-column-start: 3;
     grid-column-end: span 1;
     width: 60%;
-    padding-left: 2%;
+    padding-left: 4%;
 }
 
 #imgDesc1 {
     grid-column-start: 2;
     grid-column-end: span 1;
     width: 90%;
+    padding-right: 4%;
     margin: auto;
 }
 
@@ -209,6 +217,7 @@
     overflow-y: hidden;
     padding: 0;
     padding-top: 2%;
+    padding-left: 2%;
     display: grid;
     grid-template-columns: 6.5% auto;
     grid-template-rows: 25% auto;
@@ -217,4 +226,12 @@
 
 li {
     padding: 0;
+}
+
+#coords {
+    padding-left: 3%;
+}
+
+#morada {
+    padding-left: 3%;
 }
