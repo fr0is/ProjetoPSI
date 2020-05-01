@@ -7,7 +7,7 @@ import {AVerOMarComponent} from './aver-omar/aver-omar.component';
 import {MediterraneoComponent} from './mediterraneo/mediterraneo.component';
 import {DVQuartosComponent} from './dvquartos/dvquartos.component';
 import {DvHomeComponent} from './dv-home/dv-home.component';
-import {DVQuartosServicosComponent} from './dvquartos-servicos/dvquartos-servicos.component';
+import {DvquartosServicosComponent} from './dvquartos-servicos/dvquartos-servicos.component';
 import {DvstandardComponent} from './dvstandard/dvstandard.component';
 import {DvsuiteComponent} from './dvsuite/dvsuite.component';
 import {DvsuiteDeluxeComponent} from './dvsuite-deluxe/dvsuite-deluxe.component';
@@ -22,7 +22,7 @@ const routes: Routes = [
   children: [
     {
       path: 'quartos/servicos', // child route path
-      component: DVQuartosServicosComponent // child route component that the router renders
+      component: DvquartosServicosComponent // child route component that the router renders
     },
     {
       path: 'quartos/Standard', // child route path

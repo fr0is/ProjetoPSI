@@ -8,7 +8,7 @@ import { Quarto } from 'src/quarto';
 export class QuartoService {
 
   baseUrl = 'http://localhost:3000/catalog/';
-  quartosUrl = this.baseUrl + 'quartos/';
+  quartosUrl = this.baseUrl + 'quartos';
 
   constructor(private http: HttpClient) { }
 

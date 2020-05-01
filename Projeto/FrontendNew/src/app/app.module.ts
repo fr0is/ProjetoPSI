@@ -9,7 +9,7 @@ import { AVerOMarComponent } from './aver-omar/aver-omar.component';
 import { DouroVinhasComponent } from './douro-vinhas/douro-vinhas.component';
 import { DvHomeComponent } from './dv-home/dv-home.component';
 import { DVQuartosComponent } from './dvquartos/dvquartos.component';
-import { DVQuartosServicosComponent } from './dvquartos-servicos/dvquartos-servicos.component';
+import { DvquartosServicosComponent } from './dvquartos-servicos/dvquartos-servicos.component';
 import { DvstandardComponent } from './dvstandard/dvstandard.component';
 import { DvsuiteComponent } from './dvsuite/dvsuite.component';
 import { DvsuiteDeluxeComponent } from './dvsuite-deluxe/dvsuite-deluxe.component';
@@ -26,7 +26,7 @@ import { MediterraneoComponent } from './mediterraneo/mediterraneo.component';
     DouroVinhasComponent,
     DvHomeComponent,
     DVQuartosComponent,
-    DVQuartosServicosComponent,
+    DvquartosServicosComponent,
     DvstandardComponent,
     DvsuiteComponent,
     DvsuiteDeluxeComponent,

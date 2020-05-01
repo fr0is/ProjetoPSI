@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DvquartosComponent } from './dvquartos.component';
+import { DVQuartosComponent } from './dVQuartos.component';
 
-describe('DvquartosComponent', () => {
-  let component: DvquartosComponent;
-  let fixture: ComponentFixture<DvquartosComponent>;
+describe('DVQuartosComponent', () => {
+  let component: DVQuartosComponent;
+  let fixture: ComponentFixture<DVQuartosComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DvquartosComponent ]
+      declarations: [ DVQuartosComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DvquartosComponent);
+    fixture = TestBed.createComponent(DVQuartosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
