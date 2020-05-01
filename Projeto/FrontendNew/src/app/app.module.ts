@@ -17,6 +17,7 @@ import { DvsuiteDuplexComponent } from './dvsuite-duplex/dvsuite-duplex.componen
 import { HomePageComponent } from './home-page/home-page.component';
 import { MarHomeComponent } from './mar-home/mar-home.component';
 import { MediterraneoComponent } from './mediterraneo/mediterraneo.component';
+import { DVGaleriaComponent } from './dvgaleria/dvgaleria.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { MediterraneoComponent } from './mediterraneo/mediterraneo.component';
     HomePageComponent,
     MarHomeComponent,
     MediterraneoComponent,
+    DVGaleriaComponent,
   ],
   imports: [
     BrowserModule,

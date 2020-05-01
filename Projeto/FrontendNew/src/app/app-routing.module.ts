@@ -13,6 +13,7 @@ import {DvsuiteComponent} from './dvsuite/dvsuite.component';
 import {DvsuiteDeluxeComponent} from './dvsuite-deluxe/dvsuite-deluxe.component';
 import {DvsuiteDuplexComponent} from './dvsuite-duplex/dvsuite-duplex.component';
 import {MarHomeComponent} from './mar-home/mar-home.component';
+import { DVGaleriaComponent } from './dvgaleria/dvgaleria.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,10 @@ const routes: Routes = [
     {
       path: 'quartos', // child route path
       component: DVQuartosComponent, // child route component that the router renders
+    },
+    {
+      path: 'galeria', // child route path
+      component: DVGaleriaComponent, // child route component that the router renders
     },
     {
       path: 'home', // child route path

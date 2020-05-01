@@ -49,10 +49,22 @@
     z-index: 10;
 }
 
-.topNavA {
+.topNavA,
+.topNavA1 {
     padding: 2%;
     text-decoration: none;
     color: white;
+}
+
+.topNavA1 {
+    cursor: default;
+}
+
+.topNavA:hover {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    animation-duration: 0.25s;
+    border-bottom: 4px solid white;
 }
 
 .telefone {
