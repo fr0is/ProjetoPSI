@@ -66,6 +66,14 @@
 
 /***********ÉPOCA***************/
 
+.infoA,
+.infoB {
+    position: absolute;
+    font-size: 10px;
+    color: black;
+    z-index: 10;
+}
+
 .middle {
     width: 100%;
     padding-left: 5%;

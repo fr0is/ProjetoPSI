@@ -11,6 +11,7 @@
     text-align: center;
     background-color: black;
     background-repeat: no-repeat;
+    z-index: 2;
 }
 
 .logo {
@@ -66,6 +67,9 @@
     animation-duration: 0.25s;
     border-bottom: 4px solid white;
 }
+
+
+/*************Bottom Bar**************/
 
 .telefone {
     width: 5%;

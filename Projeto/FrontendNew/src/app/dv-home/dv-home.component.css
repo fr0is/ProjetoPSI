@@ -5,6 +5,30 @@
     text-align: justify;
 }
 
+
+/**************** topoDetalhes **********************/
+
+.hotelDetails {
+    overflow: hidden;
+    background-color: #fafafa;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    position: fixed;
+    color: black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    height: 5%;
+    text-align: center;
+    padding-top: 1%;
+}
+
+.hotelDetails a {
+    font-size: 20px;
+    margin: auto;
+    padding: 2%;
+}
+
 .descricao {
     display: grid;
     grid-template-columns: 15% 40% 30% 15%;
