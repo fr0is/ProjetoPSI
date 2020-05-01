@@ -106,7 +106,7 @@
 .middle .box {
     width: 50%;
     height: 100px;
-    background-color: #fff;
+    background-color: #fafafa;
     transition: all 250ms ease;
     will-change: transition;
     display: inline-block;
