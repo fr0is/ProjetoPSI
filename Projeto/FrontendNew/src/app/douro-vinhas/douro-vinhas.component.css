@@ -1,3 +1,7 @@
+* {
+    cursor: default;
+}
+
 .hotelPage {
     display: grid;
     grid-template-columns: auto;
@@ -24,6 +28,7 @@
     z-index: 10;
     cursor: pointer;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .nomeHotel {
@@ -35,8 +40,8 @@
     text-decoration: none;
     font-size: 250%;
     text-align: center;
-    padding-top: 2%;
-    left: 43%;
+    margin-top: 2%;
+    left: 44%;
 }
 
 .topNav {
@@ -55,6 +60,7 @@
     padding: 2%;
     text-decoration: none;
     color: white;
+    cursor: pointer;
 }
 
 .topNavA1 {
