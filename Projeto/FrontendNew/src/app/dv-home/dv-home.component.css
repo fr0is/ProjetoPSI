@@ -10,13 +10,13 @@
 
 .hotelDetails {
     overflow: hidden;
-    background-color: #fafafa;
+    background-color: black;
     width: 100%;
     position: absolute;
     top: 0;
     z-index: 1;
     position: fixed;
-    color: black;
+    color: white;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     height: 5%;
     text-align: center;
