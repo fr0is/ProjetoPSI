@@ -20,6 +20,13 @@ import { MarSuiteJuniorSuperiorComponent } from './mar-suite-junior-superior/mar
 import { MarSuiteJuniorComponent } from './mar-suite-junior/mar-suite-junior.component';
 import { MarStandardComponent } from './mar-standard/mar-standard.component';
 import { MarQuartosServicosComponent } from './mar-quartos-servicos/mar-quartos-servicos.component';
+import { MediterraneoQuartosServicosComponent } from './mediterraneo-quartos-servicos/mediterraneo-quartos-servicos.component';
+import { MediterraneoQuartosStandardComponent } from './mediterraneo-quartos-standard/mediterraneo-quartos-standard.component';
+import { MediterraneoQuartosSuiteJuniorComponent } from './mediterraneo-quartos-suite-junior/mediterraneo-quartos-suite-junior.component';
+import { MediterraneoQuartosSuiteSeniorComponent } from './mediterraneo-quartos-suite-senior/mediterraneo-quartos-suite-senior.component';
+import { MediterraneoQuartosComponent } from './mediterraneo-quartos/mediterraneo-quartos.component';
+import { MediterraneoGaleriaComponent } from './mediterraneo-galeria/mediterraneo-galeria.component';
+import { MediterraneoHomeComponent } from './mediterraneo-home/mediterraneo-home.component';
 
 
 const routes: Routes = [
@@ -91,7 +98,37 @@ const routes: Routes = [
       component: MarHomeComponent// child route component that the router renders
     }
   ]  },
-  { path: 'mediterraneo', component: MediterraneoComponent }
+  { path: 'mediterraneo', component: MediterraneoComponent,
+  children: [
+    {
+      path: 'quartos/servicos', // child route path
+      component: MediterraneoQuartosServicosComponent // child route component that the router renders
+    },
+    {
+      path: 'quartos/Standard', // child route path
+      component: MediterraneoQuartosStandardComponent // child route component that the router renders
+    },
+    {
+      path: 'quartos/Suite Junior', // child route path
+      component: MediterraneoQuartosSuiteJuniorComponent // child route component that the router renders
+    },
+    {
+      path: 'quartos/Suite Senior', // child route path
+      component: MediterraneoQuartosSuiteSeniorComponent // child route component that the router renders
+    },
+    {
+      path: 'quartos', // child route path
+      component: MediterraneoQuartosComponent // child route component that the router renders
+    },
+    {
+      path: 'galeria', // child route path
+      component: MediterraneoGaleriaComponent, // child route component that the router renders
+    },
+    {
+      path: 'home', // child route path
+      component: MediterraneoHomeComponent// child route component that the router renders
+    }
+  ]  }
 ];
 
 @NgModule({

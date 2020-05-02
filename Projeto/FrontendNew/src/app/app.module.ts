@@ -24,6 +24,13 @@ import { MarQuartosServicosComponent } from './mar-quartos-servicos/mar-quartos-
 import { MarStandardComponent } from './mar-standard/mar-standard.component';
 import { MarSuiteJuniorComponent } from './mar-suite-junior/mar-suite-junior.component';
 import { MarSuiteJuniorSuperiorComponent } from './mar-suite-junior-superior/mar-suite-junior-superior.component';
+import { MediterraneoHomeComponent } from './mediterraneo-home/mediterraneo-home.component';
+import { MediterraneoGaleriaComponent } from './mediterraneo-galeria/mediterraneo-galeria.component';
+import { MediterraneoQuartosComponent } from './mediterraneo-quartos/mediterraneo-quartos.component';
+import { MediterraneoQuartosServicosComponent } from './mediterraneo-quartos-servicos/mediterraneo-quartos-servicos.component';
+import { MediterraneoQuartosStandardComponent } from './mediterraneo-quartos-standard/mediterraneo-quartos-standard.component';
+import { MediterraneoQuartosSuiteJuniorComponent } from './mediterraneo-quartos-suite-junior/mediterraneo-quartos-suite-junior.component';
+import { MediterraneoQuartosSuiteSeniorComponent } from './mediterraneo-quartos-suite-senior/mediterraneo-quartos-suite-senior.component';
 
 
 @NgModule({
@@ -48,6 +55,13 @@ import { MarSuiteJuniorSuperiorComponent } from './mar-suite-junior-superior/mar
     MarStandardComponent,
     MarSuiteJuniorComponent,
     MarSuiteJuniorSuperiorComponent,
+    MediterraneoHomeComponent,
+    MediterraneoGaleriaComponent,
+    MediterraneoQuartosComponent,
+    MediterraneoQuartosServicosComponent,
+    MediterraneoQuartosStandardComponent,
+    MediterraneoQuartosSuiteJuniorComponent,
+    MediterraneoQuartosSuiteSeniorComponent,
   ],
   imports: [
     BrowserModule,
