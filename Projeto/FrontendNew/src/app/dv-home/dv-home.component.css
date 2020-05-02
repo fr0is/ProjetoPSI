@@ -201,6 +201,76 @@
     transition: 0.25s;
 }
 
+.container .list .num:nth-child(7):before {
+    content: '7';
+    font-size: 4rem;
+    font-weight: bold;
+    color: #000;
+    width: 2rem;
+    opacity: 0.05;
+    transition: 0.25s;
+}
+
+.container .list .num:nth-child(8):before {
+    content: '8';
+    font-size: 4rem;
+    font-weight: bold;
+    color: #000;
+    width: 2rem;
+    opacity: 0.05;
+    transition: 0.25s;
+}
+
+.container .list .num:nth-child(9):before {
+    content: '9';
+    font-size: 4rem;
+    font-weight: bold;
+    color: #000;
+    width: 2rem;
+    opacity: 0.05;
+    transition: 0.25s;
+}
+
+.container .list .num:nth-child(10):before {
+    content: '10';
+    font-size: 4rem;
+    font-weight: bold;
+    color: #000;
+    width: 2rem;
+    opacity: 0.05;
+    transition: 0.25s;
+}
+
+.container .list .num:nth-child(11):before {
+    content: '11';
+    font-size: 4rem;
+    font-weight: bold;
+    color: #000;
+    width: 2rem;
+    opacity: 0.05;
+    transition: 0.25s;
+}
+
+.container .list .num:nth-child(12):before {
+    content: '12';
+    font-size: 4rem;
+    font-weight: bold;
+    color: #000;
+    width: 2rem;
+    opacity: 0.05;
+    transition: 0.25s;
+}
+
+.container .list .num:nth-child(13):before {
+    content: '13';
+    font-size: 4rem;
+    font-weight: bold;
+    color: #000;
+    width: 2rem;
+    opacity: 0.05;
+    transition: 0.25s;
+}
+
 .container .list .num {
     position: relative;
     left: -1.5rem;
@@ -223,7 +293,7 @@
 }
 
 .numD {
-    margin-left: 2%;
+    margin-left: 4%;
     font-size: 22px;
 }
 

@@ -18,6 +18,12 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MarHomeComponent } from './mar-home/mar-home.component';
 import { MediterraneoComponent } from './mediterraneo/mediterraneo.component';
 import { DVGaleriaComponent } from './dvgaleria/dvgaleria.component';
+import { MarGaleriaComponent } from './mar-galeria/mar-galeria.component';
+import { MarQuartosComponent } from './mar-quartos/mar-quartos.component';
+import { MarQuartosServicosComponent } from './mar-quartos-servicos/mar-quartos-servicos.component';
+import { MarStandardComponent } from './mar-standard/mar-standard.component';
+import { MarSuiteJuniorComponent } from './mar-suite-junior/mar-suite-junior.component';
+import { MarSuiteJuniorSuperiorComponent } from './mar-suite-junior-superior/mar-suite-junior-superior.component';
 
 
 @NgModule({
@@ -36,6 +42,12 @@ import { DVGaleriaComponent } from './dvgaleria/dvgaleria.component';
     MarHomeComponent,
     MediterraneoComponent,
     DVGaleriaComponent,
+    MarGaleriaComponent,
+    MarQuartosComponent,
+    MarQuartosServicosComponent,
+    MarStandardComponent,
+    MarSuiteJuniorComponent,
+    MarSuiteJuniorSuperiorComponent,
   ],
   imports: [
     BrowserModule,
