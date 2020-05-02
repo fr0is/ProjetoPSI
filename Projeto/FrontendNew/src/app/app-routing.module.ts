@@ -14,6 +14,12 @@ import {DvsuiteDeluxeComponent} from './dvsuite-deluxe/dvsuite-deluxe.component'
 import {DvsuiteDuplexComponent} from './dvsuite-duplex/dvsuite-duplex.component';
 import {MarHomeComponent} from './mar-home/mar-home.component';
 import { DVGaleriaComponent } from './dvgaleria/dvgaleria.component';
+import { MarGaleriaComponent } from './mar-galeria/mar-galeria.component';
+import { MarQuartosComponent } from './mar-quartos/mar-quartos.component';
+import { MarSuiteJuniorSuperiorComponent } from './mar-suite-junior-superior/mar-suite-junior-superior.component';
+import { MarSuiteJuniorComponent } from './mar-suite-junior/mar-suite-junior.component';
+import { MarStandardComponent } from './mar-standard/mar-standard.component';
+import { MarQuartosServicosComponent } from './mar-quartos-servicos/mar-quartos-servicos.component';
 
 
 const routes: Routes = [
@@ -57,10 +63,34 @@ const routes: Routes = [
   { path: 'aVerOMar', component: AVerOMarComponent,
   children: [
     {
+      path: 'quartos/servicos', // child route path
+      component: MarQuartosServicosComponent // child route component that the router renders
+    },
+    {
+      path: 'quartos/Standard', // child route path
+      component: MarStandardComponent // child route component that the router renders
+    },
+    {
+      path: 'quartos/Suite Junior', // child route path
+      component: MarSuiteJuniorComponent // child route component that the router renders
+    },
+    {
+      path: 'quartos/Suite Junior Superior', // child route path
+      component: MarSuiteJuniorSuperiorComponent // child route component that the router renders
+    },
+    {
+      path: 'quartos', // child route path
+      component: MarQuartosComponent, // child route component that the router renders
+    },
+    {
+      path: 'galeria', // child route path
+      component: MarGaleriaComponent, // child route component that the router renders
+    },
+    {
       path: 'home', // child route path
       component: MarHomeComponent// child route component that the router renders
     }
-  ] },
+  ]  },
   { path: 'mediterraneo', component: MediterraneoComponent }
 ];
 
