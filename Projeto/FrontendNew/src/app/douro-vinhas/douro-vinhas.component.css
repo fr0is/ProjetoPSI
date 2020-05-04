@@ -359,7 +359,8 @@
     }
     .topNavA,
     .topNavA1 {
-        padding: 1%;
+        padding: 0;
+        margin-left: 2%;
         text-decoration: none;
         color: white;
         cursor: pointer;
@@ -458,7 +459,8 @@
     }
     .topNavA,
     .topNavA1 {
-        padding: 2%;
+        padding: 0;
+        margin-left: 2%;
         text-decoration: none;
         color: white;
         cursor: pointer;
@@ -555,7 +557,8 @@
     }
     .topNavA,
     .topNavA1 {
-        padding: 2%;
+        padding: 0;
+        margin-left: 2%;
         text-decoration: none;
         color: white;
         cursor: pointer;
