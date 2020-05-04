@@ -28,11 +28,11 @@
         position: absolute;
         top: 0;
         left: 0;
-        height: 4%;
+        height: 3%;
         margin: 2%;
         z-index: 10;
         display: inline;
-        width: 8%;
+        width: 7%;
     }
     .texto {
         transition: .5s ease;
@@ -155,7 +155,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        height: 5%;
+        height: 4%;
         margin: 2%;
         z-index: 10;
         display: inline;
