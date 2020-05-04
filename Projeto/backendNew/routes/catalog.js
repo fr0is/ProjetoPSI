@@ -5,14 +5,12 @@ var router = express.Router();
 var quarto_controller = require('../controllers/quartoController');
 var hotel_controller = require('../controllers/hotelController');
 
-/// Quarto Routes ///
 
-//Get lista quartos
-router.get('/hoteis/:id/quartos', quarto_controller.room_list);
-router.get('/quartos/:id', quarto_controller.quarto_detail);
+router.get('/hoteis', hotel_controller.hotel_list); // lista de hoteis
+router.get('/hoteis/:hotelId', hotel_controller.hotel_detail); // hotel
+router.get('/hoteis/:hotelId/quartos', quarto_controller.room_list); // lista de quartos de um hotel
+router.get('/hoteis/:hotelId/quartos/:quartoId', quarto_controller.quarto_detail); // quarto
 
-router.get('/hoteis', hotel_controller.hotel_list);
-router.get('/hoteis/:id', hotel_controller.hotel_detail);
 
 
 module.exports = router;

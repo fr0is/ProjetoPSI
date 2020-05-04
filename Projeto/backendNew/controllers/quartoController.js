@@ -7,7 +7,7 @@ const { sanitizeBody } = require('express-validator/filter');
 // List All Rooms
 exports.room_list = function(req, res, next) {
 
-    Quarto.find({ 'hotel': req.params.id })
+    Quarto.find({ 'hotel': req.params.hotelId })
         .exec(function(err, list_quartos) {
             if (err) { return next(err); }
             res.json(list_quartos);
@@ -16,7 +16,7 @@ exports.room_list = function(req, res, next) {
 };
 
 exports.quarto_detail = function (req, res, next) {
-    Quarto.findById(req.params.id)
+    Quarto.findById(req.params.quartoId)
         .exec(function (err, results) {
             if (err) { return next(err); }
             if (results == null) {
