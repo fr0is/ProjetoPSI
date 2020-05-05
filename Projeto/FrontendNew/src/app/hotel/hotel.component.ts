@@ -38,7 +38,7 @@ export class HotelComponent implements OnInit {
   }
 
   getHotel() {
-    this.id = this.route.snapshot.paramMap.get("id");
+    this.id = this.route.snapshot.paramMap.get("idHotel");
     if (this.id) {
       this.hotelService.getHotel(this.id).subscribe(results => {
         this.hotel = results;

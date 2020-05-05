@@ -13,10 +13,10 @@ export class HomePageComponent implements OnInit {
   constructor(private hotelService: HotelService) {}
 
   ngOnInit(): void {
-    this.showAuthors();
+    this.showHoteis();
   }
 
-  showAuthors() {
+  showHoteis() {
     this.hotelService.getHoteis().subscribe(hoteisList => {
       this.hoteis = hoteisList as Hotel[];
     });

@@ -15,14 +15,14 @@ export class HotelService {
 
   constructor(private http: HttpClient) { }
 
-  id="";
+  HotelId="";
 
   setHotelId(id){
-    this.id=id;
+    this.HotelId = id;
   }
 
   getHotelId(){
-    return this.id;
+    return this.HotelId;
   }
 
   getHoteis() {
@@ -37,5 +37,10 @@ export class HotelService {
   getHotelQuartos(id: string) {
     const url = this.hotelUrl + id +"/quartos";
     return this.http.get(url);
+  }
+
+  getHotelQuarto(id: string) {
+    const url = this.hotelUrl + this.HotelId +"/quartos" + id;
+    return this.http.get<Quarto>(url);
   }
 }
