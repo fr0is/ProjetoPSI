@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HotelService } from '../hotel.service';
+import { Hotel } from 'src/hotel';
 
 @Component({
   selector: 'app-home-page',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  hoteis: Hotel[] = [];
 
-  constructor() { }
+  constructor(private hotelService: HotelService) {}
 
   ngOnInit(): void {
+    this.showAuthors();
   }
 
+  showAuthors() {
+    this.hotelService.getHoteis().subscribe(hoteisList => {
+      this.hoteis = hoteisList as Hotel[];
+    });
+  }
 }
