@@ -14,6 +14,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.showHoteis();
+    this.generateRandomNumber(length);
   }
 
   showHoteis() {
@@ -21,4 +22,9 @@ export class HomePageComponent implements OnInit {
       this.hoteis = hoteisList as Hotel[];
     });
   }
+
+  generateRandomNumber(length){
+    return Math.floor(Math.random() * length); 
+  }
+
 }
