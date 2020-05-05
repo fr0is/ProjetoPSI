@@ -27,6 +27,9 @@ export class GaleriaComponent implements OnInit {
     fotoPath: ""
   };
 
+  foto="";
+  isShow = false;
+
   constructor(
     private route: ActivatedRoute,
     private hotelService: HotelService
@@ -36,10 +39,20 @@ export class GaleriaComponent implements OnInit {
     this.getHotel();
   }
 
-getHotel() {
+  getHotel() {
     this.hotelService.getHotel(this.hotelService.getHotelId()).subscribe(results => {
       this.hotel = results;
-  })
-}
+    })
+  }
+
+  show(foto){
+    this.isShow = true;
+    this.foto = foto;
+  }
+
+  closeFoto(){
+    this.isShow = false;
+  }
+
 }
 
