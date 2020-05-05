@@ -4,6 +4,7 @@ import { Options, LabelType } from 'ng5-slider';
 import { Quarto } from '../../quarto';
 import { HotelService } from '../hotel.service';
 
+
 @Component({
   selector: 'app-quartos-pesquisa',
   templateUrl: './quartos-pesquisa.component.html',
@@ -44,6 +45,8 @@ export class QuartosPesquisaComponent implements OnInit {
   ngOnInit(): void {
    this.showQuartos();
   }
+
+  hotelId=this.hotelService.getHotelId();
 
   showQuartos() {
     this.hotelService.getHotelQuartos(this.hotelService.getHotelId()).subscribe(quartoList => {

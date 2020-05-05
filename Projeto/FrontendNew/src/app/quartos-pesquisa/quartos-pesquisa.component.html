@@ -35,17 +35,17 @@
         </div>
     </div>
     <ol id="quartosVisao">
-        <ng-container *ngFor="let room of quartos">
-            <li class="quarto" *ngIf="((epoca === 0 && room.precoAlta>=minValue && room.precoAlta <= maxValue) 
-                        || (epoca === 1 && room.precoBaixa >=minValue && room.precoBaixa <= maxValue))">
-                <div id="nomeQ"><strong>{{room.tipo}}</strong></div>
+        <ng-container *ngFor="let quarto of quartos">
+            <li class="quarto" *ngIf="((epoca === 0 && quarto.precoAlta>=minValue && quarto.precoAlta <= maxValue) 
+                        || (epoca === 1 && quarto.precoBaixa >=minValue && quarto.precoBaixa <= maxValue))" routerLink="{{quarto._id}}">
+                <div id="nomeQ"><strong>{{quarto.tipo}}</strong></div>
                 <div id="img">
                     <!---FAZ ISTO PUTA-->
                 </div>
                 <div id="preco">
                     Preço:
-                    <div id="precoEpAlta4 " style="display: inline " *ngIf="epoca===0 ; else epocaBaixa ">{{room.precoAlta}}</div>
-                    <ng-template id="precoEpBaixa4 " #epocaBaixa>{{room.precoBaixa}}</ng-template>€
+                    <div id="precoEpAlta4 " style="display: inline " *ngIf="epoca===0 ; else epocaBaixa ">{{quarto.precoAlta}}</div>
+                    <ng-template id="precoEpBaixa4 " #epocaBaixa>{{quarto.precoBaixa}}</ng-template>€
                 </div>
             </li>
         </ng-container>

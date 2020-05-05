@@ -38,7 +38,7 @@ ngOnInit(): void {
 }
 
 getHotel() {
-  const id = this.route.snapshot.paramMap.get("id");
+  const id = this.route.snapshot.paramMap.get("idHotel");
   if (id) {
     this.hotelService.getHotel(id).subscribe(results => {
       this.hotel = results;
