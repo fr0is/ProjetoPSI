@@ -16,4 +16,6 @@ export interface Hotel {
     email: string;
     //servicos
     servicos: string[];
+    fotos: string[];
+    fotoPath: string;
   }
