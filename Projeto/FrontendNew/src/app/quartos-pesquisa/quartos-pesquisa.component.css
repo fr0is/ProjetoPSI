@@ -208,7 +208,7 @@
     flex-wrap: wrap;
     list-style: none;
     text-align: center;
-    height: 600px;
+    min-height: 600px;
     grid-column-start: 2;
     grid-column-end: span 1;
 }

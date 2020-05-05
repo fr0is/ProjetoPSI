@@ -15,6 +15,16 @@ export class HotelService {
 
   constructor(private http: HttpClient) { }
 
+  id="";
+
+  setHotelId(id){
+    this.id=id;
+  }
+
+  getHotelId(){
+    return this.id;
+  }
+
   getHoteis() {
     return this.http.get(this.hoteisUrl);
   }
@@ -26,6 +36,6 @@ export class HotelService {
 
   getHotelQuartos(id: string) {
     const url = this.hotelUrl + id +"/quartos";
-    return this.http.get<Quarto>(url);
+    return this.http.get(url);
   }
 }

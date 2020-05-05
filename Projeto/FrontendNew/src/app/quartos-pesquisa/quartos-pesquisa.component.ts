@@ -42,11 +42,11 @@ export class QuartosPesquisaComponent implements OnInit {
   constructor(private hotelService: HotelService) { }
 
   ngOnInit(): void {
-    this.showQuartos();
+   this.showQuartos();
   }
 
   showQuartos() {
-    this.hotelService.getHotelQuartos().subscribe(quartoList => {
+    this.hotelService.getHotelQuartos(this.hotelService.getHotelId()).subscribe(quartoList => {
       this.quartos = quartoList as Quarto[];
     });
   }

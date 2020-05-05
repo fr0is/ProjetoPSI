@@ -46,6 +46,7 @@ export class HotelComponent implements OnInit {
     }else{
       alert("Hotel não encontrado");
     }
+    this.hotelService.setHotelId(this.id);
   }
 
 }

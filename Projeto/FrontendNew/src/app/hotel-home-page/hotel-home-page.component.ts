@@ -35,11 +35,6 @@ constructor(
 
 ngOnInit(): void {
   this.getHotel();
-  this.getServicos();
-}
-
-getServicos(){
-  this.servicos = this.hotel.servicos;
 }
 
 getHotel() {
