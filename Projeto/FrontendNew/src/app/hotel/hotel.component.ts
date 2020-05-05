@@ -26,6 +26,8 @@ export class HotelComponent implements OnInit {
       servicos: []
     };
 
+    id= "";
+
   constructor(
     private route: ActivatedRoute,
     private hotelService: HotelService
@@ -36,9 +38,9 @@ export class HotelComponent implements OnInit {
   }
 
   getHotel() {
-    const id = this.route.snapshot.paramMap.get("id");
-    if (id) {
-      this.hotelService.getHotel(id).subscribe(results => {
+    this.id = this.route.snapshot.paramMap.get("id");
+    if (this.id) {
+      this.hotelService.getHotel(this.id).subscribe(results => {
         this.hotel = results;
       });
     }else{

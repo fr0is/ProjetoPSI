@@ -23,4 +23,9 @@ export class HotelService {
     const url = this.hotelUrl + id;
     return this.http.get<Hotel>(url);
   }
+
+  getHotelQuartos(id: string) {
+    const url = this.hotelUrl + id +"/quartos";
+    return this.http.get<Quarto>(url);
+  }
 }

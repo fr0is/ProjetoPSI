@@ -29,6 +29,7 @@ import { MediterraneoGaleriaComponent } from './mediterraneo-galeria/mediterrane
 import { MediterraneoHomeComponent } from './mediterraneo-home/mediterraneo-home.component';
 import { HotelComponent } from './hotel/hotel.component';
 import { HotelHomePageComponent } from './hotel-home-page/hotel-home-page.component';
+import { QuartosPesquisaComponent } from './quartos-pesquisa/quartos-pesquisa.component';
 
 
 const routes: Routes = [
@@ -37,10 +38,14 @@ const routes: Routes = [
   { path: 'hoteisPSI/hotel/:id', component: HotelComponent,
   children: [
     {
-      path: 'home', // child route path
+      path: '', // child route path
       component: HotelHomePageComponent // child route component that the router renders
-    }]
-  },
+    },
+    {
+      path: 'quartos', // child route path
+      component: QuartosPesquisaComponent // child route component that the router renders
+    }
+  ]},
 
 
   { path: 'douroVinhas', component: DouroVinhasComponent,

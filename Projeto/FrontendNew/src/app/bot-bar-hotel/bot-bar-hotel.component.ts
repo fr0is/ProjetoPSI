@@ -6,7 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: 'app-bot-bar-hotel',
   templateUrl: './bot-bar-hotel.component.html',
-  styleUrls: ['../../app/hotel/hotel.component.css']
+  styleUrls: ['./bot-bar-hotel.component.css']
 })
 export class BotBarHotelComponent implements OnInit {
 

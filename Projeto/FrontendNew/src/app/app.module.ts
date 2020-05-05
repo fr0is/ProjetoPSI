@@ -35,6 +35,7 @@ import { HotelComponent } from './hotel/hotel.component';
 import { HotelHomePageComponent } from './hotel-home-page/hotel-home-page.component';
 import { TopBarHotelComponent } from './top-bar-hotel/top-bar-hotel.component';
 import { BotBarHotelComponent } from './bot-bar-hotel/bot-bar-hotel.component';
+import { QuartosPesquisaComponent } from './quartos-pesquisa/quartos-pesquisa.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { BotBarHotelComponent } from './bot-bar-hotel/bot-bar-hotel.component';
     HotelHomePageComponent,
     TopBarHotelComponent,
     BotBarHotelComponent,
+    QuartosPesquisaComponent,
   ],
   imports: [
     BrowserModule,

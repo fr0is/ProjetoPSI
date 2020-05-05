@@ -6,7 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: 'app-top-bar-hotel',
   templateUrl: './top-bar-hotel.component.html',
-  styleUrls: ['../../app/hotel/hotel.component.css']
+  styleUrls: ['../../app/top-bar-hotel/top-bar-hotel.component.css']
 })
 export class TopBarHotelComponent implements OnInit {
 

@@ -1,1 +1,53 @@
-<p>hotel-home-page works!</p>
+<div id="descTitulo" class="container">
+    <div class="nav">
+        <h1 class="Titulo">O Hotel</h1>
+    </div>
+
+    <div class="descricao">
+        <p class="desc" id="p1">{{hotel.descricao[0]}}</p>
+        <img id="imgDesc" src="/assets/Imagens/HotelDV/varanda.jpg">
+    </div>
+    <div class="descricao1">
+        <img id="imgDesc1" src="/assets/Imagens/HotelDV/vinha.jpg">
+        <p class="desc1">{{hotel.descricao[1]}}</div>
+    <div class="descricao2">
+        <p class="desc">{{hotel.descricao[2]}}</p>
+        <img id="imgDesc" src="/assets/Imagens/HotelDV/rececao.jpg">
+    </div>
+    <div class="descricao1" id="descricaoFinal">
+        <img id="imgDesc1" src="/assets/Imagens/HotelDV/standard.jpg">
+        <p class="desc1">{{hotel.descricao[3]}}</p>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="nav"><strong>Serviços</strong></div>
+    <div id="servicos">
+        <div id="servicosLista" class="list">
+            <div class="num" *ngFor="let servico of hotel.servicos">
+                <div class="numD"> {{servico}} </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="localTitulo" class="container">
+    <div class="nav">
+        <h1 class="Titulo">Localização</h1>
+    </div>
+    <div id="localizacao">
+        <div id="mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12016.598668865734!2d-7.6444033!3d41.153085399999995!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3b783ee5b06b15bc!2sVila%20Gal%C3%A9%20Douro%20Vineyards!5e0!3m2!1spt-PT!2spt!4v1587745957650!5m2!1spt-PT!2spt"
+                width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+        <div id="detalhesLocal">
+            <img id="moradaImg" src="assets/Imagens/Icones/morada.png">
+            <a>
+                <p id="morada"> {{hotel.local}} <br> {{hotel.zona}} <br> {{hotel.codigoPostal}} <br> {{hotel.pais}} </p>
+            </a>
+            <img id="coordsImg" src="assets/Imagens/Icones/gps.png">
+            <p id="coords"> {{hotel.latitude}} <br> {{hotel.longitude}} </p>
+        </div>
+    </div>
+</div>

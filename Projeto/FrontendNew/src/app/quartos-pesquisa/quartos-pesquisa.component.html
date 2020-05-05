@@ -1,0 +1,65 @@
+<div class="quartos container">
+    <div id="procuraQ">
+        <div id="barraProcura">
+            <div id="procura" class="nav">
+                <a id="filtro">
+                    <div class="custom-slider">
+                        <h3>Preço:</h3>
+                        <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+                    </div>
+                    <div id="Epoca">
+                        <h3>Época:</h3>
+                        <div class="middle">
+                            <label>
+                            <span class="infoA">1/06-29/09 e 16/12-14/01</span>
+                            <input type="radio" name="radio" checked/>
+                            <div (click)="EpAlta()" class="front-end box">
+                              <span>Alta</span>
+                            </div>
+                          </label>
+
+                            <label>
+                            <span class="infoB">15/01-31/05 e 30/09-15/12</span>
+                            <input type="radio" name="radio"/>
+                            <div (click)="EpBaixa()" class="back-end box">
+                              <span>Baixa</span>
+                            </div>
+                          </label>
+                        </div>
+                    </div>
+                </a>
+                <a id="servicos">
+                    <div id="servicosT"><strong>Serviços</strong></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <ol id="quartosVisao">
+        <ng-container *ngFor="let room of quartos">
+            <li class="quarto" *ngIf="room.hotel === '5eab7e50a39d2c138c859f09' && ((epoca === 0 && room.precoAlta>=minValue && room.precoAlta <= maxValue) 
+                        || (epoca === 1 && room.precoBaixa >=minValue && room.precoBaixa <= maxValue))" routerLink="/aVerOMar/quartos/{{room.tipo}}">
+                <div id="nomeQ"><strong>{{room.tipo}}</strong></div>
+                <div id="img">
+                    <div *ngIf="room.tipo === 'Standard';else mudaQuarto">
+                        <img class="imagemQuarto" src="/assets/Imagens/HotelAVerOMar/standard.jpg">
+                    </div>
+                    <ng-template #mudaQuarto>
+                        <div *ngIf="room.tipo === 'Suite Junior';else mudaQuarto2">
+                            <img class="imagemQuarto" src="/assets/Imagens/HotelAVerOMar/suiteJunior.jpg">
+                        </div>
+                    </ng-template>
+                    <ng-template #mudaQuarto2>
+                        <div *ngIf="room.tipo === 'Suite Junior Superior'">
+                            <img class="imagemQuarto" src="/assets/Imagens/HotelAVerOMar/suiteJuniorSuperior.jpg">
+                        </div>
+                    </ng-template>
+                </div>
+                <div id="preco">
+                    Preço:
+                    <div id="precoEpAlta4 " style="display: inline " *ngIf="epoca===0 ; else epocaBaixa ">{{room.precoAlta}}</div>
+                    <ng-template id="precoEpBaixa4 " #epocaBaixa>{{room.precoBaixa}}</ng-template>€
+                </div>
+            </li>
+        </ng-container>
+    </ol>
+</div>
