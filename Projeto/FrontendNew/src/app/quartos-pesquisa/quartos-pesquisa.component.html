@@ -36,23 +36,11 @@
     </div>
     <ol id="quartosVisao">
         <ng-container *ngFor="let room of quartos">
-            <li class="quarto" *ngIf="room.hotel === '5eab7e50a39d2c138c859f09' && ((epoca === 0 && room.precoAlta>=minValue && room.precoAlta <= maxValue) 
-                        || (epoca === 1 && room.precoBaixa >=minValue && room.precoBaixa <= maxValue))" routerLink="/aVerOMar/quartos/{{room.tipo}}">
+            <li class="quarto" *ngIf="((epoca === 0 && room.precoAlta>=minValue && room.precoAlta <= maxValue) 
+                        || (epoca === 1 && room.precoBaixa >=minValue && room.precoBaixa <= maxValue))">
                 <div id="nomeQ"><strong>{{room.tipo}}</strong></div>
                 <div id="img">
-                    <div *ngIf="room.tipo === 'Standard';else mudaQuarto">
-                        <img class="imagemQuarto" src="/assets/Imagens/HotelAVerOMar/standard.jpg">
-                    </div>
-                    <ng-template #mudaQuarto>
-                        <div *ngIf="room.tipo === 'Suite Junior';else mudaQuarto2">
-                            <img class="imagemQuarto" src="/assets/Imagens/HotelAVerOMar/suiteJunior.jpg">
-                        </div>
-                    </ng-template>
-                    <ng-template #mudaQuarto2>
-                        <div *ngIf="room.tipo === 'Suite Junior Superior'">
-                            <img class="imagemQuarto" src="/assets/Imagens/HotelAVerOMar/suiteJuniorSuperior.jpg">
-                        </div>
-                    </ng-template>
+                    <!---FAZ ISTO PUTA-->
                 </div>
                 <div id="preco">
                     Preço:
