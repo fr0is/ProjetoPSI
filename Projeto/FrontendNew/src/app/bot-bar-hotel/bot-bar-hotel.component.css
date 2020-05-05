@@ -1,0 +1,281 @@
+/* Mobile*/
+
+@media (min-width:320px) {
+    .telefone {
+        width: 5%;
+        height: 5%;
+    }
+    .botBar {
+        background-color: black;
+        bottom: 0;
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+    }
+    .hotelPage {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+    }
+    li {
+        color: white;
+        padding: 0.5%;
+    }
+    #iconTelefone,
+    #iconMail {
+        width: 7%;
+        bottom: -20;
+    }
+    ul {
+        grid-column-start: 4;
+        grid-column-end: span 2;
+        width: 100%;
+        list-style-type: none;
+        font-size: 40%;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        grid-column-start: 4;
+        grid-column-end: span 0;
+        padding-left: 5%;
+    }
+    #contactos {
+        font-size: 125%;
+        padding-bottom: 5%;
+    }
+}
+
+
+/* Mobile L */
+
+@media (min-width:425px) {
+    .telefone {
+        width: 5%;
+        height: 5%;
+    }
+    .botBar {
+        background-color: black;
+        bottom: 0;
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+    }
+    .hotelPage {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+    }
+    li {
+        color: white;
+        padding: 0.5%;
+    }
+    #iconTelefone,
+    #iconMail {
+        width: 7%;
+        bottom: -20;
+    }
+    ul {
+        grid-column-start: 4;
+        grid-column-end: span 2;
+        width: 100%;
+        list-style-type: none;
+        font-size: 50%;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        grid-column-start: 4;
+        grid-column-end: span 0;
+        padding-left: 5%;
+    }
+    #contactos {
+        font-size: 150%;
+        padding-bottom: 5%;
+    }
+}
+
+
+/* Tablet */
+
+@media (min-width:768px) {
+    .telefone {
+        width: 5%;
+        height: 5%;
+    }
+    .botBar {
+        background-color: black;
+        bottom: 0;
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+    }
+    .hotelPage {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+    }
+    li {
+        color: white;
+        padding: 0.5%;
+    }
+    #iconTelefone,
+    #iconMail {
+        width: 7%;
+        bottom: -20;
+    }
+    ul {
+        grid-column-start: 4;
+        grid-column-end: span 2;
+        width: 100%;
+        list-style-type: none;
+        font-size: 90%;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        grid-column-start: 4;
+        grid-column-end: span 0;
+        padding-left: 5%;
+    }
+    #contactos {
+        font-size: 125%;
+        padding-bottom: 5%;
+    }
+}
+
+
+/* Laptop */
+
+@media (min-width:1024px) {
+    .telefone {
+        width: 5%;
+        height: 5%;
+    }
+    .botBar {
+        background-color: black;
+        bottom: 0;
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+    }
+    .hotelPage {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+    }
+    li {
+        color: white;
+        padding: 0.5%;
+    }
+    #iconTelefone,
+    #iconMail {
+        width: 7%;
+        bottom: -20;
+    }
+    ul {
+        grid-column-start: 4;
+        grid-column-end: span 2;
+        width: 100%;
+        list-style-type: none;
+        font-size: 100%;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        grid-column-start: 4;
+        grid-column-end: span 0;
+        padding-left: 5%;
+    }
+    #contactos {
+        font-size: 150%;
+        padding-bottom: 5%;
+    }
+}
+
+
+/* Laptop L */
+
+@media (min-width:1440px) {
+    .telefone {
+        width: 5%;
+        height: 5%;
+    }
+    .botBar {
+        background-color: black;
+        bottom: 0;
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto;
+    }
+    .hotelPage {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+    }
+    li {
+        color: white;
+        padding: 0.5%;
+    }
+    #iconTelefone,
+    #iconMail {
+        width: 6%;
+        bottom: -20;
+    }
+    ul {
+        width: 100%;
+        list-style-type: none;
+        font-size: 100%;
+        left: 20%;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        grid-column-start: 4;
+        grid-column-end: span 0;
+        padding-left: 5%;
+    }
+    #contactos {
+        font-size: 200%;
+        padding-bottom: 5%;
+    }
+}
+
+
+/* 4K */
+
+@media (min-width:2560px) {
+    .telefone {
+        width: 10%;
+        height: 10%;
+    }
+    .botBar {
+        background-color: black;
+        bottom: 0;
+        width: 100%;
+        display: grid;
+        grid-template-rows: auto;
+    }
+    .hotelPage {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+    }
+    li {
+        color: white;
+        padding: 0.5%;
+    }
+    #iconTelefone,
+    #iconMail {
+        width: 8%;
+    }
+    ul {
+        width: 100%;
+        list-style-type: none;
+        font-size: 200%;
+        left: 20%;
+        padding-bottom: 5%;
+        padding-top: 2%;
+        grid-column-start: 4;
+        grid-column-end: span 0;
+        padding-left: 5%;
+    }
+    #contactos {
+        font-size: 250%;
+        padding-bottom: 5%;
+    }
+}

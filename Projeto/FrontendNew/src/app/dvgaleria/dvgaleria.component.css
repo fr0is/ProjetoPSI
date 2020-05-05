@@ -2,22 +2,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .grid-container {
-    columns: 4 auto;
     column-gap: 3%;
-    width: 90%;
-    margin: 0 auto;
+    width: 25%;
+    margin: 0;
     padding-top: 3%;
     padding-bottom: 40%;
 }
 
 .grid-container div {
     margin: 0 5% 5% 0;
-    display: inline-block;
-    width: 100%;
+    width: 25%;
     border: solid 2px black;
     padding: 5px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);

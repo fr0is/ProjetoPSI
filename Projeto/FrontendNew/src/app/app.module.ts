@@ -31,6 +31,15 @@ import { MediterraneoQuartosServicosComponent } from './mediterraneo-quartos-ser
 import { MediterraneoQuartosStandardComponent } from './mediterraneo-quartos-standard/mediterraneo-quartos-standard.component';
 import { MediterraneoQuartosSuiteJuniorComponent } from './mediterraneo-quartos-suite-junior/mediterraneo-quartos-suite-junior.component';
 import { MediterraneoQuartosSuiteSeniorComponent } from './mediterraneo-quartos-suite-senior/mediterraneo-quartos-suite-senior.component';
+import { HotelComponent } from './hotel/hotel.component';
+import { HotelHomePageComponent } from './hotel-home-page/hotel-home-page.component';
+import { TopBarHotelComponent } from './top-bar-hotel/top-bar-hotel.component';
+import { BotBarHotelComponent } from './bot-bar-hotel/bot-bar-hotel.component';
+import { QuartosPesquisaComponent } from './quartos-pesquisa/quartos-pesquisa.component';
+import { QuartoPaginaDetalhesComponent } from './quarto-pagina-detalhes/quarto-pagina-detalhes.component';
+import { GaleriaComponent } from './galeria/galeria.component';
+import { QuartosServicosComponent } from './quartos-servicos/quartos-servicos.component';
+import { StickyBarComponent } from './sticky-bar/sticky-bar.component';
 
 
 @NgModule({
@@ -62,6 +71,15 @@ import { MediterraneoQuartosSuiteSeniorComponent } from './mediterraneo-quartos-
     MediterraneoQuartosStandardComponent,
     MediterraneoQuartosSuiteJuniorComponent,
     MediterraneoQuartosSuiteSeniorComponent,
+    HotelComponent,
+    HotelHomePageComponent,
+    TopBarHotelComponent,
+    BotBarHotelComponent,
+    QuartosPesquisaComponent,
+    QuartoPaginaDetalhesComponent,
+    GaleriaComponent,
+    QuartosServicosComponent,
+    StickyBarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<div id="servicos">
+    <div class="quarto-servicos-container">
+        <ng-container *ngFor="let room of quartos">
+            <div routerLink="../{{room._id}}" class=" servicos-container text-center ">
+                <p class="tipoQuarto "><strong>{{room.tipo}}</strong><br><span class="precoQ ">{{room.precoBaixa}}€ - {{room.precoAlta}}€</span></p>
+                <ul class="servicos ">
+                    <li *ngFor="let servico of room.servicos ">{{servico}}</li>
+                </ul>
+            </div>
+        </ng-container>
+    </div>
+</div>

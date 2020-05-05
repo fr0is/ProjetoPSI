@@ -21,7 +21,10 @@ var HotelSchema = new Schema({
     telefone: { type: Number, required: true, min: 100000000, max: 999999999 },
 
     email: { type: String, required: true, min: 3, max: 100 },
-    servicos: [{ type: String, required: true, min: 3, max: 150 }, ]
+    servicos: [{ type: String, required: true, min: 3, max: 150 }, ],
+
+    fotos: [{ type: String, required: true}, ],
+    fotoPath: { type: String, required: true}
 });
 
 HotelSchema

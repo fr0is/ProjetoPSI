@@ -1,0 +1,351 @@
+.topo {
+    text-align: center;
+    background-color: black;
+    background-repeat: no-repeat;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: auto;
+    padding-bottom: 1.5%;
+}
+
+
+/* Mobile*/
+
+@media (min-width:320px) {
+    .logo {
+        float: left;
+        width: auto;
+        color: white;
+        max-width: 40%;
+        margin-top: 0.25%;
+        z-index: 10;
+        cursor: pointer;
+        text-decoration: none;
+        cursor: pointer;
+        margin-bottom: 4%;
+        margin-top: 4%;
+    }
+    .nomeHotel {
+        color: white;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        z-index: 0;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 70%;
+        text-align: center;
+        margin-top: 5%;
+        margin-right: 15%;
+        width: 100%;
+        padding-bottom: 3%;
+    }
+    .topNav {
+        color: white;
+        float: right;
+        top: 0;
+        text-align: center;
+        font-size: 50%;
+        margin-top: 3%;
+        z-index: 3;
+    }
+    .topNavA,
+    .topNavA1 {
+        padding: 1%;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .topNavA1 {
+        cursor: default;
+    }
+    .topNavA:hover {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        animation-duration: 0.25s;
+        border-bottom: 1px solid white;
+    }
+}
+
+
+/* Mobile L */
+
+@media (min-width:425px) {
+    .logo {
+        float: left;
+        width: auto;
+        color: white;
+        max-width: 40%;
+        margin-top: 0.25%;
+        z-index: 10;
+        cursor: pointer;
+        text-decoration: none;
+        cursor: pointer;
+        margin-bottom: 4%;
+        margin-top: 4%;
+    }
+    .nomeHotel {
+        color: white;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        z-index: 0;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 100%;
+        text-align: center;
+        margin-top: 5%;
+        margin-right: 15%;
+        width: 100%;
+        padding-bottom: 1%;
+    }
+    .topNav {
+        color: white;
+        float: right;
+        top: 0;
+        text-align: center;
+        font-size: 70%;
+        margin-top: 3%;
+        z-index: 3;
+    }
+    .topNavA,
+    .topNavA1 {
+        padding: 1%;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .topNavA1 {
+        cursor: default;
+    }
+    .topNavA:hover {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        animation-duration: 0.25s;
+        border-bottom: 4px solid white;
+    }
+}
+
+
+/* Tablet */
+
+@media (min-width:768px) {
+    .logo {
+        float: left;
+        width: auto;
+        color: white;
+        max-width: 40%;
+        margin-top: 0.25%;
+        z-index: 10;
+        cursor: pointer;
+        text-decoration: none;
+        cursor: pointer;
+        margin-bottom: 4%;
+        margin-top: 4%;
+    }
+    .nomeHotel {
+        color: white;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        z-index: 0;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 150%;
+        text-align: center;
+        margin-right: 15%;
+        width: 100%;
+    }
+    .topNav {
+        color: white;
+        float: right;
+        top: 0;
+        text-align: center;
+        font-size: 100%;
+        margin-top: 3%;
+        z-index: 11;
+    }
+    .topNavA,
+    .topNavA1 {
+        padding: 1%;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .topNavA1 {
+        cursor: default;
+    }
+    .topNavA:hover {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        animation-duration: 0.25s;
+        border-bottom: 4px solid white;
+    }
+}
+
+
+/* Laptop */
+
+@media (min-width:1024px) {
+    .logo {
+        float: left;
+        width: auto;
+        color: white;
+        max-width: 40%;
+        margin-top: 0.25%;
+        z-index: 10;
+        cursor: pointer;
+        text-decoration: none;
+        cursor: pointer;
+        margin-bottom: 4%;
+        margin-top: 4%;
+    }
+    .nomeHotel {
+        color: white;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        z-index: 0;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 225%;
+        text-align: center;
+        margin-right: 15%;
+        width: 100%;
+    }
+    .topNav {
+        color: white;
+        float: right;
+        top: 0;
+        text-align: center;
+        font-size: 125%;
+        z-index: 11;
+        margin-top: 3%;
+    }
+    .topNavA,
+    .topNavA1 {
+        padding: 0;
+        margin-left: 2%;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .topNavA1 {
+        cursor: default;
+    }
+    .topNavA:hover {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        animation-duration: 0.25s;
+        border-bottom: 4px solid white;
+    }
+}
+
+
+/* Laptop L */
+
+@media (min-width:1440px) {
+    .logo {
+        float: left;
+        width: auto;
+        color: white;
+        max-width: 25%;
+        z-index: 10;
+        cursor: pointer;
+        text-decoration: none;
+        cursor: pointer;
+        margin-bottom: 4%;
+    }
+    .nomeHotel {
+        color: white;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        z-index: 0;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 250%;
+        text-align: center;
+        margin-right: 15%;
+        width: 100%;
+        padding-bottom: 2%;
+        outline: 0;
+    }
+    .topNav {
+        color: white;
+        float: right;
+        top: 0;
+        text-align: center;
+        font-size: 175%;
+        z-index: 11;
+        margin: 0;
+        margin-top: 3%;
+    }
+    .topNavA,
+    .topNavA1 {
+        padding: 0;
+        margin-left: 2%;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .topNavA1 {
+        cursor: default;
+    }
+    .topNavA:hover {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        animation-duration: 0.25s;
+        border-bottom: 4px solid white;
+    }
+}
+
+
+/* 4K */
+
+@media (min-width:2560px) {
+    .logo {
+        float: left;
+        width: auto;
+        color: white;
+        max-width: 30%;
+        z-index: 10;
+        cursor: pointer;
+        text-decoration: none;
+        cursor: pointer;
+        margin-bottom: 4%;
+    }
+    .nomeHotel {
+        color: white;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        z-index: 0;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 400%;
+        text-align: center;
+        margin-right: 15%;
+        width: 100%;
+    }
+    .topNav {
+        color: white;
+        float: right;
+        top: 0;
+        text-align: center;
+        font-size: 300%;
+        margin-top: 3%;
+    }
+    .topNavA,
+    .topNavA1 {
+        padding: 0;
+        margin-left: 2%;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .topNavA1 {
+        cursor: default;
+    }
+    .topNavA:hover {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        animation-duration: 0.25s;
+        border-bottom: 4px solid white;
+    }
+}
