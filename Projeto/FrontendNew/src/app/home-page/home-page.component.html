@@ -8,9 +8,7 @@
     <ng-container *ngFor="let hotel of hoteis">
         <div routerLink="hotel/{{hotel._id}}" class="hotel">
             <div class="texto"><strong>{{hotel.nome}}</strong></div>
-            <div id="imagem">
-                <img src="{{hotel.fotos[generateRandomNumber(hotel.fotos.length)]}}">
-            </div>
+            <img id="imagem" src="{{hotel.fotos[generateRandomNumber(hotel.fotos.length)]}}">
         </div>
     </ng-container>
 </div>
