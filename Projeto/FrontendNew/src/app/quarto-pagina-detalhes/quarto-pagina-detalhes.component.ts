@@ -30,12 +30,10 @@ export class QuartoPaginaDetalhesComponent implements OnInit {
 
   showQuarto() {
     const id = this.route.snapshot.paramMap.get("id");
-    console.log(id);
     if (id) {
       this.hotelService.getHotelQuarto(id).subscribe(results => {
         this.quarto = results;
       });
-      console.log(this.quarto);
     }else{
       alert("Quarto não encontrado");
     }

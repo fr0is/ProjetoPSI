@@ -32,6 +32,7 @@ import { HotelHomePageComponent } from './hotel-home-page/hotel-home-page.compon
 import { QuartosPesquisaComponent } from './quartos-pesquisa/quartos-pesquisa.component';
 import { QuartoPaginaDetalhesComponent } from './quarto-pagina-detalhes/quarto-pagina-detalhes.component';
 import { GaleriaComponent } from './galeria/galeria.component';
+import { QuartosServicosComponent } from './quartos-servicos/quartos-servicos.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,10 @@ const routes: Routes = [
     {
       path: 'quartos', // child route path
       component: QuartosPesquisaComponent // child route component that the router renders
+    },
+    {
+    path: 'quartos/servicos', // child route path
+    component: QuartosServicosComponent // child route component that the router renders
     },
     {
       path: 'quartos/:id', // child route path

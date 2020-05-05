@@ -36,11 +36,14 @@
     text-align: center;
     font-size: 25px;
     border-left: solid 2px #ccc;
+    outline: 0;
 }
 
 #servicosT {
     margin: auto;
     padding-top: 19%;
+    outline: 0;
+    cursor: pointer;
 }
 
 

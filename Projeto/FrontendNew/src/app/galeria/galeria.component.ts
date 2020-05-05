@@ -27,22 +27,30 @@ export class GaleriaComponent implements OnInit {
     fotoPath: ""
   };
 
+  hoteis: Hotel[] = [];
 
-constructor(
-  private route: ActivatedRoute,
-  private hotelService: HotelService
-) { }
+  constructor(
+    private route: ActivatedRoute,
+    private hotelService: HotelService
+    ) {}
 
-ngOnInit(): void {
-  this.getHotel();
-}
+  ngOnInit(): void {
+    this.showHoteis();
+  }
 
-getHotel() {
-  const id = this.hotelService.getHotelId();
-  if (id) {
-    this.hotelService.getHotel(id).subscribe(results => {
-      this.hotel = results;
+  hotelId = this.hotelService.getHotelId;
+
+  showHoteis() {
+    this.hotelService.getHoteis().subscribe(hoteisList => {
+      this.hoteis = hoteisList as Hotel[];
     });
   }
+
+getHotel() {
+  const id = this.route.snapshot.paramMap.get("idHotel");
+    this.hotelService.getHotel(id).subscribe(results => {
+      this.hotel = results;
+  })
 }
 }
+
