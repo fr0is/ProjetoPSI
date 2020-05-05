@@ -40,7 +40,7 @@ export class HotelService {
   }
 
   getHotelQuarto(id: string) {
-    const url = this.hotelUrl + this.HotelId +"/quartos" + id;
+    const url = this.hotelUrl + this.HotelId +"/quartos/" + id;
     return this.http.get<Quarto>(url);
   }
 }
