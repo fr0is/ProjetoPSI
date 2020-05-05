@@ -1,5 +1,8 @@
-<ng-container *ngFor="let hotel of hoteis">
-    <div *ngIf="{{hotel._id}} === this.hotelId">
-        <img id="imagem" src="{{hotel.fotos[0]}}">
+<div class="grid-container" *ngFor="let foto of hotel.fotos, let i = index">
+    <div>
+        <img class="'grid-item'{{i}}" src="{{foto}}">
+        <ng-template *ngIf="i === 3 || i === 6 || i === 9 || i === 12">
+            <br>
+        </ng-template>
     </div>
-</ng-container>
+</div>

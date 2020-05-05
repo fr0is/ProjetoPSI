@@ -39,6 +39,7 @@ import { QuartosPesquisaComponent } from './quartos-pesquisa/quartos-pesquisa.co
 import { QuartoPaginaDetalhesComponent } from './quarto-pagina-detalhes/quarto-pagina-detalhes.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { QuartosServicosComponent } from './quartos-servicos/quartos-servicos.component';
+import { StickyBarComponent } from './sticky-bar/sticky-bar.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { QuartosServicosComponent } from './quartos-servicos/quartos-servicos.co
     QuartoPaginaDetalhesComponent,
     GaleriaComponent,
     QuartosServicosComponent,
+    StickyBarComponent,
   ],
   imports: [
     BrowserModule,
