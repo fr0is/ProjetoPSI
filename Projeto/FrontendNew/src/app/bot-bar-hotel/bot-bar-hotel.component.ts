@@ -23,7 +23,9 @@ export class BotBarHotelComponent implements OnInit {
     codigoRegiao: "",
     telefone: "",
     email: "",
-    servicos: []
+    servicos: [],
+    fotos: [],
+    fotoPath: ""
   };
 
 constructor(

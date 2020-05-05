@@ -23,7 +23,9 @@ export class TopBarHotelComponent implements OnInit {
       codigoRegiao: "",
       telefone: "",
       email: "",
-      servicos: []
+      servicos: [],
+      fotos: [],
+      fotoPath: ""
     };
 
   constructor(

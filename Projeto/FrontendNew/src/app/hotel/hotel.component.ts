@@ -23,7 +23,9 @@ export class HotelComponent implements OnInit {
       codigoRegiao: "",
       telefone: "",
       email: "",
-      servicos: []
+      servicos: [],
+      fotos: [],
+      fotoPath: ""
     };
 
     id= "";

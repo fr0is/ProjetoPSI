@@ -23,7 +23,9 @@ export class HotelHomePageComponent implements OnInit {
     codigoRegiao: "",
     telefone: "",
     email: "",
-    servicos: []
+    servicos: [],
+    fotos: [],
+    fotoPath: ""
   };
   servicos: any;
 
