@@ -7,7 +7,7 @@
 .listaQuartos {
     grid-column-start: 2;
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 50% 50%;
 }
 
 #imagemContainer {
@@ -15,29 +15,65 @@
 }
 
 #imagem {
-    width: 100%;
-    filter: grayscale(100%);
+    width: 90%;
+    margin: auto;
+    box-shadow: 20px 20px rgba(0, 0, 0, .15);
+    transition: all .4s ease;
 }
 
 #imagem:hover {
-    filter: grayscale(0%);
-    filter: grayscale(100%);
-    filter: opacity(100%);
+    border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+    box-shadow: 10px 10px rgba(0, 0, 0, .25);
 }
 
 .esquerda {
     grid-column-start: 2;
     grid-row-start: 1;
-    margin-left: 10%;
 }
 
-ul {
+
+/**********************************/
+
+
+/*********************************/
+
+.check-list {
+    margin: 0;
     margin-top: 5%;
+    margin-left: 25%;
+    z-index: 0;
+    box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    padding: 2%;
 }
 
-ul li {
-    display: inline-block;
-    width: 50%;
+.check-list li {
+    position: relative;
+    width: auto;
+    list-style-type: none;
+    padding-left: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.check-list li:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 5px;
+    height: 11px;
+    border-width: 0 2px 2px 0;
+    border-style: solid;
+    border-color: #00a8a8;
+    transform-origin: bottom left;
+    transform: rotate(45deg);
+}
+
+.check-list li:hover {
+    box-shadow: none;
+    color: #00a8a8;
+    transition: 0.3s all ease-in-out;
 }
 
 
@@ -50,7 +86,9 @@ ul li {
     margin: 0 auto;
     font-size: 18px;
     color: #60666d;
-    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px 0px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+    padding: 2%;
 }
 
 @media (min-width: 768px) {

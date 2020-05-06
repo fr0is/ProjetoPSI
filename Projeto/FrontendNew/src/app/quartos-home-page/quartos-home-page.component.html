@@ -10,8 +10,15 @@
         <div class="esquerda">
             <div class="select-box">
                 <div class="select-box__current" tabindex="1">
-                    <div *ngFor="let quarto of quartos, let i=index" class="select-box__value"><input class="select-box__input" type="radio" id="{{i}}" value="{{i}}" name="Ben" checked="checked" />
-                        <p class="select-box__input-text">{{quarto.tipo}}</p>
+                    <div *ngFor="let quarto of quartos, let i=index" class="select-box__value">
+                        <ng-container *ngIf="quarto.tipo==='Standard'; else outro">
+                            <input class="select-box__input" type="radio" id="{{i}}" value="{{i}}" name="Ben" checked="checked" />
+                            <p class="select-box__input-text">{{quarto.tipo}}</p>
+                        </ng-container>
+                        <ng-template #outro>
+                            <input class="select-box__input" type="radio" id="{{i}}" value="{{i}}" name="Ben" />
+                            <p class="select-box__input-text">{{quarto.tipo}}</p>
+                        </ng-template>
                     </div>
                     <img class="select-box__icon" src="http://cdn.onlinewebfonts.com/svg/img_295694.svg" alt="Arrow Icon" aria-hidden="true" /></div>
                 <ul class="select-box__list">
@@ -20,7 +27,7 @@
             </div>
             <div id="servicosQ" *ngFor="let quarto of quartos">
                 <ng-container *ngIf="quarto.tipo === this.selectedQuarto">
-                    <ul class="servicos">
+                    <ul class="servicos check-list">
                         <ng-container *ngFor="let servico of quarto.servicos,let i=index">
                             <li *ngIf="servico !== '-'">
                                 {{servico}}

@@ -22,6 +22,7 @@ export class QuartosHomePageComponent implements OnInit {
 
   hotelId=this.hotelService.getHotelId();
 
+
   mudaQuarto (quarto: any) {
     this.selectedQuarto = quarto;
     console.log(this.selectedQuarto);

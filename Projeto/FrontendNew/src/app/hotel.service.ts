@@ -13,19 +13,18 @@ export class HotelService {
   hoteisUrl = this.baseUrl + 'hoteis/';
   hotelUrl = this.baseUrl + 'hoteis/';
   quartosUrl = this.baseUrl + 'hoteis/' + this.getHotelId() + '/quartos/';
-  
-
-  constructor(private http: HttpClient) { }
   HotelId="";
   HotelNome ="";
+
+  constructor(private http: HttpClient) { }
+
 
   setHotelId(id){
     this.HotelId = id;
   }
 
-  setHotelNome(nome: any) {
+  setHotelNome(nome) {
     this.HotelNome = nome;
-    console.log(this.HotelNome);
   }
 
   getHotelId(){
