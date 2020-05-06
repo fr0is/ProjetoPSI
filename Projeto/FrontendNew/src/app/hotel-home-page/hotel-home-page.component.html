@@ -6,17 +6,17 @@
 
     <div class="descricao">
         <p class="desc" id="p1">{{hotel.descricao[0]}}</p>
-        <img id="imgDesc" src="/assets/Imagens/HotelDV/varanda.jpg">
+        <img id="imgDesc" src="{{hotel.fotos[3]}}">
     </div>
     <div class="descricao1">
-        <img id="imgDesc1" src="/assets/Imagens/HotelDV/vinha.jpg">
+        <img id="imgDesc1" src="{{hotel.fotos[4]}}">
         <p class="desc1">{{hotel.descricao[1]}}</div>
     <div class="descricao2">
         <p class="desc">{{hotel.descricao[2]}}</p>
-        <img id="imgDesc" src="/assets/Imagens/HotelDV/rececao.jpg">
+        <img id="imgDesc" src="{{hotel.fotos[2]}}">
     </div>
     <div class="descricao1" id="descricaoFinal">
-        <img id="imgDesc1" src="/assets/Imagens/HotelDV/standard.jpg">
+        <img id="imgDesc1" src="{{hotel.fotos[8]}}">
         <p class="desc1">{{hotel.descricao[3]}}</p>
     </div>
 </div>
@@ -31,6 +31,11 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container">
+    <div class="nav"><strong>Quartos</strong></div>
+    <app-quartos-home-page></app-quartos-home-page>
 </div>
 
 <div id="localTitulo" class="container">

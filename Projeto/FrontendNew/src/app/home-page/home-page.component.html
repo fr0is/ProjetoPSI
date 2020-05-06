@@ -6,7 +6,7 @@
         </div>
     </div>
     <ng-container *ngFor="let hotel of hoteis">
-        <div routerLink="hotel/{{hotel._id}}" class="hotel">
+        <div (click)="setHotelNome(hotel.nome)" routerLink="hotel/{{hotel._id}}" class="hotel">
             <div class="texto"><strong>{{hotel.nome}}</strong></div>
             <img id="imagem" src="{{hotel.fotos[generateRandomNumber(hotel.fotos.length)]}}">
         </div>

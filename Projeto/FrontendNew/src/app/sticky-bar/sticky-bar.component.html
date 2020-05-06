@@ -1,8 +1,24 @@
 <div class="hotelDetails" #stickyMenu [class.sticky]="sticky">
-    <a routerLink="quartos"><strong>Quartos desde 180€</strong></a>
-    <a routerLink="quartos"><strong>6 Quartos</strong></a>
-    <a routerLink="quartos"><strong>3 Standard</strong></a>
-    <a routerLink="quartos"><strong>1 Suíte</strong></a>
-    <a routerLink="quartos"><strong>1 Suíte Duplex</strong></a>
-    <a routerLink="quartos"><strong>1 Suíte Deluxe</strong></a>
+    <ng-container *ngIf="this.getHotelNome() === 'Douro Vinhas'">
+        <a routerLink="quartos"><strong>Quartos desde 180€</strong></a>
+        <a routerLink="quartos"><strong>6 Quartos</strong></a>
+        <a routerLink="quartos"><strong>3 Standard</strong></a>
+        <a routerLink="quartos"><strong>1 Suíte</strong></a>
+        <a routerLink="quartos"><strong>1 Suíte Duplex</strong></a>
+        <a routerLink="quartos"><strong>1 Suíte Deluxe</strong></a>
+    </ng-container>
+    <ng-container *ngIf="this.getHotelNome() === 'A Ver o Mar'">
+        <a routerLink="quartos"><strong>Quartos desde 90€</strong></a>
+        <a routerLink="quartos"><strong>202 Quartos</strong></a>
+        <a routerLink="quartos"><strong>182 Standard</strong></a>
+        <a routerLink="quartos"><strong>5 Suíte Júnior</strong></a>
+        <a routerLink="quartos"><strong>15 Suíte Júnior Superior</strong></a>
+    </ng-container>
+    <ng-container *ngIf="this.getHotelNome() === 'Mediterrâneo'">
+        <a routerLink="quartos"><strong>Quartos desde 70€</strong></a>
+        <a routerLink="quartos"><strong>220 Quartos</strong></a>
+        <a routerLink="quartos"><strong>114 Standard</strong></a>
+        <a routerLink="quartos"><strong>98 Suíte</strong></a>
+        <a routerLink="quartos"><strong>8 Suíte Duplex</strong></a>
+    </ng-container>
 </div>

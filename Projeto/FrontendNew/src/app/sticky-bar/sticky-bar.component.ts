@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { HotelService } from '../hotel.service';
 
 @Component({
   selector: 'app-sticky-bar',
@@ -12,13 +13,17 @@ export class StickyBarComponent implements OnInit {
   sticky: boolean = false;
   elementPosition: any;
 
-  constructor() { }
+  constructor(  private hotelService: HotelService ) { }
 
   ngOnInit() {
   }
 
   ngAfterViewInit(){
     this.elementPosition = this.menuElement.nativeElement.offsetTop;
+  }
+
+  getHotelNome(){
+    return this.hotelService.getHotelNome();
   }
 
   @HostListener('window:scroll', ['$event'])

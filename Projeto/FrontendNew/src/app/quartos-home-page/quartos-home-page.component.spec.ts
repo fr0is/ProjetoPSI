@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DvsuiteDuplexComponent } from './dvsuite-duplex.component';
+import { QuartosHomePageComponent } from './quartos-home-page.component';
 
-describe('DvsuiteDuplexComponent', () => {
-  let component: DvsuiteDuplexComponent;
-  let fixture: ComponentFixture<DvsuiteDuplexComponent>;
+describe('QuartosHomePageComponent', () => {
+  let component: QuartosHomePageComponent;
+  let fixture: ComponentFixture<QuartosHomePageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DvsuiteDuplexComponent ]
+      declarations: [ QuartosHomePageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DvsuiteDuplexComponent);
+    fixture = TestBed.createComponent(QuartosHomePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

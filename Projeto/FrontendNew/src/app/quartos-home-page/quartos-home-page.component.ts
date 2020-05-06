@@ -1,0 +1,36 @@
+import { Component, OnInit } from '@angular/core';
+import { Options, LabelType } from 'ng5-slider';
+
+import { Quarto } from '../../quarto';
+import { HotelService } from '../hotel.service';
+
+@Component({
+  selector: 'app-quartos-home-page',
+  templateUrl: './quartos-home-page.component.html',
+  styleUrls: ['./quartos-home-page.component.css']
+})
+export class QuartosHomePageComponent implements OnInit {
+
+  quartos: Quarto[] = [];
+  selectedQuarto = "Standard";
+
+  constructor(private hotelService: HotelService) { }
+
+  ngOnInit(): void {
+   this.showQuartos();
+  }
+
+  hotelId=this.hotelService.getHotelId();
+
+
+  mudaQuarto (quarto: any) {
+    this.selectedQuarto = quarto;
+    console.log(this.selectedQuarto);
+  }
+
+  showQuartos() {
+    this.hotelService.getHotelQuartos(this.hotelService.getHotelId()).subscribe(quartoList => {
+      this.quartos = quartoList as Quarto[];
+    });
+  }
+}

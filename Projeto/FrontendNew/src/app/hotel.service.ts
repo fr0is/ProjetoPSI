@@ -13,17 +13,26 @@ export class HotelService {
   hoteisUrl = this.baseUrl + 'hoteis/';
   hotelUrl = this.baseUrl + 'hoteis/';
   quartosUrl = this.baseUrl + 'hoteis/' + this.getHotelId() + '/quartos/';
-  
+  HotelId="";
+  HotelNome ="";
 
   constructor(private http: HttpClient) { }
-  HotelId="";
+
 
   setHotelId(id){
     this.HotelId = id;
   }
 
+  setHotelNome(nome) {
+    this.HotelNome = nome;
+  }
+
   getHotelId(){
     return this.HotelId;
+  }
+
+  getHotelNome(){
+    return this.HotelNome;
   }
 
   getHoteis() {

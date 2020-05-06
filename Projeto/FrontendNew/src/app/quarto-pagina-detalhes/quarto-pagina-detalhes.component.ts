@@ -17,6 +17,7 @@ export class QuartoPaginaDetalhesComponent implements OnInit {
     precoAlta: 0,
     precoBaixa: 0,
     hotel:"",
+    foto:"",
   };
 
   constructor(    
