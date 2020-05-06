@@ -48,6 +48,7 @@
                 .servicos {
                     grid-column-start: 1;
                     grid-column-end: span 5;
+                    min-height: 400px;
                 }
                 ul {
                     counter-reset: index;
