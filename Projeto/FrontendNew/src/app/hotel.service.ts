@@ -17,13 +17,23 @@ export class HotelService {
 
   constructor(private http: HttpClient) { }
   HotelId="";
+  HotelNome ="";
 
   setHotelId(id){
     this.HotelId = id;
   }
 
+  setHotelNome(nome: any) {
+    this.HotelNome = nome;
+    console.log(this.HotelNome);
+  }
+
   getHotelId(){
     return this.HotelId;
+  }
+
+  getHotelNome(){
+    return this.HotelNome;
   }
 
   getHoteis() {

@@ -5,4 +5,5 @@ export interface Quarto {
     precoAlta: number;
     precoBaixa: number;
     hotel: string;
+    foto: string;
   }

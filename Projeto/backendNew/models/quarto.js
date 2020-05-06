@@ -8,7 +8,8 @@ var QuartoSchema = new Schema({
     precoAlta: { type: Number, min: 0, required: true },
     precoBaixa: { type: Number, min: 0, required: true },
     hotel: { type: Schema.ObjectId, ref: 'hotel', required: true },
-    servicos: [{ type: String, required: true }]
+    servicos: [{ type: String, required: true }],
+    foto: { type: String, required: true }
 });
 
 QuartoSchema

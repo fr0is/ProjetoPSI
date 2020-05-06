@@ -23,6 +23,10 @@ export class HomePageComponent implements OnInit {
     });
   }
 
+  setHotelNome(nome){
+    this.hotelService.setHotelNome(nome);
+  }
+
   generateRandomNumber(length){
     return Math.floor(Math.random() * length); 
   }
