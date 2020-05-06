@@ -10,6 +10,9 @@
 
 @media (min-width:1440px) {
     /**************** topoDetalhes **********************/
+    #descTitulo {
+        margin-top: 2%;
+    }
     .descricao {
         display: grid;
         grid-template-columns: 15% 40% 30% 15%;

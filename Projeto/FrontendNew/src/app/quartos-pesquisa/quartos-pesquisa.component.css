@@ -39,7 +39,7 @@
          }
          #servicosT {
              margin: auto;
-             margin-top: 90%;
+             margin-top: 70%;
              outline: 0;
              cursor: pointer;
          }
@@ -88,8 +88,8 @@
              opacity: 1;
          }
          .middle .box {
-             width: 30%;
-             height: 60px;
+             width: 25%;
+             height: 40px;
              background-color: #fafafa;
              transition: all 250ms ease;
              will-change: transition;
@@ -124,10 +124,10 @@
              color: white;
          }
          .middle .front-end span:before {
-             content: url("src/assets/Imagens/Icones/EpAlta.png");
+             content: url("src/assets/Imagens/Icones/EpAltaTelemovel.png");
          }
          .middle .back-end span:before {
-             content: url("src/assets/Imagens/Icones/EpBaixa.png");
+             content: url("src/assets/Imagens/Icones/EpBaixaTelemovel.png");
          }
          /************Slider***************/
          .ng5-slider {
@@ -260,6 +260,12 @@
          }
          .middle .box span:before {
              font-size: 20px;
+         }
+         .middle .front-end span:before {
+             content: url("src/assets/Imagens/Icones/EpAlta.png");
+         }
+         .middle .back-end span:before {
+             content: url("src/assets/Imagens/Icones/EpBaixa.png");
          }
          /************Slider***************/
          .ng5-slider {
