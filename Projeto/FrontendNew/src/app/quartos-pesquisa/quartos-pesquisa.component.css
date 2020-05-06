@@ -188,13 +188,13 @@
              width: 70%;
          }
          .quarto {
-             width: 50%;
+             width: 45%;
              margin: 0;
              cursor: pointer;
              padding-bottom: 1.5%;
              padding-top: 1.5%;
              border-color: #ccc;
-             height: 50%;
+             height: 100%;
          }
          #nomeQ {
              font-size: 15px;
@@ -292,9 +292,6 @@
          #quartosVisao {
              min-height: 600px;
          }
-         .quarto {
-             height: 100px;
-         }
          #nomeQ {
              font-size: 25px;
          }
@@ -366,10 +363,7 @@
          }
          /**********************Quartos**************/
          #quartosVisao {
-             min-height: 600px;
-         }
-         .quarto {
-             min-height: 100px;
+             min-height: 800px;
          }
          #nomeQ {
              font-size: 30px;
