@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Options, LabelType } from 'ng5-slider';
 
 import { Quarto } from '../../quarto';
 import { HotelService } from '../hotel.service';
