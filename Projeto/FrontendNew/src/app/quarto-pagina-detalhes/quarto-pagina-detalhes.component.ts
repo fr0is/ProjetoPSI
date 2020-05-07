@@ -14,6 +14,7 @@ export class QuartoPaginaDetalhesComponent implements OnInit {
     _id: "",
     servicos:[],
     tipo: "",
+    nrQuartos: 0,
     precoAlta: 0,
     precoBaixa: 0,
     hotel:"",
