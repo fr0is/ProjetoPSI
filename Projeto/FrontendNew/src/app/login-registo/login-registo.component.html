@@ -31,7 +31,7 @@
                 </div>
                 <div class="form sign-up">
                     <h2>Junte-se à família,</h2>
-                    <form [formGroup]="registoForm" (ngSubmit)="onSubmit(registoForm.value)">
+                    <form ngNativeValidate [formGroup]="registoForm" (ngSubmit)="create(registoForm.value)">
                         <label>
                             <span>Nome</span>
                             <input type="text" formControlName="nomeRegisto" required/>
@@ -42,7 +42,7 @@
                         </label>
                         <label>
                             <span>Password</span>
-                            <input type="password" formControlName="passRegisto" required/>
+                            <input type="password" formControlName="passwordRegisto" required/>
                         </label>
                         <button type="submit" class="submit">Registar</button>
                     </form>

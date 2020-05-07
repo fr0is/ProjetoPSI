@@ -18,8 +18,8 @@ exports.utilizador_get = function(req, res, next) {
         });
 };
 
-// Handle Utilizador create on POST.
-exports.utilizador_create_post = [
+// Handle Utilizador create.
+exports.utilizador_create = [
 
     // Validate fields.
     body('nome', 'Nome must not be empty.').isLength({ min: 1 }).trim(),
@@ -41,7 +41,6 @@ exports.utilizador_create_post = [
             email: req.body.email,
             password: req.body.password,
         });
-        console.log(utilizador);
         if (!errors.isEmpty()) {
             res.json({ 'message': 'Validation errors' });
         } else {
