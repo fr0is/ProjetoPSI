@@ -51,10 +51,10 @@ export class LoginRegistoComponent implements OnInit {
     this.registoForm.reset();
 
 
-      this.userService.createuser(this.user).subscribe(result => {
+      /*this.userService.createuser(this.user).subscribe(result => {
         this.errorMessage = result.message;
       });
-    }
+    }*/
   }
 }
 
