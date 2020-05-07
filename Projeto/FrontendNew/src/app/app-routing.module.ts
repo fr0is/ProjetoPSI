@@ -8,6 +8,7 @@ import { QuartosPesquisaComponent } from './quartos-pesquisa/quartos-pesquisa.co
 import { QuartoPaginaDetalhesComponent } from './quarto-pagina-detalhes/quarto-pagina-detalhes.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { QuartosServicosComponent } from './quartos-servicos/quartos-servicos.component';
+import { LoginRegistoComponent } from './login-registo/login-registo.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,10 @@ const routes: Routes = [
     {
       path: 'quartos/:id', // child route path
       component: QuartoPaginaDetalhesComponent // child route component that the router renders
+    },
+    {
+      path: 'login-registo', 
+      component: LoginRegistoComponent
     }
   ]},
 ];

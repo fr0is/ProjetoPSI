@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Ng5SliderModule } from 'ng5-slider';
 import { HttpClientModule } from '@angular/common/http';
+import { OnCreate } from 'src/app/onCreate.directive';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { GaleriaComponent } from './galeria/galeria.component';
 import { QuartosServicosComponent } from './quartos-servicos/quartos-servicos.component';
 import { StickyBarComponent } from './sticky-bar/sticky-bar.component';
 import { QuartosHomePageComponent } from './quartos-home-page/quartos-home-page.component';
+import { LoginRegistoComponent } from './login-registo/login-registo.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { QuartosHomePageComponent } from './quartos-home-page/quartos-home-page.
     QuartosServicosComponent,
     StickyBarComponent,
     QuartosHomePageComponent,
+    LoginRegistoComponent,
+    OnCreate
   ],
   imports: [
     BrowserModule,
