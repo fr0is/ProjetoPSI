@@ -41,7 +41,6 @@ exports.utilizador_create = [
             email: req.body.email,
             password: req.body.password,
         });
-        console.log(utilizador);
         if (!errors.isEmpty()) {
             res.json({ 'message': 'Validation errors' });
         } else {

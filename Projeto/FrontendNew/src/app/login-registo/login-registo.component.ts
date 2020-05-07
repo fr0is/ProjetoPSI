@@ -21,6 +21,7 @@ export class LoginRegistoComponent implements OnInit {
     password: "",
     reservas: []
   };
+  errorMessage: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -52,11 +53,12 @@ export class LoginRegistoComponent implements OnInit {
     this.user.password = registoData.passwordRegisto;
     this.registoForm.reset();
 
-
-    this.userService.createUser(this.user).subscribe(result => {
-    });
+      if(this.userService.getUser(this.user.email)){
+       alert(this.user.email+' já associado a uma conta')
+      }else{ 
+      this.userService.createUser(this.user).subscribe(result => {
+        this.errorMessage = result.message;
+      });
+    }
   }
 }
-
-
-

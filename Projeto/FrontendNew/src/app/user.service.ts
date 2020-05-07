@@ -16,4 +16,8 @@ export class UserService {
   createUser(user: User) {
     return this.http.post<{ message: string }>(this.createUrl, user);
   }
+
+  getUser(email){
+    return this.http.get(this.usersUrl + email);
+  }
 }
