@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-console.log('This script populates some test books, authors, genres and bookinstances to your database. Specified database as argument - e.g.: populatedb mongodb+srv://cooluser:coolpassword@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true');
+console.log('PSI here we go boyz');
 
 var userArgs = process.argv.slice(2);
 /*
@@ -12,6 +12,7 @@ if (!userArgs[0].startsWith('mongodb')) {
 var async = require('async')
 var Hotel = require('./models/hotel')
 var Quarto = require('./models/quarto')
+var Utilizador = require('./models/utilizador')
 
 
 var mongoose = require('mongoose');
@@ -23,6 +24,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var hoteis = [];
 var quartos = [];
+var users = [];
 
 
 function hotelCreate(nome, descricao, local, zona, codigoPostal, pais, latitude, longitude, codigoRegiao, telefone, email, servicos, fotos, fotoPath, cb) {
@@ -80,6 +82,26 @@ function quartoCreate(tipo, nrQuartos, precoAlta, precoBaixa, hotel, servicos, f
     });
 }
 
+function userCreate(nome, email, password, cb) {
+    userDetail = {
+        nome: nome,
+        email: email,
+        password: password,
+    }
+
+    var user = new Utilizador(userDetail);
+
+    user.save(function(err) {
+        if (err) {
+            cb(err, null)
+            return
+        }
+        console.log('Novo User: ' + user);
+        users.push(user)
+        cb(null, user)
+    });
+}
+
 function createHoteis(cb) {
     async.parallel([
         function(callback) {
@@ -129,9 +151,22 @@ function createQuartos(cb) {
     ], cb);
 }
 
+function createUsers(cb) {
+    async.parallel([
+        function(callback) {
+            userCreate('Roberta', 'roberta@psihoteis.com', '123', callback)
+        },
+        function(callback) {
+            userCreate('Mena', 'mena@psihoteis.com', '123', callback)
+        },
+    ], cb);
+}
+
+
 async.series([
         createHoteis,
-        createQuartos
+        createQuartos,
+        createUsers
     ],
     function(err, results) {
         if (err) {
