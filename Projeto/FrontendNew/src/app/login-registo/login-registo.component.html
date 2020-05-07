@@ -1,4 +1,4 @@
-<div class="espacamentoSuperior">
+<div *ngIf="this.screenWidth>=1024,else movel" class="espacamentoSuperior">
     <div class="cont">
         <div class="form sign-in">
             <h2>Bem vindo de volta,</h2>
@@ -46,3 +46,7 @@
         </div>
     </div>
 </div>
+
+<ng-template #movel>
+    FDS Q CONA
+</ng-template>

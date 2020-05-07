@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HostListener } from "@angular/core";
 
 @Component({
   selector: 'app-login-registo',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginRegistoComponent implements OnInit {
 
-  constructor() { }
+  screenWidth: number;
 
-  ngOnInit(): void {
+  constructor() {
+      this.getScreenSize();
+  }
+
+  ngOnInit(){};
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+        this.screenWidth = window.innerWidth;
+        console.log(this.screenWidth);
   }
 
   changeForm(){
