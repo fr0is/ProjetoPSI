@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from "@angular/core";
+import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
+
+import { User } from 'src/user';
 
 @Component({
   selector: 'app-login-registo',
@@ -9,9 +12,24 @@ import { HostListener } from "@angular/core";
 export class LoginRegistoComponent implements OnInit {
 
   screenWidth: number;
+  registoForm: FormGroup;
+  user: User = {
+    _id: "",
+    nome: "",
+    email: "",
+    password: "",
+    reservas: []
+  };
 
-  constructor() {
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
       this.getScreenSize();
+      this.registoForm = this.formBuilder.group({
+        nomeRegisto: this.formBuilder.control(""),
+        emailRegisto: this.formBuilder.control(""),
+        passRegisto: this.formBuilder.control("")
+      })
   }
 
   ngOnInit(){};
@@ -26,4 +44,18 @@ export class LoginRegistoComponent implements OnInit {
     document.querySelector('.cont').classList.toggle('s--signup');
   }
 
+  onSubmit(registoData) {
+    this.user.nome = registoData.title;
+    this.user.email = registoData.summary;
+    this.user.password = registoData.isbn;
+    this.registoForm.reset();
+
+
+      this.userService.createuser(this.user).subscribe(result => {
+        this.errorMessage = result.message;
+      });
+    }
+  }
 }
+
+

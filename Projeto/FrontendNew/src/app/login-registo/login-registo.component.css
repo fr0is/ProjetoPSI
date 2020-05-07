@@ -4,7 +4,7 @@
         opacity: 0;
     }
     60% {
-        transform: scale(1.2);
+        transform: scale(1.1);
         opacity: 1;
     }
     100% {
@@ -25,31 +25,44 @@ button {
     border: none;
     outline: none;
     background: none;
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
 
 /* PC */
 
 @media (min-width:1024px) {
+    /*************Animacao Pagina***********/
+    #pagina {
+        animation: 2s bounceIn;
+    }
+    /************Barra Superior***********/
     .topBar {
         height: 150px;
         overflow: hidden;
         background-color: black;
+        color: white;
+        text-align: center;
+        margin: auto;
     }
-    #pagina {
-        animation: 2s bounceIn;
+    #titulo {
+        margin-top: 50px;
+        font-size: 30px;
+        text-align: center;
+        cursor: pointer;
     }
+    /**************LOGIN************/
     .espacamentoSuperior {
-        margin-top: 2%;
+        margin-top: 5%;
     }
     .cont {
         overflow: hidden;
         position: relative;
         width: 900px;
         height: 550px;
-        margin: 0 auto 150px;
+        margin: 0 auto auto;
         background: #fff;
+        box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.1);
     }
     .form {
         position: relative;
@@ -139,6 +152,10 @@ button {
     }
     .img__text.m--in {
         transform: translateX(-520px);
+        cursor: default;
+    }
+    .img__text.m--up {
+        cursor: default;
     }
     .cont.s--signup .img__text.m--in {
         transform: translateX(0);
@@ -190,6 +207,7 @@ button {
         width: 100%;
         font-size: 26px;
         text-align: center;
+        cursor: default;
     }
     label {
         display: block;
@@ -209,6 +227,7 @@ button {
         font-size: 16px;
         border-bottom: 1px solid rgba(0, 0, 0, 0.4);
         text-align: center;
+        cursor: text;
     }
     .forgot-pass {
         margin-top: 15px;
