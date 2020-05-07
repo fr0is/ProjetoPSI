@@ -36,11 +36,11 @@ const routes: Routes = [
       path: 'quartos/:id', // child route path
       component: QuartoPaginaDetalhesComponent // child route component that the router renders
     },
-    {
-      path: 'login-registo', 
-      component: LoginRegistoComponent
-    }
   ]},
+  {
+    path: 'hoteisPSI/login-registo', 
+    component: LoginRegistoComponent
+  }
 ];
 
 @NgModule({
