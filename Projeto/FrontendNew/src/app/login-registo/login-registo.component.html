@@ -1,52 +1,57 @@
-<div *ngIf="this.screenWidth>=1024,else movel" class="espacamentoSuperior">
-    <div class="cont">
-        <div class="form sign-in">
-            <h2>Bem vindo de volta,</h2>
-            <label>
+<div id="pagina">
+    <div class="topBar">
+        <p id="titulo"><strong routerLink="../../hoteisPSI">Hotéis PSI</strong></p>
+    </div>
+    <div *ngIf="this.screenWidth>=1024,else movel" class="espacamentoSuperior">
+        <div class="cont">
+            <div class="form sign-in">
+                <h2>Bem vindo de volta,</h2>
+                <label>
       <span>Email</span>
-      <input type="email" />
+      <input type="email" required/>
     </label>
-            <label>
+                <label>
       <span>Password</span>
-      <input type="password" />
+      <input type="password" required/>
     </label>
-            <button type="button" class="submit">Login</button>
-        </div>
-        <div class="sub-cont">
-            <div class="img">
-                <div class="img__text m--up">
-                    <h2>Novo por aqui?</h2>
-                    <p>Registe-se e descubra os melhores hóteis de Portugal!</p>
-                </div>
-                <div class="img__text m--in">
-                    <h2>Parte da família?</h2>
-                    <p>Se tens uma conta dá login. Tivemos saudades!</p>
-                </div>
-                <div class="img__btn" (click)="changeForm()">
-                    <span class="m--up">Registo</span>
-                    <span class="m--in">Login</span>
-                </div>
+                <button type="submit" class="submit">Login</button>
             </div>
-            <div class="form sign-up">
-                <h2>Junte-se à família,</h2>
-                <label>
-        <span>Nome</span>
-        <input type="text" />
-      </label>
-                <label>
-        <span>Email</span>
-        <input type="email" />
-      </label>
-                <label>
-        <span>Password</span>
-        <input type="password" />
-      </label>
-                <button type="button" class="submit">Registar</button>
+            <div class="sub-cont">
+                <div class="img">
+                    <div class="img__text m--up">
+                        <h2>Novo por aqui?</h2>
+                    </div>
+                    <div class="img__text m--in">
+                        <h2>Parte da família?</h2>
+                    </div>
+                    <div class="img__btn" (click)="changeForm()">
+                        <span class="m--up">Registo</span>
+                        <span class="m--in">Login</span>
+                    </div>
+                </div>
+                <div class="form sign-up">
+                    <h2>Junte-se à família,</h2>
+                    <form [formGroup]="registoForm" (ngSubmit)="onSubmit(registoForm.value)">
+                        <label>
+                            <span>Nome</span>
+                            <input type="text" formControlName="nomeRegisto" required/>
+                        </label>
+                        <label>
+                            <span>Email</span>
+                            <input type="email" formControlName="emailRegisto" required/>
+                        </label>
+                        <label>
+                            <span>Password</span>
+                            <input type="password" formControlName="passRegisto" required/>
+                        </label>
+                        <button type="submit" class="submit">Registar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<ng-template #movel>
-    FDS Q CONA
-</ng-template>
+    <ng-template #movel>
+        FDS Q CONA
+    </ng-template>
+</div>
