@@ -154,9 +154,6 @@ function createQuartos(cb) {
 function createUsers(cb) {
     async.parallel([
         function(callback) {
-            userCreate('Roberta', 'roberta@psihoteis.com', '123', callback)
-        },
-        function(callback) {
             userCreate('Mena', 'mena@psihoteis.com', '123', callback)
         },
     ], cb);
