@@ -18,8 +18,8 @@ exports.utilizador_get = function(req, res, next) {
         });
 };
 
-// Handle Utilizador create on POST.
-exports.utilizador_create_post = [
+// Handle Utilizador create.
+exports.utilizador_create = [
 
     // Validate fields.
     body('nome', 'Nome must not be empty.').isLength({ min: 1 }).trim(),
