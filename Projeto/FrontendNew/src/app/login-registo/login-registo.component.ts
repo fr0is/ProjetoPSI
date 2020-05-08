@@ -14,14 +14,15 @@ export class LoginRegistoComponent implements OnInit {
 
   screenWidth: number;
   registoForm: FormGroup;
-  user: User = {
+  loginForm: FormGroup;
+  userR: User = {
     _id: "",
     nome: "",
     email: "",
     password: "",
     reservas: []
   };
-  errorMessage: any;
+  errorMessage = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +33,10 @@ export class LoginRegistoComponent implements OnInit {
         nomeRegisto: this.formBuilder.control(""),
         emailRegisto: this.formBuilder.control(""),
         passwordRegisto: this.formBuilder.control("")
+      })
+      this.loginForm = this.formBuilder.group({
+        emailLogin: this.formBuilder.control(""),
+        passwordLogin: this.formBuilder.control("")
       })
   }
 
@@ -48,17 +53,40 @@ export class LoginRegistoComponent implements OnInit {
   }
 
   create(registoData) {
-    this.user.nome = registoData.nomeRegisto;
-    this.user.email = registoData.emailRegisto;
-    this.user.password = registoData.passwordRegisto;
+    this.userR.nome = registoData.nomeRegisto;
+    this.userR.email = registoData.emailRegisto;
+    this.userR.password = registoData.passwordRegisto;
     this.registoForm.reset();
-
-      if(this.userService.getUser(this.user.email)){
-       alert(this.user.email+' já associado a uma conta')
-      }else{ 
-      this.userService.createUser(this.user).subscribe(result => {
-        this.errorMessage = result.message;
-      });
-    }
+  
+    this.userService.getUser(this.userR.email).subscribe(user => {
+      if(!user[0]){
+        this.userService.createUser(this.userR).subscribe(result => {
+          this.errorMessage = result.message;
+        });
+      }else{
+        alert("email em uso");
+      }
+    });
   }
+
+
+
+  login(login){
+   /* this.user.email = login.emailLogin;
+    this.user.password = login.passwordLogin;
+    console.log(this.userService.getUser(this.user.email));
+    console.log(this.user.email);
+    if(!this.userService.getUser(this.user.email)){
+      alert("Login Inválido");
+    }else{
+      if(this.userService.getUser(this.user.email) !== login.passwordLogin){
+        alert("Password inválida");
+        this.loginForm.reset();
+      }else{
+        alert("yey"); 
+        this.userService.setUserAtual(this.user);
+        this.loginForm.reset();
+      }
+    }*/
+  } 
 }
