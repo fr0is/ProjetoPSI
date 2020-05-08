@@ -72,21 +72,21 @@ export class LoginRegistoComponent implements OnInit {
 
 
   login(login){
-   /* this.user.email = login.emailLogin;
-    this.user.password = login.passwordLogin;
-    console.log(this.userService.getUser(this.user.email));
-    console.log(this.user.email);
-    if(!this.userService.getUser(this.user.email)){
-      alert("Login Inválido");
-    }else{
-      if(this.userService.getUser(this.user.email) !== login.passwordLogin){
-        alert("Password inválida");
-        this.loginForm.reset();
+    this.userR.nome = "";
+    this.userR.email = login.emailLogin;
+    this.userR.password = login.passwordLogin;
+    this.loginForm.reset();
+  
+    this.userService.getUser(this.userR.email).subscribe(user => {
+      if(!user[0]){
+        alert("Email Inválido");
       }else{
-        alert("yey"); 
-        this.userService.setUserAtual(this.user);
-        this.loginForm.reset();
+        if(user[0].password !== this.userR.password){
+          alert("Password Inválida");
+        }else{
+          this.userService.setUserAtual(user[0]);
+        }
       }
-    }*/
+    });
   } 
 }
