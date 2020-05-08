@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HotelService } from '../hotel.service';
 import { Hotel } from 'src/hotel';
 import { ActivatedRoute } from "@angular/router";
+import { UserService } from '../user.service';
+import { User } from 'src/user';
 
 @Component({
   selector: 'app-top-bar-hotel',
@@ -28,13 +30,22 @@ export class TopBarHotelComponent implements OnInit {
       fotoPath: ""
     };
 
+    userAtual: User;
+
   constructor(
     private route: ActivatedRoute,
-    private hotelService: HotelService
+    private hotelService: HotelService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.getHotel();
+    this.getUserAtual();
+  }
+
+  getUserAtual(){
+    this.userAtual = this.userService.getUserAtual(); 
+    console.log(this.userAtual);
   }
 
   getHotel() {
