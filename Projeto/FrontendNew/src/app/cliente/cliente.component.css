@@ -1,0 +1,12 @@
+.esquemaPagina {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+}
+
+.conteudoPagina {
+    grid-column-start: 2;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: grid;
+    grid-template-columns: 35% 65%;
+}

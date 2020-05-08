@@ -4,6 +4,8 @@ import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
 
 import { User } from 'src/user';
 import { UserService } from '../user.service';
+import { HotelService } from '../hotel.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-registo',
@@ -23,10 +25,13 @@ export class LoginRegistoComponent implements OnInit {
     reservas: []
   };
   errorMessage = "";
+  emailValidos = ["+@hotmail.com","+@gmail.com","+@hoteispsi.com","+@sapo.pt"]
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private hotelService: HotelService,
+    public router: Router
   ) {
       this.getScreenSize();
       this.registoForm = this.formBuilder.group({
@@ -64,12 +69,10 @@ export class LoginRegistoComponent implements OnInit {
           this.errorMessage = result.message;
         });
       }else{
-        alert("email em uso");
+        alert("Email em Uso");
       }
     });
   }
-
-
 
   login(login){
     this.userR.nome = "";
@@ -85,6 +88,8 @@ export class LoginRegistoComponent implements OnInit {
           alert("Password Inválida");
         }else{
           this.userService.setUserAtual(user[0]);
+          const id = this.hotelService.getHotelId();
+          this.router.navigate(['hoteisPSI/hotel/',id]);
         }
       }
     });

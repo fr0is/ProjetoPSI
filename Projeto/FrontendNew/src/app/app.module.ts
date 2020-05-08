@@ -20,6 +20,7 @@ import { QuartosServicosComponent } from './quartos-servicos/quartos-servicos.co
 import { StickyBarComponent } from './sticky-bar/sticky-bar.component';
 import { QuartosHomePageComponent } from './quartos-home-page/quartos-home-page.component';
 import { LoginRegistoComponent } from './login-registo/login-registo.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { LoginRegistoComponent } from './login-registo/login-registo.component';
     StickyBarComponent,
     QuartosHomePageComponent,
     LoginRegistoComponent,
-    OnCreate
+    OnCreate,
+    ClienteComponent
   ],
   imports: [
     BrowserModule,
