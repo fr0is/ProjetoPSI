@@ -24,7 +24,7 @@ export class HomePageComponent implements OnInit {
   }
 
   setHotelNome(nome){
-    this.hotelService.setHotelNome(nome);
+    localStorage.setItem('hotelNome', nome);
   }
 
   generateRandomNumber(length){

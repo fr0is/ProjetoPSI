@@ -28,7 +28,7 @@ export class QuartosHomePageComponent implements OnInit {
   }
 
   showQuartos() {
-    this.hotelService.getHotelQuartos(this.hotelService.getHotelId()).subscribe(quartoList => {
+    this.hotelService.getHotelQuartos(localStorage.getItem("hotelAtual")).subscribe(quartoList => {
       this.quartos = quartoList as Quarto[];
     });
   }

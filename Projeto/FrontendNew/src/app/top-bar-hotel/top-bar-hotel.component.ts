@@ -44,13 +44,14 @@ export class TopBarHotelComponent implements OnInit {
   }
 
   getUserAtual(){
-    this.userAtual = this.userService.getUserAtual(); 
-    console.log(this.userAtual);
+    this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
+      this.userAtual = user[0];
+    }); 
   }
 
   getHotel() {
-    const id = this.route.snapshot.paramMap.get("idHotel");
-    if (id) {
+    const id = localStorage.getItem("hotelAtual");
+    if (id) { 
       this.hotelService.getHotel(id).subscribe(results => {
         this.hotel = results;
       });

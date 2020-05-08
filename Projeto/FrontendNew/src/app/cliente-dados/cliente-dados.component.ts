@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from 'src/user';
 import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-dados',
@@ -16,6 +17,7 @@ export class ClienteDadosComponent implements OnInit {
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -23,9 +25,14 @@ export class ClienteDadosComponent implements OnInit {
   }
 
   getCliente(){
-    this.cliente = this.userService.getUserAtual();
+    this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
+      this.cliente = user[0];
+    }); 
   }
-
   updateCliente(updateData){}
+  logout(){
+    localStorage.removeItem('userAtual');
+    this.router.navigate(['hoteisPSI/hotel/',localStorage.getItem('hotelAtual')]);
+  }
 
 }

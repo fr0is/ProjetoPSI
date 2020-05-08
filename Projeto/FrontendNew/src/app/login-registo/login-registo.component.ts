@@ -30,7 +30,6 @@ export class LoginRegistoComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private hotelService: HotelService,
     public router: Router
   ) {
       this.getScreenSize();
@@ -87,9 +86,9 @@ export class LoginRegistoComponent implements OnInit {
         if(user[0].password !== this.userR.password){
           alert("Password Inválida");
         }else{
+          localStorage.setItem('userAtual',user[0].email);
           this.userService.setUserAtual(user[0]);
-          const id = this.hotelService.getHotelId();
-          this.router.navigate(['hoteisPSI/hotel/',id]);
+          this.router.navigate(['hoteisPSI/hotel/',localStorage.getItem('hotelAtual')]);
         }
       }
     });
