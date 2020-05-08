@@ -48,7 +48,7 @@ export class HotelComponent implements OnInit {
     }else{
       alert("Hotel não encontrado");
     }
-    this.hotelService.setHotelId(this.id);
+    localStorage.setItem('hotelAtual', this.id);
   }
 
 }

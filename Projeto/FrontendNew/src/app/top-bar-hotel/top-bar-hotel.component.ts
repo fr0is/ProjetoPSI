@@ -30,7 +30,15 @@ export class TopBarHotelComponent implements OnInit {
       fotoPath: ""
     };
 
-    userAtual: User;
+    cliente = "";
+
+    userAtual: User = {
+      _id: "",
+      nome: "s",
+      email: "",
+      password: "",
+      reservas: []
+    };
 
   constructor(
     private route: ActivatedRoute,
@@ -44,13 +52,17 @@ export class TopBarHotelComponent implements OnInit {
   }
 
   getUserAtual(){
-    this.userAtual = this.userService.getUserAtual(); 
-    console.log(this.userAtual);
+    console.log(this.cliente);
+    this.cliente = localStorage.getItem('cliente');
+    console.log(this.cliente);
+    this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
+      this.userAtual = user[0];
+    }); 
   }
 
   getHotel() {
-    const id = this.route.snapshot.paramMap.get("idHotel");
-    if (id) {
+    const id = localStorage.getItem("hotelAtual");
+    if (id) { 
       this.hotelService.getHotel(id).subscribe(results => {
         this.hotel = results;
       });

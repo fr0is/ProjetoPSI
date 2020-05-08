@@ -1,6 +1,10 @@
+FRONTEND
+
 npm install --save ng5-slider
+npm i angular-local-storage
 
 BACKEND
+
 npm install eslint --save-dev
 npm i cors
 npm i compression
