@@ -44,8 +44,8 @@
                 </div>
                 <div id="preco">
                     Preço:
-                    <div id="precoEpAlta4 " style="display: inline " *ngIf="epoca===0 ; else epocaBaixa ">{{quarto.precoAlta}}</div>
-                    <ng-template id="precoEpBaixa4 " #epocaBaixa>{{quarto.precoBaixa}}</ng-template>€
+                    <div id="precoEpAlta" style="display: inline " *ngIf="epoca===0 ; else epocaBaixa ">{{quarto.precoAlta}}</div>
+                    <ng-template id="precoEpBaixa" #epocaBaixa>{{quarto.precoBaixa}}</ng-template>€
                 </div>
             </li>
         </ng-container>

@@ -8,12 +8,17 @@ import { QuartosPesquisaComponent } from './quartos-pesquisa/quartos-pesquisa.co
 import { QuartoPaginaDetalhesComponent } from './quarto-pagina-detalhes/quarto-pagina-detalhes.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 import { QuartosServicosComponent } from './quartos-servicos/quartos-servicos.component';
+import { LoginRegistoComponent } from './login-registo/login-registo.component';
+import { ClienteComponent } from './cliente/cliente.component';
+import { ClienteDadosComponent } from './cliente-dados/cliente-dados.component';
+import { ClienteReservasComponent } from './cliente-reservas/cliente-reservas.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/hoteisPSI', pathMatch: 'full' },
   { path: 'hoteisPSI', component: HomePageComponent },
-  { path: 'hoteisPSI/hotel/:idHotel', component: HotelComponent,
+  { path: 'hoteisPSI/login-registo', component: LoginRegistoComponent},
+  { path: 'hoteisPSI/:nomeHotel', component: HotelComponent,
   children: [
     {
       path: '', // child route path
@@ -34,6 +39,20 @@ const routes: Routes = [
     {
       path: 'quartos/:id', // child route path
       component: QuartoPaginaDetalhesComponent // child route component that the router renders
+    },
+    {
+      path: 'cliente',
+      component: ClienteComponent, 
+      children: [
+        {
+          path: 'dados',
+          component: ClienteDadosComponent
+        },
+        {
+          path: 'reservas',
+          component: ClienteReservasComponent
+        }
+      ]
     }
   ]},
 ];

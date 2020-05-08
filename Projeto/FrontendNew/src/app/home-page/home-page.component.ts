@@ -23,8 +23,11 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  setHotelNome(nome){
-    this.hotelService.setHotelNome(nome);
+  setHotelNomeId(nome, id){
+    sessionStorage.setItem('hotelNome', nome);
+    sessionStorage.setItem('hotelAtual', id);
+    console.log(sessionStorage.getItem('hotelNome'));
+    console.log(sessionStorage.getItem('hotelAtual'));
   }
 
   generateRandomNumber(length){

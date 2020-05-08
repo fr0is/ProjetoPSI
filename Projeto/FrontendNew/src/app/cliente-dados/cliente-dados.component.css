@@ -1,0 +1,77 @@
+/***********INFORMACAO REGISTO*************/
+
+.data {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+#iconePerfil {
+    width: 50%;
+    margin: auto;
+}
+
+label {
+    width: 100%;
+    margin-right: 2%;
+    font-size: 25px;
+}
+
+ :focus {
+    outline: none;
+}
+
+.container {
+    width: auto;
+    position: relative;
+    margin: 2%;
+}
+
+input {
+    width: 100%;
+    font-size: 20px;
+}
+
+.input {
+    border: 0;
+    padding: 2%;
+    border-bottom: 1px solid #ccc;
+}
+
+.input~.border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: green;
+}
+
+.input:focus~.border {
+    width: 100%;
+    transition: 0.5s;
+}
+
+
+/***********INFORMACAO ADICIONAL*************/
+
+
+/***********BOTAO UPDATE****************/
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 260px;
+    height: 36px;
+    border-radius: 30px;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.submit {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    background: #fafafa;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
