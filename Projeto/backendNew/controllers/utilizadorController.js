@@ -7,15 +7,10 @@ var async = require('async');
 
 exports.utilizador_get = function(req, res, next) {
     Utilizador.find({ 'email': req.params.email })
-        .exec(function(err, results) {
+        .exec(function(err, user) {
             if (err) { return next(err); }
-            if (results == null) {
-                var err = new Error('Utilizador nao encontrado');
-                err.status = 404;
-                return next(err);
-            }
-            res.json(results);
-        });
+            res.json(user);
+        })
 };
 
 // Handle Utilizador create.
@@ -30,7 +25,6 @@ exports.utilizador_create = [
     sanitizeBody('*').escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
-
 
         // Extract the validation errors from a request.
         const errors = validationResult(req);

@@ -11,13 +11,24 @@ export class UserService {
   usersUrl = this.baseUrl + 'users/';
   createUrl = this.usersUrl + 'create';
 
+  user: User;
+
   constructor(private http: HttpClient) { }
+
+  setUserAtual(user:User){
+    this.user = user;
+  }
+
+  getUserAtual(){
+    return this.user;
+  }
 
   createUser(user: User) {
     return this.http.post<{ message: string }>(this.createUrl, user);
   }
 
   getUser(email){
-    return this.http.get(this.usersUrl + email);
+    const url = this.usersUrl + email;
+    return this.http.get<User>(url);
   }
 }
