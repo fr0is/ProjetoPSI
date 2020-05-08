@@ -23,9 +23,7 @@ export class ClienteDadosComponent implements OnInit {
   }
 
   getCliente(){
-    this.userService.getUser("mena@psihoteis.com").subscribe(user => {
-      this.cliente = user[0];
-    });
+    this.cliente = this.userService.getUserAtual();
   }
 
   updateCliente(updateData){}
