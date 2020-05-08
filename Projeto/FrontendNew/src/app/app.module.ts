@@ -21,6 +21,9 @@ import { StickyBarComponent } from './sticky-bar/sticky-bar.component';
 import { QuartosHomePageComponent } from './quartos-home-page/quartos-home-page.component';
 import { LoginRegistoComponent } from './login-registo/login-registo.component';
 import { ClienteComponent } from './cliente/cliente.component';
+import { ClienteListaRouteComponent } from './cliente-lista-route/cliente-lista-route.component';
+import { ClienteDadosComponent } from './cliente-dados/cliente-dados.component';
+import { ClienteReservasComponent } from './cliente-reservas/cliente-reservas.component';
 
 
 @NgModule({
@@ -39,7 +42,10 @@ import { ClienteComponent } from './cliente/cliente.component';
     QuartosHomePageComponent,
     LoginRegistoComponent,
     OnCreate,
-    ClienteComponent
+    ClienteComponent,
+    ClienteListaRouteComponent,
+    ClienteDadosComponent,
+    ClienteReservasComponent
   ],
   imports: [
     BrowserModule,
