@@ -12,20 +12,11 @@ export class HotelService {
   baseUrl = 'http://localhost:3000/catalog/';
   hoteisUrl = this.baseUrl + 'hoteis/';
   hotelUrl = this.baseUrl + 'hoteis/';
-  quartosUrl = this.baseUrl + 'hoteis/' + this.getHotelId() + '/quartos/';
+  quartosUrl = this.baseUrl + 'hoteis/' + sessionStorage.getItem('hotelId') + '/quartos/';
   HotelId="";
   HotelNome ="";
 
   constructor(private http: HttpClient) { }
-
-
-  setHotelId(id){
-    this.HotelId = id;
-  }
-
-  setHotelNome(nome) {
-    this.HotelNome = nome;
-  }
 
   getHotelId(){
     return this.HotelId;
