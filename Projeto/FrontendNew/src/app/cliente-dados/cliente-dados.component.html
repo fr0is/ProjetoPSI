@@ -1,0 +1,25 @@
+<form [formGroup]="updateForm" (ngSubmit)="updateCliente(updateForm.value)">
+    <div class="data">
+        <img id="iconePerfil" src="assets/Imagens/Icones/perfil.png">
+        <div id="informacaoRegisto">
+            <div class="container">
+                <label id="nome"><strong>Nome</strong></label>
+                <input class="input" type=" text " placeholder="{{this.cliente.nome}}" formControlName="nomeRegisto">
+                <span class="border "></span>
+            </div>
+            <div class="container">
+                <label id="mail"><strong>Mail</strong></label>
+                <input class="input" type="email" placeholder="{{this.cliente.email}}" formControlName="emailRegisto">
+                <span class="border "></span>
+            </div>
+        </div>
+    </div>
+    <div id="informacaoAdicional">
+        <div class="container">
+            <label id="mail"><strong>Telemovel</strong></label>
+            <input class="input" type="email" placeholder="{{this.cliente.email}}" formControlName="emailRegisto">
+            <span class="border "></span>
+        </div>
+    </div>
+    <button type="submit" class="submit">Atualizar Dados</button>
+</form>

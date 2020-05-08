@@ -10,6 +10,8 @@ import { GaleriaComponent } from './galeria/galeria.component';
 import { QuartosServicosComponent } from './quartos-servicos/quartos-servicos.component';
 import { LoginRegistoComponent } from './login-registo/login-registo.component';
 import { ClienteComponent } from './cliente/cliente.component';
+import { ClienteDadosComponent } from './cliente-dados/cliente-dados.component';
+import { ClienteReservasComponent } from './cliente-reservas/cliente-reservas.component';
 
 
 const routes: Routes = [
@@ -39,7 +41,17 @@ const routes: Routes = [
     },
     {
       path: 'cliente',
-      component: ClienteComponent
+      component: ClienteComponent, 
+      children: [
+        {
+          path: 'dados',
+          component: ClienteDadosComponent
+        },
+        {
+          path: 'reservas',
+          component: ClienteReservasComponent
+        }
+      ]
     }
   ]},
   {
