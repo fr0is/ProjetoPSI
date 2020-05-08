@@ -34,7 +34,7 @@ export class ClienteDadosComponent implements OnInit {
   logout(){
     localStorage.removeItem('userAtual');
     localStorage.removeItem('cliente');
-    window.location.href = 'hoteisPSI/hotel/' + localStorage.getItem('hotelAtual');
+    window.location.href = 'hoteisPSI/' + localStorage.getItem('hotelNome');
   }
 
 }

@@ -39,7 +39,7 @@ ngOnInit(): void {
 }
 
 getHotel() {
-  const id = localStorage.getItem("hotelAtual");
+  const id = sessionStorage.getItem("hotelAtual");
   if (id) {
     this.hotelService.getHotel(id).subscribe(results => {
       this.hotel = results;

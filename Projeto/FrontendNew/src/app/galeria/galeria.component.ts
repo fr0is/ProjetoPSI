@@ -40,7 +40,7 @@ export class GaleriaComponent implements OnInit {
   }
 
   getHotel() {
-    this.hotelService.getHotel(localStorage.getItem("hotelAtual")).subscribe(results => {
+    this.hotelService.getHotel(sessionStorage.getItem("hotelAtual")).subscribe(results => {
       this.hotel = results;
     })
   }

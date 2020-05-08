@@ -89,7 +89,7 @@ export class LoginRegistoComponent implements OnInit {
           localStorage.setItem('userAtual',user[0].email);
           localStorage.removeItem('cliente');
           localStorage.setItem('cliente','t');
-          this.router.navigate(['hoteisPSI/hotel/',localStorage.getItem('hotelAtual')]);
+          this.router.navigate(['hoteisPSI/',sessionStorage.getItem('hotelNome')]);
         }
       }
     });

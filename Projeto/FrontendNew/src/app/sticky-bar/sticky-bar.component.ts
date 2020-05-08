@@ -40,12 +40,9 @@ export class StickyBarComponent implements OnInit {
         this.sticky = false;
       }
     }
-
-
-   hotelId=this.hotelService.getHotelId();
  
    showQuartos() {
-     this.hotelService.getHotelQuartos(localStorage.getItem("hotelAtual")).subscribe(quartoList => {
+     this.hotelService.getHotelQuartos(sessionStorage.getItem("hotelAtual")).subscribe(quartoList => {
        this.quartos = quartoList as Quarto[];
      });
    }

@@ -40,7 +40,7 @@ export class HotelComponent implements OnInit {
   }
 
   getHotel() {
-    this.id = this.route.snapshot.paramMap.get("idHotel");
+    this.id = sessionStorage.getItem('hotelAtual');
     if (this.id) {
       this.hotelService.getHotel(this.id).subscribe(results => {
         this.hotel = results;
@@ -48,7 +48,6 @@ export class HotelComponent implements OnInit {
     }else{
       alert("Hotel não encontrado");
     }
-    localStorage.setItem('hotelAtual', this.id);
   }
 
 }

@@ -17,7 +17,8 @@ import { ClienteReservasComponent } from './cliente-reservas/cliente-reservas.co
 const routes: Routes = [
   { path: '', redirectTo: '/hoteisPSI', pathMatch: 'full' },
   { path: 'hoteisPSI', component: HomePageComponent },
-  { path: 'hoteisPSI/hotel/:idHotel', component: HotelComponent,
+  { path: 'hoteisPSI/login-registo', component: LoginRegistoComponent},
+  { path: 'hoteisPSI/:nomeHotel', component: HotelComponent,
   children: [
     {
       path: '', // child route path
@@ -54,10 +55,6 @@ const routes: Routes = [
       ]
     }
   ]},
-  {
-    path: 'hoteisPSI/login-registo', 
-    component: LoginRegistoComponent
-  }
 ];
 
 @NgModule({
