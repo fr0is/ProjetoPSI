@@ -9,9 +9,9 @@
         <a routerLink="./quartos" class="topNavA">Quartos</a>
         <a routerLink="./galeria" class="topNavA">Fotos</a>
         <a class="topNavA1">|</a>
-        <a *ngIf="this.userAtual === undefined; else paginaCliente" routerLink="../../login-registo" class="topNavA">Login</a>
-        <ng-template #paginaCliente>
-            <a class="topNavA" routerLink="./cliente">{{this.userAtual.nome}}</a>
+        <a *ngIf="cliente === null;else dadosCliente" routerLink="../../login-registo" class="topNavA">Login</a>
+        <ng-template #dadosCliente>
+            <a class=" topNavA " routerLink="./cliente">{{this.userAtual.nome}}</a>
         </ng-template>
     </div>
 </div>

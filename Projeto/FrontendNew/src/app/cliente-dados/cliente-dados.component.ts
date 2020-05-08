@@ -30,9 +30,11 @@ export class ClienteDadosComponent implements OnInit {
     }); 
   }
   updateCliente(updateData){}
+  
   logout(){
     localStorage.removeItem('userAtual');
-    this.router.navigate(['hoteisPSI/hotel/',localStorage.getItem('hotelAtual')]);
+    localStorage.removeItem('cliente');
+    window.location.href = 'hoteisPSI/hotel/' + localStorage.getItem('hotelAtual');
   }
 
 }

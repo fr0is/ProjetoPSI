@@ -87,7 +87,8 @@ export class LoginRegistoComponent implements OnInit {
           alert("Password Inválida");
         }else{
           localStorage.setItem('userAtual',user[0].email);
-          this.userService.setUserAtual(user[0]);
+          localStorage.removeItem('cliente');
+          localStorage.setItem('cliente','t');
           this.router.navigate(['hoteisPSI/hotel/',localStorage.getItem('hotelAtual')]);
         }
       }
