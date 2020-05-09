@@ -4,13 +4,13 @@
         <div id="informacaoRegisto">
             <div class="container">
                 <label id="nome"><strong>Nome</strong></label>
-                <input class="input" type=" text " [(value)]="this.cliente.nome" formControlName="nomeUpdate">
+                <input class="input" type="text" formControlName="nomeUpdate">
                 <span class="border"></span>
             </div>
             {{this.cliente.nome}}
             <div class="container">
                 <label id="mail"><strong>Email</strong></label>
-                <input class="input" type="email" [(value)]="this.cliente.email" formControlName="emailUpdate">
+                <input class="input" type="email" formControlName="emailUpdate">
                 <span class="border"></span>
             </div>
         </div>
@@ -18,7 +18,7 @@
     <div id="informacaoAdicional">
         <div class="container">
             <label id="mail"><strong>Telemovel</strong></label>
-            <input class="input" type="email" formControlName="telemovelUpdate">
+            <input class="input" type="tel" formControlName="telemovelUpdate">
             <span class="border"></span>
         </div>
     </div>
