@@ -32,14 +32,8 @@ export class ClienteDadosComponent implements OnInit {
 
   getCliente(){
     this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
-      this.getNewCliente(user[0]);
+      this.cliente = user[0];
     }); 
-  }
-
-  getNewCliente(user){
-    this.cliente.nome = user[0].nome;
-    this.cliente.email = user[0].email;
-    this.cliente._id = user[0]._id;
   }
 
   updateCliente(updateData){
