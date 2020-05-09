@@ -25,13 +25,8 @@ export class ClienteDadosComponent implements OnInit {
   }
 
   getCliente(){
-    console.log(localStorage.getItem('userAtual'));
-    console.log(sessionStorage.getItem('hotelNome'));
     this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
       this.cliente = user[0];
-      console.log(this.cliente);
-      console.log(user[0]);
-      console.log(user);
     }); 
   }
 
