@@ -14,5 +14,6 @@ router.get('/hoteis/:hotelId/quartos', quarto_controller.room_list); // lista de
 router.get('/hoteis/:hotelId/quartos/:quartoId', quarto_controller.quarto_detail); // quarto
 router.get('/users/:email', utilizador_controller.utilizador_get); // user get
 router.post('/users/create', utilizador_controller.utilizador_create); //user create
+router.post('/users/update', utilizador_controller.utilizador_update); //user update
 
 module.exports = router;

@@ -13,6 +13,14 @@ export class ClienteDadosComponent implements OnInit {
 
   cliente: User;
   updateForm: FormGroup;
+  clienteUpdate: User = {
+    _id: "",
+    nome: "",
+    email: "",
+    password: "",
+    reservas: []
+  }
+  errorMessage = "";
 
   constructor(
     private userService: UserService,
@@ -39,7 +47,21 @@ export class ClienteDadosComponent implements OnInit {
 
 
   updateCliente(updateData){
-    console.log("update");
+    console.log("iniciou update")
+    //Update Form Data
+    this.clienteUpdate.nome = updateData.nomeRegisto;
+    this.clienteUpdate.email = updateData.emailRegisto;
+    //Data que nao muda
+    this.clienteUpdate.password = this.cliente.password;
+    this.clienteUpdate._id = this.cliente._id;
+    this.updateForm.reset();
+
+      this.userService.updateUser(this.clienteUpdate).subscribe(result => {
+        this.errorMessage = result.message;
+        if(result.message === ""){
+          alert("Utilizador Atualizado");
+        }
+    });
   }
   
   logout(){
