@@ -48,7 +48,7 @@ export class ClienteDadosComponent implements OnInit {
 
   updateCliente(updateData){
     console.log("iniciou update")
-    //Update Form Data
+    //Update Form Data  
     this.clienteUpdate.nome = updateData.nomeUpdate;
     this.clienteUpdate.email = updateData.emailUpdate;
     //Data que nao muda
@@ -60,6 +60,7 @@ export class ClienteDadosComponent implements OnInit {
     this.userService.updateUser(this.clienteUpdate).subscribe(result => {
       this.errorMessage = result.message;
       alert(result.message);
+      window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/cliente';
     });
   }
   
