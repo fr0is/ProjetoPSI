@@ -45,7 +45,7 @@ const routes: Routes = [
       component: ClienteComponent, 
       children: [
         {
-          path: 'dados',
+          path: '',
           component: ClienteDadosComponent
         },
         {
