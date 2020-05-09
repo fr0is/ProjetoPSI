@@ -29,7 +29,6 @@ export class BotBarHotelComponent implements OnInit {
   };
 
 constructor(
-  private route: ActivatedRoute,
   private hotelService: HotelService
 ) { }
 

@@ -3,12 +3,12 @@
         <img id="iconePerfil" src="assets/Imagens/Icones/perfil.png">
         <div id="informacaoRegisto">
             <div class="container">
-                <label id="nome"><strong>Nome</strong></label>
+                <label id="nome"><strong>{{this.cliente.nome}}</strong></label>
                 <input class="input" type=" text " value="{{this.cliente.nome}}" formControlName="nomeUpdate">
                 <span class="border"></span>
             </div>
             <div class="container">
-                <label id="mail"><strong>Mail</strong></label>
+                <label id="mail"><strong>{{this.cliente.email}}</strong></label>
                 <input class="input" type="email" value="{{this.cliente.email}}" formControlName="emailUpdate">
                 <span class="border"></span>
             </div>
@@ -16,7 +16,7 @@
     </div>
     <div id="informacaoAdicional">
         <div class="container">
-            <label id="mail"><strong>Telemovel</strong></label>
+            <label id="mail"><strong>{{this.cliente._id}}</strong></label>
             <input class="input" type="email" value="{{this.cliente._id}}" formControlName="telemovelUpdate">
             <span class="border"></span>
         </div>

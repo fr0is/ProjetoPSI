@@ -18,7 +18,13 @@ export class ClienteDadosComponent implements OnInit {
     private userService: UserService,
     private formBuilder: FormBuilder,
     public router: Router
-  ) { }
+  ) { 
+    this.updateForm = this.formBuilder.group({
+      nomeUpdate: this.formBuilder.control(""),
+      emailUpdate: this.formBuilder.control(""),
+      telemovelUpdate: this.formBuilder.control("")
+    })
+  }
 
   ngOnInit(): void {
     this.getCliente();
