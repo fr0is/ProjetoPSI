@@ -10,7 +10,7 @@
             {{this.cliente.nome}}
             <div class="container">
                 <label id="mail"><strong>{{this.cliente.email}}</strong></label>
-                <input class="input" type="email" value="{{this.cliente.email}}" formControlName="emailUpdate">
+                <input class="input" type="email" [(value)]="this.cliente.email" formControlName="emailUpdate">
                 <span class="border"></span>
             </div>
         </div>
@@ -18,7 +18,7 @@
     <div id="informacaoAdicional">
         <div class="container">
             <label id="mail"><strong>{{this.cliente._id}}</strong></label>
-            <input class="input" type="email" value="{{this.cliente._id}}" formControlName="telemovelUpdate">
+            <input class="input" type="email" [(value)]="this.cliente._id" formControlName="telemovelUpdate">
             <span class="border"></span>
         </div>
     </div>
