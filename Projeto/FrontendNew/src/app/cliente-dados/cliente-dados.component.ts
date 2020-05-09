@@ -58,9 +58,7 @@ export class ClienteDadosComponent implements OnInit {
 
       this.userService.updateUser(this.clienteUpdate).subscribe(result => {
         this.errorMessage = result.message;
-        if(result.message === ""){
-          alert("Utilizador Atualizado");
-        }
+        alert(result.message);
     });
   }
   
