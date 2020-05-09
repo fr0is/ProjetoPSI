@@ -38,7 +38,7 @@ export class ClienteDadosComponent implements OnInit {
       this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
         this.cliente = user[0];
         this.updateForm = this.formBuilder.group({
-          nomeUpdate: this.formBuilder.control(this.cliente.nome),
+          nomeUpdate: this.formBuilder.control(""),
           emailUpdate: this.formBuilder.control(this.cliente.email),
           telemovelUpdate: this.formBuilder.control(this.cliente._id)
         })
