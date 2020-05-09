@@ -38,7 +38,7 @@ export class ClienteDadosComponent implements OnInit {
       this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
         this.cliente = user[0];
         this.updateForm = this.formBuilder.group({
-          nomeUpdate: this.formBuilder.control(""),
+          nomeUpdate: this.formBuilder.control(this.cliente.nome),
           emailUpdate: this.formBuilder.control(this.cliente.email),
           telemovelUpdate: this.formBuilder.control(this.cliente._id)
         })
@@ -49,8 +49,8 @@ export class ClienteDadosComponent implements OnInit {
   updateCliente(updateData){
     console.log("iniciou update")
     //Update Form Data
-    this.clienteUpdate.nome = updateData.nomeRegisto;
-    this.clienteUpdate.email = updateData.emailRegisto;
+    this.clienteUpdate.nome = updateData.nomeUpdate;
+    this.clienteUpdate.email = updateData.emailUpdate;
     //Data que nao muda
     this.clienteUpdate.password = this.cliente.password;
     this.clienteUpdate._id = this.cliente._id;
