@@ -34,7 +34,10 @@ export class ClienteDadosComponent implements OnInit {
       console.log(user);
     }); 
   }
-  updateCliente(updateData){}
+
+  updateCliente(updateData){
+    console.log("update");
+  }
   
   logout(){
     localStorage.removeItem('userAtual');

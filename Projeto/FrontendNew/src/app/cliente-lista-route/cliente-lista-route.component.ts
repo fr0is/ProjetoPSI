@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteListaRouteComponent implements OnInit {
 
+  hotelNome;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.getHotelAtual();
   }
+
+    getHotelAtual(){
+      this.hotelNome = sessionStorage.getItem('hotelNome');
+    }
 
 }
