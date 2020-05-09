@@ -54,11 +54,12 @@ export class ClienteDadosComponent implements OnInit {
     //Data que nao muda
     this.clienteUpdate.password = this.cliente.password;
     this.clienteUpdate._id = this.cliente._id;
+    console.log(this.clienteUpdate);
     this.updateForm.reset();
 
-      this.userService.updateUser(this.clienteUpdate).subscribe(result => {
-        this.errorMessage = result.message;
-        alert(result.message);
+    this.userService.updateUser(this.clienteUpdate).subscribe(result => {
+      this.errorMessage = result.message;
+      alert(result.message);
     });
   }
   
