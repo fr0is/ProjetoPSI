@@ -6,9 +6,19 @@ Como aceder atraves do appserver:
 
 2-Fazer "ssh psi021@appserver.alunos.di.fc.ul.pt" nas 2 consolas. Pass:psi021
 
-3-Na consola do frontend "ng serve --port 3021 --host 0.0.0.0 --disableHostCheck true"
+3.1- Backend: 			
+cd ProjetoPSI 	
+cd Projeto 
+cd backendNew
 
-4-Na consola do backend "SET DEBUG=bakcendNew:* | npm start"
+3.2- Frontend:
+cd ProjetoPSI 	
+cd Projeto 
+cd FrontendNew
+
+4-Na consola do frontend "ng serve --port 3021 --host 0.0.0.0 --disableHostCheck true"
+
+5-Na consola do backend "SET DEBUG=bakcendNew:* | npm start"
 
 ##################################################################
 
