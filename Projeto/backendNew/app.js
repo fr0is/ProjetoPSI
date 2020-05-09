@@ -13,9 +13,16 @@ var helmet = require('helmet');
 
 var app = express();
 
+//Conexão appserver
+const port = 3071;
+app.set('port', 3071);
+app.listen(port, () => {
+    console.log("server started at port:" + port);
+});
+
 // Set up mongoose connection
 var mongoose = require('mongoose');
-var dev_db_url = 'mongodb+srv://teste:Tonitoni12@cluster0-gvwy5.mongodb.net/Teste-projeto1?retryWrites=true&w=majority';
+var dev_db_url = 'mongodb://psi021:psi021@localhost:27017/psi021?retryWrites=true&authSource=psi021';
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoDB = dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
