@@ -7,7 +7,7 @@ import { Quarto } from 'src/quarto';
 })
 export class QuartoService {
 
-  baseUrl = 'http://localhost:3000/catalog/';
+  baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
   quartosUrl = this.baseUrl + 'quartos';
 
   constructor(private http: HttpClient) { }

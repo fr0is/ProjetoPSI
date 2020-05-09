@@ -7,7 +7,7 @@ import { User } from 'src/user';
 })
 export class UserService {
 
-  baseUrl = 'http://localhost:3000/catalog/';
+  baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
   usersUrl = this.baseUrl + 'users/';
   createUrl = this.usersUrl + 'create';
 

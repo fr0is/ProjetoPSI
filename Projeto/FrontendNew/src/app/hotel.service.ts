@@ -9,7 +9,7 @@ import { Quarto } from 'src/quarto';
 
 export class HotelService {
 
-  baseUrl = 'http://localhost:3000/catalog/';
+  baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
   hoteisUrl = this.baseUrl + 'hoteis/';
   hotelUrl = this.baseUrl + 'hoteis/';
   quartosUrl = this.baseUrl + 'hoteis/' + sessionStorage.getItem('hotelId') + '/quartos/';
