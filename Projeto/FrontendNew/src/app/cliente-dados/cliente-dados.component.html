@@ -31,10 +31,11 @@
         <div id="passwordC">
             <div class="container">
                 <label id="password"><strong>Password</strong></label>
+                <label id="telefoneLabel">Número</label>
                 <input class="input" [type]='show ? "text" : "password"' formControlName="passwordUpdate">
                 <span class="border"></span>
             </div>
-            <input type="checkbox" style="position: absolute;" (click)="password()">
+            <input type="checkbox" (click)="password()">
         </div>
     </div>
     <div class="container">
