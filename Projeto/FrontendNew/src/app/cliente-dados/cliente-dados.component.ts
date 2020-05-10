@@ -25,30 +25,35 @@ export class ClienteDadosComponent implements OnInit {
     reservas: []
   }
   errorMessage = "";
+  show: boolean;
 
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
     public router: Router
   ) { 
+    this.show = false;
   }
 
   ngOnInit(): void {
     this.getCliente();
   }
 
+  password() {
+    this.show = !this.show;
+  }
 
-    getCliente(){
-      this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
-        this.cliente = user[0];
-        this.updateForm = this.formBuilder.group({
-          nomeUpdate: this.formBuilder.control(this.cliente.nome),
-          emailUpdate: this.formBuilder.control(this.cliente.email),
-          indicativoUpdate: this.formBuilder.control(this.cliente.indicativo),
-          telefoneUpdate: this.formBuilder.control(this.cliente.telefone),
-        })
-      }); 
-    }
+  getCliente(){
+    this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
+      this.cliente = user[0];
+      this.updateForm = this.formBuilder.group({
+        nomeUpdate: this.formBuilder.control(this.cliente.nome),
+        emailUpdate: this.formBuilder.control(this.cliente.email),
+        indicativoUpdate: this.formBuilder.control(this.cliente.indicativo),
+        telefoneUpdate: this.formBuilder.control(this.cliente.telefone),
+      })
+    }); 
+  }
 
 
   updateCliente(updateData){
