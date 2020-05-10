@@ -78,6 +78,10 @@ input:invalid {
     transform: translate3d(0, 0, 0);
 }
 
+.input~.border:invalid {
+    background-color: red;
+}
+
 
 /***********INFORMACAO ADICIONAL*************/
 
