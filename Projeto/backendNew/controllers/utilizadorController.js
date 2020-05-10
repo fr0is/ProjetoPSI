@@ -59,7 +59,6 @@ exports.utilizador_update = [
             else
                 req.body.cartaoMB = new Array(req.body.cartaoMB);
         }
-        console.log(req.body.cartaoMB);
         next();
     },
 
@@ -71,7 +70,6 @@ exports.utilizador_update = [
             else
                 req.body.morada = new Array(req.body.morada);
         }
-        console.log(req.body.morada);
         next();
     },
 
@@ -92,12 +90,6 @@ exports.utilizador_update = [
 
     // Process request after validation and sanitization.
     (req, res, next) => {
-
-        console.log(req.body.nome);
-        console.log(req.body.email);
-        console.log(req.body.password);
-        console.log(req.body.indicativo);
-        console.log(req.body.telefone);
 
         // Extract the validation errors from a request.
         const errors = validationResult(req);
