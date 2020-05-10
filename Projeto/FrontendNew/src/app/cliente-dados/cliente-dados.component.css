@@ -45,6 +45,7 @@ label {
 .container {
     width: auto;
     position: relative;
+    margin: 50px;
 }
 
 #indicativo {
