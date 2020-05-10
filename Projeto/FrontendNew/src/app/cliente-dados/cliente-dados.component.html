@@ -22,8 +22,10 @@
         </div>
         <div class="container">
             <label id="telefone"><strong></strong></label>
-            <input class="input" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" type="tel" formControlName="telefoneUpdate">
+            <input class="input" pattern="[+]{1}[0-9]{1,3}" type="text" formControlName="indicativoUpdate">
             <span class="border"></span>
+            <input class="input2" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" type="tel" formControlName="telefoneUpdate">
+            <span class="border2"></span>
         </div>
     </div>
     <div class="container">
