@@ -98,6 +98,10 @@ input:invalid~.border {
     grid-template-rows: auto;
 }
 
+#telefoneLabel {
+    display: none;
+}
+
 
 /***********BOTAO UPDATE****************/
 
