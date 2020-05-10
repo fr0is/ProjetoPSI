@@ -7,7 +7,10 @@ import { Quarto } from 'src/quarto';
 })
 export class QuartoService {
 
-  baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
+  //appserver
+  //baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
+  //locahost
+  baseUrl = 'http://localhost:3000/catalog/';
   quartosUrl = this.baseUrl + 'quartos';
 
   constructor(private http: HttpClient) { }
