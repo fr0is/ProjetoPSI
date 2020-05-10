@@ -18,6 +18,10 @@ export class ClienteDadosComponent implements OnInit {
     nome: "",
     email: "",
     password: "",
+    indicativo: "",
+    telefone: "",
+    morada: [],
+    cartaoMB: [],
     reservas: []
   }
   errorMessage = "";
@@ -40,7 +44,7 @@ export class ClienteDadosComponent implements OnInit {
         this.updateForm = this.formBuilder.group({
           nomeUpdate: this.formBuilder.control(this.cliente.nome),
           emailUpdate: this.formBuilder.control(this.cliente.email),
-          telemovelUpdate: this.formBuilder.control(this.cliente._id)
+          telemovelUpdate: this.formBuilder.control(this.cliente.telefone)
         })
       }); 
     }
@@ -51,6 +55,7 @@ export class ClienteDadosComponent implements OnInit {
     //Update Form Data  
     this.clienteUpdate.nome = updateData.nomeUpdate;
     this.clienteUpdate.email = updateData.emailUpdate;
+    this.clienteUpdate.telefone = updateData.telefoneUpdate;
     //Data que nao muda
     this.clienteUpdate.password = this.cliente.password;
     this.clienteUpdate._id = this.cliente._id;

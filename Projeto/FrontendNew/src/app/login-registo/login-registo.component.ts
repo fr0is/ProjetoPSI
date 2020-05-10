@@ -22,6 +22,10 @@ export class LoginRegistoComponent implements OnInit {
     nome: "",
     email: "",
     password: "",
+    indicativo: "",
+    telefone: "",
+    morada: [],
+    cartaoMB: [],
     reservas: []
   };
   errorMessage = "";
