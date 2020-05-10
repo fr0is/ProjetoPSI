@@ -95,7 +95,12 @@ input:invalid~.border {
 }
 
 
-/***********INFORMACAO ADICIONAL*************/
+/***********Telefone*************/
+
+#telefone {
+    display: grid;
+    grid-template-columns: auto auto;
+}
 
 
 /***********BOTAO UPDATE****************/
