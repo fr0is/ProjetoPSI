@@ -48,8 +48,8 @@ exports.utilizador_create = [
     }
 ];
 
-// Handle utilizador update on POST.
-exports.utilizador_update_post = [
+// Handle utilizador update.
+exports.utilizador_update = [
 
     // Validate fields.
     body('nome', 'Nome must not be empty.').isLength({ min: 1 }).trim(),

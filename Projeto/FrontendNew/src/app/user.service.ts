@@ -10,6 +10,7 @@ export class UserService {
   baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
   usersUrl = this.baseUrl + 'users/';
   createUrl = this.usersUrl + 'create';
+  updateUrl = this.usersUrl + 'update';
 
   user: User;
 
@@ -30,5 +31,9 @@ export class UserService {
   getUser(email){
     const url = this.usersUrl + email;
     return this.http.get<User>(url);
+  }
+
+  updateUser(user) {
+    return this.http.post<{message: string}>(this.updateUrl, user);
   }
 }
