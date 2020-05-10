@@ -25,15 +25,13 @@ export class ClienteDadosComponent implements OnInit {
     reservas: []
   }
   errorMessage = "";
-  show: boolean;
+  show = false;
 
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
     public router: Router
-  ) { 
-    this.show = false;
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getCliente();
