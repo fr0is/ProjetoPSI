@@ -98,8 +98,7 @@ input:invalid~.border {
 /***********Telefone*************/
 
 #telefone {
-    display: grid;
-    grid-template-columns: auto auto;
+    display: inline-block;
 }
 
 
