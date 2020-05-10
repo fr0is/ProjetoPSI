@@ -4,12 +4,12 @@
         <div id="informacaoRegisto">
             <div class="container">
                 <label id="nome"><strong>Nome</strong></label>
-                <input class="input" value="{{this.cliente.nome}}" type="text" formControlName="nomeUpdate">
+                <input class="input" value="{{this.cliente.nome}}" pattern="[A-Za-z ]" type="text" formControlName="nomeUpdate">
                 <span class="border"></span>
             </div>
             <div class="container">
                 <label id="mail"><strong>Email</strong></label>
-                <input class="input" value="{{this.cliente.email}}" type="email" formControlName="emailUpdate">
+                <input class="input" value="{{this.cliente.email}}" type="email" pattern=".+@hoteispsi.com" formControlName="emailUpdate">
                 <span class="border"></span>
             </div>
         </div>
