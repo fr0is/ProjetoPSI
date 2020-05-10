@@ -92,6 +92,11 @@ input:invalid~.border {
 
 /***********Telefone*************/
 
+#indicativoL {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+}
+
 #telefone {
     display: grid;
     grid-template-columns: 150px auto;
