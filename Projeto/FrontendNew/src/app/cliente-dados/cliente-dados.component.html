@@ -31,8 +31,8 @@
             <label id="password"><strong>Password</strong></label>
             <input class="input" [type]='show ? "text" : "password"' formControlName="passwordUpdate">
             <span class="border"></span>
+            <input type="checkbox" (click)="password()">
         </div>
-        <input type="checkbox" (click)="password()">
     </div>
     <div class="container">
         <label id="morada"><strong>Morada</strong></label>
