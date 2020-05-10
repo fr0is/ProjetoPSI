@@ -45,16 +45,7 @@ label {
 .container {
     width: auto;
     position: relative;
-}
-
-.container2 {
-    width: 10%;
-    position: relative;
-}
-
-.container3 {
-    width: 50%;
-    position: relative;
+    margin: 2%;
 }
 
 input {
@@ -97,7 +88,7 @@ input:invalid~.border {
 
 #telefone {
     display: grid;
-    grid-template-columns: 500px auto;
+    grid-template-columns: 100px auto;
     grid-template-rows: auto;
 }
 
