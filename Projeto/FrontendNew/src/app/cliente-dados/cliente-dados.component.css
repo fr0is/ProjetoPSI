@@ -48,10 +48,6 @@ label {
     margin: 25px;
 }
 
-#telefone>.border {
-    margin-bottom: 2%;
-}
-
 #indicativo {
     width: 75%;
     position: relative;
@@ -112,10 +108,6 @@ input:invalid~.border {
 #telefone {
     display: grid;
     grid-template-columns: 150px auto;
-}
-
-#telefoneLabel {
-    display: none;
 }
 
 
