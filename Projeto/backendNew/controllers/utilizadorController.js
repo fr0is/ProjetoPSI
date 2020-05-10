@@ -77,14 +77,16 @@ exports.utilizador_update = [
     // Validate fields.
     body('nome', 'Nome must not be empty.').isLength({ min: 1 }).trim(),
     body('email', 'Email must not be empty.').isLength({ min: 1 }).trim(),
+    body('indicativo', 'Nome must not be empty.').trim(),
+    body('telefone', 'Email must not be empty.').trim(),
     body('password', 'Password must not be empty.').isLength({ min: 1 }).trim(),
 
     // Sanitize fields.
     sanitizeBody('nome').escape(),
     sanitizeBody('email').escape(),
-    sanitizeBody('password').escape(),
     sanitizeBody('indicativo').escape(),
     sanitizeBody('telefone').escape(),
+    sanitizeBody('password').escape(),
 
     // Process request after validation and sanitization.
     (req, res, next) => {
@@ -97,8 +99,8 @@ exports.utilizador_update = [
             nome: req.body.nome,
             email: req.body.email,
             password: req.body.password,
-            indicativo: (typeof req.body.indicativo === 'undefined') ? "" : req.body.indicativo,
-            telefone: (typeof req.body.telefone === 'undefined') ? "" : req.body.telefone,
+            indicativo: req.body.indicativo,
+            telefone: req.body.telefone,
             morada: (typeof req.body.morada === 'undefined') ? [] : req.body.morada,
             cartaoMB: (typeof req.body.cartaoMB === 'undefined') ? [] : req.body.cartaoMB,
             _id: req.body._id // This is required, or a new ID will be assigned!

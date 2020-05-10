@@ -18,32 +18,42 @@ export class ClienteDadosComponent implements OnInit {
     nome: "",
     email: "",
     password: "",
+    indicativo: "",
+    telefone: "",
+    morada: [],
+    cartaoMB: [],
     reservas: []
   }
   errorMessage = "";
+  show = false;
 
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
     public router: Router
-  ) { 
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getCliente();
   }
 
+  password(){
+    this.show = !this.show;
+    console.log(this.show);
+  }
 
-    getCliente(){
-      this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
-        this.cliente = user[0];
-        this.updateForm = this.formBuilder.group({
-          nomeUpdate: this.formBuilder.control(this.cliente.nome),
-          emailUpdate: this.formBuilder.control(this.cliente.email),
-          telemovelUpdate: this.formBuilder.control(this.cliente._id)
-        })
-      }); 
-    }
+  getCliente(){
+    this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
+      this.cliente = user[0];
+      this.updateForm = this.formBuilder.group({
+        nomeUpdate: this.formBuilder.control(this.cliente.nome),
+        emailUpdate: this.formBuilder.control(this.cliente.email),
+        indicativoUpdate: this.formBuilder.control(this.cliente.indicativo),
+        telefoneUpdate: this.formBuilder.control(this.cliente.telefone),
+        passwordUpdate: this.formBuilder.control(this.cliente.password),
+      })
+    }); 
+  }
 
 
   updateCliente(updateData){
@@ -51,8 +61,10 @@ export class ClienteDadosComponent implements OnInit {
     //Update Form Data  
     this.clienteUpdate.nome = updateData.nomeUpdate;
     this.clienteUpdate.email = updateData.emailUpdate;
+    this.clienteUpdate.indicativo = updateData.indicativoUpdate;
+    this.clienteUpdate.telefone = updateData.telefoneUpdate;
+    this.clienteUpdate.password = updateData.passwordUpdate;
     //Data que nao muda
-    this.clienteUpdate.password = this.cliente.password;
     this.clienteUpdate._id = this.cliente._id;
     console.log(this.clienteUpdate);
     this.updateForm.reset();
