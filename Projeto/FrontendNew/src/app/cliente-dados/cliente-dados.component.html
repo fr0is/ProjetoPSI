@@ -1,4 +1,4 @@
-<form [formGroup]="updateForm" (ngSubmit)="updateCliente(updateForm.value)">
+<form ngNativeValidate [formGroup]="updateForm" (ngSubmit)="updateCliente(updateForm.value)">
     <div class="data">
         <img id="iconePerfil" src="assets/Imagens/Icones/perfil.png">
         <div id="informacaoRegisto">
@@ -17,7 +17,7 @@
     <div id="informacaoAdicional">
         <div class="container">
             <label id="telefone"><strong>Telefone</strong></label>
-            <input class="input" type="text" formControlName="indicativoUpdate">
+            <input class="input" pattern="[+]{1}[0-9]{1,3}" type="text" formControlName="indicativoUpdate">
             <span class="border"></span>
         </div>
         <div class="container">
