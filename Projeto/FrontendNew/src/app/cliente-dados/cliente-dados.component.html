@@ -32,12 +32,11 @@
             <div class="container">
                 <label id="password"><strong>Password</strong></label>
                 <div class="container">
-                    <label id="password">Show/Hide</label>
+                    <label id="password"><input type="checkbox" (click)="password()"></label>
                     <input class="input" [type]='show ? "text" : "password"' formControlName="passwordUpdate">
                     <span class="border"></span>
                 </div>
             </div>
-            <input type="checkbox" (click)="password()">
         </div>
     </div>
     <div class="container">
