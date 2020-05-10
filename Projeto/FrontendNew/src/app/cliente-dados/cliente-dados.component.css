@@ -50,11 +50,13 @@ label {
 
 .container2 {
     width: 10%;
+    position: relative;
     margin: 2%;
 }
 
 .container3 {
     width: 50%;
+    position: relative;
     margin: 2%;
 }
 
