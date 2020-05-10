@@ -44,7 +44,7 @@ export class ClienteDadosComponent implements OnInit {
         this.updateForm = this.formBuilder.group({
           nomeUpdate: this.formBuilder.control(this.cliente.nome),
           emailUpdate: this.formBuilder.control(this.cliente.email),
-          telemovelUpdate: this.formBuilder.control(this.cliente.telefone)
+          telefoneUpdate: this.formBuilder.control(this.cliente.telefone)
         })
       }); 
     }
