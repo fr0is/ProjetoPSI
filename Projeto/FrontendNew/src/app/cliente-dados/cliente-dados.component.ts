@@ -38,7 +38,7 @@ export class ClienteDadosComponent implements OnInit {
     console.log(this.show);
   }
 
-  password() {
+  password(){
     this.show = !this.show;
     console.log(this.show);
   }
