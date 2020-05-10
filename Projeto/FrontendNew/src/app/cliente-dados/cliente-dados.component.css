@@ -48,18 +48,27 @@ label {
     margin: 2%;
 }
 
+.container2 {
+    width: 50%;
+    position: relative;
+    margin: 2%;
+}
+
 input {
     width: 100%;
     font-size: 20px;
 }
 
-.input {
+.input,
+.input2 {
     border: 0;
     padding: 2%;
+    padding-left: 0;
     border-bottom: 1px solid #ccc;
 }
 
-.input~.border {
+.input~.border,
+.input2~.border {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -68,7 +77,8 @@ input {
     background-color: green;
 }
 
-.input:focus~.border {
+.input:focus~.border,
+.input2:focus~.border {
     width: 100%;
     transition: 0.5s;
 }
@@ -78,7 +88,7 @@ input:invalid {
     transform: translate3d(0, 0, 0);
 }
 
-.input:invalid~.border {
+input:invalid~.border {
     background-color: red;
     animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
     transform: translate3d(0, 0, 0);
