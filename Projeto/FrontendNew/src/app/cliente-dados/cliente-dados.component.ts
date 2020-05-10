@@ -63,8 +63,7 @@ export class ClienteDadosComponent implements OnInit {
     this.clienteUpdate.email = updateData.emailUpdate;
     this.clienteUpdate.indicativo = updateData.indicativoUpdate;
     this.clienteUpdate.telefone = updateData.telefoneUpdate;
-    console.log(updateData.password);
-    this.clienteUpdate.password = updateData.password;
+    this.clienteUpdate.password = updateData.passwordUpdate;
     //Data que nao muda
     this.clienteUpdate._id = this.cliente._id;
     console.log(this.clienteUpdate);
