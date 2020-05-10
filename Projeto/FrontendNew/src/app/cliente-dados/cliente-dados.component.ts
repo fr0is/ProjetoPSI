@@ -51,6 +51,7 @@ export class ClienteDadosComponent implements OnInit {
         emailUpdate: this.formBuilder.control(this.cliente.email),
         indicativoUpdate: this.formBuilder.control(this.cliente.indicativo),
         telefoneUpdate: this.formBuilder.control(this.cliente.telefone),
+        passwordUpdate: this.formBuilder.control(this.cliente.password),
       })
     }); 
   }
@@ -63,8 +64,8 @@ export class ClienteDadosComponent implements OnInit {
     this.clienteUpdate.email = updateData.emailUpdate;
     this.clienteUpdate.telefone = updateData.telefoneUpdate;
     this.clienteUpdate.indicativo = updateData.indicativoUpdate;
+    this.clienteUpdate.password = updateData.password;
     //Data que nao muda
-    this.clienteUpdate.password = this.cliente.password;
     this.clienteUpdate._id = this.cliente._id;
     console.log(this.clienteUpdate);
     this.updateForm.reset();
