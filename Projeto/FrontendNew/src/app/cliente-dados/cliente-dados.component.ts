@@ -44,7 +44,8 @@ export class ClienteDadosComponent implements OnInit {
         this.updateForm = this.formBuilder.group({
           nomeUpdate: this.formBuilder.control(this.cliente.nome),
           emailUpdate: this.formBuilder.control(this.cliente.email),
-          telefoneUpdate: this.formBuilder.control(this.cliente.telefone)
+          indicativoUpdate: this.formBuilder.control(this.cliente.indicativo),
+          telefoneUpdate: this.formBuilder.control(this.cliente.telefone),
         })
       }); 
     }
@@ -56,6 +57,7 @@ export class ClienteDadosComponent implements OnInit {
     this.clienteUpdate.nome = updateData.nomeUpdate;
     this.clienteUpdate.email = updateData.emailUpdate;
     this.clienteUpdate.telefone = updateData.telefoneUpdate;
+    this.clienteUpdate.indicativo = updateData.indicativoUpdate;
     //Data que nao muda
     this.clienteUpdate.password = this.cliente.password;
     this.clienteUpdate._id = this.cliente._id;
