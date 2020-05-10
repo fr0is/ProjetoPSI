@@ -99,8 +99,8 @@ exports.utilizador_update = [
             nome: req.body.nome,
             email: req.body.email,
             password: req.body.password,
-            indicativo: (typeof req.body.indicativo === 'undefined') ? "" : req.body.indicativo,
-            telefone: (typeof req.body.telefone === 'undefined') ? "" : req.body.telefone,
+            indicativo: req.body.indicativo,
+            telefone: req.body.telefone,
             morada: (typeof req.body.morada === 'undefined') ? [] : req.body.morada,
             cartaoMB: (typeof req.body.cartaoMB === 'undefined') ? [] : req.body.cartaoMB,
             _id: req.body._id // This is required, or a new ID will be assigned!
