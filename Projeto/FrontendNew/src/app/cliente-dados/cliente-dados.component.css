@@ -48,8 +48,8 @@ label {
     margin: 25px;
 }
 
-#telefone>.container {
-    margin-bottom: 0;
+#telefone>.border {
+    margin-bottom: 2%;
 }
 
 #indicativo {
