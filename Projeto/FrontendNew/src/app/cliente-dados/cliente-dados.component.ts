@@ -35,7 +35,6 @@ export class ClienteDadosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCliente();
-    console.log(this.show);
   }
 
   password(){
