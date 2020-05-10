@@ -78,6 +78,8 @@ exports.utilizador_update = [
     body('nome', 'Nome must not be empty.').isLength({ min: 1 }).trim(),
     body('email', 'Email must not be empty.').isLength({ min: 1 }).trim(),
     body('password', 'Password must not be empty.').isLength({ min: 1 }).trim(),
+    body('indicativo', 'Nome must not be empty.').trim(),
+    body('telefone', 'Email must not be empty.').trim(),
 
     // Sanitize fields.
     sanitizeBody('nome').escape(),
