@@ -19,9 +19,21 @@
             <label id="telefone"><strong>Telefone</strong></label>
             <input class="input" type="text" formControlName="indicativoUpdate">
             <span class="border"></span>
+        </div>
+        <div class="container">
             <input class="input" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" type="tel" formControlName="telefoneUpdate">
             <span class="border"></span>
         </div>
+    </div>
+    <div class="container">
+        <label id="telefone"><strong>Morada</strong></label>
+        <input class="input" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" type="tel" formControlName="telefoneUpdate">
+        <span class="border"></span>
+    </div>
+    <div class="container">
+        <label id="telefone"><strong>Cartões</strong></label>
+        <input class="input" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" type="tel" formControlName="telefoneUpdate">
+        <span class="border"></span>
     </div>
     <button type="submit" class="submit">Atualizar Dados</button>
     <button (click)="logout()" class="submit">Logout</button>
