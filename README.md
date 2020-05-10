@@ -18,7 +18,7 @@ cd FrontendNew
 
 4-Na consola do frontend "ng serve --port 3021 --host 0.0.0.0 --disableHostCheck true"
 
-5-Na consola do backend "SET DEBUG=bakcendNew:* | npm start"
+5-Na consola do backend "DEBUG=bakcendNew:* | npm start"
 
 ##################################################################
 
