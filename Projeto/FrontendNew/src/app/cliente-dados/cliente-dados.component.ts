@@ -61,8 +61,8 @@ export class ClienteDadosComponent implements OnInit {
     //Update Form Data  
     this.clienteUpdate.nome = updateData.nomeUpdate;
     this.clienteUpdate.email = updateData.emailUpdate;
-    this.clienteUpdate.telefone = updateData.telefoneUpdate;
     this.clienteUpdate.indicativo = updateData.indicativoUpdate;
+    this.clienteUpdate.telefone = updateData.telefoneUpdate;
     this.clienteUpdate.password = updateData.password;
     //Data que nao muda
     this.clienteUpdate._id = this.cliente._id;
