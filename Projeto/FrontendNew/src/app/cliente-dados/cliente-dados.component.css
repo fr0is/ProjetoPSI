@@ -47,6 +47,11 @@ label {
     position: relative;
 }
 
+#indicativoContainer {
+    width: 90%;
+    position: relative;
+}
+
 input {
     width: 100%;
     font-size: 20px;
