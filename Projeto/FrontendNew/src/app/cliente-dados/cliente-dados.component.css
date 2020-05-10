@@ -49,7 +49,13 @@ label {
 }
 
 .container2 {
-    width: 40%;
+    width: 5%;
+    position: relative;
+    margin: 2%;
+}
+
+.container3 {
+    width: 30%;
     position: relative;
     margin: 2%;
 }
@@ -57,18 +63,13 @@ label {
 input {
     width: 100%;
     font-size: 20px;
-}
-
-.input,
-.input2 {
     border: 0;
     padding: 2%;
     padding-left: 0;
     border-bottom: 1px solid #ccc;
 }
 
-.input~.border,
-.input2~.border {
+input~.border {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -77,8 +78,7 @@ input {
     background-color: green;
 }
 
-.input:focus~.border,
-.input2:focus~.border {
+input:focus~.border {
     width: 100%;
     transition: 0.5s;
 }
