@@ -78,8 +78,10 @@ input:invalid {
     transform: translate3d(0, 0, 0);
 }
 
-.input~.border:invalid {
+.input:invalid~.border {
     background-color: red;
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
 }
 
 
