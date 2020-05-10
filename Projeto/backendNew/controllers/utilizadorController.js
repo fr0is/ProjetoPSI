@@ -59,6 +59,7 @@ exports.utilizador_update = [
             else
                 req.body.cartaoMB = new Array(req.body.cartaoMB);
         }
+        console.log("ola");
         next();
     },
 
