@@ -96,7 +96,7 @@
         grid-column-start: 2;
         display: grid;
         grid-template-columns: 50% 50%;
-        grid-template-rows: 300px 1000px;
+        grid-template-rows: 300px auto;
 
     }
 
@@ -131,8 +131,8 @@
     .listaQuartos {
         grid-column-start: 2;
         display: grid;
-        grid-template-columns: 50% 50%;
-        grid-template-rows: 300px 1000px;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
 
     }
 
@@ -169,7 +169,7 @@
     .listaQuartos {
         grid-column-start: 2;
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: auto auto;
         
 
     }

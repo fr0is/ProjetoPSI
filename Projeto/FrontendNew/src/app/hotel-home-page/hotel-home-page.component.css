@@ -81,6 +81,7 @@
         grid-row-gap: 20px;
         grid-row-start:5;
         grid-row-end: span 1;
+        padding-bottom: 10%;
 
     }
 
@@ -471,7 +472,7 @@
         }
         #imgDesc,
         #imgDesc1{
-
+            
             color: white;
             width: 55%;
             margin:auto;
@@ -489,148 +490,6 @@
 
     }
 
-    @media (min-width:1440px){
-    /* 4K */
-
-
-
-    /* Laptop L */
-    .nav{
-
-        grid-row-start:1;
-        grid-row-end: 1;
-
-       justify-items: center;
-    }
-    .containerDesc{
-        display:grid;
-        grid-template-rows: 60px auto auto;
-        grid-template-columns: 8% auto auto 8%;
-        grid-row-gap: 70px;
-        align-items: center;
-
-
-
-
-    }
-
-
-    .Titulo{
-        align-self: center;
-        justify-self: center;
-        font-size: 35px;
-    }
-
-
-
-    .descricao{
-        display: grid;
-
-        grid-template-columns: 50% 50%;
-        grid-row-start: 2;
-        grid-row-end: span 1;
-        grid-column-start: 2;
-        grid-column-end: span 1;
-        
-
-
-    }
-
-    .descricao1{
-        display: grid;
-
-        
-        grid-row-start: 3;
-        grid-row-end: span 1;
-        grid-column-start: 2;
-        grid-column-end: span 1;;
-        grid-template-columns: 50% 50%;
-        margin-bottom: 15%;
-        
-
-
-    }
-
-    .descricao2{
-        display: grid;
-
-        grid-template-columns: 50% 50%;
-        grid-row-start: 2;
-        grid-row-end: span 1;
-        grid-column-start: 3;
-        grid-column-end: span 1;
-        
-       
-
-
-
-
-
-    }
-
-    .descricao3{
-        display: grid;
-
-        grid-template-columns: 50% 50%;
-        
-        grid-row-start: 3;
-        grid-row-end: span 1;
-        grid-column-start: 3;
-        grid-column-end: span 1;
-        margin-bottom: 15%;
-        
-    }
-    .desc{
-
-    }
-
-    .desc1,
-    .desc{
-
-        grid-column-start: 1;
-        grid-column-end: span 1;
-        padding-left: 40px;
-        padding-right: 40px;
-        font-size: 16px;
-        margin: auto;
-
-    }
-
-    .Titulo {
-
-        font-size: 35px;
-
-    }
-
-    #imgDesc{
-
-        grid-column-start: 2;
-        grid-column-end: span 1;
-
-    }
-
-    #imgDesc1{
-
-        grid-column-start: 2;
-        grid-column-end: span 1;
-    }
-    #imgDesc,
-    #imgDesc1{
-
-        width : 300px;
-
-
-        
-        align-self:center;
-        justify-self: center;
-    }
-
-    #p1 {
-        text-align: justify;
-    }
-
-
-    }
 
 
     /*******************SERVICOS*********************/
