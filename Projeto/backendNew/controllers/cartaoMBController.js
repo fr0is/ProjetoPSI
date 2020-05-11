@@ -28,7 +28,7 @@ exports.cartaoMb_get = function(req, res, next) {
 };
 
 // Handle CartaoMB create.
-exports.cartaMb_create = [
+exports.cartaoMb_create = [
 
     // Validate fields.
     body('numero', 'Numero must not be empty.').isLength({ min: 1 }).trim(),

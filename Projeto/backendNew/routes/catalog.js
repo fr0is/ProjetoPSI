@@ -7,8 +7,6 @@ var hotel_controller = require('../controllers/hotelController');
 var utilizador_controller = require('../controllers/utilizadorController');
 var cartaoMB_controller = require('../controllers/cartaoMBController');
 
-
-
 router.get('/hoteis', hotel_controller.hotel_list); // lista de hoteis
 router.get('/hoteis/:hotelId', hotel_controller.hotel_detail); // hotel
 router.get('/hoteis/:hotelId/quartos', quarto_controller.room_list); // lista de quartos de um hotel
