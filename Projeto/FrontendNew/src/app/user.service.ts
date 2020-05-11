@@ -10,7 +10,7 @@ export class UserService {
   //appserver
   //baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
   //locahost
-  baseUrl = 'http://localhost:3000/catalog/';
+  baseUrl = 'http://localhost:3071/catalog/';
   usersUrl = this.baseUrl + 'users/';
   createUrl = this.usersUrl + 'create';
   updateUrl = this.usersUrl + 'update';
