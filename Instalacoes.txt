@@ -6,6 +6,7 @@ npm i angular-local-storage
 BACKEND
 
 npm install eslint --save-dev
+mpn i moment
 npm i cors
 npm i compression
 npm i helmet
