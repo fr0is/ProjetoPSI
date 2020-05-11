@@ -86,7 +86,7 @@ function quartoCreate(tipo, nrQuartos, precoAlta, precoBaixa, hotel, servicos, f
     });
 }
 
-function quartoInstanceCreate(quarto, numeroQuarto, cb){
+function quartoInstanceCreate(quarto, numeroQuarto, cb) {
     quartoInstanceDetail = {
         quarto: quarto,
         numeroQuarto: numeroQuarto,
@@ -200,50 +200,50 @@ function createQuartoInstances(cb) {
         //quartos do Douro Vinhas
         function(callback) {
             for (i = 1; i <= 3; i++) {
-                quartoInstanceCreate(i,quarto[0], callback);
+                quartoInstanceCreate(i, quartos[0], callback);
             }
         },
         function(callback) {
-            quartoInstanceCreate(4,quarto[1], callback);
+            quartoInstanceCreate(4, quartos[1], callback);
         },
         function(callback) {
-            quartoInstanceCreate(5,quarto[2], callback);
+            quartoInstanceCreate(5, quartos[2], callback);
         },
         function(callback) {
-            quartoInstanceCreate(6,quarto[3], callback);
+            quartoInstanceCreate(6, quartos[3], callback);
         },
 
         //quartos do A Ver o Mar
         function(callback) {
             for (i = 1; i <= 182; i++) {
-                quartoInstanceCreate(i,quarto[4], callback);
+                quartoInstanceCreate(i, quartos[4], callback);
             }
         },
         function(callback) {
             for (i = 183; i <= 187; i++) {
-                quartoInstanceCreate(i,quarto[5], callback);
+                quartoInstanceCreate(i, quartos[5], callback);
             }
         },
         function(callback) {
             for (i = 188; i <= 202; i++) {
-                quartoInstanceCreate(i,quarto[6], callback);
+                quartoInstanceCreate(i, quartos[6], callback);
             }
         },
 
         //quartos do Mediterrâneo
         function(callback) {
             for (i = 1; i <= 114; i++) {
-                quartoInstanceCreate(i,quarto[7], callback);
+                quartoInstanceCreate(i, quartos[7], callback);
             }
         },
         function(callback) {
             for (i = 115; i <= 212; i++) {
-                quartoInstanceCreate(i,quarto[8], callback);
+                quartoInstanceCreate(i, quartos[8], callback);
             }
         },
         function(callback) {
             for (i = 213; i <= 220; i++) {
-                quartoInstanceCreate(i,quarto[9], callback);
+                quartoInstanceCreate(i, quartos[9], callback);
             }
         },
     ], cb);
