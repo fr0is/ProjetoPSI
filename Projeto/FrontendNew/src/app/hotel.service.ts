@@ -12,7 +12,7 @@ export class HotelService {
   //appserver
   //baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
   //locahost
-  baseUrl = 'http://localhost:3000/catalog/';
+  baseUrl = 'http://localhost:3071/catalog/';
   hoteisUrl = this.baseUrl + 'hoteis/';
   hotelUrl = this.baseUrl + 'hoteis/';
   quartosUrl = this.baseUrl + 'hoteis/' + sessionStorage.getItem('hotelId') + '/quartos/';
