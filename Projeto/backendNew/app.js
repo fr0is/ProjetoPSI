@@ -14,8 +14,16 @@ var helmet = require('helmet');
 var app = express();
 
 //Conexão appserver
+/*
 const port = 3071;
 app.set('port', 3071);
+app.listen(port, () => {
+    console.log("server started at port:" + port);
+});*/
+
+//Conexao locahost
+const port = 3000;
+app.set('port', 3000);
 app.listen(port, () => {
     console.log("server started at port:" + port);
 });
