@@ -218,19 +218,19 @@ function createQuartoInstances(cb) {
         },
 
         //quartos do A Ver o Mar
-        function(callback) {
+        function() {
             for (i = 1; i <= 182; i++) {
                 var call = callback;
                 quartoInstanceCreate(i, quartos[4], call);
             }
         },
-        function(callback) {
+        function() {
             for (i = 183; i <= 187; i++) {
                 var call = callback;
                 quartoInstanceCreate(i, quartos[5], call);
             }
         },
-        function(callback) {
+        function() {
             for (i = 188; i <= 202; i++) {
                 var call = callback;
                 quartoInstanceCreate(i, quartos[6], call);
@@ -238,19 +238,19 @@ function createQuartoInstances(cb) {
         },
 
         //quartos do Mediterrâneo
-        function(callback) {
+        function() {
             for (i = 1; i <= 114; i++) {
                 var call = callback;
                 quartoInstanceCreate(i, quartos[7], call);
             }
         },
-        function(callback) {
+        function() {
             for (i = 115; i <= 212; i++) {
                 var call = callback;
                 quartoInstanceCreate(i, quartos[8], call);
             }
         },
-        function(callback) {
+        function() {
             for (i = 213; i <= 220; i++) {
                 var call = callback;
                 quartoInstanceCreate(i, quartos[9], call);
