@@ -18,7 +18,7 @@ var Cartao = require('./models/cartaoMB');
 
 
 var mongoose = require('mongoose');
-var MongoClient= require('mongodb');
+var MongoClient= require('mongodb').MongoClient;
 var mongoDB = userArgs[0];
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
@@ -220,84 +220,96 @@ function createQuartoInstances(cb) {
         
         //quartos do A Ver o Mar
         function(callback) {
-            for (i = 1; i < 182; i++) {
-                MongoClient.connect(mongoDB, function(err, db) {
-                    if (err) throw err;
-                    var dbo = db.db("");
-                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[4]}), function(err, res){
-                        if (err) throw err;
-                        db.close();
-                    });
-                });
+            var insts = [];
+            for (i = 1; i <= 182; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[4]}));
             }
-            quartoInstanceCreate(182, quartos[4], callback);
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
         },
         function(callback) {
-            for (i = 183; i < 187; i++) {
-                MongoClient.connect(mongoDB, function(err, db) {
-                    if (err) throw err;
-                    var dbo = db.db("");
-                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[5]}), function(err, res){
-                        if (err) throw err;
-                        db.close();
-                    });
-                });
+            var insts = [];
+            for (i = 183; i <= 187; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[5]}));
             }
-            quartoInstanceCreate(187, quartos[5], callback);
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
         },
         function(callback) {
-            for (i = 188; i < 202; i++) {
-                MongoClient.connect(mongoDB, function(err, db) {
-                    if (err) throw err;
-                    var dbo = db.db("");
-                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[6]}), function(err, res){
-                        if (err) throw err;
-                        db.close();
-                    });
-                });
+            var insts = [];
+            for (i = 188; i <= 202; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[6]}));
             }
-            quartoInstanceCreate(202, quartos[6], callback);
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
         },
 
         //quartos do Mediterrâneo
         function(callback) {
-            for (i = 1; i < 114; i++) {
-                MongoClient.connect(mongoDB, function(err, db) {
-                    if (err) throw err;
-                    var dbo = db.db("");
-                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[7]}), function(err, res){
-                        if (err) throw err;
-                        db.close();
-                    });
-                });
+            var insts = [];
+            for (i = 1; i <= 114; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[7]}));
             }
-            quartoInstanceCreate(114, quartos[7], callback);
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
         },
         function(callback) {
-            for (i = 115; i < 212; i++) {
-                MongoClient.connect(mongoDB, function(err, db) {
-                    if (err) throw err;
-                    var dbo = db.db("");
-                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[8]}), function(err, res){
-                        if (err) throw err;
-                        db.close();
-                    });
-                });
+            var insts = [];
+            for (i = 115; i <= 212; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[8]}));
             }
-            quartoInstanceCreate(212, quartos[8], callback);
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
         },
         function(callback) {
-            for (i = 213; i < 220; i++) {
-                MongoClient.connect(mongoDB, function(err, db) {
-                    if (err) throw err;
-                    var dbo = db.db("");
-                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[9]}), function(err, res){
-                        if (err) throw err;
-                        db.close();
-                    });
-                });
+            var insts = [];
+            for (i = 213; i <= 220; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[9]}));
             }
-            quartoInstanceCreate(220, quartos[9], callback);
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
         },
     ], cb);
 }
