@@ -1,7 +1,8 @@
 export interface CartaoMB {
     _id: string;
     numero: string;
-    prazo: string;
+    prazoAno: Number;
+    prazoMes: Number;
     cvv: string;
     userEmail: string;
   }

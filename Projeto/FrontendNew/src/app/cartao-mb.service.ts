@@ -17,7 +17,7 @@ export class CartaoMBService {
 
   constructor(private http: HttpClient) { }
 
-  createUser(cartao: CartaoMB) {
+  createCartao(cartao: CartaoMB) {
     return this.http.post<{ message: string }>(this.createUrl, cartao);
   }
 

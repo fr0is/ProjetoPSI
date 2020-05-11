@@ -19,14 +19,6 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  setUserAtual(user:User){
-    this.user = user;
-  }
-
-  getUserAtual(){
-    return this.user;
-  }
-
   createUser(user: User) {
     return this.http.post<{ message: string }>(this.createUrl, user);
   }

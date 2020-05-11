@@ -32,9 +32,10 @@ exports.cartaoMb_create = [
 
     // Validate fields.
     body('numero', 'Numero must not be empty.').isLength({ min: 1 }).trim(),
-    body('prazo', 'prazo must not be empty.').isLength({ min: 1 }).trim(),
+    body('prazoAno', 'Ano must not be empty.').isLength({ min: 1 }).trim(),
+    body('prazoMes', 'Mes must not be empty.').isLength({ min: 1 }).trim(),
     body('cvv', 'cvv must not be empty.').isLength({ min: 1 }).trim(),
-    body('emailUtilizador', 'user must not be empty.').isLength({ min: 1 }).trim(),
+    body('userEmail', 'user must not be empty.').isLength({ min: 1 }).trim(),
 
     // Sanitize fields.
     sanitizeBody('*').escape(),
@@ -47,7 +48,8 @@ exports.cartaoMb_create = [
         // Create a CartaoMB object with escaped and trimmed data.
         var cartao = new CartaoMB({
             numero: req.body.numero,
-            prazo: req.body.prazo,
+            prazoAno: req.body.prazoAno,
+            prazoMes: req.body.prazoMes,
             cvv: req.body.cvv,
             userEmail: req.body.userEmail,
         });

@@ -104,10 +104,11 @@ function userCreate(nome, email, password, cb) {
     });
 }
 
-function cartaoCreate(nr, prazo, cvv, user, cb) {
+function cartaoCreate(nr, prazoAno, prazoMes, cvv, user, cb) {
     cartaoDetail = {
         numero: nr,
-        prazo: prazo,
+        prazoAno: prazoAno,
+        prazoMes: prazoMes,
         cvv: cvv,
         userEmail: user
     }
@@ -184,10 +185,10 @@ function createUsers(cb) {
 function createCartoes(cb) {
     async.parallel([
         function(callback) {
-            cartaoCreate('232123212321', '02/23', '222', 'mena@psihoteis.com', callback)
+            cartaoCreate('232123212321', '02', '02', '222', 'mena@psihoteis.com', callback)
         },
         function(callback) {
-            cartaoCreate('232123212321', '02/23', '222', 'mena2@psihoteis.com', callback)
+            cartaoCreate('232123212321', '02', '02', '222', 'mena2@psihoteis.com', callback)
         },
     ], cb);
 }
