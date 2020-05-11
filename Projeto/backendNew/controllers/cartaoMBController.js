@@ -26,3 +26,40 @@ exports.cartaoMb_get = function(req, res, next) {
             res.json(cartao);
         });
 };
+
+// Handle CartaoMB create.
+exports.cartaMb_create = [
+
+    // Validate fields.
+    body('numero', 'Numero must not be empty.').isLength({ min: 1 }).trim(),
+    body('prazo', 'prazo must not be empty.').isLength({ min: 1 }).trim(),
+    body('cvv', 'cvv must not be empty.').isLength({ min: 1 }).trim(),
+    body('emailUtilizador', 'user must not be empty.').isLength({ min: 1 }).trim(),
+
+    // Sanitize fields.
+    sanitizeBody('*').escape(),
+    // Process request after validation and sanitization.
+    (req, res, next) => {
+
+        // Extract the validation errors from a request.
+        const errors = validationResult(req);
+
+        // Create a CartaoMB object with escaped and trimmed data.
+        var cartao = new CartaoMB({
+            numero: req.body.numero,
+            prazo: req.body.prazo,
+            cvv: req.body.cvv,
+            userEmail: req.body.userEmail,
+        });
+        if (!errors.isEmpty()) {
+            res.json({ 'message': 'Validation errors' });
+        } else {
+            // Data from form is valid. Save CartaoMB.
+            cartao.save(function(err) {
+                if (err) { return next(err); }
+                // Successful - redirect to new CartaoMB record.
+                res.json({ 'message': 'success' });
+            });
+        }
+    }
+];

@@ -106,7 +106,7 @@ function userCreate(nome, email, password, cb) {
 
 function cartaoCreate(nr, prazo, cvv, user, cb) {
     cartaoDetail = {
-        númeroDoCartao: nr,
+        numero: nr,
         prazo: prazo,
         cvv: cvv,
         userEmail: user
