@@ -16,6 +16,7 @@ router.get('/hoteis/:hotelId/quartos/:quartoId', quarto_controller.quarto_detail
 router.get('/users/:email', utilizador_controller.utilizador_get); // user get
 router.post('/users/create', utilizador_controller.utilizador_create); //user create
 router.post('/users/update', utilizador_controller.utilizador_update); //user update
-router.get('/users/:userEmail/cartoes', cartaoMB_controller.cartaoMb_get_user); //user update
+router.get('/users/:userEmail/cartoes', cartaoMB_controller.cartaoMb_get_user_email); //user update
+router.get('/users/reserva/:cartaoId', cartaoMB_controller.cartaoMb_get_user_email); //user update
 
 module.exports = router;

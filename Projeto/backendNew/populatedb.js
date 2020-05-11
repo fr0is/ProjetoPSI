@@ -13,6 +13,7 @@ var async = require('async')
 var Hotel = require('./models/hotel')
 var Quarto = require('./models/quarto')
 var Utilizador = require('./models/utilizador')
+var Cartao = require('./models/cartaoMB');
 
 
 var mongoose = require('mongoose');
@@ -25,6 +26,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 var hoteis = [];
 var quartos = [];
 var users = [];
+var cartoes = [];
 
 
 function hotelCreate(nome, descricao, local, zona, codigoPostal, pais, latitude, longitude, codigoRegiao, telefone, email, servicos, fotos, fotoPath, cb) {
@@ -102,6 +104,26 @@ function userCreate(nome, email, password, cb) {
     });
 }
 
+function cartaoCreate(nr, prazo, cvv, user, cb) {
+    cartaoDetail = {
+        númeroDoCartao: nr,
+        prazo: prazo,
+        cvv: cvv,
+        userEmail: user
+    }
+    var cartao = new Cartao(cartaoDetail);
+
+    cartao.save(function(err) {
+        if (err) {
+            cb(err, null)
+            return
+        }
+        console.log('Novo Cartao: ' + cartao);
+        cartoes.push(cartao)
+        cb(null, cartao)
+    });
+}
+
 function createHoteis(cb) {
     async.parallel([
         function(callback) {
@@ -159,11 +181,25 @@ function createUsers(cb) {
     ], cb);
 }
 
+function createCartoes(cb) {
+    async.parallel([
+        function(callback) {
+            cartaoCreate('232123212321', '02/23', '222', 'mena@psihoteis.com', callback)
+        },
+        function(callback) {
+            cartaoCreate('232123212321', '02/23', '222', 'mena2@psihoteis.com', callback)
+        },
+    ], cb);
+}
+
+
+
 
 async.series([
         createHoteis,
         createQuartos,
-        createUsers
+        createUsers,
+        createCartoes
     ],
     function(err, results) {
         if (err) {
