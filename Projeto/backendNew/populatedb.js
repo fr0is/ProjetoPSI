@@ -18,6 +18,7 @@ var Cartao = require('./models/cartaoMB');
 
 
 var mongoose = require('mongoose');
+var MongoClient= require('mongodb');
 var mongoDB = userArgs[0];
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
@@ -86,10 +87,10 @@ function quartoCreate(tipo, nrQuartos, precoAlta, precoBaixa, hotel, servicos, f
     });
 }
 
-function quartoInstanceCreate(quarto, numeroQuarto, cb) {
+function quartoInstanceCreate(numeroQuarto, quarto, cb) {
     quartoInstanceDetail = {
-        quarto: quarto,
         numeroQuarto: numeroQuarto,
+        quarto: quarto,
     }
 
     var quartoInstance = new QuartoInstance(quartoInstanceDetail);
@@ -216,45 +217,87 @@ function createQuartoInstances(cb) {
         function(callback) {
             quartoInstanceCreate(6, quartos[3], callback);
         },
-
+        
         //quartos do A Ver o Mar
-        function() {
-            for (i = 1; i <= 182; i++) {
-                var call = callback;
-                quartoInstanceCreate(i, quartos[4], call);
+        function(callback) {
+            for (i = 1; i < 182; i++) {
+                MongoClient.connect(mongoDB, function(err, db) {
+                    if (err) throw err;
+                    var dbo = db.db("");
+                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[4]}), function(err, res){
+                        if (err) throw err;
+                        db.close();
+                    });
+                });
             }
+            quartoInstanceCreate(182, quartos[4], callback);
         },
-        function() {
-            for (i = 183; i <= 187; i++) {
-                var call = callback;
-                quartoInstanceCreate(i, quartos[5], call);
+        function(callback) {
+            for (i = 183; i < 187; i++) {
+                MongoClient.connect(mongoDB, function(err, db) {
+                    if (err) throw err;
+                    var dbo = db.db("");
+                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[5]}), function(err, res){
+                        if (err) throw err;
+                        db.close();
+                    });
+                });
             }
+            quartoInstanceCreate(187, quartos[5], callback);
         },
-        function() {
-            for (i = 188; i <= 202; i++) {
-                var call = callback;
-                quartoInstanceCreate(i, quartos[6], call);
+        function(callback) {
+            for (i = 188; i < 202; i++) {
+                MongoClient.connect(mongoDB, function(err, db) {
+                    if (err) throw err;
+                    var dbo = db.db("");
+                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[6]}), function(err, res){
+                        if (err) throw err;
+                        db.close();
+                    });
+                });
             }
+            quartoInstanceCreate(202, quartos[6], callback);
         },
 
         //quartos do Mediterrâneo
-        function() {
-            for (i = 1; i <= 114; i++) {
-                var call = callback;
-                quartoInstanceCreate(i, quartos[7], call);
+        function(callback) {
+            for (i = 1; i < 114; i++) {
+                MongoClient.connect(mongoDB, function(err, db) {
+                    if (err) throw err;
+                    var dbo = db.db("");
+                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[7]}), function(err, res){
+                        if (err) throw err;
+                        db.close();
+                    });
+                });
             }
+            quartoInstanceCreate(114, quartos[7], callback);
         },
-        function() {
-            for (i = 115; i <= 212; i++) {
-                var call = callback;
-                quartoInstanceCreate(i, quartos[8], call);
+        function(callback) {
+            for (i = 115; i < 212; i++) {
+                MongoClient.connect(mongoDB, function(err, db) {
+                    if (err) throw err;
+                    var dbo = db.db("");
+                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[8]}), function(err, res){
+                        if (err) throw err;
+                        db.close();
+                    });
+                });
             }
+            quartoInstanceCreate(212, quartos[8], callback);
         },
-        function() {
-            for (i = 213; i <= 220; i++) {
-                var call = callback;
-                quartoInstanceCreate(i, quartos[9], call);
+        function(callback) {
+            for (i = 213; i < 220; i++) {
+                MongoClient.connect(mongoDB, function(err, db) {
+                    if (err) throw err;
+                    var dbo = db.db("");
+                    dbo.collection("quartoinstances").insertOne(new QuartoInstance({numeroQuarto: i, quarto: quartos[9]}), function(err, res){
+                        if (err) throw err;
+                        db.close();
+                    });
+                });
             }
+            quartoInstanceCreate(220, quartos[9], callback);
         },
     ], cb);
 }
@@ -263,6 +306,9 @@ function createUsers(cb) {
     async.parallel([
         function(callback) {
             userCreate('Mena', 'mena@psihoteis.com', '123', callback)
+        },
+        function(callback) {
+            userCreate('Dio', 'Dio@psihoteis.com', 'ZaWarudo', callback)
         },
     ], cb);
 }
