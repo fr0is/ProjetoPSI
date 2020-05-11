@@ -12,6 +12,7 @@ if (!userArgs[0].startsWith('mongodb')) {
 var async = require('async')
 var Hotel = require('./models/hotel')
 var Quarto = require('./models/quarto')
+var QuartoInstance = require('./models/quartoInstance')
 var Utilizador = require('./models/utilizador')
 var Cartao = require('./models/cartaoMB');
 
@@ -25,6 +26,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var hoteis = [];
 var quartos = [];
+var quartosInstance = [];
 var users = [];
 var cartoes = [];
 
@@ -81,6 +83,25 @@ function quartoCreate(tipo, nrQuartos, precoAlta, precoBaixa, hotel, servicos, f
         console.log('Novo Quarto: ' + quarto);
         quartos.push(quarto)
         cb(null, quarto)
+    });
+}
+
+function quartoInstanceCreate(quarto, numeroQuarto, cb){
+    quartoInstanceDetail = {
+        quarto: quarto,
+        numeroQuarto: numeroQuarto,
+    }
+
+    var quartoInstance = new QuartoInstance(quartoInstanceDetail);
+
+    quartoInstance.save(function(err) {
+        if (err) {
+            cb(err, null)
+            return
+        }
+        console.log('Novo Quarto: ' + quartoInstance);
+        quartosInstance.push(quartoInstance)
+        cb(null, quartoInstance)
     });
 }
 
@@ -173,6 +194,60 @@ function createQuartos(cb) {
     ], cb);
 }
 
+function createQuartoInstances(cb) {
+    async.parallel([
+        //quartos do Douro Vinhas
+        function(callback) {
+            for (i = 1; i <= 3; i++) {
+                quartoInstanceCreate(i,quarto[0], callback);
+            }
+        },
+        function(callback) {
+            quartoInstanceCreate(4,quarto[1], callback);
+        },
+        function(callback) {
+            quartoInstanceCreate(5,quarto[2], callback);
+        },
+        function(callback) {
+            quartoInstanceCreate(6,quarto[3], callback);
+        },
+
+        //quartos do A Ver o Mar
+        function(callback) {
+            for (i = 1; i <= 182; i++) {
+                quartoInstanceCreate(i,quarto[4], callback);
+            }
+        },
+        function(callback) {
+            for (i = 183; i <= 187; i++) {
+                quartoInstanceCreate(i,quarto[5], callback);
+            }
+        },
+        function(callback) {
+            for (i = 188; i <= 202; i++) {
+                quartoInstanceCreate(i,quarto[6], callback);
+            }
+        },
+
+        //quartos do Mediterrâneo
+        function(callback) {
+            for (i = 1; i <= 114; i++) {
+                quartoInstanceCreate(i,quarto[7], callback);
+            }
+        },
+        function(callback) {
+            for (i = 115; i <= 212; i++) {
+                quartoInstanceCreate(i,quarto[8], callback);
+            }
+        },
+        function(callback) {
+            for (i = 213; i <= 220; i++) {
+                quartoInstanceCreate(i,quarto[9], callback);
+            }
+        },
+    ], cb);
+}
+
 function createUsers(cb) {
     async.parallel([
         function(callback) {
@@ -198,6 +273,7 @@ function createCartoes(cb) {
 async.series([
         createHoteis,
         createQuartos,
+        createQuartoInstances,
         createUsers,
         createCartoes
     ],
