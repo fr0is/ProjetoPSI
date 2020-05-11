@@ -5,7 +5,7 @@ const { sanitizeBody } = require('express-validator/filter');
 
 var async = require('async');
 
-exports.cartaoMb_get_user_email = function(req, res, next) {
+exports.cartaoMb_get_cartao_email = function(req, res, next) {
     CartaoMB.find({ 'userEmail': req.params.userEmail })
         .exec(function(err, listCartao) {
             if (err) { return next(err); } // Error in API usage.
