@@ -70,6 +70,7 @@ export class LoginRegistoComponent implements OnInit {
       if(!user[0]){
         this.userService.createUser(this.userR).subscribe(result => {
           this.errorMessage = result.message;
+          alert("User registado!")
         });
       }else{
         alert("Email em Uso");
