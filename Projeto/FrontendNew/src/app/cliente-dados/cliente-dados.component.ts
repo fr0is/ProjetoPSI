@@ -66,7 +66,7 @@ export class ClienteDadosComponent implements OnInit {
     this.clienteUpdate.password = updateData.passwordUpdate;
     //Data que nao muda
     this.clienteUpdate._id = this.cliente._id;
-    console.log(this.clienteUpdate);
+    localStorage.setItem('userAtual', updateData.emailUpdate);
     this.updateForm.reset();
 
     this.userService.updateUser(this.clienteUpdate).subscribe(result => {
