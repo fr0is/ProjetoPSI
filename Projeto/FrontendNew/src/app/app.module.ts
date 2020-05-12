@@ -24,6 +24,7 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { ClienteListaRouteComponent } from './cliente-lista-route/cliente-lista-route.component';
 import { ClienteDadosComponent } from './cliente-dados/cliente-dados.component';
 import { ClienteReservasComponent } from './cliente-reservas/cliente-reservas.component';
+import { CartaoMBComponent } from './cartao-mb/cartao-mb.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ClienteReservasComponent } from './cliente-reservas/cliente-reservas.co
     ClienteComponent,
     ClienteListaRouteComponent,
     ClienteDadosComponent,
-    ClienteReservasComponent
+    ClienteReservasComponent,
+    CartaoMBComponent
   ],
   imports: [
     BrowserModule,

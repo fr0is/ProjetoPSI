@@ -1,0 +1,46 @@
+<div *ngFor="let cartao of this.cartoes">
+    <div class="card">
+        <div class="card__front card__part">
+            <img class="card__front-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
+            <img class="card__front-logo card__logo" src="">
+            <p class="card_numer">{{cartao.numero[0]}}{{cartao.numero[1]}}{{cartao.numero[2]}}{{cartao.numero[3]}} {{cartao.numero[4]}}{{cartao.numero[5]}}{{cartao.numero[6]}}{{cartao.numero[7]}} {{cartao.numero[8]}}{{cartao.numero[9]}}{{cartao.numero[10]}}{{cartao.numero[11]}}
+                {{cartao.numero[12]}}{{cartao.numero[13]}}{{cartao.numero[14]}}{{cartao.numero[15]}}
+            </p>
+            <div class="card__space-75">
+                <span class="card__label">Card holder</span>
+                <p class="card__info">{{this.clienteAtual.nome}}</p>
+            </div>
+            <div class="card__space-25">
+                <span class="card__label">Expires</span>
+                <p class="card__info">{{cartao.prazoMes}}/{{cartao.prazoAno}}</p>
+            </div>
+        </div>
+        <div class="card__back card__part">
+            <div class="card__black-line"></div>
+            <div class="card__back-content">
+                <div class="card__secret">
+                    <p class="card__secret--last">{{cartao.cvv}}</p>
+                </div>
+                <img class="card__back-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
+                <img class="card__back-logo card__logo" src="">
+            </div>
+        </div>
+    </div>
+</div>
+<form ngNativeValidate [formGroup]="createCartao" (ngSubmit)="create(createCartao.value)">
+    <label>
+        <span>Numero</span>
+        <input type="text" pattern="[0-9]{16}" formControlName="numeroCartao" required/>
+    </label>
+    <label>
+        <span>Data de validade</span>
+        <input type="text" pattern="[0-9]{2}" formControlName="dataCartaoAno" required/>/
+        <input type="text" pattern="[0-9]{2}" formControlName="dataCartaoMes" required/>
+    </label>
+    <label>
+        <span>CVV</span>
+        <input type="texte" pattern="[0-9]{3}" formControlName="cvvCartao" required/>
+    </label>
+    <button type="submit" class="submit">Criar</button>
+</form>
+<button>add</button>

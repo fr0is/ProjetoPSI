@@ -3,9 +3,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var CartaoMBSchema = new Schema({
-    númeroDoCartao: { type: Number, required: true, min: 12, max: 12 },
-    prazo: { type: String, required: true, min: 5, max: 5 },
-    cvv: { type: Number, required: true, min: 3, max: 3 }
+    numero: { type: String, required: true, min: 16, max: 16 },
+    prazoAno: { type: String, required: true },
+    prazoMes: { type: String, required: true },
+    cvv: { type: String, required: true, min: 3, max: 3 },
+    userEmail: { type: String, required: true }
 });
 
 CartaoMBSchema

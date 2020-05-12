@@ -12,10 +12,13 @@ if (!userArgs[0].startsWith('mongodb')) {
 var async = require('async')
 var Hotel = require('./models/hotel')
 var Quarto = require('./models/quarto')
+var QuartoInstance = require('./models/quartoInstance')
 var Utilizador = require('./models/utilizador')
+var Cartao = require('./models/cartaoMB');
 
 
 var mongoose = require('mongoose');
+var MongoClient= require('mongodb').MongoClient;
 var mongoDB = userArgs[0];
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
@@ -24,7 +27,9 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var hoteis = [];
 var quartos = [];
+var quartosInstance = [];
 var users = [];
+var cartoes = [];
 
 
 function hotelCreate(nome, descricao, local, zona, codigoPostal, pais, latitude, longitude, codigoRegiao, telefone, email, servicos, fotos, fotoPath, cb) {
@@ -82,6 +87,25 @@ function quartoCreate(tipo, nrQuartos, precoAlta, precoBaixa, hotel, servicos, f
     });
 }
 
+function quartoInstanceCreate(numeroQuarto, quarto, cb) {
+    quartoInstanceDetail = {
+        numeroQuarto: numeroQuarto,
+        quarto: quarto,
+    }
+
+    var quartoInstance = new QuartoInstance(quartoInstanceDetail);
+
+    quartoInstance.save(function(err) {
+        if (err) {
+            cb(err, null)
+            return
+        }
+        console.log('Novo Quarto: ' + quartoInstance);
+        quartosInstance.push(quartoInstance)
+        cb(null, quartoInstance)
+    });
+}
+
 function userCreate(nome, email, password, cb) {
     userDetail = {
         nome: nome,
@@ -99,6 +123,27 @@ function userCreate(nome, email, password, cb) {
         console.log('Novo User: ' + user);
         users.push(user)
         cb(null, user)
+    });
+}
+
+function cartaoCreate(nr, prazoAno, prazoMes, cvv, user, cb) {
+    cartaoDetail = {
+        numero: nr,
+        prazoAno: prazoAno,
+        prazoMes: prazoMes,
+        cvv: cvv,
+        userEmail: user
+    }
+    var cartao = new Cartao(cartaoDetail);
+
+    cartao.save(function(err) {
+        if (err) {
+            cb(err, null)
+            return
+        }
+        console.log('Novo Cartao: ' + cartao);
+        cartoes.push(cartao)
+        cb(null, cartao)
     });
 }
 
@@ -151,19 +196,155 @@ function createQuartos(cb) {
     ], cb);
 }
 
+function createQuartoInstances(cb) {
+    async.parallel([
+        //quartos do Douro Vinhas
+        function(callback) {
+            quartoInstanceCreate(1, quartos[0], callback);
+        },
+        function(callback) {
+            quartoInstanceCreate(2, quartos[0], callback);
+        },
+        function(callback) {
+            quartoInstanceCreate(3, quartos[0], callback);
+        },
+        function(callback) {
+            quartoInstanceCreate(4, quartos[1], callback);
+        },
+        function(callback) {
+            quartoInstanceCreate(5, quartos[2], callback);
+        },
+        function(callback) {
+            quartoInstanceCreate(6, quartos[3], callback);
+        },
+        
+        //quartos do A Ver o Mar
+        function(callback) {
+            var insts = [];
+            for (i = 1; i <= 182; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[4]}));
+            }
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
+        },
+        function(callback) {
+            var insts = [];
+            for (i = 183; i <= 187; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[5]}));
+            }
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
+        },
+        function(callback) {
+            var insts = [];
+            for (i = 188; i <= 202; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[6]}));
+            }
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
+        },
+
+        //quartos do Mediterrâneo
+        function(callback) {
+            var insts = [];
+            for (i = 1; i <= 114; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[7]}));
+            }
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
+        },
+        function(callback) {
+            var insts = [];
+            for (i = 115; i <= 212; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[8]}));
+            }
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
+        },
+        function(callback) {
+            var insts = [];
+            for (i = 213; i <= 220; i++) {
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[9]}));
+            }
+            MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("");
+                dbo.collection("quartoinstances").insertMany(insts, function(err, res){
+                    if (err) throw err;
+                    db.close();
+                });
+            });
+            callback();
+        },
+    ], cb);
+}
+
 function createUsers(cb) {
     async.parallel([
         function(callback) {
             userCreate('Mena', 'mena@psihoteis.com', '123', callback)
         },
+        function(callback) {
+            userCreate('Dio', 'Dio@psihoteis.com', 'ZaWarudo', callback)
+        },
     ], cb);
 }
+
+function createCartoes(cb) {
+    async.parallel([
+        function(callback) {
+            cartaoCreate('232123212321', '02', '02', '222', 'mena@psihoteis.com', callback)
+        },
+        function(callback) {
+            cartaoCreate('232123212321', '02', '02', '222', 'mena2@psihoteis.com', callback)
+        },
+    ], cb);
+}
+
+
 
 
 async.series([
         createHoteis,
         createQuartos,
-        createUsers
+        createQuartoInstances,
+        createUsers,
+        createCartoes
     ],
     function(err, results) {
         if (err) {
