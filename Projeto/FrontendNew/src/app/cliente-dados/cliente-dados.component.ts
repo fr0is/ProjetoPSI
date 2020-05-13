@@ -90,6 +90,10 @@ export class ClienteDadosComponent implements OnInit {
     this.criar = !this.criar;
   }
 
+  cancelarCriarCartao(){
+    window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/cliente';
+  }
+
   apagarCartao(cartao){
     this.cartaoMBService.apagarCartao(cartao).subscribe(result => {
       if(result.message === 'success'){
