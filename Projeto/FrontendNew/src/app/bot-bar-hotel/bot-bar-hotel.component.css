@@ -9,10 +9,7 @@
         background-color: black;
         bottom: 0;
         width: 100%;
-        display: grid;
-        grid-template-rows: auto;
-        position: fixed;
-        grid-template-columns: 20% 20% 20% 20% 20%;
+        z-index: 10000;
     }
     .hotelPage {
         display: grid;
@@ -29,11 +26,10 @@
         bottom: -20;
     }
     ul {
-        grid-column-start: 4;
-        grid-column-end: span 2;
+        margin-left: 45%;
         width: 100%;
         list-style-type: none;
-        font-size: 40%;
+        font-size: 60%;
         padding-bottom: 5%;
         padding-top: 2%;
         grid-column-start: 4;
@@ -77,11 +73,12 @@
         bottom: -20;
     }
     ul {
+        margin-left: 0;
         grid-column-start: 4;
         grid-column-end: span 2;
         width: 100%;
         list-style-type: none;
-        font-size: 50%;
+        font-size: 65%;
         padding-bottom: 5%;
         padding-top: 2%;
         grid-column-start: 4;
