@@ -110,6 +110,10 @@ input:invalid~.border {
     grid-template-columns: 150px auto;
 }
 
+#passImg {
+    width: 10%;
+}
+
 
 /***********BOTAO UPDATE****************/
 

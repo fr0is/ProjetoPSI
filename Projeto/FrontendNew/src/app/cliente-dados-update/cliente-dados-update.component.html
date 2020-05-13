@@ -32,7 +32,8 @@
             <div class="container">
                 <label id="password"><strong>Password</strong></label>
                 <div class="container">
-                    <label id="password"><input type="checkbox" (click)="password()"></label>
+                    <label *ngIf="!show" id="password"><img  id="passImg" src="assets/Imagens/Icones/showPass.png" (click)="password()"></label>
+                    <label *ngIf="show" id="password"><img id="passImg" src="assets/Imagens/Icones/hidePass.png" (click)="password()"></label>
                     <input class="input" [type]='show ? "text" : "password"' formControlName="passwordUpdate">
                     <span class="border"></span>
                 </div>
