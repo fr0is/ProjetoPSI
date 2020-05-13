@@ -16,7 +16,7 @@ router.post('/users/create', utilizador_controller.utilizador_create); //user cr
 router.post('/users/update', utilizador_controller.utilizador_update); //user update
 router.get('/users/:userEmail/cartoes', cartaoMB_controller.cartaoMb_get_cartao_email); //cartao get email
 router.get('/users/reserva/:cartaoId', cartaoMB_controller.cartaoMb_get); //cartao get id
-router.post('/users/cartao/create', cartaoMB_controller.cartaoMb_create); //user update
-
+router.post('/users/cartao/create', cartaoMB_controller.cartaoMb_create); //cartao create
+router.post('/users/cartao/delete', cartaoMB_controller.cartaoMb_delete); //cartao delete
 
 module.exports = router;
