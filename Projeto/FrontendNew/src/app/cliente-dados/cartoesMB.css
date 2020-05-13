@@ -1,7 +1,6 @@
 /********CARTOES MB*********************/
 
 #listaCartoes {
-    min-height: 100px;
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
     display: flex;
     flex-wrap: wrap;
