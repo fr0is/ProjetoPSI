@@ -1,4 +1,6 @@
 var Reserva = require('../models/reserva');
+var QuartoInstance = require('../models/quartoInstance');
+var moment = require('moment');
 
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
@@ -36,38 +38,67 @@ exports.reserva_create = [
 
         const errors = validationResult(req);
 
-        var reserva = new Reserva({
-            userEmail: req.body.userEmail,
-            quarto: req.body.quarto,
-            metodoDePagamento: req.body.metodoDePagamento,
-            morada: req.body.morada,
-            checkIn: req.body.checkIn,
-            checkOut: req.body.checkOut
-        });
         if (!errors.isEmpty()) {
             res.json({ 'message': 'Validation errors' });
         } else {
-            reserva.save(function(err) {
-                if (err) { return next(err); }
-                res.json({ 'message': 'Quarto Reservado' });
+            QuartoInstance.find({'quarto': req.params.id})
+                          .exec(function (err, results) {
+
+                if (err) { return next(err)};
+
+                var quartoinstance;
+
+                for (let instance of results) {
+                    Reserva.find({ 'quarto': instance })
+                           .sort([['checkIn', 'ascending']])
+                           .exec(function(err, listReservas) {
+                                if (err) { return next(err); }
+                                if(listReservas){
+                                    for(var i = 0;  i <listReservas.length; i++){
+                                        if(i === 0){
+
+                                        }else if(i === listReservas.length){
+
+                                        }else{
+
+                                        }
+                                    }
+                                }else{
+                                    quartoinstance = instance;
+                                    break;
+                                }
+                            });
+                };
+
+                if(quartoinstance === null){
+                    res.json({ 'message': 'Nao ha quartos disponiveis' });
+                }else{
+                    var reserva = new Reserva({
+                        userEmail: req.body.userEmail,
+                        quarto: quartoinstance,
+                        metodoDePagamento: req.body.metodoDePagamento,
+                        morada: req.body.morada,
+                        checkIn: req.body.checkIn,
+                        checkOut: req.body.checkOut
+                    });
+
+
+                    reserva.save(function(err) {
+                        if (err) { return next(err); }
+                        res.json({ 'message': 'Quarto Reservado' });
+                    });
+                }
             });
         }
     }
 ];
 
 exports.reserva_delete = function(req, res, next) {
-    async.parallel({
-        reserva: function (callback) {
-            Reserva.findById(req.body._id).exec(callback);
-        },
-    },function (err, results) {
-        if (err) { return next(err); }
 
         Reserva.deleteOne({ _id: req.body._id }, function deleteReserva(err) {
             if (err) { return next(err); }
             res.json({ 'message': 'Reserva apagada' })
         });
-    });
 };
 
 exports.reserva_update = [
