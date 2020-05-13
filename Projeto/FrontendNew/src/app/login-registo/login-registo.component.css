@@ -28,6 +28,26 @@ button {
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
 }
 
+.topBar {
+    height: 30px;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin: auto;
+}
+
+#titulo {
+    margin-top: 5px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#pagina {
+    animation: 2s bounceIn;
+}
+
 
 /* PC */
 

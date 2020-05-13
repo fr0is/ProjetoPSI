@@ -54,6 +54,30 @@
     </div>
 
     <ng-template #movel>
-        Movel
+        <div class="container"><input type="radio" name="tab" id="signin" checked="checked" /><input type="radio" name="tab" id="register" />
+            <div class="pages">
+                <div class="page">
+                    <form ngNativeValidate [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+                        <div class="input">
+                            <div class="title">Email</div><input class="text" type="text" formControlName="emailLogin" required/></div>
+                        <div class="input">
+                            <div class="title">Password</div><input class="text" type="password" formControlName="passwordLogin" required/></div>
+                        <div class="input"><input type="submit" class="submit" value="Login" /></div>
+                    </form>
+                </div>
+                <div class="page signup">
+                    <form ngNativeValidate [formGroup]="registoForm" (ngSubmit)="create(registoForm.value)">
+                        <div class="input">
+                            <div class="title">Nome</div><input class="text" type="text" formControlName="nomeRegisto" required/></div>
+                        <div class="input">
+                            <div class="title">Email</div><input class="text" type="email" oninvalid="this.setCustomValidity('Insira um email do tipo user@hoteispsi.com')" pattern="[a-z0-9._%+-]{1,.}+@hoteispsi\.com" formControlName="emailRegisto" required/></div>
+                        <div class="input">
+                            <div class="title">Password</div><input class="text" type="password" formControlName="passwordRegisto" required/></div>
+                        <div class="input"><input type="submit" class="submit" value="Registar" /></div>
+                    </form>
+                </div>
+            </div>
+            <div class="tabs"><label class="tab" for="signin"><div class="text">Login</div></label><label class="tab" for="register"><div class="text">Registar</div></label></div>
+        </div>
     </ng-template>
 </div>
