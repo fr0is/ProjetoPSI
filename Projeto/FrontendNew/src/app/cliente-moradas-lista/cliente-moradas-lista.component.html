@@ -1,0 +1,11 @@
+<div id="moradasContainer">
+    <div id="morada" *ngFor="let morada of moradas">
+        <div id="moradaContainer">
+            <p><strong>Rua:</strong> {{morada.rua}}</p>
+            <p><strong>Código Postal:</strong> {{morada.codigoPostal}}</p>
+            <p><strong>Cidade:</strong> {{morada.cidade}}</p>
+            <p><strong>País:</strong> {{morada.pais}}</p>
+            <a id="deleteM"><img id="deleteMorada" (click)="apagarMorada(morada)" src="assets/Imagens/Icones/delete.png"></a>
+        </div>
+    </div>
+</div>

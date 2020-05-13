@@ -3,11 +3,30 @@
         <a class="closebtn" onclick="this.parentElement.style.display='none';" href={{this.link}} (click)="apagarCartaoFechar()">&times;</a> Cartão apagado com sucesso!
     </div>
 </div>
+
+<div class="apagarCartao" id="apagarCartao">
+    <div *ngIf="apagarM" class="alert">
+        <a class="closebtn" onclick="this.parentElement.style.display='none';" href={{this.link}} (click)="apagarMoradaFechar()">&times;</a> Morada apagada com sucesso!
+    </div>
+</div>
+
 <app-cliente-dados-update></app-cliente-dados-update>
 <div class="container">
     <label id="morada"><strong>Morada</strong></label>
+    <div id="moradas">
+        <div id="morada" *ngFor="let morada of moradas">
+            <div id="moradaContainer">
+                <p><strong>Rua:</strong> {{morada.rua}}</p>
+                <p><strong>Código Postal:</strong> {{morada.codigoPostal}}</p>
+                <p><strong>Cidade:</strong> {{morada.cidade}}</p>
+                <p><strong>País:</strong> {{morada.pais}}</p>
+                <a id="deleteM"><img id="deleteMorada" (click)="apagarMorada(morada)" src="assets/Imagens/Icones/delete.png"></a>
+            </div>
+        </div>
+        <a id="criar" (click)="criarMorada()" href="hoteisPSI/{{this.hotel.nome}}/cliente#criarMorada"><img id="botaoAdicionar" src="assets/Imagens/Icones/addButton.png"></a>
+    </div>
 </div>
-<div style="min-height: 500px; margin:0;" class="container">
+<div style="min-height: 500px;" class="container">
     <label id="cartoes"><strong>Cartões</strong></label>
     <div>
         <div id="listaCartoes">
@@ -65,8 +84,8 @@
                         <div>
                             <span class="card__label">Expires</span>
                         </div>
-                        <input id="anoCartao" placeholder="02" type="text" pattern="[0]{1}[0-9]{1}|11|12" formControlName="dataCartaoAno" required/><span id="anoCartao">/</span>
-                        <input id="mesCartao" placeholder="99" type="text" pattern="[1-9]{2}" formControlName="dataCartaoMes" required/>
+                        <input id="mesCartao" placeholder="MM" type="text" pattern="[0]{1}[0-9]{1}|11|12" formControlName="dataCartaoMes" required/><span id="anoCartao">/</span>
+                        <input id="anoCartao" placeholder="YY" type="text" pattern="[1-9]{2}" formControlName="dataCartaoAno" required/>
                     </div>
                 </div>
             </div>
@@ -81,7 +100,36 @@
             </div>
             <div id="botoes">
                 <button id="criarButton" type="submit" class="submit"><img id="botaoYesCreate" src="assets/Imagens/Icones/addGreenButton.png"></button>
-                <button id="cancelarButton" type="submit" (click)="criarCartao();cancelarCriarCartao()" class="submit"><img id="botaoCancelCreate" src="assets/Imagens/Icones/cancelButton.png"></button>
+                <button id="cancelarButton" type="submit" (click)="criarCartao();" class="submit"><img id="botaoCancelCreate" src="assets/Imagens/Icones/cancelButton.png"></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="criarM" class="criarMorada" id="criarMorada">
+    <div id="criarMoradaContainer">
+        <form ngNativeValidate [formGroup]="createMorada" (ngSubmit)="createM(createMorada.value)">
+            <div id="form">
+                <div id="input">
+                    <strong>Rua:</strong>
+                    <input type="text" placeholder="Rua das Flores" formControlName="rua" required/>
+                </div>
+                <div id="input">
+                    <strong>Código Postal:</strong>
+                    <input type="text" placeholder="2420-650" pattern="[0-9]{4}-[0-9]{3}" formControlName="codigoPostal" required/>
+                </div>
+                <div id="input">
+                    <strong>Cidade:</strong>
+                    <input type="text" placeholder="Porto" formControlName="cidade" required/>
+                </div>
+                <div id="input">
+                    <strong>País:</strong>
+                    <input type="text" placeholder="Portugal" formControlName="pais" required/>
+                </div>
+            </div>
+            <div id="botoesM">
+                <button id="criarButton" type="submit" class="submit"><img id="botaoYesCreate" src="assets/Imagens/Icones/addGreenButton.png"></button>
+                <button id="cancelarButton" type="submit" (click)="criarMorada();" class="submit"><img id="botaoCancelCreate" src="assets/Imagens/Icones/cancelButton.png"></button>
             </div>
         </form>
     </div>
