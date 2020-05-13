@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-registo',
   templateUrl: './login-registo.component.html',
-  styleUrls: ['./login-registo.component.css']
+  styleUrls: ['./login-registo.component.css','./login-registo-telemovel.css']
 })
 export class LoginRegistoComponent implements OnInit {
 
