@@ -34,7 +34,7 @@ exports.morada_create = [
     body('rua', 'rua must not be empty.').isLength({ min: 1 }).trim(),
     body('codigoPostal', 'codigoPostal must not be empty.').isLength({ min: 1 }).trim(),
     body('cidade', 'cidade must not be empty.').isLength({ min: 1 }).trim(),
-    body('país', 'cvv must not be empty.').isLength({ min: 1 }).trim(),
+    body('pais', 'pais must not be empty.').isLength({ min: 1 }).trim(),
     body('userEmail', 'userEmail must not be empty.').isLength({ min: 1 }).trim(),
 
     // Sanitize fields.
@@ -50,7 +50,7 @@ exports.morada_create = [
             rua: req.body.rua,
             codigoPostal: req.body.codigoPostal,
             cidade: req.body.cidade,
-            país: req.body.país,
+            pais: req.body.pais,
             userEmail: req.body.userEmail
         });
         if (!errors.isEmpty()) {

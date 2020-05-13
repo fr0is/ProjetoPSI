@@ -6,7 +6,7 @@ var MoradaSchema = new Schema({
     rua: { type: String, required: true, min: 3, max: 100 },
     codigoPostal: { type: String, required: true, min: 3, max: 100 },
     cidade: { type: String, required: true, min: 3, max: 100 },
-    país: { type: String, required: true, min: 3, max: 100 },
+    pais: { type: String, required: true, min: 3, max: 100 },
     userEmail: { type: String, required: true }
 });
 
