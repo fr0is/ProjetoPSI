@@ -7,6 +7,7 @@ var MoradaSchema = new Schema({
     codigoPostal: { type: String, required: true, min: 3, max: 100 },
     cidade: { type: String, required: true, min: 3, max: 100 },
     país: { type: String, required: true, min: 3, max: 100 },
+    userEmail: { type: String, required: true }
 });
 
 MoradaSchema

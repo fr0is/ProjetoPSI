@@ -6,6 +6,7 @@ var quarto_controller = require('../controllers/quartoController');
 var hotel_controller = require('../controllers/hotelController');
 var utilizador_controller = require('../controllers/utilizadorController');
 var cartaoMB_controller = require('../controllers/cartaoMBController');
+var morada_controller = require('../controllers/moradaController');
 
 router.get('/hoteis', hotel_controller.hotel_list); // lista de hoteis
 router.get('/hoteis/:hotelId', hotel_controller.hotel_detail); // hotel
@@ -18,5 +19,9 @@ router.get('/users/:userEmail/cartoes', cartaoMB_controller.cartaoMb_get_cartao_
 router.get('/users/reserva/:cartaoId', cartaoMB_controller.cartaoMb_get); //cartao get id
 router.post('/users/cartao/create', cartaoMB_controller.cartaoMb_create); //cartao create
 router.post('/users/cartao/delete', cartaoMB_controller.cartaoMb_delete); //cartao delete
+router.get('/users/:userEmail/moradas', morada_controller.morada_get_email); //cartao get email
+router.get('/users/reserva/:moradaId', morada_controller.morada_get); //cartao get id
+router.post('/users/morada/create', morada_controller.morada_create); //cartao create
+router.post('/users/morada/delete', morada_controller.morada_delete); //cartao delete
 
 module.exports = router;
