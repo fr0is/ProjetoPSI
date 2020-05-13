@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/user';
+import { Morada } from 'src/morada';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class UserService {
   usersUrl = this.baseUrl + 'users/';
   createUrl = this.usersUrl + 'create';
   updateUrl = this.usersUrl + 'update';
+  moradaUrl = this.baseUrl + 'morada/';
 
   user: User;
 
@@ -31,4 +33,20 @@ export class UserService {
   updateUser(user) {
     return this.http.post<{message: string}>(this.updateUrl, user);
   }
+
+  createMorada(morada: Morada) {
+    const createUrl = this.moradaUrl + 'create';
+    return this.http.post<{ message: string }>(createUrl, morada);
+  }
+
+  getUserMoradas(email){
+    const url = this.moradaUrl + email;
+    return this.http.get(url);
+  }
+
+  apagarMorada(morada: Morada){
+    const url = this.moradaUrl + 'delete'
+    return this.http.post<{message: string}>(url, morada);
+  }
+
 }

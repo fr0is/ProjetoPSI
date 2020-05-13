@@ -7,11 +7,12 @@ import { HotelService } from '../hotel.service';
 import { CartaoMBService } from '../cartao-mb.service';
 import { Hotel } from 'src/hotel';
 import { CartaoMB } from 'src/cartaoMB';
+import { Morada } from 'src/morada';
 
 @Component({
   selector: 'app-cliente-dados',
   templateUrl: './cliente-dados.component.html',
-  styleUrls: ['./cliente-dados.component.css', './cartoesMB.css', './deleteCreateCartao.css']
+  styleUrls: ['./cliente-dados.component.css', './cartoesMB.css', './deleteCreateCartao.css','./moradas.css']
 })
 export class ClienteDadosComponent implements OnInit {
 
@@ -23,6 +24,14 @@ export class ClienteDadosComponent implements OnInit {
     prazoMes: 0,
     cvv: "",
     userEmail: "",
+  }
+  morada: Morada ={
+    _id: "",
+    rua: "",
+    codigoPostal: "",
+    cidade: "",
+    pais: "",
+    userEmail: ""
   }
   clienteAtual: User = {
     _id: "",
@@ -36,10 +45,14 @@ export class ClienteDadosComponent implements OnInit {
     reservas: []
   }
   hotel: Hotel;
+  moradas: any;
   cartoes: any;
   createCartao: FormGroup;
+  createMorada: FormGroup;
   criar = false;
-  apagar=false;
+  apagar = false;
+  criarM = false;
+  apagarM = false;
   link='hoteisPSI/' + sessionStorage.getItem('hotelNome') + '/cliente';
 
   constructor(
@@ -59,6 +72,12 @@ export class ClienteDadosComponent implements OnInit {
       cvvCartao: this.formBuilder.control(""),
       dataCartaoAno: this.formBuilder.control(""),
       dataCartaoMes: this.formBuilder.control("")
+    });
+    this.createMorada = this.formBuilder.group({
+      rua: this.formBuilder.control(""),
+      codigoPostal: this.formBuilder.control(""),
+      cidade: this.formBuilder.control(""),
+      pais: this.formBuilder.control(""),
     })
   }
 
@@ -66,6 +85,7 @@ export class ClienteDadosComponent implements OnInit {
     this.getCartoes();
     this.getUser();
     this.getHotel();
+    this.getMoradasUser();
   }
 
   getCartoes(){
@@ -90,8 +110,8 @@ export class ClienteDadosComponent implements OnInit {
     this.criar = !this.criar;
   }
 
-  cancelarCriarCartao(){
-    window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/cliente';
+  criarMorada(){
+    this.criarM = !this.criarM;
   }
 
   apagarCartao(cartao){
@@ -106,8 +126,8 @@ export class ClienteDadosComponent implements OnInit {
     this.apagar = false;
   }
 
-  deleteCard(){
-    alert("apagado");
+  apagarMoradaFechar(){
+    this.apagarM = false;
   }
 
   create(cartaoData){
@@ -129,4 +149,37 @@ export class ClienteDadosComponent implements OnInit {
       }
     });
   }
+
+  createM(moradaData){
+    this.criarM = !this.criarM;
+    this.morada.rua = moradaData.rua;
+    this.morada.codigoPostal = moradaData.codigoPostal;
+    this.morada.cidade = moradaData.cidade;
+    this.morada.pais = moradaData.pais;
+    this.morada.userEmail = localStorage.getItem('userAtual');
+    this.createMorada.reset();
+  
+    this.userService.createMorada(this.morada).subscribe(result => {
+      if(result.message === "success"){
+        window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/cliente';
+      }else{
+        alert("Ocorreu um erro a criar o cartao!");
+      }
+    });
+  }
+
+  getMoradasUser(){
+    this.userService.getUserMoradas(localStorage.getItem('userAtual')).subscribe(listMorada =>{
+      this.moradas = listMorada;
+    });
+  }
+
+  apagarMorada(morada){
+    this.userService.apagarMorada(morada).subscribe(result => {
+      if(result.message === 'success'){
+        this.apagarM = true;
+      }
+    });
+  }
+
 }

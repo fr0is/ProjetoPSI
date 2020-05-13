@@ -47,7 +47,7 @@ import { ClienteDadosUpdateComponent } from './cliente-dados-update/cliente-dado
     ClienteListaRouteComponent,
     ClienteDadosComponent,
     ClienteReservasComponent,
-    ClienteDadosUpdateComponent
+    ClienteDadosUpdateComponent,
   ],
   imports: [
     BrowserModule,
