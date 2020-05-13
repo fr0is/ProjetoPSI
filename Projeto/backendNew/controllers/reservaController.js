@@ -26,14 +26,19 @@ exports.reserva_get_quarto = function(req, res, next) {
 // Handle Utilizador create.
 exports.reserva_create = [
 
-    body('userEmail', 'userEmail must not be empty.').trim(),
-    body('quarto', 'quarto must not be empty.').trim(),
-    body('metodoDePagamento', 'metodoDePagamento must not be empty.').trim(),
-    body('morada', 'morada must not be empty.').trim(),
-    body('checkIn', 'checkIn must not be empty.').trim(),
-    body('checkOut', 'checkOut must not be empty.').trim(),
+    body('userEmail', 'userEmail must not be empty.').isLength({ min: 1 }).trim(),
+    body('quarto', 'quarto must not be empty.').isLength({ min: 1 }).trim(),
+    body('metodoDePagamento', 'metodoDePagamento must not be empty.').isLength({ min: 1 }).trim(),
+    body('morada', 'morada must not be empty.').isLength({ min: 1 }).trim(),
+    body('checkIn', 'checkIn must not be empty.').optional({ checkFalsy: true }).isISO8601(),
+    body('checkOut', 'checkOut must not be empty.').optional({ checkFalsy: true }).isISO8601(),
 
-    sanitizeBody('*').escape(),
+    sanitizeBody('userEmail').escape(),
+    sanitizeBody('quarto').escape(),
+    sanitizeBody('metodoDePagamento').escape(),
+    sanitizeBody('morada').escape(),
+    sanitizeBody('checkIn').toDate(),
+    sanitizeBody('checkOut').toDate(),
     (req, res, next) => {
 
         const errors = validationResult(req);
@@ -54,13 +59,23 @@ exports.reserva_create = [
                            .exec(function(err, listReservas) {
                                 if (err) { return next(err); }
                                 if(listReservas){
-                                    for(var i = 0;  i <listReservas.length; i++){
-                                        if(i === 0){
-
-                                        }else if(i === listReservas.length){
-
+                                    listReservas = new Array(listReservas);
+                                    for(var i = -1;  i <listReservas.length; i++){
+                                        if(i === -1){
+                                            if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                                quartoinstance = instance;
+                                                break; 
+                                            }
+                                        }else if(i+1 >= listReservas.length){
+                                            if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
+                                                quartoinstance = instance;
+                                                break; 
+                                            }
                                         }else{
-
+                                            if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                                quartoinstance = instance;
+                                                break; 
+                                            }
                                         }
                                     }
                                 }else{
@@ -68,6 +83,7 @@ exports.reserva_create = [
                                     break;
                                 }
                             });
+                    if(quartoinstance){break;}
                 };
 
                 if(quartoinstance === null){
@@ -102,34 +118,84 @@ exports.reserva_delete = function(req, res, next) {
 };
 
 exports.reserva_update = [
-    body('userEmail', 'userEmail must not be empty.').trim(),
-    body('quarto', 'quarto must not be empty.').trim(),
-    body('metodoDePagamento', 'metodoDePagamento must not be empty.').trim(),
-    body('morada', 'morada must not be empty.').trim(),
-    body('checkIn', 'checkIn must not be empty.').trim(),
-    body('checkOut', 'checkOut must not be empty.').trim(),
+    body('userEmail', 'userEmail must not be empty.').isLength({ min: 1 }).trim(),
+    body('quarto', 'quarto must not be empty.').isLength({ min: 1 }).trim(),
+    body('metodoDePagamento', 'metodoDePagamento must not be empty.').isLength({ min: 1 }).trim(),
+    body('morada', 'morada must not be empty.').isLength({ min: 1 }).trim(),
+    body('checkIn', 'checkIn must not be empty.').optional({ checkFalsy: true }).isISO8601(),
+    body('checkOut', 'checkOut must not be empty.').optional({ checkFalsy: true }).isISO8601(),
 
-    sanitizeBody('*').escape(),
+    sanitizeBody('userEmail').escape(),
+    sanitizeBody('quarto').escape(),
+    sanitizeBody('metodoDePagamento').escape(),
+    sanitizeBody('morada').escape(),
+    sanitizeBody('checkIn').toDate(),
+    sanitizeBody('checkOut').toDate(),
     (req, res, next) => {
 
         const errors = validationResult(req);
 
-        var reserva = new Reserva({
-            _id: req.body._id,
-            userEmail: req.body.userEmail,
-            quarto: req.body.quarto,
-            metodoDePagamento: req.body.metodoDePagamento,
-            morada: req.body.morada,
-            checkIn: req.body.checkIn,
-            checkOut: req.body.checkOut
-        });
-
         if (!errors.isEmpty()) {
-            res.json({'message': 'Validation errors'});        }
-        else {
-            Reserva.replaceOne({_id: req.body._id}, reserva, function (err, thegenre) {
-                if (err) { return next(err); }
-                res.json({ 'message': 'Reserva atualizada' });
+            res.json({ 'message': 'Validation errors' });
+        } else {
+            QuartoInstance.find({'quarto': req.params.id})
+                          .exec(function (err, results) {
+
+                if (err) { return next(err)};
+
+                var quartoinstance;
+
+                for (let instance of results) {
+                    Reserva.find({ 'quarto': instance })
+                           .sort([['checkIn', 'ascending']])
+                           .exec(function(err, listReservas) {
+                                if (err) { return next(err); }
+                                if(listReservas){
+                                    listReservas = new Array(listReservas);
+                                    for(var i = -1;  i <listReservas.length; i++){
+                                        if(i === -1){
+                                            if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                                quartoinstance = instance;
+                                                break; 
+                                            }
+                                        }else if(i+1 >= listReservas.length){
+                                            if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
+                                                quartoinstance = instance;
+                                                break; 
+                                            }
+                                        }else{
+                                            if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                                quartoinstance = instance;
+                                                break; 
+                                            }
+                                        }
+                                    }
+                                }else{
+                                    quartoinstance = instance;
+                                    break;
+                                }
+                            });
+                    if(quartoinstance){break;}
+                };
+
+                if(quartoinstance === null){
+                    res.json({ 'message': 'Não foi possivel atualizar a reserva' });
+                }else{
+                    var reserva = new Reserva({
+                        _id: req.body._id,
+                        userEmail: req.body.userEmail,
+                        quarto: quartoinstance,
+                        metodoDePagamento: req.body.metodoDePagamento,
+                        morada: req.body.morada,
+                        checkIn: req.body.checkIn,
+                        checkOut: req.body.checkOut
+                    });
+                    
+                    Reserva.replaceOne({_id: req.body._id}, reserva, function (err, theReserva) {
+                        if (err) { return next(err); }
+                        res.json({ 'message': 'Reserva atualizada' });
+                    });
+                }
             });
         }
     }
