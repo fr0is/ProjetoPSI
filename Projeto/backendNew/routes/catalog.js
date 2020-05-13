@@ -19,9 +19,9 @@ router.get('/users/:userEmail/cartoes', cartaoMB_controller.cartaoMb_get_cartao_
 router.get('/users/reserva/:cartaoId', cartaoMB_controller.cartaoMb_get); //cartao get id
 router.post('/users/cartao/create', cartaoMB_controller.cartaoMb_create); //cartao create
 router.post('/users/cartao/delete', cartaoMB_controller.cartaoMb_delete); //cartao delete
-router.get('/users/:userEmail/moradas', morada_controller.morada_get_email); //cartao get email
-router.get('/users/reserva/:moradaId', morada_controller.morada_get); //cartao get id
-router.post('/users/morada/create', morada_controller.morada_create); //cartao create
-router.post('/users/morada/delete', morada_controller.morada_delete); //cartao delete
+router.get('/morada/:userEmail', morada_controller.morada_get_email); //cartao get email
+router.get('/morada/:moradaId', morada_controller.morada_get); //cartao get id
+router.post('/morada/create', morada_controller.morada_create); //cartao create
+router.post('/morada/delete', morada_controller.morada_delete); //cartao delete
 
 module.exports = router;
