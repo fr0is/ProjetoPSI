@@ -25,7 +25,6 @@ import { ClienteListaRouteComponent } from './cliente-lista-route/cliente-lista-
 import { ClienteDadosComponent } from './cliente-dados/cliente-dados.component';
 import { ClienteReservasComponent } from './cliente-reservas/cliente-reservas.component';
 import { ClienteDadosUpdateComponent } from './cliente-dados-update/cliente-dados-update.component';
-import { ClienteMoradasListaComponent } from './cliente-moradas-lista/cliente-moradas-lista.component';
 
 
 @NgModule({
@@ -49,7 +48,6 @@ import { ClienteMoradasListaComponent } from './cliente-moradas-lista/cliente-mo
     ClienteDadosComponent,
     ClienteReservasComponent,
     ClienteDadosUpdateComponent,
-    ClienteMoradasListaComponent
   ],
   imports: [
     BrowserModule,
