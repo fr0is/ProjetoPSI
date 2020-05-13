@@ -26,4 +26,9 @@ export class CartaoMBService {
     return this.http.get(url);
   }
 
+  apagarCartao(cartaoMB: CartaoMB){
+    const url = this.usersUrl + 'cartao/delete';
+    return this.http.post<{message: string}>(url, cartaoMB);
+  }
+
 }

@@ -1,51 +1,88 @@
-<form ngNativeValidate [formGroup]="updateForm" (ngSubmit)="updateCliente(updateForm.value)">
-    <div class="data">
-        <img id="iconePerfil" src="assets/Imagens/Icones/perfil.png">
-        <div id="informacaoRegisto">
-            <div class="container">
-                <label id="nome"><strong>Nome</strong></label>
-                <input class="input" value="{{this.cliente.nome}}" pattern="[A-Za-z]{1,10}|[A-Za-z]{1,10}\s[A-Za-z]{1,10}" type="text" formControlName="nomeUpdate">
-                <span class="border"></span>
+<div class="apagarCartao" id="apagarCartao">
+    <div *ngIf="apagar" class="alert">
+        <a class="closebtn" onclick="this.parentElement.style.display='none';" href={{this.link}} (click)="apagarCartaoFechar()">&times;</a> Cartão apagado com sucesso!
+    </div>
+</div>
+<app-cliente-dados-update></app-cliente-dados-update>
+<div class="container">
+    <label id="morada"><strong>Morada</strong></label>
+</div>
+<div style="min-height: 500px; margin:0;" class="container">
+    <label id="cartoes"><strong>Cartões</strong></label>
+    <div>
+        <div id="listaCartoes">
+            <div id="cartoes" *ngFor="let cartao of this.cartoes">
+                <div class="card">
+                    <div class="card__front card__part">
+                        <img class="card__front-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
+                        <p class="card_numer">{{cartao.numero[0]}}{{cartao.numero[1]}}{{cartao.numero[2]}}{{cartao.numero[3]}} {{cartao.numero[4]}}{{cartao.numero[5]}}{{cartao.numero[6]}}{{cartao.numero[7]}} {{cartao.numero[8]}}{{cartao.numero[9]}}{{cartao.numero[10]}}{{cartao.numero[11]}}
+                            {{cartao.numero[12]}}{{cartao.numero[13]}}{{cartao.numero[14]}}{{cartao.numero[15]}}
+                        </p>
+                        <div class="card__space-75">
+                            <span class="card__label">Card holder</span>
+                            <p class="card__info">{{cartao.nome}}</p>
+                        </div>
+                        <div class="card__space-25">
+                            <span class="card__label">Expires</span>
+                            <p class="card__info">{{cartao.prazoMes}}/{{cartao.prazoAno}}</p>
+                        </div>
+                    </div>
+                    <div class="card__back card__part">
+                        <div class="card__black-line"></div>
+                        <div class="card__back-content">
+                            <div class="card__secret">
+                                <p class="card__secret--last">{{cartao.cvv}}</p>
+                            </div>
+                            <img class="card__back-square card__square" src="https://image.ibb.co/cZeFjx/little_square.png">
+                        </div>
+                    </div>
+                </div>
+                <a id="delete"><img id="deleteCard" (click)="apagarCartao(cartao)" src="assets/Imagens/Icones/delete.png"></a>
             </div>
-            <div class="container">
-                <label id="mail"><strong>Email</strong></label>
-                <input class="input" value="{{this.cliente.email}}" type="email" pattern="[a-z0-9._%+-]+@hoteispsi\.com" formControlName="emailUpdate">
-                <span class="border"></span>
-            </div>
+            <a id="criar" (click)="criarCartao()" href="hoteisPSI/{{this.hotel.nome}}/cliente#criarCartao"><img id="botaoAdicionar" src="assets/Imagens/Icones/addButton.png">
+            </a>
         </div>
     </div>
-    <div id="informacaoAdicional">
-        <div class="container" id="telefone">
-            <label id="indicativoL"><strong>Telefone</strong></label>
-            <div id="indicativo" class="container">
-                <label id="telefoneLabel">País</label>
-                <input class="input" pattern="[+]{1}[0-9]{1,3}" placeholder="+351" type="text" formControlName="indicativoUpdate">
-                <span class="border"></span>
-            </div>
-            <div class="container">
-                <label id="telefoneLabel">Número</label>
-                <input class="input" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="999999999" type="tel" formControlName="telefoneUpdate">
-                <span class="border"></span>
-            </div>
-        </div>
-        <div id="passwordC">
-            <div class="container">
-                <label id="password"><strong>Password</strong></label>
-                <div class="container">
-                    <label id="password"><input type="checkbox" (click)="password()"></label>
-                    <input class="input" [type]='show ? "text" : "password"' formControlName="passwordUpdate">
-                    <span class="border"></span>
+</div>
+
+<div *ngIf="criar" class="criarCartao" id="criarCartao">
+    <div id="criarCartaoContainer">
+        <form ngNativeValidate [formGroup]="createCartao" (ngSubmit)="create(createCartao.value)">
+            <div id="frontCard">
+                <img class="cartaoIcone" src="https://image.ibb.co/cZeFjx/little_square.png">
+                <div id="nrCartaoContainer">
+                    <input class="nrCartao" placeholder="4330" type="text" pattern="[0-9]{4}" formControlName="numeroCartao1" required/>
+                    <input class="nrCartao" placeholder="2320" type="text" pattern="[0-9]{4}" formControlName="numeroCartao2" required/>
+                    <input class="nrCartao" placeholder="0782" type="text" pattern="[0-9]{4}" formControlName="numeroCartao3" required/>
+                    <input class="nrCartao" placeholder="1532" type="text" pattern="[0-9]{4}" formControlName="numeroCartao4" required/>
+                </div>
+                <div id="bottomCardFront">
+                    <div id="holder">
+                        <span class="card__label">Card holder</span>
+                        <input id="cardHolder" placeholder="Rui Barbo" type="text" pattern="[a-zA-Z./]{1,.}" formControlName="nomeCartao" required/>
+                    </div>
+                    <div id="dataValidade">
+                        <div>
+                            <span class="card__label">Expires</span>
+                        </div>
+                        <input id="anoCartao" placeholder="02" type="text" pattern="[0]{1}[0-9]{1}|11|12" formControlName="dataCartaoAno" required/><span id="anoCartao">/</span>
+                        <input id="mesCartao" placeholder="99" type="text" pattern="[1-9]{2}" formControlName="dataCartaoMes" required/>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div id="backCard">
+                <div id="espacoSuperior"></div>
+                <div class="card__black-line"></div>
+                <div id="backCardAssinatura">
+                    <div class="card__secret"></div>
+                    <input id="cvv" type="text" placeholder="345" pattern="[0-9]{3}" formControlName="cvvCartao" required/>
+                </div>
+                <img class="backSquare" src="https://image.ibb.co/cZeFjx/little_square.png">
+            </div>
+            <div id="botoes">
+                <button id="criarButton" type="submit" class="submit"><img id="botaoYesCreate" src="assets/Imagens/Icones/addGreenButton.png"></button>
+                <button id="cancelarButton" type="submit" (click)="criarCartao()" class="submit"><img id="botaoCancelCreate" src="assets/Imagens/Icones/cancelButton.png"></button>
+            </div>
+        </form>
     </div>
-    <div class="container">
-        <label id="morada"><strong>Morada</strong></label>
-    </div>
-    <div class="container">
-        <label id="cartoes"><strong>Cartões</strong></label>
-        <app-cartao-mb></app-cartao-mb>
-    </div>
-    <button type="submit" class="submit">Atualizar Dados</button>
-    <button (click)="logout()" class="submit">Logout</button>
-</form>
+</div>

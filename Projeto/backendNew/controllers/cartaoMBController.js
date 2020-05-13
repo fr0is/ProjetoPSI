@@ -32,6 +32,7 @@ exports.cartaoMb_create = [
 
     // Validate fields.
     body('numero', 'Numero must not be empty.').isLength({ min: 1 }).trim(),
+    body('nome', 'Nome must not be empty.').isLength({ min: 1 }).trim(),
     body('prazoAno', 'Ano must not be empty.').isLength({ min: 1 }).trim(),
     body('prazoMes', 'Mes must not be empty.').isLength({ min: 1 }).trim(),
     body('cvv', 'cvv must not be empty.').isLength({ min: 1 }).trim(),
@@ -48,6 +49,7 @@ exports.cartaoMb_create = [
         // Create a CartaoMB object with escaped and trimmed data.
         var cartao = new CartaoMB({
             numero: req.body.numero,
+            nome: req.body.nome,
             prazoAno: req.body.prazoAno,
             prazoMes: req.body.prazoMes,
             cvv: req.body.cvv,
@@ -65,3 +67,19 @@ exports.cartaoMb_create = [
         }
     }
 ];
+
+exports.cartaoMb_delete = function(req, res, next) {
+
+    async.parallel({
+        cartao: function(callback) {
+            CartaoMB.findById(req.body._id).exec(callback);
+        }
+    }, function(err, results) {
+        if (err) { return next(err); }
+        // Genre has no books. Delete object and redirect to the list of genres.
+        CartaoMB.deleteOne({ _id: req.body._id }, function deleteCartao(err) {
+            if (err) { return next(err); }
+            res.json({ 'message': 'success' })
+        });
+    });
+};

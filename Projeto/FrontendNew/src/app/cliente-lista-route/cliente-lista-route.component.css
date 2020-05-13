@@ -9,8 +9,18 @@ td {
     padding: 5%;
     cursor: pointer;
     border-bottom: solid 1px lightgray;
+    transition: ease-in-out;
 }
 
 td:hover {
     background: lightgray;
+}
+
+#logout {
+    color: red;
+}
+
+#logout:hover {
+    background: red;
+    color: white;
 }
