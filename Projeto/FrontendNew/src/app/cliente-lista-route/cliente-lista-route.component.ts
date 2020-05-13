@@ -15,8 +15,14 @@ export class ClienteListaRouteComponent implements OnInit {
     this.getHotelAtual();
   }
 
-    getHotelAtual(){
-      this.hotelNome = sessionStorage.getItem('hotelNome');
-    }
+  getHotelAtual(){
+    this.hotelNome = sessionStorage.getItem('hotelNome');
+  }
+
+  logout(){
+    localStorage.removeItem('userAtual');
+    localStorage.removeItem('cliente');
+    window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome');
+  }  
 
 }

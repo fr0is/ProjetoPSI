@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CartaoMBComponent } from './cartao-mb.component';
+import { ClienteDadosUpdateComponent } from './cliente-dados-update.component';
 
-describe('CartaoMBComponent', () => {
-  let component: CartaoMBComponent;
-  let fixture: ComponentFixture<CartaoMBComponent>;
+describe('ClienteDadosUpdateComponent', () => {
+  let component: ClienteDadosUpdateComponent;
+  let fixture: ComponentFixture<ClienteDadosUpdateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CartaoMBComponent ]
+      declarations: [ ClienteDadosUpdateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CartaoMBComponent);
+    fixture = TestBed.createComponent(ClienteDadosUpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

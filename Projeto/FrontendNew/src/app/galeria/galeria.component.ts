@@ -38,11 +38,6 @@ export class GaleriaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getHotel();
-    this.getHotelId();
-  }
-
-  getHotelId(){
-    this.hotelId = this.hotelService.getHotelId();
   }
 
   getHotel() {

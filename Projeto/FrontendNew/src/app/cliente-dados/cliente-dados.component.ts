@@ -3,17 +3,28 @@ import { UserService } from '../user.service';
 import { User } from 'src/user';
 import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
 import { Router } from '@angular/router';
+import { HotelService } from '../hotel.service';
+import { CartaoMBService } from '../cartao-mb.service';
+import { Hotel } from 'src/hotel';
+import { CartaoMB } from 'src/cartaoMB';
 
 @Component({
   selector: 'app-cliente-dados',
   templateUrl: './cliente-dados.component.html',
-  styleUrls: ['./cliente-dados.component.css']
+  styleUrls: ['./cliente-dados.component.css', './cartoesMB.css', './deleteCreateCartao.css']
 })
 export class ClienteDadosComponent implements OnInit {
 
-  cliente: User;
-  updateForm: FormGroup;
-  clienteUpdate: User = {
+  cartaoMB: CartaoMB ={
+    _id: "",
+    numero: "",
+    nome: "",
+    prazoAno: 0,
+    prazoMes: 0,
+    cvv: "",
+    userEmail: "",
+  }
+  clienteAtual: User = {
     _id: "",
     nome: "",
     email: "",
@@ -24,62 +35,94 @@ export class ClienteDadosComponent implements OnInit {
     cartaoMB: [],
     reservas: []
   }
-  errorMessage = "";
-  show = false;
+  hotel: Hotel;
+  cartoes: any;
+  createCartao: FormGroup;
+  criar = false;
+  apagar=false;
+  link='hoteisPSI/' + sessionStorage.getItem('hotelNome') + '/cliente';
 
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
-    public router: Router
-  ) {}
+    private cartaoMBService: CartaoMBService,
+    private hotelService: HotelService,
+    private router: Router
+  ) { 
+    this.createCartao = this.formBuilder.group({
+      numeroCartao1: this.formBuilder.control(""),
+      numeroCartao2: this.formBuilder.control(""),
+      numeroCartao3: this.formBuilder.control(""),
+      numeroCartao4: this.formBuilder.control(""),
+      dataCartao: this.formBuilder.control(""),
+      nomeCartao: this.formBuilder.control(""),
+      cvvCartao: this.formBuilder.control(""),
+      dataCartaoAno: this.formBuilder.control(""),
+      dataCartaoMes: this.formBuilder.control("")
+    })
+  }
 
   ngOnInit(): void {
-    this.getCliente();
+    this.getCartoes();
+    this.getUser();
+    this.getHotel();
   }
 
-  password(){
-    this.show = !this.show;
-    console.log(this.show);
-  }
-
-  getCliente(){
-    this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
-      this.cliente = user[0];
-      this.updateForm = this.formBuilder.group({
-        nomeUpdate: this.formBuilder.control(this.cliente.nome),
-        emailUpdate: this.formBuilder.control(this.cliente.email),
-        indicativoUpdate: this.formBuilder.control(this.cliente.indicativo),
-        telefoneUpdate: this.formBuilder.control(this.cliente.telefone),
-        passwordUpdate: this.formBuilder.control(this.cliente.password),
-      })
-    }); 
-  }
-
-
-  updateCliente(updateData){
-    console.log("iniciou update")
-    //Update Form Data  
-    this.clienteUpdate.nome = updateData.nomeUpdate;
-    this.clienteUpdate.email = updateData.emailUpdate;
-    this.clienteUpdate.indicativo = updateData.indicativoUpdate;
-    this.clienteUpdate.telefone = updateData.telefoneUpdate;
-    this.clienteUpdate.password = updateData.passwordUpdate;
-    //Data que nao muda
-    this.clienteUpdate._id = this.cliente._id;
-    console.log(this.clienteUpdate);
-    this.updateForm.reset();
-
-    this.userService.updateUser(this.clienteUpdate).subscribe(result => {
-      this.errorMessage = result.message;
-      alert(result.message);
-      window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/cliente';
+  getCartoes(){
+    this.cartaoMBService.getCartaoEmail(localStorage.getItem('userAtual')).subscribe(listCartao =>{
+      this.cartoes = listCartao;
     });
   }
-  
-  logout(){
-    localStorage.removeItem('userAtual');
-    localStorage.removeItem('cliente');
-    window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome');
+
+  getUser(){
+    this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
+      this.clienteAtual = user[0];
+    });
   }
 
+  getHotel() {
+    this.hotelService.getHotel(sessionStorage.getItem("hotelAtual")).subscribe(results => {
+      this.hotel = results;
+    })
+  }
+
+  criarCartao(){
+    this.criar = !this.criar;
+  }
+
+  apagarCartao(cartao){
+    this.cartaoMBService.apagarCartao(cartao).subscribe(result => {
+      if(result.message === 'success'){
+        this.apagar = true;
+      }
+    });
+  }
+
+  apagarCartaoFechar(){
+    this.apagar = false;
+  }
+
+  deleteCard(){
+    alert("apagado");
+  }
+
+  create(cartaoData){
+    const nrCartao = cartaoData.numeroCartao1 + cartaoData.numeroCartao2 + cartaoData.numeroCartao3 + cartaoData.numeroCartao4;
+    this.criar = !this.criar;
+    this.cartaoMB.numero = nrCartao;
+    this.cartaoMB.nome = cartaoData.nomeCartao;
+    this.cartaoMB.prazoAno = cartaoData.dataCartaoAno;
+    this.cartaoMB.prazoMes = cartaoData.dataCartaoMes;
+    this.cartaoMB.cvv = cartaoData.cvvCartao;
+    this.cartaoMB.userEmail = localStorage.getItem('userAtual');
+    this.createCartao.reset();
+  
+    this.cartaoMBService.createCartao(this.cartaoMB).subscribe(result => {
+      if(result.message === "success"){
+        window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/cliente';
+      }else{
+        alert("Ocorreu um erro a criar o cartao!");
+      }
+    });
+  }
 }

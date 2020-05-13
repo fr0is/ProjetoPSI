@@ -29,7 +29,6 @@ export class LoginRegistoComponent implements OnInit {
     reservas: []
   };
   errorMessage = "";
-  emailValidos = ["+@hotmail.com","+@gmail.com","+@hoteispsi.com","+@sapo.pt"]
 
   constructor(
     private formBuilder: FormBuilder,
