@@ -40,6 +40,7 @@ export class ClienteDadosComponent implements OnInit {
     password: "",
     indicativo: "",
     telefone: "",
+    nif: "",
     morada: [],
     cartaoMB: [],
     reservas: []

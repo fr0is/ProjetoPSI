@@ -79,12 +79,14 @@ exports.utilizador_update = [
     body('email', 'Email must not be empty.').isLength({ min: 1 }).trim(),
     body('indicativo', 'Nome must not be empty.').trim(),
     body('telefone', 'Email must not be empty.').trim(),
+    body('nif', 'NIF must not be empty.').trim(),
     body('password', 'Password must not be empty.').isLength({ min: 1 }).trim(),
 
     // Sanitize fields.
     sanitizeBody('nome').escape(),
     sanitizeBody('email').escape(),
     sanitizeBody('indicativo').escape(),
+    sanitizeBody('nif').escape(),
     sanitizeBody('telefone').escape(),
     sanitizeBody('password').escape(),
 
@@ -101,6 +103,7 @@ exports.utilizador_update = [
             password: req.body.password,
             indicativo: req.body.indicativo,
             telefone: req.body.telefone,
+            nif: req.body.nif,
             morada: (typeof req.body.morada === 'undefined') ? [] : req.body.morada,
             cartaoMB: (typeof req.body.cartaoMB === 'undefined') ? [] : req.body.cartaoMB,
             _id: req.body._id // This is required, or a new ID will be assigned!
@@ -111,50 +114,6 @@ exports.utilizador_update = [
         } else {
             // Data from form is valid. Update the record.
             Utilizador.replaceOne({ _id: req.body._id }, utilizador, function(err, theutilizador) {
-                if (err) { return next(err); }
-                res.json({ 'message': 'success' });
-            });
-        }
-    }
-];
-
-// Handle book update on POST.
-exports.book_update_post = [
-
-    // Validate fields.
-    body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
-    body('author', 'Author must not be empty.').isLength({ min: 1 }).trim(),
-    body('summary', 'Summary must not be empty.').isLength({ min: 1 }).trim(),
-    body('isbn', 'ISBN must not be empty').isLength({ min: 1 }).trim(),
-
-    // Sanitize fields.
-    sanitizeBody('title').escape(),
-    sanitizeBody('author').escape(),
-    sanitizeBody('summary').escape(),
-    sanitizeBody('isbn').escape(),
-    sanitizeBody('morada.*').escape(),
-
-    // Process request after validation and sanitization.
-    (req, res, next) => {
-
-        // Extract the validation errors from a request.
-        const errors = validationResult(req);
-
-        // Create a Book object with escaped/trimmed data and old id.
-        var book = new Book({
-            title: req.body.title,
-            author: req.body.author,
-            summary: req.body.summary,
-            isbn: req.body.isbn,
-            morada: (typeof req.body.morada === 'undefined') ? [] : req.body.morada,
-            _id: req.body._id // This is required, or a new ID will be assigned!
-        });
-
-        if (!errors.isEmpty()) {
-            res.json({ 'message': 'Validation errors' });
-        } else {
-            // Data from form is valid. Update the record.
-            Book.replaceOne({ _id: req.body._id }, book, function(err, thebook) {
                 if (err) { return next(err); }
                 res.json({ 'message': 'success' });
             });

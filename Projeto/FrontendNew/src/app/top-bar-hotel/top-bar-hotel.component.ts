@@ -39,6 +39,7 @@ export class TopBarHotelComponent implements OnInit {
       password: "",
       indicativo: "",
       telefone: "",
+      nif: "",
       morada: [],
       cartaoMB: [],
       reservas: []

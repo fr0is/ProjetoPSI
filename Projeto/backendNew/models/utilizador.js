@@ -8,6 +8,7 @@ var UtilizadorSchema = new Schema({
     password: { type: String, required: true, min: 3, max: 100 },
     indicativo: { type: String },
     telefone: { type: String, min: 9, max: 9 },
+    nif: { type: String, min: 9, max: 9 },
     morada: [{ type: Schema.ObjectId, ref: 'morada' }],
     cartaoMB: [{ type: Schema.ObjectId, ref: 'cartaoMB' }],
     reservas: [{ type: Schema.ObjectId, ref: 'reserva' }]

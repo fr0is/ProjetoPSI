@@ -4,12 +4,12 @@
         <div id="informacaoRegisto">
             <div class="container">
                 <label id="nome"><strong>Nome</strong></label>
-                <input class="input" value="{{this.cliente.nome}}" pattern="[A-Za-z]{1,10}|[A-Za-z]{1,10}\s[A-Za-z]{1,10}" type="text" formControlName="nomeUpdate">
+                <input class="input" value="{{this.cliente.nome}}" pattern="[A-Za-z]{1,10}|[A-Za-z]{1,10}\s[A-Za-z]{1,10}" type="text" formControlName="nomeUpdate" required>
                 <span class="border"></span>
             </div>
             <div class="container">
                 <label id="mail"><strong>Email</strong></label>
-                <input class="input" value="{{this.cliente.email}}" type="email" pattern="[a-z0-9._%+-]+@hoteispsi\.com" formControlName="emailUpdate">
+                <input class="input" value="{{this.cliente.email}}" type="email" pattern="[a-z0-9._%+-]+@hoteispsi\.com" formControlName="emailUpdate" required>
                 <span class="border"></span>
             </div>
         </div>
@@ -34,11 +34,16 @@
                 <div class="container">
                     <label *ngIf="!show" id="password"><img  id="passImg" src="assets/Imagens/Icones/showPass.png" (click)="password()"></label>
                     <label *ngIf="show" id="password"><img id="passImg" src="assets/Imagens/Icones/hidePass.png" (click)="password()"></label>
-                    <input class="input" [type]='show ? "text" : "password"' formControlName="passwordUpdate">
+                    <input class="input" [type]='show ? "text" : "password"' formControlName="passwordUpdate" required>
                     <span class="border"></span>
                 </div>
             </div>
         </div>
+        <div class="container">
+            <label id="nif"><strong>NIF</strong></label>
+            <input class="input" placeholder="123456789" pattern="[0-9]{9}" type="text" formControlName="nifUpdate">
+            <span class="border "></span>
+        </div>
     </div>
-    <button type="submit" class="submit">Atualizar Dados</button>
+    <button type="submit " class="submit ">Atualizar Dados</button>
 </form>

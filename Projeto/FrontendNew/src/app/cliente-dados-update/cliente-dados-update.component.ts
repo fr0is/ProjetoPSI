@@ -21,6 +21,7 @@ export class ClienteDadosUpdateComponent implements OnInit {
     password: "",
     indicativo: "",
     telefone: "",
+    nif: "",
     morada: [],
     cartaoMB: [],
     reservas: []
@@ -52,6 +53,7 @@ export class ClienteDadosUpdateComponent implements OnInit {
         indicativoUpdate: this.formBuilder.control(this.cliente.indicativo),
         telefoneUpdate: this.formBuilder.control(this.cliente.telefone),
         passwordUpdate: this.formBuilder.control(this.cliente.password),
+        nifUpdate: this.formBuilder.control(this.cliente.nif),
       })
     }); 
   }
@@ -65,6 +67,7 @@ export class ClienteDadosUpdateComponent implements OnInit {
     this.clienteUpdate.indicativo = updateData.indicativoUpdate;
     this.clienteUpdate.telefone = updateData.telefoneUpdate;
     this.clienteUpdate.password = updateData.passwordUpdate;
+    this.clienteUpdate.nif = updateData.nifUpdate;
     //Data que nao muda
     this.clienteUpdate._id = this.cliente._id;
     localStorage.setItem('userAtual', updateData.emailUpdate);

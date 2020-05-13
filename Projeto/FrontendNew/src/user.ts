@@ -5,6 +5,7 @@ export interface User {
     password: string;
     indicativo: string;
     telefone: string;
+    nif: string;
     morada: [];
     cartaoMB: [];
     reservas: [];
