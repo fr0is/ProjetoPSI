@@ -46,13 +46,15 @@ exports.reserva_create = [
         if (!errors.isEmpty()) {
             res.json({ 'message': 'Validation errors' });
         } else {
-            QuartoInstance.find({'quarto': req.params.id})
+            var quartoinstance;
+
+            QuartoInstance.find({'quarto': req.body.quarto})
                           .exec(function (err, results) {
 
                 if (err) { return next(err)};
-
-                var quartoinstance;
-
+                
+                results = new Array(results);
+                
                 for (let instance of results) {
                     Reserva.find({ 'quarto': instance })
                            .sort([['checkIn', 'ascending']])
@@ -85,26 +87,26 @@ exports.reserva_create = [
                             });
                     if(quartoinstance){break;}
                 };
-
-                if(quartoinstance === null){
-                    res.json({ 'message': 'Nao ha quartos disponiveis' });
-                }else{
-                    var reserva = new Reserva({
-                        userEmail: req.body.userEmail,
-                        quarto: quartoinstance,
-                        metodoDePagamento: req.body.metodoDePagamento,
-                        morada: req.body.morada,
-                        checkIn: req.body.checkIn,
-                        checkOut: req.body.checkOut
-                    });
-
-
-                    reserva.save(function(err) {
-                        if (err) { return next(err); }
-                        res.json({ 'message': 'Quarto Reservado' });
-                    });
-                }
             });
+
+            if(quartoinstance === null){
+                res.json({ 'message': 'Nao ha quartos disponiveis' });
+            }else{
+                var reserva = new Reserva({
+                    userEmail: req.body.userEmail,
+                    quarto: quartoinstance,
+                    metodoDePagamento: req.body.metodoDePagamento,
+                    morada: req.body.morada,
+                    checkIn: req.body.checkIn,
+                    checkOut: req.body.checkOut
+                });
+
+
+                reserva.save(function(err) {
+                    if (err) { return next(err); }
+                    res.json({ 'message': 'Quarto Reservado' });
+                });
+            }
         }
     }
 ];
@@ -138,7 +140,7 @@ exports.reserva_update = [
         if (!errors.isEmpty()) {
             res.json({ 'message': 'Validation errors' });
         } else {
-            QuartoInstance.find({'quarto': req.params.id})
+            QuartoInstance.find({'quarto': req.body.quarto})
                           .exec(function (err, results) {
 
                 if (err) { return next(err)};
