@@ -39,6 +39,7 @@ exports.reserva_create = [
     sanitizeBody('morada').escape(),
     sanitizeBody('checkIn').toDate(),
     sanitizeBody('checkOut').toDate(),
+    
     (req, res, next) => {
 
         const errors = validationResult(req);
@@ -46,19 +47,23 @@ exports.reserva_create = [
         if (!errors.isEmpty()) {
             res.json({ 'message': 'Validation errors' });
         } else {
+
             var quartoinstance;
 
             QuartoInstance.find({'quarto': req.body.quarto})
-                          .exec(function (err, results) {
+                .exec(function(err, quartos){
+                    if(err){return next(err);}
+                console.log(quartos);
+                console.log(quartos.length);
+                for( var i = 0; i < quartos.length && quartoinstance === null; i++){
+                    
+                    var instance = quartos[i];
+                    console.log(instance);
 
-                if (err) { return next(err)};
-                
-                results = new Array(results);
-                
-                for (let instance of results) {
                     Reserva.find({ 'quarto': instance })
-                           .sort([['checkIn', 'ascending']])
-                           .exec(function(err, listReservas) {
+                        .sort({checkIn : 'asc'})
+                        .exec(function(err, listReservas) {
+                            console.log(listReservas);
                                 if (err) { return next(err); }
                                 if(listReservas){
                                     listReservas = new Array(listReservas);
@@ -66,26 +71,22 @@ exports.reserva_create = [
                                         if(i === -1){
                                             if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
                                                 quartoinstance = instance;
-                                                break; 
                                             }
                                         }else if(i+1 >= listReservas.length){
                                             if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
                                                 quartoinstance = instance;
-                                                break; 
                                             }
                                         }else{
                                             if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
                                                 quartoinstance = instance;
-                                                break; 
                                             }
                                         }
                                     }
                                 }else{
                                     quartoinstance = instance;
-                                    break;
                                 }
                             });
-                    if(quartoinstance){break;}
+                    
                 };
             });
 
