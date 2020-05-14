@@ -347,8 +347,9 @@
         .containerDesc{
             display:grid;
             grid-template-rows: 60px auto auto auto auto;           
-            grid-row-gap: 50px;
+            grid-row-gap: 60px;
             align-content: center;
+            
 
         }
 
@@ -369,7 +370,7 @@
         .descricao{
             display: grid;
            
-            grid-template-columns: 5% 40% 10% 40% 5%;
+            grid-template-columns: 9% 41% 41% 9%;
             grid-row-start: 2;
             grid-row-end: span 1;
 
@@ -384,7 +385,7 @@
             grid-row-start: 3;
             grid-row-end: span 1;
             
-            grid-template-columns: 5% 40% 10% 40% 5%;
+            grid-template-columns: 9% 41% 41% 9%;
 
         }
 
@@ -394,7 +395,8 @@
             
             grid-row-start: 4;
             grid-row-end: span 1;
-            grid-template-columns: 5% 40% 10% 40% 5%;
+            grid-template-columns: 9% 41% 41% 9%;
+
 
 
 
@@ -406,7 +408,8 @@
         .descricao3{
             display: grid;
             
-            grid-template-columns: 5% 40% 10% 40% 5%;
+            grid-template-columns: 9% 41% 41% 9%;
+
 
             grid-row-start: 5;
             grid-row-end: span 1;
@@ -426,7 +429,7 @@
         }
         .desc1{
 
-            grid-column-start: 4;
+            grid-column-start: 3;
             grid-column-end: span 1;
             padding-left: 50px;
             padding-right: 50px;
@@ -448,18 +451,16 @@
 
         #imgDesc{
 
-            grid-column-start: 4;
+            grid-column-start: 3;
             grid-column-end: span 1;
-            align-self:center;
-            justify-self: center;
+           
         }
 
         #imgDesc1{
 
             grid-column-start: 2;
             grid-column-end: span 1;
-            align-self:center;
-            justify-self: center;
+            
         }
         #imgDesc,
         #imgDesc1{
@@ -508,7 +509,7 @@
         .descricao{
             display: grid;
            
-            grid-template-columns: 5% auto auto 5%;
+            grid-template-columns: 13% 24% 27% 23%  13%;
             grid-row-start: 2;
             grid-row-end: span 1;
 
@@ -523,7 +524,7 @@
             grid-row-start: 3;
             grid-row-end: span 1;
             
-            grid-template-columns: 5% auto auto 5%;
+            grid-template-columns: 13% 24% 27% 23%  13%;
 
         }
 
@@ -533,7 +534,7 @@
             
             grid-row-start: 4;
             grid-row-end: span 1;
-            grid-template-columns: 5% auto auto 5%;
+            grid-template-columns: 13% 24% 27% 23%  13%;
 
 
 
@@ -545,8 +546,8 @@
         .descricao3{
             display: grid;
             
-            grid-template-columns: 5% auto auto 5%;
-
+            grid-template-columns: 13% 24% 27% 23%  13%;
+            
             grid-row-start: 5;
             grid-row-end: span 1;
             padding-bottom: 5%;
@@ -555,24 +556,26 @@
 
         .desc{
             grid-column-start:2;
-            grid-column-end: span 1;
+            grid-column-end: span 2;
             align-self:center;
             justify-self: center;
             font-size: 16px;
-            margin-left: 25%;
+            padding: 0;
+            margin-right: 10px;
+            
 
 
         }
         .desc1{
 
             grid-column-start: 3;
-            grid-column-end: span 1;
-            padding-left: 50px;
-            padding-right: 50px;
+            grid-column-end: span 2;
+            padding: 0;
+            margin-left: 10px;
             font-size: 15px;
             justify-self: center;
-            align-self: center;
-            margin-right: 25%;
+            justify-self: center;
+            
         }
         .desc,
         .desc1{
@@ -587,7 +590,7 @@
 
         #imgDesc{
             
-            grid-column-start: 3;
+            grid-column-start: 4;
             grid-column-end: span 1;
             align-self:center;
             justify-self: center;
@@ -603,9 +606,9 @@
         #imgDesc,
         #imgDesc1{
             
-            width: 300px;
+            width: 350px;
             margin:0;
-
+            padding: 0;
             grid-row-start:1;
             grid-row-end:span 5;
 
@@ -825,7 +828,7 @@
             grid-row-gap: 25px;
             
             padding: 0;
-            padding-bottom: 14%;
+            padding-bottom: 2%;
         }
         #mapa{
             grid-column-start: 2;
@@ -864,7 +867,7 @@
             grid-template-columns: 12% 45% 4% 27% 12%;
             grid-template-rows: auto;
             padding: 0;
-            padding-bottom: 14%;
+            padding-bottom: 2%;
         }
         #mapa {
             grid-row-start: 1;
