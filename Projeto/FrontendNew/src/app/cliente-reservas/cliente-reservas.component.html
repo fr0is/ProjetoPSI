@@ -1,1 +1,13 @@
-<p>cliente-reservas works!</p>
+<form ngNativeValidate [formGroup]="createReserva" (ngSubmit)="create(createReserva.value)">
+    <label>Quarto</label>
+    <input type="text" formControlName="quarto" /><br>
+    <label>Morada</label>
+    <input type="text" formControlName="morada" /><br>
+    <label>Metodo Pagamento</label>
+    <input type="text" formControlName="metodoDePagamento" /><br>
+    <label>Check-in</label>
+    <input type="date" formControlName="checkIn" /><br>
+    <label>Check-out</label>
+    <input type="date" formControlName="checkOut" />
+    <button type="submit" class="submit">Ola</button>
+</form>
