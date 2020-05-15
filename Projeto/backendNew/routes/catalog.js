@@ -32,8 +32,8 @@ router.post('/morada/create', morada_controller.morada_create); //cartao create
 router.post('/morada/delete', morada_controller.morada_delete); //cartao delete
 
 /********************** Reserva **********************/
-router.get('/reserva/:userEmail', reserva_controller.reserva_get_email); //reserva get email
-router.get('/reserva/:quarto', reserva_controller.reserva_get_quarto); //reserva get quarto
+router.get('/reserva/email/:userEmail', reserva_controller.reserva_get_email); //reserva get email
+router.get('/reserva/quarto/:quarto', reserva_controller.reserva_get_quarto); //reserva get quarto
 router.post('/reserva/create', reserva_controller.reserva_create); //reserva create
 router.post('/reserva/delete', reserva_controller.reserva_delete); //reserva delete
 router.post('/reserva/update', reserva_controller.reserva_update); //reserva update
