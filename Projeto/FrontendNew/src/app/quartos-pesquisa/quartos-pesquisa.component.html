@@ -27,6 +27,25 @@
                           </label>
                         </div>
                     </div>
+                    <div id="reservarQuarto">
+                        <form id="reservaQuartoForm" ngNativeValidate [formGroup]="reservaForm" (ngSubmit)="reservar(reservaForm.value)">
+                            <div id="dataCheckIn">
+                                <h3>Check-in:</h3>
+                                <input type="date" formControlName="checkInReserva" required>
+                            </div>
+                            <div id="dataCheckOut">
+                                <h3>Check-out:</h3>
+                                <input type="date" formControlName="checkOutReserva" required>
+                            </div>
+                            <div id="quartoReserva">
+                                <h3 for="quartosR">Quarto:</h3>
+                                <select id="quartosR" name="quartosR" formControlName="quartoReserva" required>
+                                    <option *ngFor="let quarto of quartos" value={{quarto.tipo}}>{{quarto.tipo}}</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn draw-border submit">Reservar</button>
+                        </form>
+                    </div>
                 </a>
                 <a id="servicos">
                     <div id="servicosT" routerLink="servicos"><strong>Serviços</strong></div>
