@@ -10,6 +10,7 @@ var ReservaSchema = new Schema({
     morada: { type: Schema.ObjectId, ref: 'morada', required: true },
     checkIn: { type: Date, required: true },
     checkOut: { type: Date, required: true },
+    preco: { type: Number, required: true}
 });
 
 ReservaSchema

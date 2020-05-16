@@ -61,74 +61,51 @@ exports.reserva_create = [
                 if(err){return next(err);}
                 var quartoinstance;
                 for(let inst of results.instances){
-                    var listReservas = Reserva.getReservas(inst);
-                    console.log(listReservas.reservas.toArray());
-                }
-                /*
-                for(let inst of results.instances){
-                    async.parallel({
-                        reservas: function(callback) {
-                            Reserva.find({ 'quarto': inst._id })
-                            .sort([['checkIn', 'ascending']])
-                            .exec(callback);
-                        }
-                    }, function(err,results){
-                        if(err){return next(err);}        
-                        var listReservas = results.reservas;                
-                        var quartoinstance;
-                        if(!quartoinstance){
-                            if(listReservas.length > 0){
-                                for(var i = -1;  i <listReservas.length; i++){
-                                    if(i === -1){
-                                        if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
-                                            quartoinstance = inst;
-                                            break;
-                                        }
-                                    }else if(i+1 >= listReservas.length){
-                                        if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
-                                            quartoinstance = inst;
-                                            break;
-                                        }
-                                    }else{
-                                        if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
-                                            quartoinstance = inst;
-                                            break;
-                                        }
-                                    }
+                    var listReservas = inst.reservas;  
+
+                    if(listReservas.length > 0){
+                        for(var i = -1;  i <listReservas.length; i++){
+                            if(i === -1){
+                                if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                    quartoinstance = inst;
+                                    break;
+                                }
+                            }else if(i+1 >= listReservas.length){
+                                if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
+                                    quartoinstance = inst;
+                                    break;
                                 }
                             }else{
-                                quartoinstance = inst;
-                            }  
-
-                            if(quartoinstance == null){
-                                //res.json({ 'message': 'Nao ha quartos disponiveis' });
-                                console.log("nao reservado");
-                            }else{
-                                var reserva = new Reserva({
-                                    userEmail: req.body.userEmail,
-                                    quarto: quartoinstance,
-                                    metodoDePagamento: req.body.metodoDePagamento,
-                                    morada: req.body.morada,
-                                    checkIn: req.body.checkIn,
-                                    checkOut: req.body.checkOut
-                                });
-                                
-                                reserva.save(function(err) {
-                                    if (err) { return next(err); }
-                                    res.json({ 'message': 'Quarto Reservado' });
-                                });
-                                
-                                console.log(reserva);
+                                if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                    quartoinstance = inst;
+                                    break;
+                                }
                             }
                         }
-                        console.log("instancia encontrada:");
-                        console.log(quartoinstance);
-                        res.json({ 'message': 'Teste terminado' }) // apagar depois
+                    }else{
+                        quartoinstance = inst;
+                    }
+                    if(quartoinstance){break;}
+                }
+                if(quartoinstance == null){
+                    res.json({ 'message': 'Nao ha quartos disponiveis' });
+                }else{
+                    var reserva = new Reserva({
+                        userEmail: req.body.userEmail,
+                        quarto: quartoinstance,
+                        metodoDePagamento: req.body.metodoDePagamento,
+                        morada: req.body.morada,
+                        checkIn: req.body.checkIn,
+                        checkOut: req.body.checkOut,
+                        preco: req.body.preco
+                    });
+                    
+                    reserva.save(function(err) {
+                        if (err) { return next(err); }
+                        res.json({ 'message': 'Quarto Reservado' });
                     });
                 }
-                */
             });
-            res.json({ 'message': 'Teste terminado' });
         }
     }
 ];
@@ -162,37 +139,40 @@ exports.reserva_update = [
         if (!errors.isEmpty()) {
             res.json({ 'message': 'Validation errors' });
         } else {
-            var quartoinstance;
-            QuartoInstance.find({'quarto': req.body.quarto}).exec((err, quartos) => {
-                    if(err){return next(err);}
-                    quartos.forEach((instance)=> {
-                        
-                    if(quartoinstance == null){         
-                            
-                        var listReservas = getReservas(instance._id);
-                        
-                        if(listReservas.length > 0){
-                            for(var i = -1;  i <listReservas.length; i++){
-                                if(i === -1){
-                                    if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
-                                        quartoinstance = instance;
-                                    }
-                                }else if(i+1 >= listReservas.length){
-                                    if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
-                                        quartoinstance = instance;
-                                    }
-                                }else{
-                                    if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
-                                        quartoinstance = instance;
-                                    }
+            async.parallel({
+                instances: function(callback){
+                    QuartoInstance.find({'quarto': req.body.quarto}).exec(callback);
+                }
+            }, function(err,results){
+                if(err){return next(err);}
+                var quartoinstance;
+                for(let inst of results.instances){
+                    var listReservas = inst.reservas;  
+
+                    if(listReservas.length > 0){
+                        for(var i = -1;  i <listReservas.length; i++){
+                            if(i === -1){
+                                if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                    quartoinstance = inst;
+                                    break;
+                                }
+                            }else if(i+1 >= listReservas.length){
+                                if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
+                                    quartoinstance = inst;
+                                    break;
+                                }
+                            }else{
+                                if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                    quartoinstance = inst;
+                                    break;
                                 }
                             }
-                        }else{
-                            quartoinstance = instance;
-                        }         
-                               
-                    }     
-                });            
+                        }
+                    }else{
+                        quartoinstance = inst;
+                    }
+                    if(quartoinstance){break;}
+                }
                 if(quartoinstance == null){
                     res.json({ 'message': 'Nao foi possivel atualizar a reserva' });
                 }else{
@@ -203,7 +183,8 @@ exports.reserva_update = [
                         metodoDePagamento: req.body.metodoDePagamento,
                         morada: req.body.morada,
                         checkIn: req.body.checkIn,
-                        checkOut: req.body.checkOut
+                        checkOut: req.body.checkOut,
+                        preco: req.body.preco
                     });
                     Reserva.replaceOne({_id: req.body._id}, reserva, function (err, theReserva) {
                         if (err) { return next(err); }
@@ -214,4 +195,3 @@ exports.reserva_update = [
         }
     }
 ];
-

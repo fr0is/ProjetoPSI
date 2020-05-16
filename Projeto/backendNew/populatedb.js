@@ -87,10 +87,11 @@ function quartoCreate(tipo, nrQuartos, precoAlta, precoBaixa, hotel, servicos, f
     });
 }
 
-function quartoInstanceCreate(numeroQuarto, quarto, cb) {
+function quartoInstanceCreate(numeroQuarto, quarto, reservas, cb) {
     quartoInstanceDetail = {
         numeroQuarto: numeroQuarto,
         quarto: quarto,
+        reservas: reservas,
     }
 
     var quartoInstance = new QuartoInstance(quartoInstanceDetail);
@@ -200,29 +201,29 @@ function createQuartoInstances(cb) {
     async.parallel([
         //quartos do Douro Vinhas
         function(callback) {
-            quartoInstanceCreate(1, quartos[0], callback);
+            quartoInstanceCreate(1, quartos[0], [], callback);
         },
         function(callback) {
-            quartoInstanceCreate(2, quartos[0], callback);
+            quartoInstanceCreate(2, quartos[0], [],callback);
         },
         function(callback) {
-            quartoInstanceCreate(3, quartos[0], callback);
+            quartoInstanceCreate(3, quartos[0], [],callback);
         },
         function(callback) {
-            quartoInstanceCreate(4, quartos[1], callback);
+            quartoInstanceCreate(4, quartos[1], [],callback);
         },
         function(callback) {
-            quartoInstanceCreate(5, quartos[2], callback);
+            quartoInstanceCreate(5, quartos[2], [],callback);
         },
         function(callback) {
-            quartoInstanceCreate(6, quartos[3], callback);
+            quartoInstanceCreate(6, quartos[3], [],callback);
         },
         
         //quartos do A Ver o Mar
         function(callback) {
             var insts = [];
             for (i = 1; i <= 182; i++) {
-                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[4]}));
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[4], reservas:[]}));
             }
             MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
                 if (err) throw err;
@@ -237,7 +238,7 @@ function createQuartoInstances(cb) {
         function(callback) {
             var insts = [];
             for (i = 183; i <= 187; i++) {
-                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[5]}));
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[5], reservas:[]}));
             }
             MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
                 if (err) throw err;
@@ -252,7 +253,7 @@ function createQuartoInstances(cb) {
         function(callback) {
             var insts = [];
             for (i = 188; i <= 202; i++) {
-                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[6]}));
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[6], reservas:[]}));
             }
             MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
                 if (err) throw err;
@@ -269,7 +270,7 @@ function createQuartoInstances(cb) {
         function(callback) {
             var insts = [];
             for (i = 1; i <= 114; i++) {
-                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[7]}));
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[7], reservas:[]}));
             }
             MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
                 if (err) throw err;
@@ -284,7 +285,7 @@ function createQuartoInstances(cb) {
         function(callback) {
             var insts = [];
             for (i = 115; i <= 212; i++) {
-                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[8]}));
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[8], reservas:[]}));
             }
             MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
                 if (err) throw err;
@@ -299,7 +300,7 @@ function createQuartoInstances(cb) {
         function(callback) {
             var insts = [];
             for (i = 213; i <= 220; i++) {
-                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[9]}));
+                insts.push(new QuartoInstance({numeroQuarto: i, quarto: quartos[9], reservas:[]}));
             }
             MongoClient.connect(mongoDB, { useUnifiedTopology: true }, function(err, db) {
                 if (err) throw err;
@@ -343,8 +344,7 @@ async.series([
         createHoteis,
         createQuartos,
         createQuartoInstances,
-        createUsers,
-        createCartoes
+        createUsers
     ],
     function(err, results) {
         if (err) {
