@@ -42,6 +42,7 @@ export class ClienteReservasComponent implements OnInit {
   reserva: Reserva = {
     _id: "",
     userEmail: "",
+    emailReserva: "",
     quarto: null,
     morada: null,
     metodoDePagamento: null,

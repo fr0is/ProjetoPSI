@@ -1,3 +1,9 @@
+<div *ngIf="!datasValidas" class="alert">
+    <a class="closebtn" (click)="changeStateDateErro()" onclick="this.parentElement.style.display='none';">&times;</a>Data de check-in não pode ser depois ou no mesmo dia da data de check-out!
+</div>
+<div *ngIf="!datasValidasToday" class="alert">
+    <a class="closebtn" (click)="changeStateDateErroToday()" onclick="this.parentElement.style.display='none';">&times;</a>Data de check-in ou de check-out não pode ser anterior ou igual à data atual!
+</div>
 <div class="quartos container">
     <div id="procuraQ">
         <div id="barraProcura">
@@ -31,11 +37,11 @@
                         <form id="reservaQuartoForm" ngNativeValidate [formGroup]="reservaForm" (ngSubmit)="reservar(reservaForm.value)">
                             <div id="dataCheckIn">
                                 <h3>Check-in:</h3>
-                                <input type="date" formControlName="checkInReserva" required>
+                                <input type="date" (change)="mudaCheckIn($event.target.value)" formControlName="checkInReserva" required>
                             </div>
                             <div id="dataCheckOut">
                                 <h3>Check-out:</h3>
-                                <input type="date" formControlName="checkOutReserva" required>
+                                <input type="date" (change)="mudaCheckOut($event.target.value)" formControlName="checkOutReserva" required>
                             </div>
                             <div id="quartoReserva">
                                 <h3 for="quartosR">Quarto:</h3>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
 import { Quarto } from 'src/quarto';
 import { HotelService } from '../hotel.service';
+import { User } from 'src/user';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-reserva-quarto',
@@ -13,6 +15,21 @@ export class ReservaQuartoComponent implements OnInit {
   quartos: Quarto[] = [];
   mudaPagina = false;
   erroDatas = false;
+  errorMessage;
+  cliente: User;
+  updateForm: FormGroup;
+  clienteUpdate: User = {
+    _id: "",
+    nome: "",
+    email: "",
+    password: "",
+    indicativo: "",
+    telefone: "",
+    nif: "",
+    morada: [],
+    cartaoMB: [],
+    reservas: []
+  }
   /**** Booleans de cada pagina ****/
   datasQuarto = true;
   dadosCliente = false;
@@ -29,7 +46,8 @@ export class ReservaQuartoComponent implements OnInit {
   selectedQuarto = localStorage.getItem('quartoR');
   constructor(
     private formBuilder: FormBuilder,
-    private hotelService: HotelService
+    private hotelService: HotelService,
+    private userService: UserService
   ) { 
     this.datasQuartoForm = this.formBuilder.group({
       checkInInicial: this.formBuilder.control(this.checkIn),
@@ -40,6 +58,7 @@ export class ReservaQuartoComponent implements OnInit {
 
   ngOnInit(): void {
     this.showQuartos();
+    this.getCliente();
   }
 
   showQuartos() {
@@ -73,7 +92,7 @@ export class ReservaQuartoComponent implements OnInit {
     this.dadosCliente = true;
     this.erroDatas = false;
     this.mudaPagina = true;
-  }
+    }
   }
 
   pagamentoN(){
@@ -132,4 +151,34 @@ export class ReservaQuartoComponent implements OnInit {
     this.erroDatas = !this.erroDatas;
   }
 
+  
+  getCliente(){
+    this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
+      this.cliente = user[0];
+      this.updateForm = this.formBuilder.group({
+        nomeUpdate: this.formBuilder.control(this.cliente.nome),
+        emailUpdate: this.formBuilder.control(this.cliente.email),
+        indicativoUpdate: this.formBuilder.control(this.cliente.indicativo),
+        telefoneUpdate: this.formBuilder.control(this.cliente.telefone),
+        passwordUpdate: this.formBuilder.control(this.cliente.password),
+        nifUpdate: this.formBuilder.control(this.cliente.nif),
+      })
+    }); 
+  }
+
+
+  updateCliente(updateData){
+    console.log("iniciou update")
+    //Update Form Data  
+    this.clienteUpdate.nome = updateData.nomeUpdate;
+    this.clienteUpdate.email = updateData.emailUpdate;
+    this.clienteUpdate.indicativo = updateData.indicativoUpdate;
+    this.clienteUpdate.telefone = updateData.telefoneUpdate;
+    this.clienteUpdate.password = updateData.passwordUpdate;
+    this.clienteUpdate.nif = updateData.nifUpdate;
+    //Data que nao muda
+    this.clienteUpdate._id = this.cliente._id;
+    this.pagamentoN();
+  }
+  
 }

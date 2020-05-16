@@ -49,7 +49,7 @@ import { ReservaQuartoComponent } from './reserva-quarto/reserva-quarto.componen
     ClienteDadosComponent,
     ClienteReservasComponent,
     ClienteDadosUpdateComponent,
-    ReservaQuartoComponent,
+    ReservaQuartoComponent
   ],
   imports: [
     BrowserModule,

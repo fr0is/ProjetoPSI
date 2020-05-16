@@ -32,6 +32,7 @@ exports.reserva_get_quarto = function(req, res, next) {
 // Handle Utilizador create.
 exports.reserva_create = [
     body('userEmail', 'userEmail must not be empty.').isLength({ min: 1 }).trim(),
+    body('emailReserva', 'emailReserva must not be empty.').isLength({ min: 1 }).trim(),
     body('quarto', 'quarto must not be empty.').isLength({ min: 1 }).trim(),
     body('metodoDePagamento', 'metodoDePagamento must not be empty.').isLength({ min: 1 }).trim(),
     body('morada', 'morada must not be empty.').isLength({ min: 1 }).trim(),
@@ -39,12 +40,13 @@ exports.reserva_create = [
     body('checkOut', 'checkOut must not be empty.').optional({ checkFalsy: true }).isISO8601(),
 
     sanitizeBody('userEmail').escape(),
+    sanitizeBody('emailReserva').escape(),
     sanitizeBody('quarto').escape(),
     sanitizeBody('metodoDePagamento').escape(),
     sanitizeBody('morada').escape(),
     sanitizeBody('checkIn').toDate(),
     sanitizeBody('checkOut').toDate(),
-    
+
 
     (req, res, next) => {
 
@@ -54,45 +56,46 @@ exports.reserva_create = [
             res.json({ 'message': 'Validation errors' });
         } else {
             async.parallel({
-                instances: function(callback){
-                    QuartoInstance.find({'quarto': req.body.quarto}).populate('reservas').exec(callback);
+                instances: function(callback) {
+                    QuartoInstance.find({ 'quarto': req.body.quarto }).populate('reservas').exec(callback);
                 }
-            }, function(err,results){
-                if(err){return next(err);}
+            }, function(err, results) {
+                if (err) { return next(err); }
                 var quartoinstance;
-                for(let inst of results.instances){
-                    var listReservas = inst.reservas;  
-                    if(quartoinstance == null){
-                        if(listReservas.length > 0){
-                            for(var i = -1;  i <listReservas.length; i++){
-                                if(i === -1){
-                                    if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                for (let inst of results.instances) {
+                    var listReservas = inst.reservas;
+                    if (quartoinstance == null) {
+                        if (listReservas.length > 0) {
+                            for (var i = -1; i < listReservas.length; i++) {
+                                if (i === -1) {
+                                    if (moment(listReservas[i + 1].checkIn).isAfter(moment(req.body.checkOut))) {
                                         quartoinstance = inst;
                                         break;
                                     }
-                                }else if(i+1 >= listReservas.length){
-                                    if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
+                                } else if (i + 1 >= listReservas.length) {
+                                    if (moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))) {
                                         quartoinstance = inst;
                                         break;
                                     }
-                                }else{
-                                    if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                } else {
+                                    if (moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i + 1].checkIn).isAfter(moment(req.body.checkOut))) {
                                         quartoinstance = inst;
                                         break;
                                     }
                                 }
                             }
-                        }else{
+                        } else {
                             quartoinstance = inst;
                         }
-                        if(quartoinstance){break;}
+                        if (quartoinstance) { break; }
                     }
                 }
-                if(quartoinstance == null){
+                if (quartoinstance == null) {
                     res.json({ 'message': 'Nao ha quartos disponiveis' });
-                }else{
+                } else {
                     var reserva = new Reserva({
                         userEmail: req.body.userEmail,
+                        emailReserva: req.body.emailReserva,
                         quarto: quartoinstance,
                         metodoDePagamento: req.body.metodoDePagamento,
                         morada: req.body.morada,
@@ -101,7 +104,7 @@ exports.reserva_create = [
                         preco: req.body.preco
                     });
                     quartoinstance.reservas.push(reserva);
-                    QuartoInstance.replaceOne({_id: quartoinstance._id}, quartoinstance, function (err, theInstance) {
+                    QuartoInstance.replaceOne({ _id: quartoinstance._id }, quartoinstance, function(err, theInstance) {
                         if (err) { return next(err); }
                     });
 
@@ -117,19 +120,19 @@ exports.reserva_create = [
 
 exports.reserva_delete = function(req, res, next) {
     async.parallel({
-        reserva: function(callback){
+        reserva: function(callback) {
             Reserva.findById(req.body._id).exec(callback);
         },
-    },function(err, results){
+    }, function(err, results) {
         if (err) { return next(err); }
         var instance = results.reserva.quarto;
         var reserva = results.reserva;
 
         const ind = quartoinstance.reservas.indexOf(reserva)
-        if(ind > -1){
+        if (ind > -1) {
             quartoinstance.reservas.splice(ind, 1);
         }
-        QuartoInstance.replaceOne({_id: instance._id}, instance, function (err, theInstance) {
+        QuartoInstance.replaceOne({ _id: instance._id }, instance, function(err, theInstance) {
             if (err) { return next(err); }
         });
 
@@ -142,6 +145,7 @@ exports.reserva_delete = function(req, res, next) {
 
 exports.reserva_update = [
     body('userEmail', 'userEmail must not be empty.').isLength({ min: 1 }).trim(),
+    body('emailReserva', 'emailReserva must not be empty.').isLength({ min: 1 }).trim(),
     body('quarto', 'quarto must not be empty.').isLength({ min: 1 }).trim(),
     body('metodoDePagamento', 'metodoDePagamento must not be empty.').isLength({ min: 1 }).trim(),
     body('morada', 'morada must not be empty.').isLength({ min: 1 }).trim(),
@@ -150,6 +154,7 @@ exports.reserva_update = [
 
     sanitizeBody('userEmail').escape(),
     sanitizeBody('quarto').escape(),
+    sanitizeBody('emailReserva').escape(),
     sanitizeBody('metodoDePagamento').escape(),
     sanitizeBody('morada').escape(),
     sanitizeBody('checkIn').toDate(),
@@ -162,46 +167,47 @@ exports.reserva_update = [
             res.json({ 'message': 'Validation errors' });
         } else {
             async.parallel({
-                instances: function(callback){
-                    QuartoInstance.find({'quarto': req.body.quarto}).exec(callback);
+                instances: function(callback) {
+                    QuartoInstance.find({ 'quarto': req.body.quarto }).exec(callback);
                 }
-            }, function(err,results){
-                if(err){return next(err);}
+            }, function(err, results) {
+                if (err) { return next(err); }
                 var quartoinstance;
-                for(let inst of results.instances){
-                    var listReservas = inst.reservas;  
-                    if(quartoinstance == null){
-                        if(listReservas.length > 0){
-                            for(var i = -1;  i <listReservas.length; i++){
-                                if(i === -1){
-                                    if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                for (let inst of results.instances) {
+                    var listReservas = inst.reservas;
+                    if (quartoinstance == null) {
+                        if (listReservas.length > 0) {
+                            for (var i = -1; i < listReservas.length; i++) {
+                                if (i === -1) {
+                                    if (moment(listReservas[i + 1].checkIn).isAfter(moment(req.body.checkOut))) {
                                         quartoinstance = inst;
                                         break;
                                     }
-                                }else if(i+1 >= listReservas.length){
-                                    if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
+                                } else if (i + 1 >= listReservas.length) {
+                                    if (moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))) {
                                         quartoinstance = inst;
                                         break;
                                     }
-                                }else{
-                                    if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                } else {
+                                    if (moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i + 1].checkIn).isAfter(moment(req.body.checkOut))) {
                                         quartoinstance = inst;
                                         break;
                                     }
                                 }
                             }
-                        }else{
+                        } else {
                             quartoinstance = inst;
                         }
-                        if(quartoinstance){break;}
+                        if (quartoinstance) { break; }
                     }
                 }
-                if(quartoinstance == null){
+                if (quartoinstance == null) {
                     res.json({ 'message': 'Nao foi possivel atualizar a reserva' });
-                }else{
+                } else {
                     var reserva = new Reserva({
                         _id: req.body._id,
                         userEmail: req.body.userEmail,
+                        emailReserva: req.body.emailReserva,
                         quarto: quartoinstance,
                         metodoDePagamento: req.body.metodoDePagamento,
                         morada: req.body.morada,
@@ -209,7 +215,7 @@ exports.reserva_update = [
                         checkOut: req.body.checkOut,
                         preco: req.body.preco
                     });
-                    Reserva.replaceOne({_id: req.body._id}, reserva, function (err, theReserva) {
+                    Reserva.replaceOne({ _id: req.body._id }, reserva, function(err, theReserva) {
                         if (err) { return next(err); }
                         res.json({ 'message': 'Reserva atualizada' });
                     });
