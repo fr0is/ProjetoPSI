@@ -12,6 +12,7 @@ import { LoginRegistoComponent } from './login-registo/login-registo.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { ClienteDadosComponent } from './cliente-dados/cliente-dados.component';
 import { ClienteReservasComponent } from './cliente-reservas/cliente-reservas.component';
+import { ReservaQuartoComponent } from './reserva-quarto/reserva-quarto.component';
 
 
 const routes: Routes = [
@@ -53,7 +54,11 @@ const routes: Routes = [
           component: ClienteReservasComponent
         }
       ]
-    }
+    },
+    {
+      path: 'reservar',
+      component: ReservaQuartoComponent
+    },
   ]},
 ];
 

@@ -1,0 +1,56 @@
+/***********DATAS***************/
+
+#datasMudanca {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 5%;
+}
+
+#input {
+    margin: 7.5%;
+    width: 90%;
+    text-align: center;
+}
+
+
+/***********QUARTO***************/
+
+li {
+    list-style: none;
+}
+
+#QuartoContainer {
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+#imagemQuartoContainer {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+#imagemQuarto {
+    width: 50%;
+}
+
+#quartoDetalhes {
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+#quartos {
+    margin-top: 2%;
+    padding: 1%;
+    font-size: 15px;
+    font-weight: 600;
+    height: 30%;
+}
+
+.check-list {
+    margin: 2%;
+    margin-bottom: 0;
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}

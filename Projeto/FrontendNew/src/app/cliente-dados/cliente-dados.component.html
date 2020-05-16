@@ -42,7 +42,7 @@
                             <p class="card__info">{{cartao.nome}}</p>
                         </div>
                         <div class="card__space-25">
-                            <span class="card__label">Expires</span>
+                            <span class="card__label">VALIDO ATÉ</span>
                             <p class="card__info">{{cartao.prazoMes}}/{{cartao.prazoAno}}</p>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div id="dataValidade">
                         <div>
-                            <span class="card__label">Expires</span>
+                            <span class="card__label">VALIDO ATÉ</span>
                         </div>
                         <input id="mesCartao" placeholder="MM" type="text" pattern="[0]{1}[0-9]{1}|11|12" formControlName="dataCartaoMes" required/><span id="anoCartao">/</span>
                         <input id="anoCartao" placeholder="YY" type="text" pattern="[1-9]{2}" formControlName="dataCartaoAno" required/>

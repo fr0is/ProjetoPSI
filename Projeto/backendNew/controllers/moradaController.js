@@ -14,16 +14,15 @@ exports.morada_get_email = function(req, res, next) {
 };
 
 exports.morada_get = function(req, res, next) {
-    Morada.findById(req.params.id)
-        .exec(function(err, morada) {
-            if (err) { return next(err); } // Error in API usage.
-            if (morada == null) { // No results.
-                var err = new Error('morada not found');
+    Morada.findById(req.params.moradaId)
+        .exec(function(err, results) {
+            if (err) { return next(err); }
+            if (results == null) {
+                var err = new Error('Morada nao encontrada');
                 err.status = 404;
                 return next(err);
             }
-            // Successful, so render.
-            res.json(morada);
+            res.json(results);
         });
 };
 
@@ -72,7 +71,7 @@ exports.morada_delete = function(req, res, next) {
         morada: function(callback) {
             Morada.findById(req.body._id).exec(callback);
         }
-    }, function(err, results) {
+    }, function(err, morada) {
         if (err) { return next(err); }
         Morada.deleteOne({ _id: req.body._id }, function deleteMorada(err) {
             if (err) { return next(err); }

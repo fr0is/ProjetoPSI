@@ -1,0 +1,112 @@
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+#reservaQuartoForm {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#dataCheckIn,
+#dataCheckOut,
+#quartoReserva {
+    width: 25%;
+    margin: 0;
+}
+
+input:invalid {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    border-color: red;
+    transform: translate3d(0, 0, 0);
+}
+
+input:valid {
+    border-color: green;
+    transform: translate3d(0, 0, 0);
+}
+
+input {
+    padding: 5%;
+    width: auto;
+}
+
+#reservaSubmit {
+    border: none;
+}
+
+.draw-border {
+    box-shadow: inset 0 0 0 4px black;
+    color: black;
+    transition: color 0.25s 0.0833333333s;
+    position: relative;
+}
+
+.draw-border::before,
+.draw-border::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+}
+
+.draw-border::after {
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+}
+
+.draw-border::before {
+    border-top-width: 4px;
+    border-right-width: 4px;
+}
+
+.draw-border:hover {
+    color: green;
+}
+
+.draw-border:hover::before,
+.draw-border:hover::after {
+    border-color: green;
+    transition: border-color 0s, width 0.25s, height 0.25s;
+    width: 100%;
+    height: 100%;
+}
+
+.draw-border:hover::before {
+    transition-delay: 0s, 0s, 0.25s;
+}
+
+.draw-border:hover::after {
+    transition-delay: 0s, 0.25s, 0s;
+}
+
+.btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1.5;
+    font: 700 1.2rem 'Roboto Slab', sans-serif;
+    padding: 1em 2em;
+    letter-spacing: 0.05rem;
+}
