@@ -53,7 +53,7 @@ export class ClienteReservasComponent implements OnInit {
   reservas: Reserva[] = [];
   cartoes: CartaoMB[] = [];
   down = [];
-  precoFiltro = 500;
+  precoFiltro: Number = 500;
   hotel: Hotel;
   moradas: Morada[] = [];
   filtrar: FormGroup;
