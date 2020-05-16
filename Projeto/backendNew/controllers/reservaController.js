@@ -55,37 +55,38 @@ exports.reserva_create = [
         } else {
             async.parallel({
                 instances: function(callback){
-                    QuartoInstance.find({'quarto': req.body.quarto}).exec(callback);
+                    QuartoInstance.find({'quarto': req.body.quarto}).populate('reservas').exec(callback);
                 }
             }, function(err,results){
                 if(err){return next(err);}
                 var quartoinstance;
                 for(let inst of results.instances){
                     var listReservas = inst.reservas;  
-
-                    if(listReservas.length > 0){
-                        for(var i = -1;  i <listReservas.length; i++){
-                            if(i === -1){
-                                if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
-                                    quartoinstance = inst;
-                                    break;
-                                }
-                            }else if(i+1 >= listReservas.length){
-                                if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
-                                    quartoinstance = inst;
-                                    break;
-                                }
-                            }else{
-                                if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
-                                    quartoinstance = inst;
-                                    break;
+                    if(quartoinstance == null){
+                        if(listReservas.length > 0){
+                            for(var i = -1;  i <listReservas.length; i++){
+                                if(i === -1){
+                                    if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                        quartoinstance = inst;
+                                        break;
+                                    }
+                                }else if(i+1 >= listReservas.length){
+                                    if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
+                                        quartoinstance = inst;
+                                        break;
+                                    }
+                                }else{
+                                    if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                        quartoinstance = inst;
+                                        break;
+                                    }
                                 }
                             }
+                        }else{
+                            quartoinstance = inst;
                         }
-                    }else{
-                        quartoinstance = inst;
+                        if(quartoinstance){break;}
                     }
-                    if(quartoinstance){break;}
                 }
                 if(quartoinstance == null){
                     res.json({ 'message': 'Nao ha quartos disponiveis' });
@@ -99,7 +100,11 @@ exports.reserva_create = [
                         checkOut: req.body.checkOut,
                         preco: req.body.preco
                     });
-                    
+                    quartoinstance.reservas.push(reserva);
+                    QuartoInstance.replaceOne({_id: quartoinstance._id}, quartoinstance, function (err, theInstance) {
+                        if (err) { return next(err); }
+                    });
+
                     reserva.save(function(err) {
                         if (err) { return next(err); }
                         res.json({ 'message': 'Quarto Reservado' });
@@ -111,11 +116,28 @@ exports.reserva_create = [
 ];
 
 exports.reserva_delete = function(req, res, next) {
+    async.parallel({
+        reserva: function(callback){
+            Reserva.findById(req.body._id).exec(callback);
+        },
+    },function(err, results){
+        if (err) { return next(err); }
+        var instance = results.reserva.quarto;
+        var reserva = results.reserva;
 
-        Reserva.deleteOne({ _id: req.body._id }, function deleteReserva(err) {
+        const ind = quartoinstance.reservas.indexOf(reserva)
+        if(ind > -1){
+            quartoinstance.reservas.splice(ind, 1);
+        }
+        QuartoInstance.replaceOne({_id: instance._id}, instance, function (err, theInstance) {
+            if (err) { return next(err); }
+        });
+
+        Reserva.deleteOne({ _id: reserva._id }, function deleteReserva(err) {
             if (err) { return next(err); }
             res.json({ 'message': 'Reserva apagada' })
         });
+    });
 };
 
 exports.reserva_update = [
@@ -148,30 +170,31 @@ exports.reserva_update = [
                 var quartoinstance;
                 for(let inst of results.instances){
                     var listReservas = inst.reservas;  
-
-                    if(listReservas.length > 0){
-                        for(var i = -1;  i <listReservas.length; i++){
-                            if(i === -1){
-                                if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
-                                    quartoinstance = inst;
-                                    break;
-                                }
-                            }else if(i+1 >= listReservas.length){
-                                if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
-                                    quartoinstance = inst;
-                                    break;
-                                }
-                            }else{
-                                if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
-                                    quartoinstance = inst;
-                                    break;
+                    if(quartoinstance == null){
+                        if(listReservas.length > 0){
+                            for(var i = -1;  i <listReservas.length; i++){
+                                if(i === -1){
+                                    if(moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                        quartoinstance = inst;
+                                        break;
+                                    }
+                                }else if(i+1 >= listReservas.length){
+                                    if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))){
+                                        quartoinstance = inst;
+                                        break;
+                                    }
+                                }else{
+                                    if(moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i+1].checkIn).isAfter(moment(req.body.checkOut))){
+                                        quartoinstance = inst;
+                                        break;
+                                    }
                                 }
                             }
+                        }else{
+                            quartoinstance = inst;
                         }
-                    }else{
-                        quartoinstance = inst;
+                        if(quartoinstance){break;}
                     }
-                    if(quartoinstance){break;}
                 }
                 if(quartoinstance == null){
                     res.json({ 'message': 'Nao foi possivel atualizar a reserva' });
