@@ -53,7 +53,8 @@
                         </form>
                     </div>
                 </div>
-                <div *ngIf="dadosCliente">Ola
+                <div *ngIf="dadosCliente">
+                    <div></div>
                     <div class="botaoMudaPagina">
                         <a (click)="pagamentoN()" class="nextPage"><img src="assets/Imagens/Icones/turnRight.png"></a>
                     </div>
@@ -79,8 +80,15 @@
             <div class="paginaImpar" *ngIf="datasQuarto">
                 <h4 class="descricaoPagina">Confirme as datas de check-in e de check-out! <br>Confirme também o tipo de quarto.</h4>
             </div>
+            <div class="paginaImpar" *ngIf="dadosCliente">
+                <h4 class="descricaoPagina">Insira os seus dados de cliente.</h4>
+            </div>
+            <div class="paginaImpar" *ngIf="pagamento">
+                <h4 class="descricaoPagina">Escolha um método de pagamento ou adicione um novo.</h4>
+            </div>
             <div id="paginaAtual" class="paginaImpar">
                 <div *ngIf="final">
+                    <h2 style="text-align: center;">Dados da reserva:</h2>
                     <div id="datas">
                         <div id="checkInField">
                             <h3 class="tituloParametro"><span id="checkIn">Check-In</span></h3>
