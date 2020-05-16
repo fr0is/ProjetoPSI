@@ -27,7 +27,7 @@ router.post('/users/cartao/delete', cartaoMB_controller.cartaoMb_delete); //cart
 
 /********************** Morada **********************/
 router.get('/morada/:userEmail', morada_controller.morada_get_email); //cartao get email
-router.get('/morada/:moradaId', morada_controller.morada_get); //cartao get id
+router.get('/morada/getOne/:moradaId', morada_controller.morada_get); //cartao get id
 router.post('/morada/create', morada_controller.morada_create); //cartao create
 router.post('/morada/delete', morada_controller.morada_delete); //cartao delete
 

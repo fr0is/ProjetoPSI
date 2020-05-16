@@ -1,13 +1,56 @@
-<form ngNativeValidate [formGroup]="createReserva" (ngSubmit)="create(createReserva.value)">
-    <label>Quarto</label>
-    <input type="text" formControlName="quarto" /><br>
-    <label>Morada</label>
-    <input type="text" formControlName="morada" /><br>
-    <label>Metodo Pagamento</label>
-    <input type="text" formControlName="metodoDePagamento" /><br>
-    <label>Check-in</label>
-    <input type="date" formControlName="checkIn" /><br>
-    <label>Check-out</label>
-    <input type="date" formControlName="checkOut" />
-    <button type="submit" class="submit">Ola</button>
-</form>
+<div id="filtro">
+    <form ngNativeValidate id="filtroForm" [formGroup]="filtrar" (ngSubmit)="updatePrecoFiltro(filtrar.value)">
+        <div id="precoFiltro">
+            <p class="filtroText"><strong>Preço mínimo(€)</strong></p>
+            <input class="filtroReserva" type="number" formControlName="precoFiltro" required>
+        </div>
+        <button class="botao" id="filtrarButton" type="submit"><img id="filtrarImage" src="assets/Imagens/Icones/search.png"></button>
+    </form>
+</div>
+<ng-container *ngFor="let reserva of reservas; let i = index">
+    <ng-container *ngIf="(reserva.preco>=precoFiltro)">
+        <div id="dropdownTopBar">
+            <div class="param" id="checkIn"><strong>Check-in</strong><br>{{reserva.checkIn | date}}</div>
+            <div class="param" id="checkOut"><strong>Check-out</strong><br>{{reserva.checkOut | date}}</div>
+            <div class="param" id="quarto"><strong>Quarto</strong><br>{{quartos[i].tipo}}</div>
+            <div class="param" id="precoTotal"><strong>Preço</strong><br>{{reserva.preco}}€</div>
+            <div class="param" id="buttonDropdown"><button class="botao" (click)="showDropdown(i)">
+            <ng-container *ngIf="!down[i];else goUp"><img class="seta" src="assets/Imagens/Icones/downArrow.png"></ng-container></button>
+                <ng-template #goUp><img class="seta" src="assets/Imagens/Icones/upArrow.png"></ng-template>
+            </div>
+        </div>
+        <div *ngIf="down[i]" id="dropdown">
+            <div id="dados">
+                <div id="metodoPagamento">
+                    <div class="titulo"><strong>Método de Pagamento</strong></div>
+                    <br>
+                    <div id="dadosPagamento">
+                        <p class="texto"><strong>Número Cartão:</strong><span> {{format(cartoes[i].numero)}}</span></p>
+                        <p class="texto"><strong>Válido até:</strong><span> {{cartoes[i].prazoMes}}/{{cartoes[i].prazoAno}}</span></p>
+                        <p class="texto"><strong>CVV:</strong><span> {{cartoes[i].cvv}}</span></p>
+                    </div>
+                </div>
+                <div id="morada">
+                    <div class="titulo"><strong>Morada</strong></div>
+                    <br>
+                    <div id="dadosMorada">
+                        <p class="texto"><strong>Rua:</strong><span> {{moradas[i].rua}}</span></p>
+                        <p class="texto"><strong>Código postal:</strong><span> {{moradas[i].codigoPostal}}</span></p>
+                        <p class="texto"><strong>Cidade:</strong><span> {{moradas[i].cidade}}</span></p>
+                        <p class="texto"><strong>País:</strong><span> {{moradas[i].pais}}</span></p>
+                    </div>
+                </div>
+            </div>
+            <div id="botoes">
+                <div id="botoesContainer">
+                    <button class="botao icones"><img class="iconesImagem" (click)="edit(reserva)" src="assets/Imagens/Icones/edit.png"></button>
+                    <button class="botao icones"><img class="iconesImagem" (click)="delete(reserva)" src="assets/Imagens/Icones/delete.png"></button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
+
+<div *ngIf="!reservas">
+    Não tem reservas marcadas.
+</div>

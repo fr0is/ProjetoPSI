@@ -14,9 +14,9 @@ exports.hotel_list = function(req, res, next) {
 
 };
 
-exports.hotel_detail = function (req, res, next) {
+exports.hotel_detail = function(req, res, next) {
     Hotel.findById(req.params.hotelId)
-        .exec(function (err, results) {
+        .exec(function(err, results) {
             if (err) { return next(err); }
             if (results == null) {
                 var err = new Error('Hotel nao encontrado');

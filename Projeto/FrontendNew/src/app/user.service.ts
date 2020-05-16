@@ -46,14 +46,25 @@ export class UserService {
     return this.http.get(url);
   }
 
+  getMorada(id){
+    const url = this.moradaUrl +'getOne/' + id;
+    console.log(url);
+    return this.http.get<Morada>(url);
+  }
+
   apagarMorada(morada: Morada){
-    const url = this.moradaUrl + 'delete'
+    const url = this.moradaUrl + 'delete';
     return this.http.post<{message: string}>(url, morada);
   }
 
   createReserva(reserva: Reserva){
-    const url = this.reservaUrl + 'create'
+    const url = this.reservaUrl + 'create';
     return this.http.post<{message: string}>(url, reserva);
+  }
+
+  getUserReservas(email){
+    const url = this.reservaUrl +'email/' + email;
+    return this.http.get(url);
   }
 
 }

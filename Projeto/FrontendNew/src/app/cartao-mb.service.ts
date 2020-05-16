@@ -21,6 +21,11 @@ export class CartaoMBService {
     return this.http.post<{ message: string }>(this.createUrl, cartao);
   }
 
+  getCartao(id){
+    const url = this.usersUrl + 'reserva/' + id;
+    return this.http.get<CartaoMB>(url);
+  }
+
   getCartaoEmail(email){
     const url = this.usersUrl + email + '/cartoes';
     return this.http.get(url);

@@ -14,16 +14,15 @@ exports.cartaoMb_get_cartao_email = function(req, res, next) {
 };
 
 exports.cartaoMb_get = function(req, res, next) {
-    CartaoMB.findById(req.params.id)
-        .exec(function(err, cartao) {
-            if (err) { return next(err); } // Error in API usage.
-            if (cartao == null) { // No results.
-                var err = new Error('Cartao not found');
+    CartaoMB.findById(req.params.cartaoId)
+        .exec(function(err, results) {
+            if (err) { return next(err); }
+            if (results == null) {
+                var err = new Error('Cartao nao encontrado');
                 err.status = 404;
                 return next(err);
             }
-            // Successful, so render.
-            res.json(cartao);
+            res.json(results);
         });
 };
 
