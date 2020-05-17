@@ -81,6 +81,32 @@
     animation: fadein 1s;
 }
 
+.alertSucesso {
+    padding: 20px;
+    background-color: green;
+    /* Red */
+    color: white;
+    margin-bottom: 15px;
+    opacity: 1;
+    transition: opacity 0.6s;
+    text-decoration: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100000;
+    text-align: center;
+    -webkit-animation: fadein 1s;
+    /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 1s;
+    /* Firefox < 16 */
+    -ms-animation: fadein 1s;
+    /* Internet Explorer */
+    -o-animation: fadein 1s;
+    /* Opera < 12.1 */
+    animation: fadein 1s;
+}
+
 
 /* The close button */
 

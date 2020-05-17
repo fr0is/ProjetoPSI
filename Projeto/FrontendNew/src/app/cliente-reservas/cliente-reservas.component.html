@@ -40,8 +40,17 @@
                         <p class="texto"><strong>País:</strong><span> {{moradas[i].pais}}</span></p>
                     </div>
                 </div>
+                <div id="morada">
+                    <div class="titulo"><strong>Identificação</strong></div>
+                    <br>
+                    <div id="dadosMorada">
+                        <p class="texto"><strong>Nome:</strong><span> {{reservas[i].nomeReserva}}</span></p>
+                        <p class="texto"><strong>Email:</strong><span> {{reservas[i].emailReserva}}</span></p>
+                        <p class="texto"><strong>Telefone:</strong><span> {{reservas[i].indicativoReserva}} {{reservas[i].telefoneReserva}}</span></p>
+                        <p class="texto"><strong>NIF:</strong><span> {{reservas[i].nifReserva}}</span></p>
+                    </div>
+                </div>
             </div>
-            <div id="reservaMail">{{reserva.emailReserva}}</div>
             <div id="botoes">
                 <div id="botoesContainer">
                     <button class="botao icones"><img class="iconesImagem" (click)="edit(reserva)" src="assets/Imagens/Icones/edit.png"></button>

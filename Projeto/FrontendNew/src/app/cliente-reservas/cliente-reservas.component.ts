@@ -86,6 +86,7 @@ export class ClienteReservasComponent implements OnInit {
   getReservas(){
     this.userService.getUserReservas(localStorage.getItem('userAtual')).subscribe(listReservas => {
       this.reservas = listReservas as Reserva[];
+      console.log(this.reservas);
       for(let i = 0; i < this.reservas.length; i++){
         this.hotelService.getHotelQuarto(this.reservas[i].quarto.quarto).subscribe(results => {
           this.quartos[i] = results;
@@ -93,7 +94,6 @@ export class ClienteReservasComponent implements OnInit {
         });
         this.userService.getMorada(this.reservas[i].morada._id).subscribe(morada => {
           this.moradas[i] = morada;
-          console.log(this.moradas);
         });
         this.cartaoMbService.getCartao(this.reservas[i].metodoDePagamento._id).subscribe(cartao => {
           this.cartoes[i] = cartao;

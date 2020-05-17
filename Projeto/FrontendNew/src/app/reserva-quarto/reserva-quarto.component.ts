@@ -31,8 +31,6 @@ export class ReservaQuartoComponent implements OnInit {
   moradaId: any;
   cartoes = [];
   moradaIdFinal: any;
-  mudaPagina = false;
-  erroDatas = false;
   errorMessage;
   moradas = [];
   cliente: User;
@@ -91,6 +89,10 @@ export class ReservaQuartoComponent implements OnInit {
   criarM = false;
   foto = "";
   criar = false;
+  mudaPagina = false;
+  erroDatas = false;
+  erroFazerReserva = false;
+  fazerReservaSucesso = false;
   //Forms
   datasQuartoForm: FormGroup;
   createMorada: FormGroup;
@@ -258,10 +260,15 @@ export class ReservaQuartoComponent implements OnInit {
     this.reserva.nomeReserva = sessionStorage.getItem('nomeReserva');
     this.reserva.indicativoReserva = sessionStorage.getItem('indicativoReserva');
     this.reserva.telefoneReserva = sessionStorage.getItem('numeroReserva');
-    this.reserva.nifReserva =sessionStorage.getItem('nifReserva');
+    this.reserva.nifReserva = sessionStorage.getItem('nifReserva');
+    this.reserva.preco = this.precoFinal;
     console.log(this.reserva);
-    this.userService.createReserva(this.reserva).subscribe(message => {
-      alert(message);
+    this.userService.createReserva(this.reserva).subscribe(result => {
+      if(result.message = "success"){
+        this.fazerReservaSucesso = true;
+      }else{
+        this.erroFazerReserva = true;
+      }
     });
     /**** Apagar dados reserva *****/
     sessionStorage.removeItem('checkInR');
@@ -277,6 +284,16 @@ export class ReservaQuartoComponent implements OnInit {
     this.datasQuartoForm.reset();
     this.createMorada.reset();
     this.createCartao.reset();
+  }
+
+  changeErroReserva(){
+    this.erroFazerReserva = !this.erroFazerReserva;
+    window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/reservar';
+  }
+
+  changeSucessoReserva(){
+    this.fazerReservaSucesso = !this.fazerReservaSucesso;
+    window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/cliente/reservas';
   }
 
   compareTwoDates(){

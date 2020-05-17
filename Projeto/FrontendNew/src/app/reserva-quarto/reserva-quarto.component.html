@@ -5,6 +5,12 @@
     <div *ngIf="erroDatas" class="alert">
         <a class="closebtn" (click)="changeStateDateErro()" onclick="this.parentElement.style.display='none';">&times;</a>Data de check-in não pode ser depois da data de check-out!
     </div>
+    <div *ngIf="erroFazerReserva" class="alert">
+        <a class="closebtn" (click)="changeErroReserva()" onclick="this.parentElement.style.display='none';">&times;</a>Data não disponível para reserva! Quarto já está ocupado!
+    </div>
+    <div *ngIf="fazerReservaSucesso" class="alertSucesso">
+        <a class="closebtn" (click)="changeSucessoReserva()" onclick="this.parentElement.style.display='none';">&times;</a>Reserva efetuada com sucesso!
+    </div>
     <div id="bookContainer">
         <div class="book">
             <div class="back"></div>
