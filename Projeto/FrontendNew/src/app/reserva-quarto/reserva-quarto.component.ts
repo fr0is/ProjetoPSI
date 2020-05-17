@@ -13,7 +13,7 @@ import { Reserva } from 'src/reserva';
 @Component({
   selector: 'app-reserva-quarto',
   templateUrl: './reserva-quarto.component.html',
-  styleUrls: ['./reserva-quarto.component.css','./paginaReserva.css','./paginaIdentificacao.css','./botaoReservar.css','./paginaDatas.css','./paginaMetodoPagamento.css'],
+  styleUrls: ['./reserva-quarto.component.css','./paginaReserva.css','./paginaIdentificacao.css','./botaoReservar.css','./paginaDatas.css','./paginaMetodoPagamento.css','./paginaFinal.css'],
 })
 export class ReservaQuartoComponent implements OnInit {
 
@@ -167,6 +167,16 @@ export class ReservaQuartoComponent implements OnInit {
         this.foto = this.quartos[i].foto;
       }
     }
+  }
+
+  mudaCheckIn(data){
+    this.checkIn = data;
+    localStorage.setItem('checkInR', this.checkIn);
+  }
+
+  mudaCheckOut(data){
+    this.checkOut = data;
+    localStorage.setItem('checkOutR', this.checkOut);
   }
 
   updateDataQD(updateDataDQ){

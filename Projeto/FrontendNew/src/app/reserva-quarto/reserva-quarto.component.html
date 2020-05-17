@@ -17,13 +17,13 @@
                                     <div class="checkInMudanca">
                                         <h3 class="tituloParametro">Check-In</h3>
                                         <div id="input">
-                                            <input type="date" formControlName="checkInInicial" required>
+                                            <input type="date" (change)="mudaCheckIn($event.target.value)" formControlName="checkInInicial" required>
                                         </div>
                                     </div>
                                     <div class="checkOutMudanca">
                                         <h3 class="tituloParametro">Check-Out</h3>
                                         <div id="input">
-                                            <input type="date" formControlName="checkOutInicial" required>
+                                            <input type="date" (change)="mudaCheckOut($event.target.value)" formControlName="checkOutInicial" required>
                                         </div>
                                     </div>
                                 </div>
@@ -142,6 +142,26 @@
                         </div>
                     </div>
                     <div *ngIf="final">
+                        <h3 class="tituloParametro"><span>Dados de identificação</span></h3>
+                        <div class="dadosFinais">
+                            <p><strong>Nome: </strong>{{nomeFinal}}</p>
+                            <p><strong>Email: </strong>{{emailFinal}}</p>
+                            <p><strong>Telefone: </strong>{{indicativoFinal}} {{telefoneFinal}}</p>
+                            <p><strong>NIF: </strong>{{nifFinal}}</p>
+                        </div>
+                        <h3 class="tituloParametro"><span>Morada</span></h3>
+                        <div class="dadosFinais">
+                            <p><strong>Rua: </strong>{{moradaFinal.rua}}</p>
+                            <p><strong>Código postal: </strong>{{moradaFinal.codigoPostal}}</p>
+                            <p><strong>Cidade: </strong>{{moradaFinal.cidade}}</p>
+                            <p><strong>País: </strong>{{moradaFinal.pais}}</p>
+                        </div>
+                        <h3 class="tituloParametro"><span>Método de pagamento</span></h3>
+                        <div class="dadosFinais">
+                            <p><strong>Número: </strong>{{cartaoFinal.numero}}</p>
+                            <p><strong>Válido até: </strong>{{cartaoFinal.prazoMes}}/{{cartaoFinal.prazoMes}}</p>
+                            <p><strong>CVV: </strong>{{cartaoFinal.cvv}}</p>
+                        </div>
                         <div class="botaoFazerReserva">
                             <button (click)="createReserva()" type="submit" class="nextPage" class="btn draw-border submit">Reservar</button>
                         </div>
@@ -175,6 +195,10 @@
                             </div>
                         </div>
                         <h3 class="tituloParametro">Quarto</h3>
+                        <p class="textoD"><strong>Tipo: </strong>{{quarto}}</p>
+                        <div id="fotoFinalContainer">
+                            <img id="fotoFinal" src="{{foto}}">
+                        </div>
                     </div>
                 </div>
             </div>
