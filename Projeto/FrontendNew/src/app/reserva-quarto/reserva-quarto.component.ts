@@ -17,11 +17,13 @@ import { Reserva } from 'src/reserva';
 })
 export class ReservaQuartoComponent implements OnInit {
 
+  precoFinal = 0;
   quartoFinal: Quarto;
   cartaoFinal: CartaoMB;
   moradaFinal: Morada;
   nomeFinal: String;
   emailFinal: String;
+  quartoSelecionado: Quarto;
   indicativoFinal: String;
   telefoneFinal: String;
   nifFinal: String;
@@ -148,6 +150,7 @@ export class ReservaQuartoComponent implements OnInit {
       for (let i = 0; i < this.quartos.length; i++) {
         if(this.quartos[i].tipo === this.selectedQuarto){
           this.foto = this.quartos[i].foto;
+          this.quartoSelecionado = this.quartos[i];
         }
       }
     });
@@ -165,6 +168,7 @@ export class ReservaQuartoComponent implements OnInit {
     for (let i = 0; i < this.quartos.length; i++) {
       if(this.quartos[i].tipo === this.selectedQuarto){
         this.foto = this.quartos[i].foto;
+        this.quartoSelecionado = this.quartos[i];
       }
     }
   }
@@ -190,6 +194,7 @@ export class ReservaQuartoComponent implements OnInit {
     this.dadosCliente = true;
     this.erroDatas = false;
     this.mudaPagina = true;
+    this.calcularPreco();
     }
   }
 
@@ -243,7 +248,11 @@ export class ReservaQuartoComponent implements OnInit {
     this.reserva.morada = sessionStorage.getItem('moradaReserva');
     this.reserva.checkIn = new Date(this.checkIn);
     this.reserva.checkOut = new Date(this.checkOut);
-    this.reserva.quarto = this.selectedQuarto;
+    for(let i = 0; i < this.quartos.length; i++){
+      if(this.quartos[i].tipo === this.selectedQuarto){
+        this.reserva.quarto = this.quartos[i]._id;
+      }
+    }
     this.reserva.userEmail = this.cliente.email;
     this.reserva.emailReserva = sessionStorage.getItem('emailReserva');
     this.reserva.nomeReserva = sessionStorage.getItem('nomeReserva');
@@ -317,6 +326,29 @@ export class ReservaQuartoComponent implements OnInit {
       this.cartaoId = sessionStorage.getItem('cartaoReserva');
       this.cartaoIdFinal = sessionStorage.getItem('cartaoReserva');
     }); 
+  }
+
+  calcularPreco(){
+    var dates = [],
+      currentDate = new Date(this.checkIn),
+      addDays = function(days) {
+        var date = new Date(this.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
+      };
+    while (currentDate <=  new Date(this.checkOut)) {
+      dates.push(currentDate);
+      currentDate = addDays.call(currentDate, 1);
+    }
+    var preco = 0;
+    for(let i = 0; i < dates.length; i++){
+      if((dates[i].getDate() >= 15 && dates[i].getMonth() >= 1) && (dates[i].getDate() <= 31  && dates[i].getMonth() <= 5) || (dates[i].getDate() >= 30 && dates[i].getMonth() >= 9) && (dates[i].getDate() <= 15  && dates[i].getMonth() <= 12)){
+        preco += this.quartoSelecionado.precoBaixa;
+      }else{
+        preco += this.quartoSelecionado.precoAlta;
+      }
+    }
+    this.precoFinal = preco;
   }
 
 

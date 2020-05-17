@@ -158,7 +158,7 @@
                         </div>
                         <h3 class="tituloParametro"><span>Método de pagamento</span></h3>
                         <div class="dadosFinais">
-                            <p><strong>Número: </strong>{{cartaoFinal.numero}}</p>
+                            <p><strong>Número: </strong>{{format(cartaoFinal.numero)}}</p>
                             <p><strong>Válido até: </strong>{{cartaoFinal.prazoMes}}/{{cartaoFinal.prazoMes}}</p>
                             <p><strong>CVV: </strong>{{cartaoFinal.cvv}}</p>
                         </div>
@@ -193,6 +193,10 @@
                                 <h3 class="tituloParametro"><span id="checkOut">Check-Out</span></h3>
                                 <p class="textoD">{{this.checkOut}}</p>
                             </div>
+                        </div>
+                        <div>
+                            <h3 class="tituloParametro">Preço Final</h3>
+                            <p class="textoD">{{precoFinal}}€</p>
                         </div>
                         <h3 class="tituloParametro">Quarto</h3>
                         <p class="textoD"><strong>Tipo: </strong>{{quarto}}</p>
