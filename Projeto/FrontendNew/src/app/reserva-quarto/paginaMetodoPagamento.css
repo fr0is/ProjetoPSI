@@ -1,0 +1,27 @@
+input[name="card"] {
+    appearance: none;
+    margin: 0 40px;
+    width: 24px;
+    height: 24px;
+    background: #eee;
+    box-shadow: inset 0 0 0 0.4em white, 0 0 0 0.3em;
+    border-radius: 50%;
+    transition: 0.2s;
+    cursor: pointer;
+    color: #363945;
+}
+
+input[name="card"]:hover,
+input[name="card"]:checked {
+    background: #363945;
+    box-shadow: inset 0 0 0 0.6em white, 0 0 0 0.3em;
+}
+
+input[name="card"]:checked {
+    background: #56be8e;
+    box-shadow: inset 0 0 0 0.4em white, 0 0 0 0.3em #56be8e;
+}
+
+input[name="card"]:focus {
+    outline: 0;
+}

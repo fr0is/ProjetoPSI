@@ -96,7 +96,7 @@
                                                     <p><strong>Cidade: </strong>{{morada.cidade}}</p>
                                                 </label>
                                                 <ng-template #checked>
-                                                    <input id="op_{{i}}" checked="true" class="radio r8-radio-float" type="radio" name="demo-radio-group" value="{{morada._id}}" (change)="onItemChange($event.target.value)" required/>
+                                                    <input id="op_{{i}}" class="radio r8-radio-float" type="radio" name="demo-radio-group" value="{{morada._id}}" (change)="onItemChange($event.target.value)" checked required/>
                                                 </ng-template>
                                             </li>
                                         </ul>
@@ -107,7 +107,22 @@
                         </form>
                     </div>
                 </div>
-                <div *ngIf="pagamento">Teste
+                <div *ngIf="pagamento">
+                    <h3 class="tituloParametro">Método de pagamento</h3>
+                    <div class="container">
+                        <ul>
+                            <ng-container *ngFor="let card of cartoes">
+                                <li>
+                                    <input type="radio" name="card" id="f-option">
+                                    <label for="f-option">
+                                        <div style="margin-top:2%">{{card.numero}}</div>
+                                    </label>
+                                    <div class="check"></div>
+                                </li>
+                            </ng-container>
+                        </ul>
+                    </div>
+
                     <div class="botaoMudaPagina">
                         <a (click)="finalN()" class="nextPage"><img src="assets/Imagens/Icones/turnRight.png"></a>
                     </div>

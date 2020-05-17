@@ -6,16 +6,18 @@ import { User } from 'src/user';
 import { UserService } from '../user.service';
 import { Hotel } from 'src/hotel';
 import { Morada } from 'src/morada';
+import { CartaoMBService } from '../cartao-mb.service';
 
 @Component({
   selector: 'app-reserva-quarto',
   templateUrl: './reserva-quarto.component.html',
-  styleUrls: ['./reserva-quarto.component.css','./paginaReserva.css','./paginaIdentificacao.css','./botaoReservar.css','./paginaDatas.css'],
+  styleUrls: ['./reserva-quarto.component.css','./paginaReserva.css','./paginaIdentificacao.css','./botaoReservar.css','./paginaDatas.css','./paginaMetodoPagamento.css'],
 })
 export class ReservaQuartoComponent implements OnInit {
 
   quartos: Quarto[] = [];
   moradaId: any;
+  cartoes = [];
   moradaIdFinal: any;
   mudaPagina = false;
   erroDatas = false;
@@ -63,7 +65,8 @@ export class ReservaQuartoComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private hotelService: HotelService,
-    private userService: UserService
+    private userService: UserService,
+    private cartaoMbService: CartaoMBService
   ) { 
     this.datasQuartoForm = this.formBuilder.group({
       checkInInicial: this.formBuilder.control(this.checkIn),
@@ -129,7 +132,12 @@ export class ReservaQuartoComponent implements OnInit {
   pagamentoN(){
     this.dadosCliente = false;
     this.pagamento = true;
+    this.cartaoMbService.getCartaoEmail(this.cliente.email).subscribe(listCartao => {
+      this.cartoes = listCartao as [];
+    })
   }
+
+
   finalN(){
     this.pagamento = false;
     this.final = true;
@@ -208,12 +216,13 @@ export class ReservaQuartoComponent implements OnInit {
         telefoneUpdate: this.formBuilder.control(sessionStorage.getItem('numeroReserva')),
         nifUpdate: this.formBuilder.control(sessionStorage.getItem('nifReserva')),
       })
+      this.moradaId = sessionStorage.getItem('moradaReserva');
+      this.moradaIdFinal = sessionStorage.getItem('moradaReserva');
     }); 
   }
 
 
   updateClienteReserva(updateData){
-    console.log("iniciou update")
     //Update Form Data  
     sessionStorage.setItem('nomeReserva',updateData.nomeUpdate);
     sessionStorage.setItem('emailReserva',updateData.emailUpdate);
@@ -222,7 +231,6 @@ export class ReservaQuartoComponent implements OnInit {
     sessionStorage.setItem('nifReserva',updateData.nifUpdate);
     this.moradaIdFinal = this.moradaId;
     sessionStorage.setItem('moradaReserva',this.moradaIdFinal);
-    //Data que nao muda
     this.pagamentoN();
   }
 
