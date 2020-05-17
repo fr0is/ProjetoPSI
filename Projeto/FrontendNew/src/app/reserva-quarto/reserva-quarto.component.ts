@@ -34,6 +34,7 @@ export class ReservaQuartoComponent implements OnInit {
   errorMessage;
   moradas = [];
   cliente: User;
+  userAtual = "";
   updateForm: FormGroup;
   clienteUpdate: User = {
     _id: "",
@@ -134,6 +135,11 @@ export class ReservaQuartoComponent implements OnInit {
     this.showQuartos();
     this.getCliente();
     this.getHotel();
+    this.userAtualCheck();
+  }
+
+  userAtualCheck(){
+    this.userAtual = localStorage.getItem("userAtual");
   }
 
   showQuartos() {
@@ -326,8 +332,10 @@ export class ReservaQuartoComponent implements OnInit {
     this.morada.codigoPostal = moradaData.codigoPostal;
     this.morada.cidade = moradaData.cidade;
     this.morada.pais = moradaData.pais;
-    this.morada.userEmail = sessionStorage.getItem('userAtual');
+    this.morada.userEmail = localStorage.getItem('userAtual');
     this.createMorada.reset();
+
+    console.log(this.morada);
   
     this.userService.createMorada(this.morada).subscribe(result => {
       if(result.message === "success"){
