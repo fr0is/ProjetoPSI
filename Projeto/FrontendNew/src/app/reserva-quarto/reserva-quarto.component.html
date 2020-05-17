@@ -110,16 +110,26 @@
                 <div *ngIf="pagamento">
                     <h3 class="tituloParametro">Método de pagamento</h3>
                     <div class="container">
-                        <ul>
+                        <ul id="cartoesLista">
                             <ng-container *ngFor="let card of cartoes">
                                 <li>
-                                    <input type="radio" name="card" id="f-option">
+                                    <input type="radio" *ngIf="cartaoIdFinal !== card._id; else checked" value="{{card._id}}" name="card" id="f-option" (change)="onItemChangeCMB($event.target.value)" required>
+                                    <ng-template #checked>
+                                        <input type="radio" value="{{card._id}}" name="card" id="f-option" (change)="onItemChangeCMB($event.target.value)" checked required/>
+                                    </ng-template>
                                     <label for="f-option">
-                                        <div style="margin-top:2%">{{card.numero}}</div>
+                                        <div style="margin-top:2%">
+                                            <p><strong>Número: </strong>{{format(card.numero)}}</p>
+                                            <p><strong>Validade: </strong>{{card.prazoMes}}/{{card.prazoAno}}</p>
+                                            <p><strong>CVV: </strong>{{card.cvv}}</p>
+                                        </div>
                                     </label>
                                     <div class="check"></div>
                                 </li>
                             </ng-container>
+                            <li>
+                                <button class="botao" id="criarCartaoBotao" (click)="criarCartao()"><img id="criarCartaoImg" src="assets/Imagens/Icones/addButton.png"></button>
+                            </li>
                         </ul>
                     </div>
 
@@ -129,10 +139,10 @@
                 </div>
                 <div *ngIf="final">
                     <form ngNativeValidate [formGroup]="reservaCreate" (ngSubmit)="createReserva(reservaCreate.value)">
+                        <div class="botaoFazerReserva">
+                            <button type="submit" class="nextPage" class="btn draw-border submit">Reservar</button>
+                        </div>
                     </form>
-                    <div class="botaoFazerReserva">
-                        <button type="submit" class="nextPage" class="btn draw-border submit">Reservar</button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -200,6 +210,48 @@
             <div id="botoesM">
                 <button id="criarButton" type="submit" class="submit botao"><img id="botaoYesCreate" src="assets/Imagens/Icones/addGreenButton.png"></button>
                 <button id="cancelarButton" type="submit" (click)="criarMorada();" class="submit botao"><img id="botaoCancelCreate" src="assets/Imagens/Icones/cancelButton.png"></button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="criar" class="criarCartao" id="criarCartao">
+    <div id="criarCartaoContainer">
+        <form ngNativeValidate [formGroup]="createCartao" (ngSubmit)="create(createCartao.value)">
+            <div id="frontCard">
+                <img class="cartaoIcone" src="https://image.ibb.co/cZeFjx/little_square.png">
+                <div id="nrCartaoContainer">
+                    <input class="nrCartao" placeholder="4330" type="text" pattern="[0-9]{4}" formControlName="numeroCartao1" required/>
+                    <input class="nrCartao" placeholder="2320" type="text" pattern="[0-9]{4}" formControlName="numeroCartao2" required/>
+                    <input class="nrCartao" placeholder="0782" type="text" pattern="[0-9]{4}" formControlName="numeroCartao3" required/>
+                    <input class="nrCartao" placeholder="1532" type="text" pattern="[0-9]{4}" formControlName="numeroCartao4" required/>
+                </div>
+                <div id="bottomCardFront">
+                    <div id="holder">
+                        <span class="card__label">Card holder</span>
+                        <input id="cardHolder" placeholder="Rui Barbo" type="text" pattern="[a-zA-Z./]{1,.}" formControlName="nomeCartao" required/>
+                    </div>
+                    <div id="dataValidade">
+                        <div>
+                            <span class="card__label">VALIDO ATÉ</span>
+                        </div>
+                        <input id="mesCartao" placeholder="MM" type="text" pattern="[0]{1}[0-9]{1}|11|12" formControlName="dataCartaoMes" required/><span id="anoCartao">/</span>
+                        <input id="anoCartao" placeholder="YY" type="text" pattern="[1-9]{2}" formControlName="dataCartaoAno" required/>
+                    </div>
+                </div>
+            </div>
+            <div id="backCard">
+                <div id="espacoSuperior"></div>
+                <div class="card__black-line"></div>
+                <div id="backCardAssinatura">
+                    <div class="card__secret"></div>
+                    <input id="cvv" type="text" placeholder="345" pattern="[0-9]{3}" formControlName="cvvCartao" required/>
+                </div>
+                <img class="backSquare" src="https://image.ibb.co/cZeFjx/little_square.png">
+            </div>
+            <div id="botoes">
+                <button id="criarButton" type="submit" class="submit botao"><img id="botaoYesCreate" src="assets/Imagens/Icones/addGreenButton.png"></button>
+                <button id="cancelarButton" type="submit" (click)="criarCartao();" class="submit botao"><img id="botaoCancelCreate" src="assets/Imagens/Icones/cancelButton.png"></button>
             </div>
         </form>
     </div>

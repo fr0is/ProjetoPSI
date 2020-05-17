@@ -6,7 +6,7 @@ export interface Reserva {
     _id: string;
     userEmail: string;
     emailReserva: string;
-    nomeResera: string;
+    nomeReserva: string;
     indicativoReserva: string;
     telefoneReserva: string;
     nifReserva: string;
