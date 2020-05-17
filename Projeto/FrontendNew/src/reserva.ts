@@ -6,6 +6,10 @@ export interface Reserva {
     _id: string;
     userEmail: string;
     emailReserva: string;
+    nomeResera: string;
+    indicativoReserva: string;
+    telefoneReserva: string;
+    nifReserva: string;
     quarto: QuartoInstance;
     metodoDePagamento: CartaoMB;
     morada: Morada;

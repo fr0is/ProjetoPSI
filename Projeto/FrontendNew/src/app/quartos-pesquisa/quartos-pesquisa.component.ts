@@ -4,6 +4,8 @@ import { Options, LabelType } from 'ng5-slider';
 import { Quarto } from '../../quarto';
 import { HotelService } from '../hotel.service';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from "@angular/forms";
+import { QuartoService } from '../quarto.service';
+import { QuartoInstance } from 'src/quartoInstance';
 
 
 @Component({
@@ -13,6 +15,7 @@ import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from "@ang
 })
 export class QuartosPesquisaComponent implements OnInit {
   quartos: Quarto[] = [];
+  quartoInstances = [[]];
   reservaForm: FormGroup;
   datasValidas = true;
   minValue: number = 100;
@@ -49,6 +52,7 @@ export class QuartosPesquisaComponent implements OnInit {
   constructor(
     private hotelService: HotelService,
     private formBuilder: FormBuilder,
+    private quartoService: QuartoService
     ) {
     this.reservaForm = this.formBuilder.group({
       checkInReserva: this.formBuilder.control(this.checkIn),
@@ -64,6 +68,12 @@ export class QuartosPesquisaComponent implements OnInit {
   showQuartos() {
     this.hotelService.getHotelQuartos(sessionStorage.getItem("hotelAtual")).subscribe(quartoList => {
       this.quartos = quartoList as Quarto[];
+      for(let i = 0; i < this.quartos.length; i++){
+        this.quartoService.getInstances(this.quartos[i]._id).subscribe(listReservas => {
+            console.log(listReservas);
+        });
+      }
+      console.log(this.quartoInstances);
     });
   }
 
@@ -127,6 +137,9 @@ export class QuartosPesquisaComponent implements OnInit {
   }
 
   verficarQuartosDisponiveis(){
+    for(let i = 0; i < this.quartoInstances.length; i++){
+      console.log(this.quartoInstances);
+    }
   }
 
   changeStateDateErro(){

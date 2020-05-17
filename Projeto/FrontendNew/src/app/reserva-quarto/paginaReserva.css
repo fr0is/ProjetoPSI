@@ -26,6 +26,7 @@
 .tituloParametro {
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
     text-align: center;
+    padding: 2%;
     margin: 5%;
 }
 

@@ -8,6 +8,7 @@ var utilizador_controller = require('../controllers/utilizadorController');
 var cartaoMB_controller = require('../controllers/cartaoMBController');
 var morada_controller = require('../controllers/moradaController');
 var reserva_controller = require('../controllers/reservaController');
+var quartoInstance_controller = require('../controllers/quartoInstanceController');
 
 router.get('/hoteis', hotel_controller.hotel_list); // lista de hoteis
 router.get('/hoteis/:hotelId', hotel_controller.hotel_detail); // hotel
@@ -37,5 +38,8 @@ router.get('/reserva/quarto/:quarto', reserva_controller.reserva_get_quarto); //
 router.post('/reserva/create', reserva_controller.reserva_create); //reserva create
 router.post('/reserva/delete', reserva_controller.reserva_delete); //reserva delete
 router.post('/reserva/update', reserva_controller.reserva_update); //reserva update
+
+/*************** Quarto Instance ************/
+router.get('/quartoInstance/:quartoId', reserva_controller.reserva_get_quarto) //quartoInstance get
 
 module.exports = router;

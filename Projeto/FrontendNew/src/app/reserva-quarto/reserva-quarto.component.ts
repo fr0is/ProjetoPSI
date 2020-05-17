@@ -4,18 +4,23 @@ import { Quarto } from 'src/quarto';
 import { HotelService } from '../hotel.service';
 import { User } from 'src/user';
 import { UserService } from '../user.service';
+import { Hotel } from 'src/hotel';
+import { Morada } from 'src/morada';
 
 @Component({
   selector: 'app-reserva-quarto',
   templateUrl: './reserva-quarto.component.html',
-  styleUrls: ['./reserva-quarto.component.css','./paginaReserva.css','./botaoReservar.css','./paginaDatas.css'],
+  styleUrls: ['./reserva-quarto.component.css','./paginaReserva.css','./paginaIdentificacao.css','./botaoReservar.css','./paginaDatas.css'],
 })
 export class ReservaQuartoComponent implements OnInit {
 
   quartos: Quarto[] = [];
+  moradaId: any;
+  moradaIdFinal: any;
   mudaPagina = false;
   erroDatas = false;
   errorMessage;
+  moradas = [];
   cliente: User;
   updateForm: FormGroup;
   clienteUpdate: User = {
@@ -30,15 +35,26 @@ export class ReservaQuartoComponent implements OnInit {
     cartaoMB: [],
     reservas: []
   }
+  morada: Morada ={
+    _id: "",
+    rua: "",
+    codigoPostal: "",
+    cidade: "",
+    pais: "",
+    userEmail: ""
+  }
+  hotel: Hotel;
   /**** Booleans de cada pagina ****/
   datasQuarto = true;
   dadosCliente = false;
   pagamento = false;
   final = false;
+  criarM = false;
   foto = "";
   //Forms
   reservaCreate: FormGroup;
-  datasQuartoForm: FormGroup
+  datasQuartoForm: FormGroup;
+  createMorada: FormGroup;
   //Dados Forms
   checkIn = localStorage.getItem('checkInR');
   checkOut = localStorage.getItem('checkOutR');
@@ -53,12 +69,20 @@ export class ReservaQuartoComponent implements OnInit {
       checkInInicial: this.formBuilder.control(this.checkIn),
       checkOutInicial: this.formBuilder.control(this.checkOut),
       quartoInicial: this.formBuilder.control(this.quarto)
+    });
+    this.createMorada = this.formBuilder.group({
+      rua: this.formBuilder.control(""),
+      codigoPostal: this.formBuilder.control(""),
+      cidade: this.formBuilder.control(""),
+      pais: this.formBuilder.control(""),
     })
   }
+
 
   ngOnInit(): void {
     this.showQuartos();
     this.getCliente();
+    this.getHotel();
   }
 
   showQuartos() {
@@ -70,6 +94,13 @@ export class ReservaQuartoComponent implements OnInit {
         }
       }
     });
+  }
+
+  
+  getHotel() {
+    this.hotelService.getHotel(sessionStorage.getItem("hotelAtual")).subscribe(results => {
+      this.hotel = results;
+    })
   }
   
   mudaQuarto(quarto){
@@ -151,34 +182,61 @@ export class ReservaQuartoComponent implements OnInit {
     this.erroDatas = !this.erroDatas;
   }
 
-  
+  onItemChange(valor){
+    this.moradaId = valor;
+  }
+
   getCliente(){
     this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
       this.cliente = user[0];
+      this.userService.getUserMoradas(this.cliente.email).subscribe(listMorada => {
+        this.moradas = listMorada as [];
+      })
       this.updateForm = this.formBuilder.group({
         nomeUpdate: this.formBuilder.control(this.cliente.nome),
         emailUpdate: this.formBuilder.control(this.cliente.email),
         indicativoUpdate: this.formBuilder.control(this.cliente.indicativo),
         telefoneUpdate: this.formBuilder.control(this.cliente.telefone),
-        passwordUpdate: this.formBuilder.control(this.cliente.password),
         nifUpdate: this.formBuilder.control(this.cliente.nif),
       })
     }); 
   }
 
 
-  updateCliente(updateData){
+  updateClienteReserva(updateData){
     console.log("iniciou update")
     //Update Form Data  
-    this.clienteUpdate.nome = updateData.nomeUpdate;
-    this.clienteUpdate.email = updateData.emailUpdate;
-    this.clienteUpdate.indicativo = updateData.indicativoUpdate;
-    this.clienteUpdate.telefone = updateData.telefoneUpdate;
-    this.clienteUpdate.password = updateData.passwordUpdate;
-    this.clienteUpdate.nif = updateData.nifUpdate;
+    localStorage.setItem('nomeReserva',updateData.nomeUpdate);
+    localStorage.setItem('emailReserva',updateData.emailUpdate);
+    localStorage.setItem('indicativoReserva',updateData.indicativoUpdate);
+    localStorage.setItem('numeroReserva',updateData.telefoneUpdate);
+    localStorage.setItem('numeroReserva',updateData.nifUpdate);
+    this.moradaIdFinal = this.moradaId;
+    localStorage.setItem('moradaReserva',this.moradaIdFinal);
     //Data que nao muda
-    this.clienteUpdate._id = this.cliente._id;
     this.pagamentoN();
+  }
+
+  criarMorada(){
+    this.criarM = !this.criarM;
+  }
+
+  createM(moradaData){
+    this.criarM = !this.criarM;
+    this.morada.rua = moradaData.rua;
+    this.morada.codigoPostal = moradaData.codigoPostal;
+    this.morada.cidade = moradaData.cidade;
+    this.morada.pais = moradaData.pais;
+    this.morada.userEmail = localStorage.getItem('userAtual');
+    this.createMorada.reset();
+  
+    this.userService.createMorada(this.morada).subscribe(result => {
+      if(result.message === "success"){
+        window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/reservar';
+      }else{
+        alert("Ocorreu um erro a criar o cartao!");
+      }
+    });
   }
   
 }

@@ -19,7 +19,7 @@ exports.reserva_get_email = function(req, res, next) {
 };
 
 exports.reserva_get_quarto = function(req, res, next) {
-    Reserva.find({ 'quarto': req.params.quarto })
+    Reserva.find({ 'quarto': req.params.quartoId })
         .populate('quarto')
         .populate('metodoDePagamento')
         .populate('morada')
