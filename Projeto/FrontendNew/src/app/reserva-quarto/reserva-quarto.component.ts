@@ -163,9 +163,9 @@ export class ReservaQuartoComponent implements OnInit {
   createReserva(reservaData){
     
     /**** Apagar dados reserva *****/
-    localStorage.removeItem('checkInR');
-    localStorage.removeItem('checkOutR');
-    localStorage.removeItem('quartoR');
+    sessionStorage.removeItem('checkInR');
+    sessionStorage.removeItem('checkOutR');
+    sessionStorage.removeItem('quartoR');
     this.reservaCreate.reset();
     this.datasQuartoForm.reset();
   }
@@ -192,12 +192,21 @@ export class ReservaQuartoComponent implements OnInit {
       this.userService.getUserMoradas(this.cliente.email).subscribe(listMorada => {
         this.moradas = listMorada as [];
       })
+      if(sessionStorage.getItem('indicativoReserva') === null){
+        sessionStorage.setItem('indicativoReserva', '');
+      }
+      if(sessionStorage.getItem('numeroReserva') === null){
+        sessionStorage.setItem('numeroReserva', '');
+      }
+      if(sessionStorage.getItem('nifReserva') === null){
+        sessionStorage.setItem('nifReserva', '');
+      }
       this.updateForm = this.formBuilder.group({
-        nomeUpdate: this.formBuilder.control(this.cliente.nome),
-        emailUpdate: this.formBuilder.control(this.cliente.email),
-        indicativoUpdate: this.formBuilder.control(this.cliente.indicativo),
-        telefoneUpdate: this.formBuilder.control(this.cliente.telefone),
-        nifUpdate: this.formBuilder.control(this.cliente.nif),
+        nomeUpdate: this.formBuilder.control(sessionStorage.getItem('nomeReserva')),
+        emailUpdate: this.formBuilder.control(sessionStorage.getItem('emailReserva')),
+        indicativoUpdate: this.formBuilder.control(sessionStorage.getItem('indicativoReserva')),
+        telefoneUpdate: this.formBuilder.control(sessionStorage.getItem('numeroReserva')),
+        nifUpdate: this.formBuilder.control(sessionStorage.getItem('nifReserva')),
       })
     }); 
   }
@@ -206,13 +215,13 @@ export class ReservaQuartoComponent implements OnInit {
   updateClienteReserva(updateData){
     console.log("iniciou update")
     //Update Form Data  
-    localStorage.setItem('nomeReserva',updateData.nomeUpdate);
-    localStorage.setItem('emailReserva',updateData.emailUpdate);
-    localStorage.setItem('indicativoReserva',updateData.indicativoUpdate);
-    localStorage.setItem('numeroReserva',updateData.telefoneUpdate);
-    localStorage.setItem('numeroReserva',updateData.nifUpdate);
+    sessionStorage.setItem('nomeReserva',updateData.nomeUpdate);
+    sessionStorage.setItem('emailReserva',updateData.emailUpdate);
+    sessionStorage.setItem('indicativoReserva',updateData.indicativoUpdate);
+    sessionStorage.setItem('numeroReserva',updateData.telefoneUpdate);
+    sessionStorage.setItem('nifReserva',updateData.nifUpdate);
     this.moradaIdFinal = this.moradaId;
-    localStorage.setItem('moradaReserva',this.moradaIdFinal);
+    sessionStorage.setItem('moradaReserva',this.moradaIdFinal);
     //Data que nao muda
     this.pagamentoN();
   }
@@ -227,7 +236,7 @@ export class ReservaQuartoComponent implements OnInit {
     this.morada.codigoPostal = moradaData.codigoPostal;
     this.morada.cidade = moradaData.cidade;
     this.morada.pais = moradaData.pais;
-    this.morada.userEmail = localStorage.getItem('userAtual');
+    this.morada.userEmail = sessionStorage.getItem('userAtual');
     this.createMorada.reset();
   
     this.userService.createMorada(this.morada).subscribe(result => {

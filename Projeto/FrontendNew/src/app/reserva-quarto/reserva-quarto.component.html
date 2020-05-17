@@ -59,24 +59,24 @@
                             <div id="formGrid">
                                 <div class="container">
                                     <h3 class="tituloParametro">Nome</h3>
-                                    <input class="input" value="{{this.cliente.nome}}" oninvalid="setCustomValidity('Insira apenas o primeiro e último nome')" pattern="[A-Za-z]{1,10}|[A-Za-z]{1,10}\s[A-Za-z]{1,10}" type="text" formControlName="nomeUpdate" required>
+                                    <input class="input" placeholder="Rui Barbo" pattern="[A-Za-z]{1,10}|[A-Za-z]{2,10}\s[A-Za-z]{2,10}" oninvalid="this.setCustomValidity(this.willValidate?'':'ra apenas o primeiro e último nome')" type="text" formControlName="nomeUpdate" required>
                                 </div>
                                 <div class="container">
                                     <h3 class="tituloParametro">Email</h3>
-                                    <input class="input" value="{{this.cliente.email}}" type="email" formControlName="emailUpdate" required>
+                                    <input class="input" placeholder="ruiBarbo@teste.com" type="email" formControlName="emailUpdate" required>
                                 </div>
                                 <div class="container" id="telefone">
                                     <h3 id="telefoneTitulo" class="tituloParametro">Telefone</h3>
                                     <div id="indicativo" class="container">
-                                        <input class="input" pattern="[+]{1}[0-9]{1,3}" placeholder="+351" type="text" formControlName="indicativoUpdate">
+                                        <input class="input" pattern="[+]{1}[0-9]{1,3}" placeholder="+351" type="text" formControlName="indicativoUpdate" required>
                                     </div>
                                     <div id="numero" class="container">
-                                        <input class="input" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="999999999" type="tel" formControlName="telefoneUpdate">
+                                        <input class="input" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" placeholder="999999999" type="tel" formControlName="telefoneUpdate" required>
                                     </div>
                                 </div>
                                 <div class="container">
                                     <h3 class="tituloParametro">NIF</h3>
-                                    <input class="input" placeholder="123456789" pattern="[0-9]{9}" type="text" formControlName="nifUpdate">
+                                    <input class="input" placeholder="123456789" pattern="[0-9]{9}" type="text" formControlName="nifUpdate" required>
                                     <span class="border "></span>
                                 </div>
                             </div>
@@ -89,14 +89,14 @@
                                     <div id="r8-balloon-radio-group-wrapper">
                                         <ul>
                                             <li *ngFor="let morada of moradas; let i = index">
-                                                <input *ngIf="moradaIdFinal !== morada._id; else checked" id="op_{{i}}" class="radio r8-radio-float" type="radio" name="demo-radio-group" value="{{morada._id}}" (change)="onItemChange($event.target.value)" />
+                                                <input *ngIf="moradaIdFinal !== morada._id; else checked" id="op_{{i}}" class="radio r8-radio-float" type="radio" name="demo-radio-group" value="{{morada._id}}" (change)="onItemChange($event.target.value)" required/>
                                                 <label>
                                                     <p><strong>Rua: </strong>{{morada.rua}}</p>
                                                     <p><strong>Código Postal: </strong>{{morada.codigoPostal}}</p>
                                                     <p><strong>Cidade: </strong>{{morada.cidade}}</p>
                                                 </label>
                                                 <ng-template #checked>
-                                                    <input id="op_{{i}}" checked="true" class="radio r8-radio-float" type="radio" name="demo-radio-group" value="{{morada._id}}" (change)="onItemChange($event.target.value)" />
+                                                    <input id="op_{{i}}" checked="true" class="radio r8-radio-float" type="radio" name="demo-radio-group" value="{{morada._id}}" (change)="onItemChange($event.target.value)" required/>
                                                 </ng-template>
                                             </li>
                                         </ul>
