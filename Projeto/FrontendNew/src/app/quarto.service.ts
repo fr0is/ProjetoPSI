@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Quarto } from 'src/quarto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +11,17 @@ export class QuartoService {
   //locahost
   baseUrl = 'http://localhost:3071/catalog/';
   quartosUrl = this.baseUrl + 'quartos';
+  instanceUrl = this.baseUrl + 'quartoInstance/';
 
   constructor(private http: HttpClient) { }
 
   getQuartos() {
     return this.http.get(this.quartosUrl);
+  }
+
+  getInstances(id){
+    const url = this.instanceUrl + id;
+    return this.http.get(url);
   }
 
 }

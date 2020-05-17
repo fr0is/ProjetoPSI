@@ -4,7 +4,8 @@ import { Options, LabelType } from 'ng5-slider';
 import { Quarto } from '../../quarto';
 import { HotelService } from '../hotel.service';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from "@angular/forms";
-import { invalid } from '@angular/compiler/src/render3/view/util';
+import { QuartoService } from '../quarto.service';
+import { QuartoInstance } from 'src/quartoInstance';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { invalid } from '@angular/compiler/src/render3/view/util';
 })
 export class QuartosPesquisaComponent implements OnInit {
   quartos: Quarto[] = [];
+  quartoInstances = [[]];
   reservaForm: FormGroup;
   datasValidas = true;
   minValue: number = 100;
@@ -33,6 +35,9 @@ export class QuartosPesquisaComponent implements OnInit {
       }
     }
   }
+  datasValidasToday = true;
+  checkIn = new Date();
+  checkOut = new Date();
 
   epoca = 0;
   EpBaixa(){
@@ -42,14 +47,16 @@ export class QuartosPesquisaComponent implements OnInit {
   EpAlta(){
     this.epoca =0;
   }
+  
 
   constructor(
     private hotelService: HotelService,
     private formBuilder: FormBuilder,
+    private quartoService: QuartoService
     ) {
     this.reservaForm = this.formBuilder.group({
-      checkInReserva: this.formBuilder.control(new Date()),
-      checkOutReserva: this.formBuilder.control(new Date()),
+      checkInReserva: this.formBuilder.control(this.checkIn),
+      checkOutReserva: this.formBuilder.control(this.checkOut),
       quartoReserva: this.formBuilder.control("")
     })
    }
@@ -61,6 +68,12 @@ export class QuartosPesquisaComponent implements OnInit {
   showQuartos() {
     this.hotelService.getHotelQuartos(sessionStorage.getItem("hotelAtual")).subscribe(quartoList => {
       this.quartos = quartoList as Quarto[];
+      for(let i = 0; i < this.quartos.length; i++){
+        this.quartoService.getInstances(this.quartos[i]._id).subscribe(listReservas => {
+            console.log(listReservas);
+        });
+      }
+      console.log(this.quartoInstances);
     });
   }
 
@@ -80,10 +93,60 @@ export class QuartosPesquisaComponent implements OnInit {
   compareTwoDates(){
     if(new Date(this.reservaForm.controls['checkOutReserva'].value)<new Date(this.reservaForm.controls['checkInReserva'].value)){
        this.datasValidas = false;
-       this.reservaForm.controls['checkOutReserva']
     }else{
       this.datasValidas = true;
     }
   }
 
+  compareDates(date1, date2){
+    if(new Date(date1)<=new Date(date2)){
+      this.datasValidas = false;
+      return false;
+   }else{
+     this.datasValidas = true;
+     return true;
+   }
+  }
+
+  compareDatesToToday(date){
+    if(new Date(date) < new Date()){
+      this.datasValidasToday = false;
+      return false;
+   }else{
+     this.datasValidasToday = true;
+     return true;
+   }
+  }
+
+  mudaCheckOut(newDate){
+    if(this.compareDatesToToday(newDate)){
+      if(this.compareDates(newDate,this.checkIn)){
+        this.checkOut = newDate;
+        this.verficarQuartosDisponiveis();
+      }
+    }
+  }
+
+  mudaCheckIn(newDate){
+    if(this.compareDatesToToday(newDate)){
+      if(this.compareDates(this.checkOut,newDate)){
+        this.checkIn = newDate;
+        this.verficarQuartosDisponiveis();
+      }
+    }
+  }
+
+  verficarQuartosDisponiveis(){
+    for(let i = 0; i < this.quartoInstances.length; i++){
+      console.log(this.quartoInstances);
+    }
+  }
+
+  changeStateDateErro(){
+    this.datasValidas = !this.datasValidas;
+  }
+
+  changeStateDateErroToday(){
+    this.datasValidasToday = !this.datasValidasToday;
+  }
 }

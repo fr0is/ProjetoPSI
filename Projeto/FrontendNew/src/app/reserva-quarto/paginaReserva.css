@@ -26,6 +26,7 @@
 .tituloParametro {
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
     text-align: center;
+    padding: 2%;
     margin: 5%;
 }
 
@@ -44,6 +45,10 @@
     text-align: center;
 }
 
+.dadosFinais {
+    margin-left: 10%;
+}
+
 
 /****Alertas****/
 
@@ -53,6 +58,32 @@
 .alert {
     padding: 20px;
     background-color: red;
+    /* Red */
+    color: white;
+    margin-bottom: 15px;
+    opacity: 1;
+    transition: opacity 0.6s;
+    text-decoration: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100000;
+    text-align: center;
+    -webkit-animation: fadein 1s;
+    /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 1s;
+    /* Firefox < 16 */
+    -ms-animation: fadein 1s;
+    /* Internet Explorer */
+    -o-animation: fadein 1s;
+    /* Opera < 12.1 */
+    animation: fadein 1s;
+}
+
+.alertSucesso {
+    padding: 20px;
+    background-color: green;
     /* Red */
     color: white;
     margin-bottom: 15px;
