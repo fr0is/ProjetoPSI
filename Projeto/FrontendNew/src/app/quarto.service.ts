@@ -21,6 +21,7 @@ export class QuartoService {
 
   getInstances(id){
     const url = this.instanceUrl + id;
+    console.log(url);
     return this.http.get(url);
   }
 

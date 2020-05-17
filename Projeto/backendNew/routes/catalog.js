@@ -40,6 +40,6 @@ router.post('/reserva/delete', reserva_controller.reserva_delete); //reserva del
 router.post('/reserva/update', reserva_controller.reserva_update); //reserva update
 
 /*************** Quarto Instance ************/
-router.get('/quartoInstance/:quartoId', reserva_controller.reserva_get_quarto) //quartoInstance get
+router.get('/quartoInstance/:quartoId', quartoInstance_controller.quartoInstance_get) //quartoInstance get
 
 module.exports = router;

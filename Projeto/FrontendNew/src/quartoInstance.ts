@@ -5,5 +5,5 @@ export interface QuartoInstance{
     _id: String,
     numeroQuarto: Number,
     quarto: string,
-    reservars: Reserva[]
+    reservas: Reserva[]
 }
