@@ -10,9 +10,9 @@ export interface Reserva {
     indicativoReserva: string;
     telefoneReserva: string;
     nifReserva: string;
-    quarto: QuartoInstance;
-    metodoDePagamento: CartaoMB;
-    morada: Morada;
+    quarto: any;
+    metodoDePagamento: any;
+    morada: any;
     checkIn: Date;
     checkOut: Date;
     preco: Number;

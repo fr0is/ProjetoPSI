@@ -89,7 +89,6 @@ export class ReservaQuartoComponent implements OnInit {
   foto = "";
   criar = false;
   //Forms
-  reservaCreate: FormGroup;
   datasQuartoForm: FormGroup;
   createMorada: FormGroup;
   createCartao: FormGroup;
@@ -203,19 +202,6 @@ export class ReservaQuartoComponent implements OnInit {
     this.nifFinal = sessionStorage.getItem('nifReserva')
     this.pagamento = false;
     this.final = true;
-    this.reservaCreate = this.formBuilder.group({
-      metodoPagamento: this.formBuilder.control(this.cartaoFinal._id),
-      morada: this.formBuilder.control(this.moradaFinal._id),
-      dataCheckIn: this.formBuilder.control(this.checkIn),
-      dataCheckOut: this.formBuilder.control(this.checkOut),
-      quarto: this.formBuilder.control(this.quarto),
-      userEmail: this.formBuilder.control(this.cliente.email),
-      emailReserva: this.formBuilder.control(this.emailFinal),
-      nomeReserva: this.formBuilder.control(this.nomeFinal),
-      indicativoReserva: this.formBuilder.control(this.indicativoFinal),
-      telefoneReserva: this.formBuilder.control(this.telefoneFinal),
-      nifReserva: this.formBuilder.control(this.nifFinal),
-    })
   }
 
   goBack(){
@@ -236,25 +222,36 @@ export class ReservaQuartoComponent implements OnInit {
     }
   }
 
-  createReserva(reservaData){
-    this.reserva.metodoDePagamento = reservaData.metodoPagamento;
-    this.reserva.morada = reservaData.morada;
-    this.reserva.checkIn = reservaData.dataCheckIn;
-    this.reserva.checkOut = reservaData.dataCheckOut;
-    this.reserva.quarto = reservaData.quarto;
-    this.reserva.userEmail = reservaData.userEmail;
-    this.reserva.emailReserva = reservaData.emailReserva;
-    this.reserva.nomeReserva = reservaData.nomeReserva;
-    this.reserva.indicativoReserva = reservaData.indicativoReserva;
-    this.reserva.telefoneReserva = reservaData.telefoneReserva;
-    this.reserva.nifReserva = reservaData.nifReserva;
-    this.userService.createReserva(this.reserva);
+  createReserva(){
+    this.reserva.metodoDePagamento = sessionStorage.getItem('cartaoReserva');
+    this.reserva.morada = sessionStorage.getItem('moradaReserva');
+    this.reserva.checkIn = new Date(this.checkIn);
+    this.reserva.checkOut = new Date(this.checkOut);
+    this.reserva.quarto = this.selectedQuarto;
+    this.reserva.userEmail = this.cliente.email;
+    this.reserva.emailReserva = sessionStorage.getItem('emailReserva');
+    this.reserva.nomeReserva = sessionStorage.getItem('nomeReserva');
+    this.reserva.indicativoReserva = sessionStorage.getItem('indicativoReserva');
+    this.reserva.telefoneReserva = sessionStorage.getItem('numeroReserva');
+    this.reserva.nifReserva =sessionStorage.getItem('nifReserva');
+    console.log(this.reserva);
+    this.userService.createReserva(this.reserva).subscribe(message => {
+      alert(message);
+    });
     /**** Apagar dados reserva *****/
     sessionStorage.removeItem('checkInR');
     sessionStorage.removeItem('checkOutR');
     sessionStorage.removeItem('quartoR');
-    this.reservaCreate.reset();
+    sessionStorage.removeItem('cartaoReserva');
+    sessionStorage.removeItem('moradaReserva');
+    sessionStorage.removeItem('emailReserva');
+    sessionStorage.removeItem('nomeReserva');
+    sessionStorage.removeItem('indicativoReserva');
+    sessionStorage.removeItem('numeroReserva');
+    sessionStorage.removeItem('nifReserva');
     this.datasQuartoForm.reset();
+    this.createMorada.reset();
+    this.createCartao.reset();
   }
 
   compareTwoDates(){

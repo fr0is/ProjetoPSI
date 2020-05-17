@@ -138,11 +138,9 @@
                     </div>
                 </div>
                 <div *ngIf="final">
-                    <form ngNativeValidate [formGroup]="reservaCreate" (ngSubmit)="createReserva(reservaCreate.value)">
-                        <div class="botaoFazerReserva">
-                            <button type="submit" class="nextPage" class="btn draw-border submit">Reservar</button>
-                        </div>
-                    </form>
+                    <div class="botaoFazerReserva">
+                        <button (click)="createReserva()" type="submit" class="nextPage" class="btn draw-border submit">Reservar</button>
+                    </div>
                 </div>
             </div>
         </div>

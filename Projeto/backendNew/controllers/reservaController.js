@@ -33,6 +33,10 @@ exports.reserva_get_quarto = function(req, res, next) {
 exports.reserva_create = [
     body('userEmail', 'userEmail must not be empty.').isLength({ min: 1 }).trim(),
     body('emailReserva', 'emailReserva must not be empty.').isLength({ min: 1 }).trim(),
+    body('nomeReserva', 'nomeReserva must not be empty.').isLength({ min: 1 }).trim(),
+    body('indicativoReserva', 'indicativoReserva must not be empty.').isLength({ min: 1 }).trim(),
+    body('telefoneReserva', 'telefoneReserva must not be empty.').isLength({ min: 1 }).trim(),
+    body('nifReserva', 'nifReserva must not be empty.').isLength({ min: 1 }).trim(),
     body('quarto', 'quarto must not be empty.').isLength({ min: 1 }).trim(),
     body('metodoDePagamento', 'metodoDePagamento must not be empty.').isLength({ min: 1 }).trim(),
     body('morada', 'morada must not be empty.').isLength({ min: 1 }).trim(),
@@ -41,6 +45,10 @@ exports.reserva_create = [
 
     sanitizeBody('userEmail').escape(),
     sanitizeBody('emailReserva').escape(),
+    sanitizeBody('nomeReserva').escape(),
+    sanitizeBody('indicativoReserva').escape(),
+    sanitizeBody('telefoneReserva').escape(),
+    sanitizeBody('nifReserva').escape(),
     sanitizeBody('quarto').escape(),
     sanitizeBody('metodoDePagamento').escape(),
     sanitizeBody('morada').escape(),
@@ -54,6 +62,7 @@ exports.reserva_create = [
 
         if (!errors.isEmpty()) {
             res.json({ 'message': 'Validation errors' });
+            console.log("validationErrors");
         } else {
             async.parallel({
                 instances: function(callback) {
@@ -92,10 +101,15 @@ exports.reserva_create = [
                 }
                 if (quartoinstance == null) {
                     res.json({ 'message': 'Nao ha quartos disponiveis' });
+                    console.log("quartoSearchErrror");
                 } else {
                     var reserva = new Reserva({
                         userEmail: req.body.userEmail,
                         emailReserva: req.body.emailReserva,
+                        nomeReserva: req.body.nomeReserva,
+                        indicativoReserva: req.body.indicativoReserva,
+                        telefoneReserva: req.body.telefoneReserva,
+                        nifReserva: req.body.nifReserva,
                         quarto: quartoinstance,
                         metodoDePagamento: req.body.metodoDePagamento,
                         morada: req.body.morada,
@@ -111,6 +125,7 @@ exports.reserva_create = [
                     reserva.save(function(err) {
                         if (err) { return next(err); }
                         res.json({ 'message': 'Quarto Reservado' });
+                        console.log("Reservou");
                     });
                 }
             });
@@ -146,6 +161,10 @@ exports.reserva_delete = function(req, res, next) {
 exports.reserva_update = [
     body('userEmail', 'userEmail must not be empty.').isLength({ min: 1 }).trim(),
     body('emailReserva', 'emailReserva must not be empty.').isLength({ min: 1 }).trim(),
+    body('nomeReserva', 'nomeReserva must not be empty.').isLength({ min: 1 }).trim(),
+    body('indicativoReserva', 'indicativoReserva must not be empty.').isLength({ min: 1 }).trim(),
+    body('telefoneReserva', 'telefoneReserva must not be empty.').isLength({ min: 1 }).trim(),
+    body('nifReserva', 'nifReserva must not be empty.').isLength({ min: 1 }).trim(),
     body('quarto', 'quarto must not be empty.').isLength({ min: 1 }).trim(),
     body('metodoDePagamento', 'metodoDePagamento must not be empty.').isLength({ min: 1 }).trim(),
     body('morada', 'morada must not be empty.').isLength({ min: 1 }).trim(),
@@ -153,8 +172,12 @@ exports.reserva_update = [
     body('checkOut', 'checkOut must not be empty.').optional({ checkFalsy: true }).isISO8601(),
 
     sanitizeBody('userEmail').escape(),
-    sanitizeBody('quarto').escape(),
     sanitizeBody('emailReserva').escape(),
+    sanitizeBody('nomeReserva').escape(),
+    sanitizeBody('indicativoReserva').escape(),
+    sanitizeBody('telefoneReserva').escape(),
+    sanitizeBody('nifReserva').escape(),
+    sanitizeBody('quarto').escape(),
     sanitizeBody('metodoDePagamento').escape(),
     sanitizeBody('morada').escape(),
     sanitizeBody('checkIn').toDate(),
@@ -208,6 +231,10 @@ exports.reserva_update = [
                         _id: req.body._id,
                         userEmail: req.body.userEmail,
                         emailReserva: req.body.emailReserva,
+                        nomeReserva: req.body.nomeReserva,
+                        indicativoReserva: req.body.indicativoReserva,
+                        telefoneReserva: req.body.telefoneReserva,
+                        nifReserva: req.body.nifReserva,
                         quarto: quartoinstance,
                         metodoDePagamento: req.body.metodoDePagamento,
                         morada: req.body.morada,
