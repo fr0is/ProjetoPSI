@@ -814,9 +814,7 @@
         }
 
         #mapa iframe{
-            
-            width: 297.5px;
-            
+            width: 297.5px; 
         }
     }
 
@@ -827,16 +825,12 @@
             }
 
             #mapa iframe{
-            
                 width: 268,8px;
-                
             }
         }
 
         @media (min-width:1024px){
             
-                
-    
                 #mapa iframe{
                 
                     width: 500px;
@@ -845,17 +839,16 @@
             }
 
 
-            @media (min-width:1440){
+            @media (min-width:1440px){
                 
                     
                 .numD{
                     font-size: 17px;
                 }
-                    #mapa iframe{
-                    
+
+                #mapa iframe{
                         width: 700px;
                         height: auto;
-                        
                     }
                 }
 
