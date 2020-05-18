@@ -32,6 +32,7 @@
                     grid-column-end: span 1;
                     display: grid;
                     grid-template-columns: 20% 20% 20% 20% 20%;
+                    padding-bottom: 16%;
                 }
                 #imagemQuarto {
                     margin-left: 25%;
