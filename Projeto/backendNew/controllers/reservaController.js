@@ -31,6 +31,9 @@ exports.reserva_get_quarto = function(req, res, next) {
 
 exports.reserva_get_id = function(req, res, next) {
     Reserva.findById(req.params.reservaId)
+        .populate('quarto')
+        .populate('metodoDePagamento')
+        .populate('morada')
         .exec(function(err, results) {
             if (err) { return next(err); }
             if (results == null) {
