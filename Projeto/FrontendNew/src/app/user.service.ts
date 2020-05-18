@@ -57,6 +57,11 @@ export class UserService {
     return this.http.post<{message: string}>(url, morada);
   }
 
+  getReservaId(id){
+    const url = this.reservaUrl + id;
+    return this.http.get(url);
+  }
+
   createReserva(reserva: Reserva){
     const url = this.reservaUrl + 'create';
     return this.http.post<{message: string}>(url, reserva);

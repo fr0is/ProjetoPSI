@@ -358,7 +358,7 @@ export class ReservaQuartoComponent implements OnInit {
       currentDate = addDays.call(currentDate, 1);
     }
     var preco = 0;
-    for(let i = 0; i < dates.length; i++){
+    for(let i = 0; i < dates.length-1; i++){
       if((dates[i].getDate() >= 15 && dates[i].getMonth() >= 1) && (dates[i].getDate() <= 31  && dates[i].getMonth() <= 5) || (dates[i].getDate() >= 30 && dates[i].getMonth() >= 9) && (dates[i].getDate() <= 15  && dates[i].getMonth() <= 12)){
         preco += this.quartoSelecionado.precoBaixa;
       }else{
