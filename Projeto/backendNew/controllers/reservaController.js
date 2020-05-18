@@ -29,6 +29,19 @@ exports.reserva_get_quarto = function(req, res, next) {
         });
 };
 
+exports.reserva_get_id = function(req, res, next) {
+    Reserva.findById(req.params.reservaId)
+        .exec(function(err, results) {
+            if (err) { return next(err); }
+            if (results == null) {
+                var err = new Error('Reserva nao encontrada');
+                err.status = 404;
+                return next(err);
+            }
+            res.json(results);
+        });
+};
+
 // Handle Utilizador create.
 exports.reserva_create = [
     body('userEmail', 'userEmail must not be empty.').isLength({ min: 1 }).trim(),

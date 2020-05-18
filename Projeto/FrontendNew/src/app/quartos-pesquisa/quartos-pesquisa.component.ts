@@ -6,6 +6,8 @@ import { HotelService } from '../hotel.service';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from "@angular/forms";
 import { QuartoService } from '../quarto.service';
 import { QuartoInstance } from 'src/quartoInstance';
+import { UserService } from '../user.service';
+import { Reserva } from 'src/reserva';
 
 
 @Component({
@@ -59,7 +61,8 @@ export class QuartosPesquisaComponent implements OnInit {
   constructor(
     private hotelService: HotelService,
     private formBuilder: FormBuilder,
-    private quartoService: QuartoService
+    private quartoService: QuartoService,
+    private userService: UserService
     ) {
     this.reservaForm = this.formBuilder.group({
       checkInReserva: this.formBuilder.control(this.checkIn),
@@ -158,41 +161,51 @@ export class QuartosPesquisaComponent implements OnInit {
   verficarQuartosDisponiveis(){
     if(this.checkIn === new Date() || this.checkIn === null){
       this.dataCheckInFalta = true;
-  }else{
-    if(this.checkOut === new Date() || this.checkOut === null){
-      this.dataCheckOutFalta = true;
     }else{
-      for(let i = 0; i < this.quartoInstances.length; i++){
-        var array = [];
-        var  boolean = false;
-        array.length = this.quartoInstances[i].length;
-        var contagem = 0;
-        console.log(this.quartoInstances[i][0]);
-        for(let j = 0; j < array.length; j++){
-          var array2 = [];
-          if(this.quartoInstances[i][j].reservas.length === undefined){
-            this.quartosDisponiveis[i] = this.quartosDisponiveis[i];
-          }else{
-            array2.length = this.quartoInstances[i][j].reservas.length;
-            for(let h = 0; h < array2.length; h++){
-              if(this.compareDatesInstances(new Date(this.quartoInstances[i][j].reservas[j].checkIn), this.checkIn) && (new Date(this.quartoInstances[i].reservas[j].checkOut),this.checkIn)
-                && (new Date(this.quartoInstances[i].reservas[j].checkIn), this.checkOut) && (new Date(this.quartoInstances[i].reservas[j].checkOut),this.checkOut)){
-                boolean = true;
-              }else{
-                boolean = false;
-                break;
+      if(this.checkOut === new Date() || this.checkOut === null){
+        this.dataCheckOutFalta = true;
+      }else{
+        //Ver instancias quartos
+        for(let i = 0; i < this.quartoInstances.length; i++){
+          var  boolean = false;
+          var contagem = 0;
+          for(let j = 0; j < this.quartoInstances[i].length; j++){
+            //ha reservas
+            if(typeof this.quartoInstances[i][j].reservas !== 'undefined' && this.quartoInstances[i][j].reservas.length > 0){
+              //se ha reservas vamos buscar as reservas
+              for(let h = 0; h < this.quartoInstances[i][j].reservas.length; h++){
+                this.userService.getReservaId(this.quartoInstances[i][j].reservas[h]).subscribe(results => {
+                var reservas: Reserva[];
+                reservas = [results] as Reserva[];
+                //comparar as reservas todas
+                for(let b = 0; b < reservas.length; b++){
+                  if(this.compareDatesInstances(new Date(reservas[b].checkIn), this.checkIn) && this.compareDatesInstances(new Date(reservas[b].checkOut),this.checkIn)
+                  && this.compareDatesInstances(new Date(reservas[b].checkIn), this.checkOut) && this.compareDatesInstances(new Date(reservas[b].checkOut),this.checkOut)){
+                    boolean = true;
+                    console.log('disponivel');
+                    this.quartosDisponiveis[i] = contagem;
+                    break;
+                  }else{
+                    boolean = false;
+                    console.log('ocupado');
+                  }
+                }
+                if(boolean){
+                  contagem++;
+                  console.log(contagem);
+                }
+                });
               }
-            }
-            if(boolean){
-              contagem++;
+            }else{
+              console.log('n ha reservas');
+              this.quartosDisponiveis[i] = this.quartosDisponiveis[i];
             }
           }
         }
-        this.quartosDisponiveis[i] = contagem;
       }
     }
-  }
-
+    console.log('-----------------')
+    console.log(this.quartosDisponiveis);
   }
 
   calcularPreco(){
