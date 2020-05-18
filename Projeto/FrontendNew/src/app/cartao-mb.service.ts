@@ -8,9 +8,9 @@ import { CartaoMB } from 'src/cartaoMB';
 export class CartaoMBService {
 
   //appserver
-  baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
+  //baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
   //locahost
-  //baseUrl = 'http://localhost:3071/catalog/';
+  baseUrl = 'http://localhost:3071/catalog/';
   usersUrl = this.baseUrl + 'users/';
   createUrl = this.usersUrl + 'cartao/create';
   updateUrl = this.usersUrl + 'update';
