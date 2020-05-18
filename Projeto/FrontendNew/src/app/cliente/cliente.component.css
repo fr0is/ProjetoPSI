@@ -1,6 +1,7 @@
 .esquemaPagina {
     display: grid;
     grid-template-columns: 15% 70% 15%;
+    padding-bottom: 20%;
 }
 
 .conteudoPagina {
@@ -9,4 +10,5 @@
     margin-bottom: 2%;
     display: grid;
     grid-template-columns: 25% 75%;
+    padding-bottom: 20%;
 }
