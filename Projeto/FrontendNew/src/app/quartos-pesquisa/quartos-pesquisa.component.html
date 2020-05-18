@@ -70,7 +70,7 @@
     <ol id="quartosVisao">
         <ng-container *ngFor="let quarto of quartos; let i = index">
             <li class="quarto" *ngIf="((epoca === 0 && quarto.precoAlta>=minValue && quarto.precoAlta <= maxValue) 
-                        || (epoca === 1 && quarto.precoBaixa >=minValue && quarto.precoBaixa <= maxValue)) && quartosDisponiveis[i] !== 0" routerLink="{{quarto._id}}">
+                        || (epoca === 1 && quarto.precoBaixa >=minValue && quarto.precoBaixa <= maxValue)) && quartosDisponiveis[i] > 0" routerLink="{{quarto._id}}">
                 <div id="nomeQ"><strong>{{quarto.tipo}}</strong></div>
                 <div id="img">
                     <img class="imagemQuarto" src="{{quarto.foto}}">

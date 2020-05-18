@@ -208,15 +208,17 @@ export class QuartosPesquisaComponent implements OnInit {
                   }else{
                     boolean = false;
                     contagem--;
-                    console.log(contagem);
+                    console.log("pimba menos um");
                     break;
                   }
                 }
                 this.quartosDisponiveis[i] = contagem;
+                console.log(this.quartosDisponiveis[i]);
                 });
               }
             }else{
               this.quartosDisponiveis[i] = this.quartosDisponiveis[i];
+              console.log(this.quartosDisponiveis[i]);
             }
           }
         }
