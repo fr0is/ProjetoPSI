@@ -10,12 +10,6 @@
 <div *ngIf="dataCheckOutFalta" class="alert">
     <a class="closebtn" (click)="changeStateDateErroCO()" onclick="this.parentElement.style.display='none';">&times;</a>Insira uma data de check-out!
 </div>
-<div *ngIf="showPreco" class="alertPreco">
-    <a class="closebtn" (click)="changePrecoFinalShow()" onclick="this.parentElement.style.display='none';">&times;</a>Preço da reserva para o quarto selecionado é de: {{precoFinal}}€
-</div>
-<div *ngIf="quartoEmFalta" class="alert">
-    <a class="closebtn" (click)="changePrecoFinalShow()" onclick="this.parentElement.style.display='none';">&times;</a>Selecione um tipo de quarto!
-</div>
 <div class="quartos container">
     <div id="procuraQ">
         <div id="barraProcura">
@@ -55,17 +49,16 @@
                                 <h3>Check-out:</h3>
                                 <input type="date" (change)="mudaCheckOut($event.target.value)" formControlName="checkOutReserva" required>
                             </div>
-                            <div id="quartoReserva">
-                                <h3 for="quartosR">Quarto:</h3>
-                                <select id="quartosR" name="quartosR" (change)="changeQuarto($event.target.value)" formControlName="quartoReserva" required>
-                                    <option *ngFor="let quarto of quartos" value={{quarto.tipo}}>{{quarto.tipo}}</option>
-                                </select>
-                            </div>
-                            <div>
-                                <button type="submit" class="btn draw-border submit">Reservar</button>
+                            <div *ngIf="showPreco">
+                                <br>
+                                <ul>
+                                    <li id="precos" *ngFor="let quarto of quartos;let i = index">
+                                        Preço {{quarto.tipo}}: {{precoFinal[i]}}€
+                                        <button type="submit" (click)="setQuarto(quarto)">Reservar</button>
+                                    </li>
+                                </ul>
                             </div>
                         </form>
-                        <button sytle="margin-right:2%;" class="calculaPreco" (click)="calcularPreco()"><img id="precoImagem" src="assets/Imagens/Icones/preco.png"></button>
                     </div>
                 </a>
                 <a id="servicos">
@@ -77,7 +70,7 @@
     <ol id="quartosVisao">
         <ng-container *ngFor="let quarto of quartos; let i = index">
             <li class="quarto" *ngIf="((epoca === 0 && quarto.precoAlta>=minValue && quarto.precoAlta <= maxValue) 
-                        || (epoca === 1 && quarto.precoBaixa >=minValue && quarto.precoBaixa <= maxValue))" routerLink="{{quarto._id}}">
+                        || (epoca === 1 && quarto.precoBaixa >=minValue && quarto.precoBaixa <= maxValue)) && quartosDisponiveis[i] !== 0" routerLink="{{quarto._id}}">
                 <div id="nomeQ"><strong>{{quarto.tipo}}</strong></div>
                 <div id="img">
                     <img class="imagemQuarto" src="{{quarto.foto}}">
@@ -86,14 +79,6 @@
                     Preço:
                     <div id="precoEpAlta" style="display: inline " *ngIf="epoca===0 ; else epocaBaixa ">{{quarto.precoAlta}}</div>
                     <ng-template id="precoEpBaixa" #epocaBaixa>{{quarto.precoBaixa}}</ng-template>€
-                </div>
-                <br>
-                <div id="quartosDisponiveis" style="text-align: center;">
-                    <div *ngIf="quartosDisponiveis[i] !== 0; else zeroQuartos"><img class="imageDisponivel" src="assets/Imagens/Icones/available.png"><strong style="color:green;text-align: center;">{{quartosDisponiveis[i]}} 
-                        <span sytle="text-align: center;" *ngIf="quartosDisponiveis[i] !== 1; else umQuarto">quartos disponíveis</span>
-                        <ng-template sytle="text-align: center;" #umQuarto> quarto disponível</ng-template></strong>
-                    </div>
-                    <ng-template style="text-align: center;" #zeroQuartos><img class="imageDisponivel" src="assets/Imagens/Icones/unavailable.png"><strong style="color:red;text-align: center;">{{quartosDisponiveis[i]}} quartos disponíveis</strong></ng-template>
                 </div>
             </li>
         </ng-container>

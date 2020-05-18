@@ -20,7 +20,7 @@ export class QuartosPesquisaComponent implements OnInit {
   quartoInstances: any[];
   reservaForm: FormGroup;
   datasValidas = true;
-  precoFinal = 0;
+  precoFinal = [];
   showPreco = false;
   dataCheckInFalta= false;
   dataCheckOutFalta= false;
@@ -94,12 +94,15 @@ export class QuartosPesquisaComponent implements OnInit {
     });
   }
 
+  setQuarto(quarto){
+    localStorage.setItem('quartoR',(quarto.tipo));
+  }
+
   reservar(reservaData){
     this.compareTwoDates();
     if(this.datasValidas){
       localStorage.setItem('checkInR',(reservaData.checkInReserva));
       localStorage.setItem('checkOutR',(reservaData.checkOutReserva));
-      localStorage.setItem('quartoR',(reservaData.quartoReserva));
       this.reservaForm.reset();
       window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome') + '/reservar';
     }else{
@@ -151,6 +154,7 @@ export class QuartosPesquisaComponent implements OnInit {
     if(this.compareDatesToToday(newDate)){
       if(this.compareDates(newDate,this.checkIn)){
         this.checkOut = newDate;
+        this.calcularPreco();
         this.verficarQuartosDisponiveis();
       }
     }
@@ -158,10 +162,9 @@ export class QuartosPesquisaComponent implements OnInit {
 
   mudaCheckIn(newDate){
     if(this.compareDatesToToday(newDate)){
-      if(this.compareDates(this.checkOut,newDate)){
         this.checkIn = newDate;
+        this.calcularPreco();
         this.verficarQuartosDisponiveis();
-      }
     }
   }
 
@@ -226,11 +229,7 @@ export class QuartosPesquisaComponent implements OnInit {
       if(this.checkOut === new Date() || this.checkOut === null){
         this.dataCheckOutFalta = true;
       }else{
-        if(this.quartoSelecionado ===  null || this.quartoSelecionado === undefined){
-          this.quartoEmFalta = true;
-        }else{
           this.calcularPrecoFunction();
-        }
       }
     }
   }
@@ -258,20 +257,21 @@ export class QuartosPesquisaComponent implements OnInit {
       dates.push(currentDate);
       currentDate = addDays.call(currentDate, 1);
     }
+    this.clearArray(this.precoFinal);
+    console.log(this.quartos);
     var preco = 0;
-    for(let i = 0; i < dates.length-1; i++){
-      if((dates[i].getDate() >= 15 && dates[i].getMonth() >= 1) && (dates[i].getDate() <= 31  && dates[i].getMonth() <= 5) || (dates[i].getDate() >= 30 && dates[i].getMonth() >= 9) && (dates[i].getDate() <= 15  && dates[i].getMonth() <= 12)){
-        preco += this.quartoSelecionado.precoBaixa;
-      }else{
-        preco += this.quartoSelecionado.precoAlta;
+    for(let j= 0; j < this.quartos.length; j++){
+      for(let i = 0; i < dates.length-1; i++){
+        if((dates[i].getDate() >= 15 && dates[i].getMonth() >= 1) && (dates[i].getDate() <= 31  && dates[i].getMonth() <= 5) || (dates[i].getDate() >= 30 && dates[i].getMonth() >= 9) && (dates[i].getDate() <= 15  && dates[i].getMonth() <= 12)){
+          preco += this.quartos[j].precoBaixa;
+        }else{
+          preco += this.quartos[j].precoAlta;
+        }
       }
-    }
-    this.precoFinal = preco;
-    this.showPreco = true;
+      this.precoFinal.push(preco);
   }
-
-  filtrarPorDatas(){
-
+  console.log(this.precoFinal);
+    this.showPreco = true;
   }
 
   changeStateDateErro(){
@@ -290,11 +290,4 @@ export class QuartosPesquisaComponent implements OnInit {
     this.dataCheckOutFalta = !this.dataCheckOutFalta;
   }
 
-  changeStateDateErroQuarto(){
-    this.quartoEmFalta = !this.quartoEmFalta;
-  }
-
-  changePrecoFinalShow(){
-    this.showPreco = !this.showPreco;
-  }
 }
