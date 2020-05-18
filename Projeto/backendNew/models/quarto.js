@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 
 var QuartoSchema = new Schema({
     tipo: { type: String, required: true, min: 3, max: 100 },
+    indice: { type: Number, min: 0, required: true},
     nrQuartos: { type: Number, min: 0, required: true },
     precoAlta: { type: Number, min: 0, required: true },
     precoBaixa: { type: Number, min: 0, required: true },

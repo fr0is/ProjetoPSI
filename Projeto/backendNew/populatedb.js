@@ -63,9 +63,10 @@ function hotelCreate(nome, descricao, local, zona, codigoPostal, pais, latitude,
     });
 }
 
-function quartoCreate(tipo, nrQuartos, precoAlta, precoBaixa, hotel, servicos, foto, cb) {
+function quartoCreate(tipo, indice, nrQuartos, precoAlta, precoBaixa, hotel, servicos, foto, cb) {
     quartoDetail = {
         tipo: tipo,
+        indice: indice,
         nrQuartos: nrQuartos,
         precoAlta: precoAlta,
         precoBaixa: precoBaixa,
@@ -165,34 +166,34 @@ function createHoteis(cb) {
 function createQuartos(cb) {
     async.parallel([
         function(callback) {
-            quartoCreate('Standard', 3, 270, 180, hoteis[0], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LED', 'Canais por cabo', 'Mini-bar', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Espelho de maquilhagem', 'Produtos de higiene pessoal gratuitos', '-', 'Fechadura eletrónica de segurança', '-', 'Roupão e chinelos', 'Maquina de café', ], '/assets/Imagens/HotelDV/standard.jpg', callback);
+            quartoCreate('Standard', 1, 3, 270, 180, hoteis[0], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LED', 'Canais por cabo', 'Mini-bar', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Espelho de maquilhagem', 'Produtos de higiene pessoal gratuitos', '-', 'Fechadura eletrónica de segurança', '-', 'Roupão e chinelos', 'Maquina de café', ], '/assets/Imagens/HotelDV/standard.jpg', callback);
         },
         function(callback) {
-            quartoCreate('Suite', 1, 330, 250, hoteis[0], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LED', 'Canais por cabo', '-', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Espelho de maquilhagem', 'Produtos de higiene pessoal gratuitos', '-', 'Fechadura eletrónica de segurança', 'Sala-de-estar', 'Roupão e chinelos', 'Maquina de café', ], '/assets/Imagens/HotelDV/suite.jpg', callback);
+            quartoCreate('Suite', 2, 1, 330, 250, hoteis[0], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LED', 'Canais por cabo', '-', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Espelho de maquilhagem', 'Produtos de higiene pessoal gratuitos', '-', 'Fechadura eletrónica de segurança', 'Sala-de-estar', 'Roupão e chinelos', 'Maquina de café', ], '/assets/Imagens/HotelDV/suite.jpg', callback);
         },
         function(callback) {
-            quartoCreate('Suite Duplex', 1, 350, 270, hoteis[0], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LED', 'Canais por cabo', '-', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Espelho de maquilhagem', 'Produtos de higiene pessoal gratuitos', 'Serviço de quarto 24 horas', 'Fechadura eletrónica de segurança', 'Sala-de-estar', 'Roupão e chinelos', 'Maquina de café', ], '/assets/Imagens/HotelDV/suiteDuplex.jpg', callback);
+            quartoCreate('Suite Duplex', 3, 1, 350, 270, hoteis[0], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LED', 'Canais por cabo', '-', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Espelho de maquilhagem', 'Produtos de higiene pessoal gratuitos', 'Serviço de quarto 24 horas', 'Fechadura eletrónica de segurança', 'Sala-de-estar', 'Roupão e chinelos', 'Maquina de café', ], '/assets/Imagens/HotelDV/suiteDuplex.jpg', callback);
         },
         function(callback) {
-            quartoCreate('Suite Deluxe', 1, 450, 310, hoteis[0], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LED', 'Canais por cabo', '-', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Espelho de maquilhagem', 'Produtos de higiene pessoal gratuitos', 'Serviço de quarto 24 horas', 'Fechadura eletrónica de segurança', 'Sala-de-estar', 'Roupão e chinelos', 'Maquina de café', ], '/assets/Imagens/HotelDV/suiteDeluxe.jpg', callback);
+            quartoCreate('Suite Deluxe', 4, 1, 450, 310, hoteis[0], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LED', 'Canais por cabo', '-', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Espelho de maquilhagem', 'Produtos de higiene pessoal gratuitos', 'Serviço de quarto 24 horas', 'Fechadura eletrónica de segurança', 'Sala-de-estar', 'Roupão e chinelos', 'Maquina de café', ], '/assets/Imagens/HotelDV/suiteDeluxe.jpg', callback);
         },
         function(callback) {
-            quartoCreate('Standard', 182, 160, 90, hoteis[1], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LCD', 'Canais por cabo', 'Mini-bar', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Produtos de higiene pessoal gratuitos', 'Fechadura eletrónica de segurança', 'Serviço de quarto 24 horas', '-', '-', 'Chaleira', ], '/assets/Imagens/HotelAVerOMar/standard.jpg', callback);
+            quartoCreate('Standard', 1, 182, 160, 90, hoteis[1], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LCD', 'Canais por cabo', 'Mini-bar', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Produtos de higiene pessoal gratuitos', 'Fechadura eletrónica de segurança', 'Serviço de quarto 24 horas', '-', '-', 'Chaleira', ], '/assets/Imagens/HotelAVerOMar/standard.jpg', callback);
         },
         function(callback) {
-            quartoCreate('Suite Junior', 5, 180, 120, hoteis[1], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LCD', 'Canais por cabo', 'Mini-bar', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Produtos de higiene pessoal gratuitos', 'Fechadura eletrónica de segurança', 'Serviço de quarto 24 horas', 'Sala-de-estar', '-', 'Chaleira', ], '/assets/Imagens/HotelAVerOMar/suiteJunior.jpg', callback);
+            quartoCreate('Suite Junior', 2, 5, 180, 120, hoteis[1], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LCD', 'Canais por cabo', 'Mini-bar', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Produtos de higiene pessoal gratuitos', 'Fechadura eletrónica de segurança', 'Serviço de quarto 24 horas', 'Sala-de-estar', '-', 'Chaleira', ], '/assets/Imagens/HotelAVerOMar/suiteJunior.jpg', callback);
         },
         function(callback) {
-            quartoCreate('Suite Junior Superior', 15, 210, 130, hoteis[1], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LCD', 'Canais por cabo', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Produtos de higiene pessoal gratuitos', 'Fechadura eletrónica de segurança', 'Serviço de quarto 24 horas', 'Sala-de-estar', 'Varanda', 'Chaleira', ], '/assets/Imagens/HotelAVerOMar/suiteJuniorSuperior.jpg', callback);
+            quartoCreate('Suite Junior Superior', 3, 15, 210, 130, hoteis[1], ['Telefone', 'Wi-fi gratuito', 'Ar condicionado', 'Televisão LCD', 'Canais por cabo', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de cabelo', 'Produtos de higiene pessoal gratuitos', 'Fechadura eletrónica de segurança', 'Serviço de quarto 24 horas', 'Sala-de-estar', 'Varanda', 'Chaleira', ], '/assets/Imagens/HotelAVerOMar/suiteJuniorSuperior.jpg', callback);
         },
         function(callback) {
-            quartoCreate('Standard', 114, 210, 70, hoteis[2], ['Telefone', 'Wi-fi grátis', 'Ar Condicionado', 'Televisão LCD', 'Canais por Cabo', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de Cabelo', 'Espelho de maquilhagem', 'Produtos de Higiene Pessoal Gratuitos', 'Kitchenette', 'Fechadura Eletrónica de Segurança', 'Serviço de Quarto 24 horas', '-', '-', 'Frigorífico', 'Micro-ondas', '-', 'Chaleira', ], '/assets/Imagens/HotelMediterraneo/quarto.jpg', callback);
+            quartoCreate('Standard', 1, 114, 210, 70, hoteis[2], ['Telefone', 'Wi-fi grátis', 'Ar Condicionado', 'Televisão LCD', 'Canais por Cabo', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de Cabelo', 'Espelho de maquilhagem', 'Produtos de Higiene Pessoal Gratuitos', 'Kitchenette', 'Fechadura Eletrónica de Segurança', 'Serviço de Quarto 24 horas', '-', '-', 'Frigorífico', 'Micro-ondas', '-', 'Chaleira', ], '/assets/Imagens/HotelMediterraneo/quarto.jpg', callback);
         },
         function(callback) {
-            quartoCreate('Suite Junior', 98, 250, 90, hoteis[2], ['Telefone', 'Wi-fi grátis', 'Ar Condicionado', 'Televisão LCD', 'Canais por Cabo', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de Cabelo', 'Espelho de maquilhagem', 'Produtos de Higiene Pessoal Gratuitos', 'Kitchenette', 'Fechadura Eletrónica de Segurança', 'Serviço de Quarto 24 horas', '-', 'Varanda', 'Frigorífico', 'Micro-ondas', 'Sala-de-estar', 'Chaleira', ], '/assets/Imagens/HotelMediterraneo/suiteJunior.jpg', callback);
+            quartoCreate('Suite Junior', 2, 98, 250, 90, hoteis[2], ['Telefone', 'Wi-fi grátis', 'Ar Condicionado', 'Televisão LCD', 'Canais por Cabo', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de Cabelo', 'Espelho de maquilhagem', 'Produtos de Higiene Pessoal Gratuitos', 'Kitchenette', 'Fechadura Eletrónica de Segurança', 'Serviço de Quarto 24 horas', '-', 'Varanda', 'Frigorífico', 'Micro-ondas', 'Sala-de-estar', 'Chaleira', ], '/assets/Imagens/HotelMediterraneo/suiteJunior.jpg', callback);
         },
         function(callback) {
-            quartoCreate('Suite Senior', 8, 240, 120, hoteis[2], ['Telefone', 'Wi-fi grátis', 'Ar Condicionado', 'Televisão LCD', 'Canais por Cabo', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de Cabelo', 'Espelho de maquilhagem', 'Produtos de Higiene Pessoal Gratuitos', 'Kitchenette', 'Fechadura Eletrónica de Segurança', 'Serviço de Quarto 24 horas', 'Sofá-cama', 'Varanda', 'Frigorífico', 'Micro-ondas', 'Sala-de-estar', 'Chaleira', ], '/assets/Imagens/HotelMediterraneo/suiteSenior.jpg', callback);
+            quartoCreate('Suite Senior', 3, 8, 240, 120, hoteis[2], ['Telefone', 'Wi-fi grátis', 'Ar Condicionado', 'Televisão LCD', 'Canais por Cabo', 'Cofre', 'Casa de banho privativa com telefone', 'Secador de Cabelo', 'Espelho de maquilhagem', 'Produtos de Higiene Pessoal Gratuitos', 'Kitchenette', 'Fechadura Eletrónica de Segurança', 'Serviço de Quarto 24 horas', 'Sofá-cama', 'Varanda', 'Frigorífico', 'Micro-ondas', 'Sala-de-estar', 'Chaleira', ], '/assets/Imagens/HotelMediterraneo/suiteSenior.jpg', callback);
         },
     ], cb);
 }
