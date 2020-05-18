@@ -88,12 +88,12 @@
                     <ng-template id="precoEpBaixa" #epocaBaixa>{{quarto.precoBaixa}}</ng-template>€
                 </div>
                 <br>
-                <div id="quartosDisponiveis">
-                    <div *ngIf="quartosDisponiveis[i] !== 0; else zeroQuartos"><img class="imageDisponivel" src="assets/Imagens/Icones/available.png"><strong style="color:green">{{quartosDisponiveis[i]}} 
-                        <span *ngIf="quartosDisponiveis[i] !== 1; else umQuarto">quartos disponíveis</span>
-                        <ng-template #umQuarto> quarto disponível</ng-template></strong>
+                <div id="quartosDisponiveis" style="text-align: center;">
+                    <div *ngIf="quartosDisponiveis[i] !== 0; else zeroQuartos"><img class="imageDisponivel" src="assets/Imagens/Icones/available.png"><strong style="color:green;text-align: center;">{{quartosDisponiveis[i]}} 
+                        <span sytle="text-align: center;" *ngIf="quartosDisponiveis[i] !== 1; else umQuarto">quartos disponíveis</span>
+                        <ng-template sytle="text-align: center;" #umQuarto> quarto disponível</ng-template></strong>
                     </div>
-                    <ng-template #zeroQuartos><img class="imageDisponivel" src="assets/Imagens/Icones/unavailable.png"><strong style="color:red">{{quartosDisponiveis[i]}} quartos disponíveis</strong></ng-template>
+                    <ng-template style="text-align: center;" #zeroQuartos><img class="imageDisponivel" src="assets/Imagens/Icones/unavailable.png"><strong style="color:red;text-align: center;">{{quartosDisponiveis[i]}} quartos disponíveis</strong></ng-template>
                 </div>
             </li>
         </ng-container>
