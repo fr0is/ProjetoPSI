@@ -29,7 +29,6 @@
                               <span>Alta</span>
                             </div>
                           </label>
-
                             <label>
                             <span class="infoB">15/01-31/05<br>-<br>30/09-15/12</span>
                             <input type="radio" name="radio"/>
@@ -69,7 +68,7 @@
     </div>
     <ol id="quartosVisao">
         <ng-container *ngFor="let quarto of quartos; let i = index">
-            <li class="quarto" *ngIf="((epoca === 0 && quarto.precoAlta>=minValue && quarto.precoAlta <= maxValue) 
+            <li (click)="setQuarto(quarto)" class="quarto" *ngIf="((epoca === 0 && quarto.precoAlta>=minValue && quarto.precoAlta <= maxValue) 
                         || (epoca === 1 && quarto.precoBaixa >=minValue && quarto.precoBaixa <= maxValue)) && quartosDisponiveis[i] > 0" routerLink="{{quarto._id}}">
                 <div id="nomeQ"><strong>{{quarto.tipo}}</strong></div>
                 <div id="img">
