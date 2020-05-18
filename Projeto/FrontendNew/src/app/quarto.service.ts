@@ -7,9 +7,9 @@ import { HttpClient } from '@angular/common/http';
 export class QuartoService {
 
   //appserver
-  //baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
+  baseUrl = 'http://appserver.alunos.di.fc.ul.pt:3071/catalog/';
   //locahost
-  baseUrl = 'http://localhost:3071/catalog/';
+  //baseUrl = 'http://localhost:3071/catalog/';
   quartosUrl = this.baseUrl + 'quartos';
   instanceUrl = this.baseUrl + 'quartoInstance/';
 
