@@ -51,6 +51,7 @@
          .container {
              background-color: #fff;
              box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+             padding-bottom: 34%;
          }
          .container .nav {
              background-color: #fafafa;
@@ -72,6 +73,7 @@
              width: 100%;
              padding-left: 5%;
              padding-top: 2%;
+             padding-bottom: 3%;
          }
          .middle h1 {
              font-family: "Dax", sans-serif;
