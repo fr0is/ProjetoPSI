@@ -28,15 +28,16 @@ export class HotelHomePageComponent implements OnInit {
     fotoPath: ""
   };
 
-
 constructor(
   private route: ActivatedRoute,
   private hotelService: HotelService
-) { }
+) { 
+}
 
 ngOnInit(): void {
   this.getHotel();
 }
+
 
 getHotel() {
   const id = sessionStorage.getItem("hotelAtual");
