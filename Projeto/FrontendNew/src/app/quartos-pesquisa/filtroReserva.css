@@ -31,17 +31,6 @@
     margin: 0;
 }
 
-input:invalid {
-    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
-    border-color: red;
-    transform: translate3d(0, 0, 0);
-}
-
-input:valid {
-    border-color: green;
-    transform: translate3d(0, 0, 0);
-}
-
 input {
     padding: 5%;
     width: auto;
@@ -111,6 +100,22 @@ input {
     letter-spacing: 0.05rem;
 }
 
+.calculaPreco {
+    margin: 2%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+}
+
+#precoImagem {
+    width: 100%;
+}
+
+.imageDisponivel {
+    width: 5%;
+}
+
 
 /****Alertas****/
 
@@ -120,6 +125,32 @@ input {
 .alert {
     padding: 20px;
     background-color: red;
+    /* Red */
+    color: white;
+    margin-bottom: 15px;
+    opacity: 1;
+    transition: opacity 0.6s;
+    text-decoration: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100000;
+    text-align: center;
+    -webkit-animation: fadein 1s;
+    /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 1s;
+    /* Firefox < 16 */
+    -ms-animation: fadein 1s;
+    /* Internet Explorer */
+    -o-animation: fadein 1s;
+    /* Opera < 12.1 */
+    animation: fadein 1s;
+}
+
+.alertPreco {
+    padding: 20px;
+    background-color: green;
     /* Red */
     color: white;
     margin-bottom: 15px;
