@@ -158,6 +158,7 @@ export class QuartosPesquisaComponent implements OnInit {
         this.verficarQuartosDisponiveis();
       }
     }
+    console.log(this.quartosDisponiveis);
   }
 
   mudaCheckIn(newDate){
@@ -207,6 +208,7 @@ export class QuartosPesquisaComponent implements OnInit {
                   }else{
                     boolean = false;
                     contagem--;
+                    console.log(contagem);
                     break;
                   }
                 }
@@ -259,11 +261,12 @@ export class QuartosPesquisaComponent implements OnInit {
     }
     this.clearArray(this.precoFinal);
     console.log(this.quartos);
-    var preco = 0;
     for(let j= 0; j < this.quartos.length; j++){
+      var preco = 0;
       for(let i = 0; i < dates.length-1; i++){
         if((dates[i].getDate() >= 15 && dates[i].getMonth() >= 1) && (dates[i].getDate() <= 31  && dates[i].getMonth() <= 5) || (dates[i].getDate() >= 30 && dates[i].getMonth() >= 9) && (dates[i].getDate() <= 15  && dates[i].getMonth() <= 12)){
           preco += this.quartos[j].precoBaixa;
+          console.log(this.quartos[j].precoBaixa);
         }else{
           preco += this.quartos[j].precoAlta;
         }

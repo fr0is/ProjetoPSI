@@ -13,6 +13,7 @@ export class QuartoPaginaDetalhesComponent implements OnInit {
   quarto: Quarto = {
     _id: "",
     servicos:[],
+    indice: 0,
     tipo: "",
     nrQuartos: 0,
     precoAlta: 0,
