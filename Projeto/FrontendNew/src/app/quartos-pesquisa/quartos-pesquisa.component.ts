@@ -45,7 +45,7 @@ export class QuartosPesquisaComponent implements OnInit {
     }
   }
   datasValidasToday = true;
-  checkIn = null;
+  checkIn = new Date();
   checkOut = null;
 
   epoca = 0;
