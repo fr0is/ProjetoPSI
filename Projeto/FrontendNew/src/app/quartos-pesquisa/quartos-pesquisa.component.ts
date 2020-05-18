@@ -83,8 +83,11 @@ export class QuartosPesquisaComponent implements OnInit {
       for(let i = 0; i < this.quartos.length; i++){
         this.quartoService.getInstances(this.quartos[i]._id).subscribe(listInstances => {
             instancias.push(listInstances as []);
+            console.log(this.quartos[i].nrQuartos);
             this.quartosDisponiveis.push(this.quartos[i].nrQuartos);
             this.quartosDisponiveisInicial.push(this.quartos[i].nrQuartos);
+            console.log(this.quartosDisponiveis);
+            console.log(this.quartosDisponiveis);
             this.quartoInstances = instancias;
         });
       }
