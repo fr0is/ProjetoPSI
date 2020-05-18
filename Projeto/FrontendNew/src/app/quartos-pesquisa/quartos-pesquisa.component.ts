@@ -25,6 +25,7 @@ export class QuartosPesquisaComponent implements OnInit {
   dataCheckInFalta= false;
   dataCheckOutFalta= false;
   quartoEmFalta= false;
+  quartosDisponiveisInicial = [];
   quartosDisponiveis = [];
   quartoSelecionado: Quarto;
   minValue: number = 100;
@@ -45,7 +46,7 @@ export class QuartosPesquisaComponent implements OnInit {
     }
   }
   datasValidasToday = true;
-  checkIn = new Date();
+  checkIn = null;
   checkOut = null;
 
   epoca = 0;
@@ -83,6 +84,7 @@ export class QuartosPesquisaComponent implements OnInit {
         this.quartoService.getInstances(this.quartos[i]._id).subscribe(listInstances => {
             instancias.push(listInstances as []);
             this.quartosDisponiveis.push(this.quartos[i].nrQuartos);
+            this.quartosDisponiveisInicial.push(this.quartos[i].nrQuartos);
             this.quartoInstances = instancias;
         });
       }
@@ -120,6 +122,8 @@ export class QuartosPesquisaComponent implements OnInit {
    }
   }
 
+  //ve se data1 e menor q data2 
+  //se data1 for menor entao da false
   compareDatesInstances(date1, date2){
     if(new Date(date1)<=new Date(date2)){
       this.datasValidas = false;
@@ -159,6 +163,8 @@ export class QuartosPesquisaComponent implements OnInit {
   }
 
   verficarQuartosDisponiveis(){
+    this.quartosDisponiveis = this.quartosDisponiveisInicial;
+    console.log(this.quartosDisponiveisInicial);
     if(this.checkIn === new Date() || this.checkIn === null){
       this.dataCheckInFalta = true;
     }else{
@@ -168,44 +174,36 @@ export class QuartosPesquisaComponent implements OnInit {
         //Ver instancias quartos
         for(let i = 0; i < this.quartoInstances.length; i++){
           var  boolean = false;
-          var contagem = 0;
           for(let j = 0; j < this.quartoInstances[i].length; j++){
             //ha reservas
             if(typeof this.quartoInstances[i][j].reservas !== 'undefined' && this.quartoInstances[i][j].reservas.length > 0){
               //se ha reservas vamos buscar as reservas
               for(let h = 0; h < this.quartoInstances[i][j].reservas.length; h++){
-                this.userService.getReservaId(this.quartoInstances[i][j].reservas[h]).subscribe(results => {
+                this.userService.getReservaId(this.quartoInstances[i][j].reservas[h]._id).subscribe(results => {
                 var reservas: Reserva[];
                 reservas = [results] as Reserva[];
                 //comparar as datas das reservas todas
                 for(let b = 0; b < reservas.length; b++){
+                  var contagem = this.quartosDisponiveis[i];
                   if(this.compareDatesInstances(new Date(reservas[b].checkIn), this.checkIn) && this.compareDatesInstances(new Date(reservas[b].checkOut),this.checkIn)
                   && this.compareDatesInstances(new Date(reservas[b].checkIn), this.checkOut) && this.compareDatesInstances(new Date(reservas[b].checkOut),this.checkOut)){
                     boolean = true;
-                    console.log('disponivel');
-                    this.quartosDisponiveis[i] = contagem;
-                    break;
                   }else{
                     boolean = false;
-                    console.log('ocupado');
+                    contagem--;
+                    break;
                   }
                 }
-                if(boolean){
-                  contagem++;
-                  console.log(contagem);
-                }
+                this.quartosDisponiveis[i] = contagem;
                 });
               }
             }else{
-              console.log('n ha reservas');
               this.quartosDisponiveis[i] = this.quartosDisponiveis[i];
             }
           }
         }
       }
     }
-    console.log('-----------------')
-    console.log(this.quartosDisponiveis);
   }
 
   calcularPreco(){
@@ -248,7 +246,7 @@ export class QuartosPesquisaComponent implements OnInit {
       currentDate = addDays.call(currentDate, 1);
     }
     var preco = 0;
-    for(let i = 0; i < dates.length; i++){
+    for(let i = 0; i < dates.length-1; i++){
       if((dates[i].getDate() >= 15 && dates[i].getMonth() >= 1) && (dates[i].getDate() <= 31  && dates[i].getMonth() <= 5) || (dates[i].getDate() >= 30 && dates[i].getMonth() >= 9) && (dates[i].getDate() <= 15  && dates[i].getMonth() <= 12)){
         preco += this.quartoSelecionado.precoBaixa;
       }else{
