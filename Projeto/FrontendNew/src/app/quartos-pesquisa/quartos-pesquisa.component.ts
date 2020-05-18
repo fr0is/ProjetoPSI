@@ -177,7 +177,7 @@ export class QuartosPesquisaComponent implements OnInit {
                 this.userService.getReservaId(this.quartoInstances[i][j].reservas[h]).subscribe(results => {
                 var reservas: Reserva[];
                 reservas = [results] as Reserva[];
-                //comparar as reservas todas
+                //comparar as datas das reservas todas
                 for(let b = 0; b < reservas.length; b++){
                   if(this.compareDatesInstances(new Date(reservas[b].checkIn), this.checkIn) && this.compareDatesInstances(new Date(reservas[b].checkOut),this.checkIn)
                   && this.compareDatesInstances(new Date(reservas[b].checkIn), this.checkOut) && this.compareDatesInstances(new Date(reservas[b].checkOut),this.checkOut)){
