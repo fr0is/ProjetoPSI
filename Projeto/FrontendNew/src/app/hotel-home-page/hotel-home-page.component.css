@@ -801,12 +801,21 @@
         .numD{
             font-size: 14px;
         }
+
+        #mapa{
+            justify-self: center;
+        }
     }
 
     @media (min-width:425px){
     /* Mobile L */
         .numD{
             font-size: 15px;
+        }
+
+        #mapa iframe{
+            
+            width: 297.5px;
         }
     }
 
