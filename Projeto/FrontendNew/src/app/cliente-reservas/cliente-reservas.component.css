@@ -14,6 +14,12 @@ button:focus {
     grid-template-columns: 30% 30% 30% 10%;
 }
 
+@media(max-width: 800px) {
+    #filtroForm {
+        grid-template-columns: auto;
+    }
+}
+
 .filtroText {
     margin-bottom: 2%;
 }

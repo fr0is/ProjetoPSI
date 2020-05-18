@@ -1,26 +1,45 @@
-table {
-    text-align: center;
-    width: 40%;
-    margin: auto;
-    border-spacing: 0;
-}
-
-td {
-    padding: 5%;
-    cursor: pointer;
-    border-bottom: solid 1px lightgray;
-    transition: ease-in-out;
-}
-
-td:hover {
-    background: lightgray;
-}
-
-#logout {
-    color: red;
-}
-
-#logout:hover {
-    background: red;
-    color: white;
-}
+    td:hover {
+        background: lightgray;
+    }
+    
+    #logout {
+        color: red;
+    }
+    
+    #logout:hover {
+        background: red;
+        color: white;
+    }
+    
+    @media (min-width: 320px) {
+        table {
+            text-align: center;
+            width: 100%;
+            margin: auto;
+            border-spacing: 0;
+        }
+        td {
+            padding: 5%;
+            cursor: pointer;
+            border-right: solid 1px lightgray;
+            transition: ease-in-out;
+            font-size: 15px;
+        }
+    }
+    
+    @media (min-width: 768px) {
+        table {
+            text-align: center;
+            width: 40%;
+            margin: auto;
+            border-spacing: 0;
+            border-right: transparent;
+        }
+        td {
+            padding: 5%;
+            cursor: pointer;
+            border-bottom: solid 1px lightgray;
+            transition: ease-in-out;
+            border-right: transparent;
+        }
+    }

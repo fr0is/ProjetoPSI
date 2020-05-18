@@ -186,8 +186,6 @@ export class QuartosPesquisaComponent implements OnInit {
         this.quartosDisponiveisInicial.forEach((v, i) => {
           this.quartosDisponiveis.push(this.quartosDisponiveisInicial[i]);
         });
-        console.log(this.quartosDisponiveisInicial);
-        console.log(this.quartosDisponiveis); 
         //Ver instancias quartos
         for(let i = 0; i < this.quartoInstances.length; i++){
           var  boolean = false;
@@ -201,6 +199,7 @@ export class QuartosPesquisaComponent implements OnInit {
                 reservas = [results] as Reserva[];
                 //comparar as datas das reservas todas
                 for(let b = 0; b < reservas.length; b++){
+                  console.log(this.quartos[i]);
                   var contagem = this.quartosDisponiveis[i];
                   if(this.compareDatesInstances(new Date(reservas[b].checkIn), this.checkIn) && this.compareDatesInstances(new Date(reservas[b].checkOut),this.checkIn)
                   && this.compareDatesInstances(new Date(reservas[b].checkIn), this.checkOut) && this.compareDatesInstances(new Date(reservas[b].checkOut),this.checkOut)){
@@ -213,12 +212,10 @@ export class QuartosPesquisaComponent implements OnInit {
                   }
                 }
                 this.quartosDisponiveis[i] = contagem;
-                console.log(this.quartosDisponiveis[i]);
                 });
               }
             }else{
               this.quartosDisponiveis[i] = this.quartosDisponiveis[i];
-              console.log(this.quartosDisponiveis[i]);
             }
           }
         }
@@ -262,20 +259,17 @@ export class QuartosPesquisaComponent implements OnInit {
       currentDate = addDays.call(currentDate, 1);
     }
     this.clearArray(this.precoFinal);
-    console.log(this.quartos);
     for(let j= 0; j < this.quartos.length; j++){
       var preco = 0;
       for(let i = 0; i < dates.length-1; i++){
         if((dates[i].getDate() >= 15 && dates[i].getMonth() >= 1) && (dates[i].getDate() <= 31  && dates[i].getMonth() <= 5) || (dates[i].getDate() >= 30 && dates[i].getMonth() >= 9) && (dates[i].getDate() <= 15  && dates[i].getMonth() <= 12)){
           preco += this.quartos[j].precoBaixa;
-          console.log(this.quartos[j].precoBaixa);
         }else{
           preco += this.quartos[j].precoAlta;
         }
       }
       this.precoFinal.push(preco);
   }
-  console.log(this.precoFinal);
     this.showPreco = true;
   }
 

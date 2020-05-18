@@ -12,7 +12,15 @@
                     <br>
                     <p><span class="datePreco"><strong>De 15/01 a 31/05 e de 30/09 a 15/12: </strong></span><span class="precoEB">{{quarto.precoBaixa}}€</span></p>
                 </div>
-                <form>
+                <form id="reservaQuartoForm" ngNativeValidate [formGroup]="reservaForm" (ngSubmit)="reservar(reservaForm.value)">
+                    <div id="dataCheckIn">
+                        <h3>Check-in:</h3>
+                        <input type="date" (change)="mudaCheckIn($event.target.value)" formControlName="checkInReserva" required>
+                    </div>
+                    <div id="dataCheckOut">
+                        <h3>Check-out:</h3>
+                        <input type="date" (change)="mudaCheckOut($event.target.value)" formControlName="checkOutReserva" required>
+                    </div>
                     <div>
                         <button type="submit" class="btn draw-border submit">Reservar</button>
                     </div>

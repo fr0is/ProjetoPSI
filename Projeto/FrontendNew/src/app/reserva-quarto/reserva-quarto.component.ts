@@ -331,13 +331,16 @@ export class ReservaQuartoComponent implements OnInit {
       if(sessionStorage.getItem('nifReserva') === null){
         sessionStorage.setItem('nifReserva', '');
       }
-      this.updateForm = this.formBuilder.group({
-        nomeUpdate: this.formBuilder.control(sessionStorage.getItem('nomeReserva')),
-        emailUpdate: this.formBuilder.control(sessionStorage.getItem('emailReserva')),
-        indicativoUpdate: this.formBuilder.control(sessionStorage.getItem('indicativoReserva')),
-        telefoneUpdate: this.formBuilder.control(sessionStorage.getItem('numeroReserva')),
-        nifUpdate: this.formBuilder.control(sessionStorage.getItem('nifReserva')),
+        this.userService.getUser(localStorage.getItem('userAtual')).subscribe(user => {
+        var clienteAtual = user[0] as User;
+        this.updateForm = this.formBuilder.group({
+        nomeUpdate: this.formBuilder.control(clienteAtual.nome),
+        emailUpdate: this.formBuilder.control(clienteAtual.email),
+        indicativoUpdate: this.formBuilder.control(clienteAtual.indicativo),
+        telefoneUpdate: this.formBuilder.control(clienteAtual.telefone),
+        nifUpdate: this.formBuilder.control(clienteAtual.nif),
       })
+      });
       this.moradaId = sessionStorage.getItem('moradaReserva');
       this.moradaIdFinal = sessionStorage.getItem('moradaReserva');
       this.cartaoId = sessionStorage.getItem('cartaoReserva');
