@@ -162,15 +162,25 @@ export class QuartosPesquisaComponent implements OnInit {
     }
   }
 
+  clearArray<T>(array: T[]) {
+    while (array.length > 0) {
+      array.pop();
+    }
+  }
+
   verficarQuartosDisponiveis(){
-    this.quartosDisponiveis = this.quartosDisponiveisInicial;
-    console.log(this.quartosDisponiveisInicial);
     if(this.checkIn === new Date() || this.checkIn === null){
       this.dataCheckInFalta = true;
     }else{
       if(this.checkOut === new Date() || this.checkOut === null){
         this.dataCheckOutFalta = true;
       }else{
+        this.clearArray(this.quartosDisponiveis);
+        this.quartosDisponiveisInicial.forEach((v, i) => {
+          this.quartosDisponiveis.push(this.quartosDisponiveisInicial[i]);
+        });
+        console.log(this.quartosDisponiveisInicial);
+        console.log(this.quartosDisponiveis); 
         //Ver instancias quartos
         for(let i = 0; i < this.quartoInstances.length; i++){
           var  boolean = false;
