@@ -816,6 +816,7 @@
         #mapa iframe{
             
             width: 297.5px;
+            
         }
     }
 
@@ -824,8 +825,39 @@
             .numD{
                 font-size: 16px;
             }
+
+            #mapa iframe{
+            
+                width: 268,8px;
+                
+            }
         }
 
+        @media (min-width:1024px){
+            
+                
+    
+                #mapa iframe{
+                
+                    width: 500px;
+                    height:  auto;
+                }
+            }
+
+
+            @media (min-width:1440){
+                
+                    
+                .numD{
+                    font-size: 17px;
+                }
+                    #mapa iframe{
+                    
+                        width: 700px;
+                        height: auto;
+                        
+                    }
+                }
 
     /*******************LOCALIZACAO*****************/
 
