@@ -6,220 +6,7 @@
     display: grid;
     grid-template-columns: 30% 40% 30%;
     grid-template-rows: auto;
-    padding-bottom: 1.5%;
-}
-
-.logo:hover {
-    animation: shake 0.5s;
-    animation-iteration-count: infinite;
-}
-
-@keyframes shake {
-    0% {
-        transform: translate(1px, 1px) rotate(0deg);
-    }
-    10% {
-        transform: translate(-1px, -2px) rotate(-1deg);
-    }
-    20% {
-        transform: translate(-3px, 0px) rotate(1deg);
-    }
-    30% {
-        transform: translate(3px, 2px) rotate(0deg);
-    }
-    40% {
-        transform: translate(1px, -1px) rotate(1deg);
-    }
-    50% {
-        transform: translate(-1px, 2px) rotate(-1deg);
-    }
-    60% {
-        transform: translate(-3px, 1px) rotate(0deg);
-    }
-    70% {
-        transform: translate(3px, 1px) rotate(-1deg);
-    }
-    80% {
-        transform: translate(-1px, -1px) rotate(1deg);
-    }
-    90% {
-        transform: translate(1px, 2px) rotate(0deg);
-    }
-    100% {
-        transform: translate(1px, -2px) rotate(-1deg);
-    }
-}
-
-
-/* Mobile*/
-
-@media (min-width:320px) {
-    .logo {
-        float: left;
-        width: auto;
-        color: white;
-        max-width: 40%;
-        margin-top: 0.25%;
-        z-index: 10;
-        cursor: pointer;
-        text-decoration: none;
-        cursor: pointer;
-        margin-bottom: 4%;
-        margin-top: 4%;
-    }
-    .nomeHotel {
-        color: white;
-        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
-        z-index: 0;
-        cursor: pointer;
-        text-decoration: none;
-        font-size: 100%;
-        text-align: center;
-        margin-top: 5%;
-        margin-right: 15%;
-        width: 100%;
-        padding-bottom: 3%;
-    }
-    .topNav {
-        color: white;
-        float: right;
-        top: 0;
-        text-align: center;
-        font-size: 60%;
-        margin-top: 3%;
-        z-index: 3;
-    }
-    .topNavA,
-    .topNavA1 {
-        padding: 1%;
-        text-decoration: none;
-        color: white;
-        cursor: pointer;
-        z-index: 2;
-    }
-    .topNavA1 {
-        cursor: default;
-    }
-    .topNavA:hover {
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-        animation-duration: 0.25s;
-        border-bottom: 1px solid white;
-    }
-}
-
-
-/* Mobile L */
-
-@media (min-width:425px) {
-    .logo {
-        float: left;
-        width: auto;
-        color: white;
-        max-width: 40%;
-        margin-top: 0.25%;
-        z-index: 10;
-        cursor: pointer;
-        text-decoration: none;
-        cursor: pointer;
-        margin-bottom: 4%;
-        margin-top: 4%;
-    }
-    .nomeHotel {
-        color: white;
-        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
-        z-index: 0;
-        cursor: pointer;
-        text-decoration: none;
-        font-size: 120%;
-        text-align: center;
-        margin-top: 5%;
-        margin-right: 15%;
-        width: 100%;
-        padding-bottom: 1%;
-    }
-    .topNav {
-        color: white;
-        float: right;
-        top: 0;
-        text-align: center;
-        font-size: 80%;
-        margin-top: 3%;
-        z-index: 3;
-    }
-    .topNavA,
-    .topNavA1 {
-        padding: 1%;
-        text-decoration: none;
-        color: white;
-        cursor: pointer;
-        z-index: 2;
-    }
-    .topNavA1 {
-        cursor: default;
-    }
-    .topNavA:hover {
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-        animation-duration: 0.25s;
-        border-bottom: 4px solid white;
-    }
-}
-
-
-/* Tablet */
-
-@media (min-width:768px) {
-    .logo {
-        float: left;
-        width: auto;
-        color: white;
-        max-width: 40%;
-        margin-top: 0.25%;
-        z-index: 10;
-        cursor: pointer;
-        text-decoration: none;
-        cursor: pointer;
-        margin-bottom: 4%;
-        margin-top: 4%;
-    }
-    .nomeHotel {
-        color: white;
-        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
-        z-index: 0;
-        cursor: pointer;
-        text-decoration: none;
-        font-size: 150%;
-        text-align: center;
-        margin-right: 15%;
-        width: 100%;
-    }
-    .topNav {
-        color: white;
-        float: right;
-        top: 0;
-        text-align: center;
-        font-size: 100%;
-        margin-top: 3%;
-        z-index: 11;
-    }
-    .topNavA,
-    .topNavA1 {
-        padding: 1%;
-        text-decoration: none;
-        color: white;
-        cursor: pointer;
-        z-index: 2;
-    }
-    .topNavA1 {
-        cursor: default;
-    }
-    .topNavA:hover {
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-        animation-duration: 0.25s;
-        border-bottom: 4px solid white;
-    }
+    min-height: 75px;
 }
 
 
@@ -388,5 +175,187 @@
         border-bottom-left-radius: 5px;
         animation-duration: 0.25s;
         border-bottom: 4px solid white;
+    }
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    .logo {
+        float: left;
+        width: auto;
+        color: white;
+        max-width: 40%;
+        margin-top: 0.25%;
+        z-index: 10;
+        cursor: pointer;
+        text-decoration: none;
+        cursor: pointer;
+        margin: 10px;
+    }
+    #logoImg {
+        display: inline;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+    }
+    .nomeHotel {
+        color: white;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        z-index: 0;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 15px;
+        text-align: center;
+        width: 100%;
+        margin: auto;
+    }
+    .topNav {
+        color: white;
+        float: right;
+        top: 0;
+        text-align: center;
+        font-size: 14px;
+        z-index: 3;
+        margin: 5px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    .topNavA,
+    .topNavA1 {
+        margin: 3px;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .topNavA1 {
+        cursor: default;
+    }
+    .topNavA:hover {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        animation-duration: 0.25s;
+        border-bottom: 1px solid white;
+    }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    .logo {
+        float: left;
+        width: auto;
+        color: white;
+        max-width: 40%;
+        margin-top: 0.25%;
+        z-index: 10;
+        cursor: pointer;
+        text-decoration: none;
+        cursor: pointer;
+        margin: 10px;
+    }
+    #logoImg {
+        display: inline;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+    }
+    .nomeHotel {
+        color: white;
+        text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000, -1px -1px 0 #000;
+        z-index: 0;
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 15px;
+        text-align: center;
+        width: 100%;
+        margin: auto;
+    }
+    .topNav {
+        color: white;
+        float: right;
+        top: 0;
+        text-align: center;
+        font-size: 14px;
+        z-index: 3;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    .topNavA,
+    .topNavA1 {
+        margin: 3px;
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .topNavA1 {
+        cursor: default;
+    }
+    .topNavA:hover {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        animation-duration: 0.25s;
+        border-bottom: 1px solid white;
+    }
+    #logoImg {
+        display: inline;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+    .topNav {
+        font-size: 20px;
+        margin: 7px;
+    }
+    .nomeHotel {
+        font-size: 25px;
+    }
+    #logoImg {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    .topNav {
+        font-size: 23px;
+        margin: 8px;
+    }
+    .nomeHotel {
+        font-size: 28px;
+    }
+    #logoImg {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+    .topNav {
+        font-size: 27px;
+        margin: 8px;
+    }
+    .nomeHotel {
+        font-size: 32px;
+    }
+    #logoImg {
+        width: 70px;
+        height: 70px;
     }
 }
