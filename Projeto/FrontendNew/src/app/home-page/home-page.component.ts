@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HotelService } from '../hotel.service';
 import { Hotel } from 'src/hotel';
 
@@ -8,13 +8,23 @@ import { Hotel } from 'src/hotel';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  
   hoteis: Hotel[] = [];
+  screenWidth: number;
 
-  constructor(private hotelService: HotelService) {}
+  constructor(private hotelService: HotelService) {
+    this.getScreenSize();
+  }
 
   ngOnInit(): void {
     this.showHoteis();
     this.generateRandomNumber(length);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+        this.screenWidth = window.innerWidth;
+        console.log(this.screenWidth);
   }
 
   showHoteis() {

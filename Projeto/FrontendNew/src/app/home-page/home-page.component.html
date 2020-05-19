@@ -1,14 +1,16 @@
-<div class="hoteis">
-    <div id="header">
-        <img id="logo" src="assets/Imagens/logo.png">
-        <div id="textoLogo">
-            <strong>HOTÉIS PSI</strong>
+<ng-container>
+    <div class="hoteis">
+        <div id="header">
+            <img id="logo" src="assets/Imagens/logo.png">
+            <div id="textoLogo">
+                <strong>HOTÉIS PSI</strong>
+            </div>
         </div>
+        <ng-container *ngFor="let hotel of hoteis">
+            <div (click)="setHotelNomeId(hotel.nome, hotel._id)" routerLink="{{hotel.nome}}" class="hotel">
+                <div class="texto"><strong>{{hotel.nome}}</strong></div>
+                <img id="imagem" src="{{hotel.fotos[generateRandomNumber(hotel.fotos.length)]}}">
+            </div>
+        </ng-container>
     </div>
-    <ng-container *ngFor="let hotel of hoteis">
-        <div (click)="setHotelNomeId(hotel.nome, hotel._id)" routerLink="{{hotel.nome}}" class="hotel">
-            <div class="texto"><strong>{{hotel.nome}}</strong></div>
-            <img id="imagem" src="{{hotel.fotos[generateRandomNumber(hotel.fotos.length)]}}">
-        </div>
-    </ng-container>
-</div>
+</ng-container>
