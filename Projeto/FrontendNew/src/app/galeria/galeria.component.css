@@ -31,6 +31,22 @@
     }
 }
 
+@media only screen and (max-width: 768px) {
+    #gallery {
+        min-height: 800px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    #gallery {
+        min-height: 300px;
+    }
+    #gallery>div {
+        width: 45%;
+        margin: 1%;
+    }
+}
+
 #gallery>div:nth-child(6n + 1) {
     grid-column: span 2;
     grid-row: span 2;

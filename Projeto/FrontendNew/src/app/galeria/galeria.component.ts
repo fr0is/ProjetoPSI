@@ -55,5 +55,9 @@ export class GaleriaComponent implements OnInit {
     this.isShow = false;
   }
 
+  goTo(i){
+    window.location.href = '/hoteisPSI/'+localStorage.getItem('hotelNome')+'/galeria#lightbox-'+i;
+  }
+
 }
 
