@@ -205,73 +205,76 @@ exports.reserva_update = [
     sanitizeBody('checkIn').toDate(),
     sanitizeBody('checkOut').toDate(),
     (req, res, next) => {
-
         const errors = validationResult(req);
-        console.log(req.body.checkIn);
-        console.log(req.body.checkOut);
         if (!errors.isEmpty()) {
             res.json({ 'message': 'Validation errors' });
         } else {
             async.parallel({
-                instances: function(callback) {
-                    QuartoInstance.find({ 'quarto': req.body.quarto }).exec(callback);
+                atual: function(callback) {
+                    QuartoInstance.findById(req.body.quarto).exec(callback);
                 }
             }, function(err, results) {
                 if (err) { return next(err); }
-                var quartoinstance;
-                for (let inst of results.instances) {
-                    var listReservas = inst.reservas;
-                    if (quartoinstance == null) {
-                        if (listReservas.length > 0) {
-                            for (var i = -1; i < listReservas.length; i++) {
-                                if (i === -1) {
-                                    if (moment(listReservas[i + 1].checkIn).isAfter(moment(req.body.checkOut))) {
-                                        quartoinstance = inst;
-                                        break;
-                                    }
-                                } else if (i + 1 >= listReservas.length) {
-                                    if (moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))) {
-                                        quartoinstance = inst;
-                                        break;
-                                    }
-                                } else {
-                                    if (moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i + 1].checkIn).isAfter(moment(req.body.checkOut))) {
-                                        quartoinstance = inst;
-                                        break;
+                async.parallel({
+                    instances: function(callback){
+                        QuartoInstance.find({ 'quarto': results.atual.quarto }).populate('reservas').exec(callback);
+                    }
+                }, function(err, results){
+                    if (err) { return next(err); }
+                    var quartoinstance;
+                    for (let inst of results.instances) {
+                        var listReservas = inst.reservas;
+                        if (quartoinstance == null) {
+                            if (listReservas.length > 0) {
+                                for (var i = -1; i < listReservas.length; i++) {
+                                    if (i === -1) {
+                                        if (moment(listReservas[i + 1].checkIn).isAfter(moment(req.body.checkOut))) {
+                                            quartoinstance = inst;
+                                            break;
+                                        }
+                                    } else if (i + 1 >= listReservas.length) {
+                                        if (moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn))) {
+                                            quartoinstance = inst;
+                                            break;
+                                        }
+                                    } else {
+                                        if (moment(listReservas[i].checkOut).isBefore(moment(req.body.checkIn)) && moment(listReservas[i + 1].checkIn).isAfter(moment(req.body.checkOut))) {
+                                            quartoinstance = inst;
+                                            break;
+                                        }
                                     }
                                 }
+                            } else {
+                                quartoinstance = inst;
                             }
-                        } else {
-                            quartoinstance = inst;
+                            if (quartoinstance) { break; }
                         }
-                        if (quartoinstance) { break; }
                     }
-                }
-                if (quartoinstance == null) {
-                    console.log(req.body);
-                    res.json({ 'message': 'Nao foi possivel atualizar a reserva' });
-                } else {
+                    if (quartoinstance == null) {
+                        res.json({ 'message': 'Nao foi possivel atualizar a reserva' });
+                    } else {
 
-                    var reserva = new Reserva({
-                        _id: req.body._id,
-                        userEmail: req.body.userEmail,
-                        emailReserva: req.body.emailReserva,
-                        nomeReserva: req.body.nomeReserva,
-                        indicativoReserva: req.body.indicativoReserva,
-                        telefoneReserva: req.body.telefoneReserva,
-                        nifReserva: req.body.nifReserva,
-                        quarto: quartoinstance,
-                        metodoDePagamento: req.body.metodoDePagamento,
-                        morada: req.body.morada,
-                        checkIn: req.body.checkIn,
-                        checkOut: req.body.checkOut,
-                        preco: req.body.preco
-                    });
-                    Reserva.replaceOne({ _id: req.body._id }, reserva, function(err, theReserva) {
-                        if (err) { return next(err); }
-                        res.json({ 'message': 'Reserva atualizada' });
-                    });
-                }
+                        var reserva = new Reserva({
+                            _id: req.body._id,
+                            userEmail: req.body.userEmail,
+                            emailReserva: req.body.emailReserva,
+                            nomeReserva: req.body.nomeReserva,
+                            indicativoReserva: req.body.indicativoReserva,
+                            telefoneReserva: req.body.telefoneReserva,
+                            nifReserva: req.body.nifReserva,
+                            quarto: quartoinstance,
+                            metodoDePagamento: req.body.metodoDePagamento,
+                            morada: req.body.morada,
+                            checkIn: req.body.checkIn,
+                            checkOut: req.body.checkOut,
+                            preco: req.body.preco
+                        });
+                        Reserva.replaceOne({ _id: req.body._id }, reserva, function(err, theReserva) {
+                            if (err) { return next(err); }
+                            res.json({ 'message': 'Reserva atualizada' });
+                        });
+                    }
+                });
             });
         }
     }
