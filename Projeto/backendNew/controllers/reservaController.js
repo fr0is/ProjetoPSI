@@ -58,6 +58,7 @@ exports.reserva_create = [
     body('morada', 'morada must not be empty.').isLength({ min: 1 }).trim(),
     body('checkIn', 'checkIn must not be empty.').optional({ checkFalsy: true }).isISO8601(),
     body('checkOut', 'checkOut must not be empty.').optional({ checkFalsy: true }).isISO8601(),
+    body('preco', 'preco must not be empty.').isLength({ min: 1 }).trim(),
 
     sanitizeBody('userEmail').escape(),
     sanitizeBody('emailReserva').escape(),
@@ -68,6 +69,7 @@ exports.reserva_create = [
     sanitizeBody('quarto').escape(),
     sanitizeBody('metodoDePagamento').escape(),
     sanitizeBody('morada').escape(),
+    sanitizeBody('preco').escape(),
     sanitizeBody('checkIn').toDate(),
     sanitizeBody('checkOut').toDate(),
 
@@ -188,6 +190,7 @@ exports.reserva_update = [
     body('morada', 'morada must not be empty.').isLength({ min: 1 }).trim(),
     body('checkIn', 'checkIn must not be empty.').optional({ checkFalsy: true }).isISO8601(),
     body('checkOut', 'checkOut must not be empty.').optional({ checkFalsy: true }).isISO8601(),
+    body('preco', 'preco must not be empty.').isLength({ min: 1 }).trim(),
 
     sanitizeBody('userEmail').escape(),
     sanitizeBody('emailReserva').escape(),
@@ -198,12 +201,14 @@ exports.reserva_update = [
     sanitizeBody('quarto').escape(),
     sanitizeBody('metodoDePagamento').escape(),
     sanitizeBody('morada').escape(),
+    sanitizeBody('preco').escape(),
     sanitizeBody('checkIn').toDate(),
     sanitizeBody('checkOut').toDate(),
     (req, res, next) => {
 
         const errors = validationResult(req);
-
+        console.log(req.body.checkIn);
+        console.log(req.body.checkOut);
         if (!errors.isEmpty()) {
             res.json({ 'message': 'Validation errors' });
         } else {
@@ -243,8 +248,10 @@ exports.reserva_update = [
                     }
                 }
                 if (quartoinstance == null) {
+                    console.log(req.body);
                     res.json({ 'message': 'Nao foi possivel atualizar a reserva' });
                 } else {
+
                     var reserva = new Reserva({
                         _id: req.body._id,
                         userEmail: req.body.userEmail,

@@ -55,6 +55,7 @@ export class ClienteReservasComponent implements OnInit {
     checkOut: null,
     preco: 0
   }
+  precoAntigo = 0;
   precoNovaReserva = 0;
   reservaEdicao: Reserva = {
     _id: "",
@@ -89,6 +90,8 @@ export class ClienteReservasComponent implements OnInit {
   checkInNovaReserva= new Date();
   checkOutNovaReserva= new Date();
   cartaoId= "";
+  message="";
+  confirmarCartao = false;
   link='hoteisPSI/' + sessionStorage.getItem('hotelNome') + '/cliente';
 
   constructor(
@@ -167,19 +170,20 @@ export class ClienteReservasComponent implements OnInit {
   }
 
   edit(reserva){
+    this.editar = true;
     this.checkInNovaReserva = reserva.checkIn;
     this.checkInNovaReserva = reserva.checkOut;
-    this.editar = true;
+    this.precoAntigo = reserva.preco;
     this.reservaEdicao = reserva;
   }
 
   change(datasValue){
-    this.reservaEdicao.checkIn = datasValue.dataCheckIn;
-    this.reservaEdicao.checkOut = datasValue.dataCheckOut;
+    this.reservaEdicao.checkIn = new Date(datasValue.dataCheckIn);
+    this.reservaEdicao.checkOut = new Date(datasValue.dataCheckOut);
     this.calcularPreco(this.reservaEdicao);
     this.reservaEdicao.preco = this.precoNovaReserva;
     this.alterarDatas = false;
-    this.alterarDadosPagamento = true;
+    this.confirmarCartao = true;
   }
 
   mudaCI(data){
@@ -224,6 +228,6 @@ export class ClienteReservasComponent implements OnInit {
     this.reservaEdicao.metodoDePagamento = this.cartaoId;
     console.log(this.cartaoId);
     console.log(this.reservaEdicao);
-    this.userService.updateReserva(this.reservaEdicao).subscribe(result => console.log(result.message));
+    this.userService.updateReserva(this.reservaEdicao).subscribe(result =>  this.message = result.message);
   }
 }

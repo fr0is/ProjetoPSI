@@ -1,3 +1,6 @@
+<div *ngIf="message">
+    {{this.message}}
+</div>
 <div id="filtro">
     <form ngNativeValidate id="filtroForm" [formGroup]="filtrar" (ngSubmit)="updateFiltro(filtrar.value)">
         <div id="precoFiltro">
@@ -91,27 +94,34 @@
                     <button type="submit" class="submit">Atualizar Datas</button>
                 </form>
             </div>
-            <div *ngIf="alterarDadosPagamento" id="alterarDatas">
-                <h3 class="tituloParametro">Método de pagamento</h3>
-                <div class="container">
-                    <ul id="cartoesLista">
-                        <ng-container *ngFor="let card of cartoesUser">
-                            <li>
-                                <input type="radio" value="{{card._id}}" name="card" id="f-option" (change)="onItemChangeCMB($event.target.value)" required/>
-                                <label for="f-option">
+            <ng-container *ngIf="confirmarCartao">
+                <div *ngIf="this.precoAntigo > precoNovaReserva;else escolherCartao">
+                    Serão creditados no seu cartão {{this.precoAntigo - this.precoNovaReserva}}
+                </div>
+                <ng-template #escolherCartao>
+                    <div id="alterarDatas">
+                        <h3 class="tituloParametro">Método de pagamento</h3>
+                        <div class="container">
+                            <ul id="cartoesLista">
+                                <ng-container *ngFor="let card of cartoesUser">
+                                    <li>
+                                        <input type="radio" value="{{card._id}}" name="card" id="f-option" (change)="onItemChangeCMB($event.target.value)" required/>
+                                        <label for="f-option">
                                     <div style="margin-top:2%">
                                         <p><strong>Número: </strong>{{format(card.numero)}}</p>
                                         <p><strong>Validade: </strong>{{card.prazoMes}}/{{card.prazoAno}}</p>
                                         <p><strong>CVV: </strong>{{card.cvv}}</p>
                                     </div>
                                 </label>
-                                <div class="check"></div>
-                            </li>
-                        </ng-container>
-                        <button (click)="updateReserva()">Atualizar Metodo Pagamento</button>
-                    </ul>
-                </div>
-            </div>
+                                        <div class="check"></div>
+                                    </li>
+                                </ng-container>
+                                <button (click)="updateReserva()">Atualizar Metodo Pagamento</button>
+                            </ul>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
         </div>
         <div class="page5"></div>
         <div class="page4"></div>
