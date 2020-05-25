@@ -1,4 +1,4 @@
-@media (max-width:600px) {
+@media (max-width:1024px) {
     #paginaAtual {
         margin: 5%;
         width: 100%;
@@ -52,13 +52,18 @@
     transform: scale(-1, 1);
 }
 
-@media (min-width:600px) {
+@media (min-width:1024px) {
     .botaoMudaPagina,
     .botaoFazerReserva {
         position: fixed;
         bottom: 0;
         right: 0;
         margin: 5%;
+    }
+    #datas {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        width: 100%;
     }
 }
 
@@ -72,14 +77,6 @@
     text-align: center;
     padding: 2%;
     margin: 5%;
-}
-
-@media(min-width:600px) {
-    #datas {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        width: 100%;
-    }
 }
 
 .textoD {

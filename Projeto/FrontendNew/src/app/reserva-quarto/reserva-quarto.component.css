@@ -1,4 +1,4 @@
-@media(max-width:600px) {
+@media(max-width:1024px) {
     .front,
     .back,
     .page1,
@@ -28,7 +28,7 @@
     }
 }
 
-@media (min-width:600px) {
+@media (min-width:1024px) {
     #bookContainer {
         min-height: 600px;
         width: 100%;

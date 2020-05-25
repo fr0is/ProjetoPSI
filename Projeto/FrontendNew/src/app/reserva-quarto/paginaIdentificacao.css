@@ -1,4 +1,4 @@
-@media (max-width:600px) {
+@media (max-width:1024px) {
     #formGrid {
         display: grid;
         grid-template-columns: auto;
@@ -21,7 +21,7 @@
     text-align: center;
 }
 
-@media (min-width:600px) {
+@media (min-width:1024px) {
     #formGrid {
         display: grid;
         grid-template-columns: 50% 50%;
