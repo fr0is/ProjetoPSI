@@ -34,7 +34,7 @@ export class TopBarHotelComponent implements OnInit {
 
     userAtual: User = {
       _id: "",
-      nome: "s",
+      nome: "",
       email: "",
       password: "",
       indicativo: "",

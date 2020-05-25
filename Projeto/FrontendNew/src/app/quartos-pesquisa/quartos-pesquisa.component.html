@@ -53,7 +53,7 @@
                                 <ul>
                                     <li id="precos" *ngFor="let quarto of quartos;let i = index">
                                         Preço {{quarto.tipo}}: {{precoFinal[i]}}€
-                                        <button type="submit" (click)="setQuarto(quarto)">Reservar</button>
+                                        <button type="submit" class="btn draw-border submit" (click)="setQuarto(quarto)">Reservar</button>
                                     </li>
                                 </ul>
                             </div>

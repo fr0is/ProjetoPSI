@@ -1,6 +1,5 @@
 <div id="gallery">
-    <div *ngFor="let foto of hotel.fotos, let i = index"><img src="{{foto}}" />
-        <a href="hoteisPSI/{{this.hotel.nome}}/galeria#lightbox-{{i}}"></a>
+    <div *ngFor="let foto of hotel.fotos, let i = index"><img (click)="goTo(i)" src="{{foto}}" />
     </div>
 </div>
 

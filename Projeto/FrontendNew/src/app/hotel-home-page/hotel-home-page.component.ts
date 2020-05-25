@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { HotelService } from '../hotel.service';
 import { Hotel } from 'src/hotel';
 import { ActivatedRoute } from "@angular/router";
@@ -27,6 +27,7 @@ export class HotelHomePageComponent implements OnInit {
     fotos: [],
     fotoPath: ""
   };
+  public innerWidth: any;
 
 constructor(
   private route: ActivatedRoute,
@@ -36,8 +37,13 @@ constructor(
 
 ngOnInit(): void {
   this.getHotel();
+  this.innerWidth = window.innerWidth;
 }
 
+@HostListener('window:resize', ['$event'])
+onResize(event) {
+  this.innerWidth = window.innerWidth;
+}
 
 getHotel() {
   const id = sessionStorage.getItem("hotelAtual");

@@ -1,6 +1,6 @@
 <div class="topo">
     <div class="logo">
-        <img routerLink="/" style="display:inline; width: 60%; cursor: pointer;" src="{{hotel.fotoPath}}logo.png">
+        <img routerLink="/" id="logoImg" src="{{hotel.fotoPath}}logo.png">
     </div>
     <div class="nomeHotel" routerLink="../{{hotel.nome}}">
         {{hotel.nome}}
@@ -11,7 +11,7 @@
         <a class="topNavA1">|</a>
         <a *ngIf="cliente === null;else dadosCliente" href="hoteisPSI/login-registo" class="topNavA">Login</a>
         <ng-template #dadosCliente>
-            <a class=" topNavA " routerLink="./cliente">{{this.userAtual.nome}}</a>
+            <a class=" topNavA " routerLink="./cliente">Perfil</a>
         </ng-template>
     </div>
 </div>

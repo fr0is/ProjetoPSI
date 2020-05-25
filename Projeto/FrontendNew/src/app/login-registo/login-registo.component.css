@@ -80,6 +80,7 @@ button {
         position: relative;
         width: 900px;
         height: 550px;
+        margin-top: 2%;
         margin: 0 auto auto;
         background: #fff;
         box-shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.1);
