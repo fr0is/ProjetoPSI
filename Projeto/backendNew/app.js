@@ -15,7 +15,7 @@ var app = express();
 
 app.get('/', (req, res) => res.json({ ping: true }));
 
-const server = app.listen(3071, () => console.log('Running…'));
+const server = app.listen(3000, () => console.log('Running…'));
 //const server = app.listen(3000, () => console.log('Running…'));
 
 process.on('SIGTERM', shutDown);
