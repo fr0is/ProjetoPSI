@@ -67,6 +67,11 @@ export class UserService {
     return this.http.post<{message: string}>(url, reserva);
   }
 
+  updateReserva(reserva: Reserva){
+    const url = this.reservaUrl + 'update';
+    return this.http.post<{message: string}>(url, reserva);
+  }
+
   getUserReservas(email){
     const url = this.reservaUrl +'email/' + email;
     return this.http.get(url);
