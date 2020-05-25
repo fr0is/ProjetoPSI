@@ -22,5 +22,6 @@
         margin-top: 2%;
         margin-bottom: 2%;
         padding-bottom: 20%;
+        min-height: 500px;
     }
 }

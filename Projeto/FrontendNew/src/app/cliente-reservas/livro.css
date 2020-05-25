@@ -5,16 +5,66 @@ button:focus {
     outline: none;
 }
 
-.book {
-    transform-style: preserve-3d;
-    position: relative;
-    height: 50%;
-    cursor: pointer;
-    backface-visibility: visible;
-    margin: auto;
-    width: 25%;
-    margin-left: 50%;
-    margin-top: 10%;
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    .book {
+        transform-style: preserve-3d;
+        position: relative;
+        height: 50%;
+        cursor: pointer;
+        backface-visibility: visible;
+        margin: auto;
+        width: 75%;
+        margin-top: 10%;
+    }
+    .front,
+    .back,
+    .page1,
+    .page2,
+    .page3,
+    .page4,
+    .page5 {
+        display: none;
+    }
+    .page6 {
+        border-radius: 5%;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 600px) {
+    .book {
+        transform-style: preserve-3d;
+        position: relative;
+        height: 40%;
+        cursor: pointer;
+        backface-visibility: visible;
+        margin: auto;
+        width: 40%;
+        margin-left: 50%;
+        margin-top: 10%;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    .book {
+        transform-style: preserve-3d;
+        position: relative;
+        height: 50%;
+        cursor: pointer;
+        backface-visibility: visible;
+        margin: auto;
+        width: 25%;
+        margin-left: 50%;
+        margin-top: 10%;
+    }
 }
 
 .front,
