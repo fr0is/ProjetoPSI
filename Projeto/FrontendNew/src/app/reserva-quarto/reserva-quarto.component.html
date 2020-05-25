@@ -16,12 +16,12 @@
             <div class="back"></div>
             <div class="page6">
                 <div id="paginaAtual">
-                    <div *ngIf="datasQuarto" class ="datasQuarto">
+                    <div *ngIf="datasQuarto">
                         <div [ngStyle]="{'animation': mudaPagina ? 'openBookP5 1.8s;' : ''}" class="conteudoPagina">
-                            <form ngNativeValidate [formGroup]="datasQuartoForm" (ngSubmit)="updateDataQD(datasQuartoForm.value)" class= "firstP">
+                            <form ngNativeValidate [formGroup]="datasQuartoForm" (ngSubmit)="updateDataQD(datasQuartoForm.value)">
                                 <div id="datasMudanca">
                                     <div class="checkInMudanca">
-                                        <h3 class="tituloParametroCheckIn">Check-In</h3>
+                                        <h3 class="tituloParametro">Check-In</h3>
                                         <div id="input">
                                             <input type="date" (change)="mudaCheckIn($event.target.value)" formControlName="checkInInicial" required>
                                         </div>
@@ -34,7 +34,7 @@
                                     </div>
                                 </div>
                                 <div id="quartoInicial">
-                                    <h3 class="tituloParametroQuarto">Quarto</h3>
+                                    <h3 class="tituloParametro">Quarto</h3>
                                     <div id="QuartoContainer">
                                         <div id="imagemQuartoContainer">
                                             <img id="imagemQuarto" src="{{foto}}">
