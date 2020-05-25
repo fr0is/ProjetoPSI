@@ -1,3 +1,45 @@
+@media (max-width:600px) {
+    #paginaAtual {
+        margin: 5%;
+        width: 100%;
+    }
+    .botaoMudaPagina,
+    .botaoFazerReserva {
+        position: fixed;
+        bottom: -10%;
+        right: 0;
+    }
+    .nextPage {
+        border: none;
+        background-color: transparent;
+    }
+    .tituloParametro {
+        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 2%;
+        margin: 5%;
+    }
+    #datas {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        width: 100%;
+    }
+    .textoD {
+        text-align: center;
+    }
+    .descricaoPagina {
+        margin: 5%;
+        text-align: center;
+    }
+    .dadosFinais {
+        margin-left: 10%;
+    }
+    #datas {
+        display: grid;
+        grid-template-columns: auto;
+    }
+}
+
 #paginaAtual {
     margin: 5%;
 }
@@ -10,12 +52,14 @@
     transform: scale(-1, 1);
 }
 
-.botaoMudaPagina,
-.botaoFazerReserva {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 5%;
+@media (min-width:600px) {
+    .botaoMudaPagina,
+    .botaoFazerReserva {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        margin: 5%;
+    }
 }
 
 .nextPage {
@@ -30,10 +74,12 @@
     margin: 5%;
 }
 
-#datas {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    width: 100%;
+@media(min-width:600px) {
+    #datas {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        width: 100%;
+    }
 }
 
 .textoD {

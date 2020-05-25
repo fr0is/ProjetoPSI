@@ -148,6 +148,27 @@
                         </div>
                     </div>
                     <div *ngIf="final">
+                        <h2 style="text-align: center;">Dados da reserva:</h2>
+                        <div id="datas">
+                            <div id="checkInField">
+                                <h3 class="tituloParametro"><span id="checkIn">Check-In</span></h3>
+                                <p class="textoD">{{this.checkIn}}</p>
+                            </div>
+                            <div id="checkOutField">
+                                <h3 class="tituloParametro"><span id="checkOut">Check-Out</span></h3>
+                                <p class="textoD">{{this.checkOut}}</p>
+                            </div>
+
+                            <div>
+                                <h3 class="tituloParametro">Preço Final</h3>
+                                <p class="textoD">{{precoFinal}}€</p>
+                            </div>
+                            <h3 class="tituloParametro">Quarto</h3>
+                            <p class="textoD"><strong>Tipo: </strong>{{quarto}}</p>
+                            <div id="fotoFinalContainer">
+                                <img id="fotoFinal" src="{{foto}}">
+                            </div>
+                        </div>
                         <h3 class="tituloParametro"><span>Dados de identificação</span></h3>
                         <div class="dadosFinais">
                             <p><strong>Nome: </strong>{{nomeFinal}}</p>
