@@ -24,9 +24,9 @@ app.listen(port, () => {
 // Set up mongoose connection
 var mongoose = require('mongoose');
 //Para correr no appserver
-//var dev_db_url = 'mongodb://psi021:psi021@localhost:27017/psi021?retryWrites=true&authSource=psi021';
+var dev_db_url = 'mongodb://psi021:psi021@localhost:27017/psi021?retryWrites=true&authSource=psi021';
 //Correr no PC
-var dev_db_url = 'mongodb+srv://teste:Tonitoni12@cluster0-gvwy5.mongodb.net/Teste-projeto1?retryWrites=true&w=majority';
+//var dev_db_url = 'mongodb+srv://teste:Tonitoni12@cluster0-gvwy5.mongodb.net/Teste-projeto1?retryWrites=true&w=majority';
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoDB = dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
