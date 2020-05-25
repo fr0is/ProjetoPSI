@@ -106,7 +106,7 @@ export class QuartosPesquisaComponent implements OnInit {
       this.reservaForm.reset();
       window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome') + '/reservar';
     }else{
-     alert("teste");
+     alert("erro");
     }
   }
 
@@ -151,8 +151,8 @@ export class QuartosPesquisaComponent implements OnInit {
   }
 
   mudaCheckOut(newDate){
-    if(this.compareDatesToToday(newDate)){
-      if(this.compareDates(newDate,this.checkIn)){
+    if(this.compareDatesToToday(new Date(newDate))){
+      if(this.compareDates(new Date(newDate),new Date(this.checkIn))){
         this.checkOut = newDate;
         this.calcularPreco();
         this.verficarQuartosDisponiveis();
@@ -162,7 +162,7 @@ export class QuartosPesquisaComponent implements OnInit {
   }
 
   mudaCheckIn(newDate){
-    if(this.compareDatesToToday(newDate)){
+    if(this.compareDatesToToday(new Date(newDate))){
         this.checkIn = newDate;
         this.calcularPreco();
         this.verficarQuartosDisponiveis();

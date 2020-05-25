@@ -13,12 +13,36 @@ var helmet = require('helmet');
 
 var app = express();
 
-//Conexão appserver
-const port = 3071;
-app.set('port', 3071);
-app.listen(port, () => {
-    console.log("server started at port:" + port);
+app.get('/', (req, res) => res.json({ ping: true }));
+
+const server = app.listen(3000, () => console.log('Running…'));
+//const server = app.listen(3000, () => console.log('Running…'));
+
+process.on('SIGTERM', shutDown);
+process.on('SIGINT', shutDown);
+
+let connections = [];
+
+server.on('connection', connection => {
+    connections.push(connection);
+    connection.on('close', () => connections = connections.filter(curr => curr !== connection));
 });
+
+function shutDown() {
+    console.log('Received kill signal, shutting down gracefully');
+    server.close(() => {
+        console.log('Closed out remaining connections');
+        process.exit(0);
+    });
+
+    setTimeout(() => {
+        console.error('Could not close connections in time, forcefully shutting down');
+        process.exit(1);
+    }, 10000);
+
+    connections.forEach(curr => curr.end());
+    setTimeout(() => connections.forEach(curr => curr.destroy()), 5000);
+}
 
 
 // Set up mongoose connection
