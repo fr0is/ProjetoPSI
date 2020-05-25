@@ -143,7 +143,7 @@ export class ClienteReservasComponent implements OnInit {
   }
 
   changeErroReserva(){
-    this.atualizarReservaErro= !this.atualizarReservaErro;
+    this.atualizarReservaErro = !this.atualizarReservaErro;
     window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/cliente/reservas';
   }
 
@@ -255,7 +255,7 @@ export class ClienteReservasComponent implements OnInit {
     console.log(this.cartaoId);
     console.log(this.reservaEdicao);
     this.userService.updateReserva(this.reservaEdicao).subscribe(result =>   {
-      if(result.message === "success"){
+      if(result.message == "success"){
         this.atualizarReservaSucesso = true;
       }else{
         this.atualizarReservaErro = true;

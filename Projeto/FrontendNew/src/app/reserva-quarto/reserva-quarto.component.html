@@ -148,8 +148,8 @@
                         </div>
                     </div>
                     <div *ngIf="final">
-                        <h2 style="text-align: center;">Dados da reserva:</h2>
-                        <div id="datas">
+                        <div id="datas" *ngIf="this.screenWidth < 768px">
+                            <h2 style="text-align: center;">Dados da reserva:</h2>
                             <div id="checkInField">
                                 <h3 class="tituloParametro"><span id="checkIn">Check-In</span></h3>
                                 <p class="textoD">{{this.checkIn}}</p>
