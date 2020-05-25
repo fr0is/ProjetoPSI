@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormGroup, FormControl, FormArray, FormBuilder } from "@angular/forms";
 import { Quarto } from 'src/quarto';
 import { HotelService } from '../hotel.service';
@@ -18,6 +18,7 @@ import { Reserva } from 'src/reserva';
 export class ReservaQuartoComponent implements OnInit {
 
   precoFinal = 0;
+  screenWidth: number;
   quartoFinal: Quarto;
   cartaoFinal: CartaoMB;
   moradaFinal: Morada;
@@ -110,6 +111,7 @@ export class ReservaQuartoComponent implements OnInit {
     private userService: UserService,
     private cartaoMBService: CartaoMBService
   ) { 
+    this.getScreenSize();
     this.datasQuartoForm = this.formBuilder.group({
       checkInInicial: this.formBuilder.control(this.checkIn),
       checkOutInicial: this.formBuilder.control(this.checkOut),
@@ -140,6 +142,12 @@ export class ReservaQuartoComponent implements OnInit {
     this.getCliente();
     this.getHotel();
     this.userAtualCheck();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+        this.screenWidth = window.innerWidth;
+        console.log(this.screenWidth);
   }
 
   userAtualCheck(){

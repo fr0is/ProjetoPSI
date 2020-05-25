@@ -1,3 +1,14 @@
+@media (max-width:1024px) {
+    #formGrid {
+        display: grid;
+        grid-template-columns: auto;
+        text-align: center;
+    }
+    #moradas {
+        margin-top: 10%;
+    }
+}
+
 .input {
     width: 50%;
     font-size: 15px;
@@ -10,10 +21,12 @@
     text-align: center;
 }
 
-#formGrid {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    text-align: center;
+@media (min-width:1024px) {
+    #formGrid {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        text-align: center;
+    }
 }
 
 #telefone {
@@ -100,7 +113,7 @@
 }
 
 #input>input {
-    margin-left: -58%;
+    margin-left: 2%;
     font-size: 15px;
     padding: 2%;
     text-align: center;

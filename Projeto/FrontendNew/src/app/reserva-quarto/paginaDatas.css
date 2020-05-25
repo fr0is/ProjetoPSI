@@ -1,540 +1,94 @@
-/***********DATAS***************/
-
-
-
-#input {
-    margin: 7.5%;
-    width: 100%;
-    text-align: center;
-    padding: 2%;
-    margin: 5%;
-    margin-left: 33%;
-    margin-right: 33%;
-}
-
-
-/***********QUARTO***************/
-
-li {
-    list-style: none;
-    display: none;
-    font-size: 13px;
-}
-
-
-
-
-
-.check-list {
-    margin: 2%;
-    margin-bottom: 0;
-    columns: 2;
-    -webkit-columns: 2;
-    -moz-columns: 2;
-}
-
-
-
-/* Mobile*/
-
-@media (min-width:320px) {
-   
-    #quartos{
-        grid-row-start: 2;
-        margin-top: 5%;
-        grid-row-end: 2;
-        margin-left: 5%;
-        
-       
-    }
-   
-    .firstP{
-      
-        display:grid;  
-        grid-template-rows: 48% 45%;
-        grid-template-columns: 50% 50%;
-        grid-row-gap: 7%
-    }
-    li {
-        list-style: none;
-        display: none;
-       
-    }
-
-    .book{
-        height: 400px;
-        font-size: 10px;
-    }
-
-    #bookContainer{
-        width: 95%;
-        margin-top: 99px;
-        margin-left: 22%;
-    }
-/* primeira linha da pag (grid) */
+@media (max-width:1024px) {
     #datasMudanca {
-        grid-row-start: 1;
-        grid-row-end: 1;
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        text-align: start;
         display: grid;
-        grid-template-rows: 50% 50%;
-        margin-left: -25%;
-        margin-right: 0%;
-        width: 100%;
+        grid-template-rows: auto auto;
     }
-/* segunda linha da pag (grid partida em tres linhas) */
-    #quartoInicial{
-        grid-row-start:2;
-        grid-row-end: 2;
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        display: grid;
-        grid-template-rows: 20% 20% 60%;
-    }
-    
-
-    
-    
-    #imagemQuartoContainer {
-        grid-row-start: 3;
-        grid-row-end: span 1;
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        
-    }
-    
-    #imagemQuarto {
-        width: 100%;
-        margin: auto;
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        padding-top: 5%;
-        align-self: center;
-        justify-self: center;
-    }
-    
-    #quartoDetalhes {
-        
-    }
-
-    
-
-    .tituloParametroCheckIn,
-    .tituloParametro {
-        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        padding: 5%;
-        padding-left: 10%;
-        padding-right: 10%;
-        margin-top: 5%;
-        margin-left: 5%;
-        margin-right: 5%;
-        font-size: 16px;
-    }
-
-    .tituloParametroQuarto{
-        grid-row-start: 1;
-        grid-row-end: 1;
-        grid-column-start: 1;
-        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        
-        font-size: 20px;
-    }
-}
-
-/* Mobile L */
-
-@media (min-width:425px){
-    
-    #quartos{
-        grid-row-start: 2;
-        margin-top: 5%;
-        grid-row-end: 2;
-        margin-left: 5%;
-        
-       
-    }
-   
-    .firstP{
-      
-        display:grid;  
-        grid-template-rows: 48% 45%;
-        grid-template-columns: 50% 50%;
-        grid-row-gap: 7%
-    }
-    li {
-        list-style: none;
-        display: none;
-       
-    }
-
-    .book{
-        height: 400px;
-        font-size: 10px;
-    }
-
-    #bookContainer{
-        width: 95%;
-        margin-top: 99px;
-        margin-left: 22%;
-    }
-/* primeira linha da pag (grid) */
-    #datasMudanca {
-        grid-row-start: 1;
-        grid-row-end: 1;
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        text-align: start;
-        display: grid;
-        grid-template-rows: 50% 50%;
-        margin-left: -25%;
-        margin-right: 0%;
-        width: 100%;
-    }
-/* segunda linha da pag (grid partida em tres linhas) */
-    #quartoInicial{
-        grid-row-start:2;
-        grid-row-end: 2;
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        display: grid;
-        grid-template-rows: 20% 20% 60%;
-    }
-    
-
-    
-    
-    #imagemQuartoContainer {
-        grid-row-start: 3;
-        grid-row-end: span 1;
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        
-    }
-    
-    #imagemQuarto {
-        width: 100%;
-        margin: auto;
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        padding-top: 20%;
-        align-self: center;
-        justify-self: center;
-    }
-    
-    #quartoDetalhes {
-        
-    }
-
-    
-    #input{
+    #input {
         margin: 7.5%;
-        width: 179%;
+        width: 100%;
         text-align: center;
+    }
+    /***********QUARTO***************/
+    li {
+        list-style: none;
+    }
+    #QuartoContainer {
+        display: grid;
+        grid-template-rows: auto auto;
+    }
+    #imagemQuartoContainer {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+    #imagemQuarto {
+        width: 50%;
+    }
+    #quartos {
+        margin-top: 2%;
         padding: 1%;
-        margin: 5%;
-        margin-left: 29%;
-        margin-right: 0%;
+        font-size: 15px;
+        font-weight: 600;
+        height: 30%;
     }
-    .tituloParametroCheckIn,
-    .tituloParametro {
-        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
-    /* text-align: center; */
-    padding: 5%;
-    padding-left: 10%;
-    padding-right: 7%;
-    margin-top: 3%;
-    margin-left: 27%;
-    margin-right: 5%;
-    font-size: 16px;
-    }
-
-    .tituloParametroQuarto{
-        grid-row-start: 1;
-        grid-row-end: 1;
-        grid-column-start: 1;
-        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.3);
-        text-align: center;
-        
-        font-size: 20px;
-    }
-    
-}
-/* Tablet */
-
-@media (min-width:768px) {
-
-    #input{
-        margin: 7.5%;
-        width: 163%;
-        text-align: center;
-        padding: 2%;
-        margin: 5%;
-        margin-left: 14%;
-        margin-right: 0%;
-    }
-    .checkInMudanca{
-        grid-column-start: 1;
-        grid-column-end: span 1;
-        margin-left: 0%;
-        margin-right: 0%;
-
-    }
-
-    .checkOutMudanca{
-        grid-column-start: 2;
-        grid-column-end: span 1;
-        margin-left: 0%;
-        margin-right: 0%;
-    }
-    
-    #quartos{
-        grid-row-start: 2;
-        grid-row-end: 2;
-        margin-top: 5%;
-        margin-left: 29%;
-       
-    }
-   
-    .firstP{
-      
-        display:grid;  
-        grid-template-rows: 15% 40%;
-        grid-template-columns: 100%;
-        grid-row-gap: 7%
-    }
-    
-
-    .book{
-        height: 400px;
-        font-size: 10px;
-    }
-
-    #bookContainer{
-        width: 95%;
-        margin-top: 99px;
-        margin-left: 22%;
-    }
-/* primeira linha da pag (grid) */
-    #datasMudanca {
-        grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 1;
-    grid-column-end: span 1;
-    text-align: start;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    font-size: 13px;
-    margin-left: 0%;
-    margin-right: 0%;
-    width: 100%;
-    }
-/* segunda linha da pag (grid partida em tres linhas) */
-    #quartoInicial{
-        grid-row-start:2;
-        grid-row-end: 2;
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        display: grid;
-        grid-template-rows: 20% 20% 60%;
-    }
-    
-
-    
-    
-    #imagemQuartoContainer {
-        grid-row-start: 3;
-        grid-row-end: span 1;
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        
-    }
-    
-    #imagemQuarto  {
-        width: 90%;
-        margin-left: 5%;
-        grid-column-start: 1;
-        grid-column-end: span 2;
-        padding-top:4%;
-    }
-    
     #quartoDetalhes {
-        
-    }
-
-    
-
-    .tituloParametroCheckIn,
-    .tituloParametro {
-        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+        justify-content: center;
         text-align: center;
-        padding: 2%;
-        margin-top: 5%;
-        margin-left: 0%;
-        margin-right: 0%;
-        font-size: 18px;
     }
-
-    .tituloParametroQuarto{
-        grid-row-start: 1;
-        grid-row-end: 1;
-        grid-column-start: 1;
-        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+    #quartos {
         text-align: center;
-        
-        font-size: 22px;
-    }
-    li {
-        list-style: none;
-        display: none;
-        margin: 1%;
-        
+        justify-content: center;
+        margin: auto;
     }
     .check-list {
-        margin-top: 0%;
-        margin: 10%;
+        display: none;
+    }
+}
+
+@media(min-width:1024px) {
+    /***********DATAS***************/
+    #datasMudanca {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin: 5%;
+    }
+    #input {
+        margin: 7.5%;
+        width: 100%;
+        text-align: center;
+    }
+    /***********QUARTO***************/
+    li {
+        list-style: none;
+    }
+    #QuartoContainer {
+        display: grid;
+        grid-template-rows: auto auto;
+    }
+    #imagemQuartoContainer {
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+    #imagemQuarto {
+        width: 50%;
+    }
+    #quartoDetalhes {
+        display: grid;
+        grid-template-columns: 20% 80%;
+    }
+    #quartos {
+        margin-top: 2%;
+        padding: 1%;
+        font-size: 15px;
+        font-weight: 600;
+        height: 30%;
+    }
+    .check-list {
+        margin: 2%;
+        margin-bottom: 0;
         columns: 2;
         -webkit-columns: 2;
         -moz-columns: 2;
-
     }
 }
-/* Laptop */
-
-@media (min-width:1024px){
-    
-}
-/* Laptop L */
-
-@media (min-width:1440px){}
-/* 4K */
-
-@media (min-width:2560px){}
-
-
-
-@media (min-width:357px) {
-    .book{
-        height: 420px;
-    }
-}
-
-@media (min-width:373px) {
-    .book{
-        height: 440px;
-    }
-}
-
-@media (min-width:392px) {
-        .book{
-            height: 450px;
-        }
-}
-
-@media (min-width:424px) {
-    .book{
-        height: 500px;
-    }
-}
-
-@media (min-width:510px) {
-    .book{
-        height: 550px;
-    }
-}
-
-@media (min-width:580) {
-    .book{
-        height: 600px;
-    }
-}
-
-@media (min-width:640px) {
-    .book{
-        height: 650px;
-    }
-}
-@media (min-width:715px) {
-    .book{
-        height: 700px;
-    }
-}
-
-@media (min-width:868px) {
-    .book{
-        height: 725px;
-    }
-}
-
-@media (min-width:950px) {
-    .book{
-        height: 800px;
-    }
-}
-
-@media (min-width:1080px) {
-    .book{
-        height: 100vh;
-    }
-
-    .firstP{
-      
-        display:grid;  
-        grid-template-rows: 15% 85%;
-        grid-template-columns: 100%;
-        grid-row-gap: 10%
-    }
-    .tituloParametroCheckIn,
-    .tituloParametro {
-        padding: 5%;
-        font-size: 24px;
-    }
-    .tituloParametroQuarto{
-        font-size: 27px;
-        padding: 5%;
-    }
-
-}
-
-@media (min-width:1168px) {
-    .book{
-        height: 975px;
-    }
-
-    #quartos{
-        font-size: 25px;
-    }
-    li{
-        font-size: 15px;
-        margin:1%;
-    }
-}
-
-@media (min-width:1270px) {
-    .book{
-        height: 110vh;
-    }
-}
-
-@media (min-width:1540px) {
-    .book{
-        
-    }
-}
-
-@media (min-width:1700px) {
-    .book{
-        height: 100vh;
-    }
-}
-
-@media (min-width:2000px) {
-    .book{
-        
-    }
-}
-
-
