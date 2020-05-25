@@ -1,5 +1,11 @@
-<div *ngIf="message">
-    {{this.message}}
+<div *ngIf="atualizarReservaSucesso" class="alertSucesso">
+    <a class="closebtn" (click)="changeSucessoReserva()" onclick="this.parentElement.style.display='none';">&times;</a>Reserva atualizada com sucesso!
+</div>
+<div *ngIf="atualizarReservaErro" class="alert">
+    <a class="closebtn" (click)="changeErroReserva()" onclick="this.parentElement.style.display='none';">&times;</a>Quarto não disponível na altura marcada!
+</div>
+<div *ngIf="datasErro" class="alert">
+    <a class="closebtn" (click)="changeDatasErro()" onclick="this.parentElement.style.display='none';">&times;</a>Insira datas válidas!
 </div>
 <div id="filtro">
     <form ngNativeValidate id="filtroForm" [formGroup]="filtrar" (ngSubmit)="updateFiltro(filtrar.value)">
@@ -79,24 +85,29 @@
         <div class="page6">
             <div *ngIf="alterarDatas" id="alterarDatas">
                 <form ngNativeValidate [formGroup]="datasForm" (ngSubmit)="change(datasForm.value)">
-                    <label>
-                    <span>Check-In</span>
-                    <input type="date" (change)="mudaCI($event.target.value)" formControlName="dataCheckIn" required/>
-                </label>
-                    <label>
-                    <span>Check-out</span>
-                    <input type="date" (change)="mudaCO($event.target.value)" formControlName="dataCheckOut" required/>
-                </label>
-                    <label>
-                    <span>Preço</span>
-                    <p>{{this.precoNovaReserva}}</p>
-                </label>
-                    <button type="submit" class="submit">Atualizar Datas</button>
+                    <div>
+                        <h3 class="tituloParametro">Check-In</h3>
+                        <input type="date" (change)="mudaCI($event.target.value)" formControlName="dataCheckIn" required/>
+                    </div>
+                    <div>
+                        <h3 class="tituloParametro">Check-Out</h3>
+                        <input type="date" (change)="mudaCO($event.target.value)" formControlName="dataCheckOut" required/>
+                    </div>
+                    <div>
+                        <h3 class="tituloParametro">Preço</h3>
+                        <p>{{this.precoNovaReserva}}€</p>
+                    </div>
+                    <div id="botaoAtualizarDatas">
+                        <button class="btn draw-border submit" type="submit">Atualizar Datas</button>
+                    </div>
                 </form>
             </div>
             <ng-container *ngIf="confirmarCartao">
-                <div *ngIf="this.precoAntigo > precoNovaReserva;else escolherCartao">
-                    Serão creditados no seu cartão {{this.precoAntigo - this.precoNovaReserva}}
+                <div style="margin-top:2%" *ngIf="this.precoAntigo > precoNovaReserva;else escolherCartao">
+                    Serão creditados no seu cartão {{this.precoAntigo - this.precoNovaReserva}}€
+                    <div id="botaoCredito">
+                        <button class="btn draw-border submit" type="submit" (click)="confirmarReserva()">Confirmar</button>
+                    </div>
                 </div>
                 <ng-template #escolherCartao>
                     <div id="alterarDatas">
@@ -116,7 +127,7 @@
                                         <div class="check"></div>
                                     </li>
                                 </ng-container>
-                                <button (click)="updateReserva()">Atualizar Metodo Pagamento</button>
+                                <button class="btn draw-border submit" (click)="updateReserva()">Atualizar Metodo Pagamento</button>
                             </ul>
                         </div>
                     </div>

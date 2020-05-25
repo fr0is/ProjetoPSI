@@ -55,6 +55,8 @@ export class ClienteReservasComponent implements OnInit {
     checkOut: null,
     preco: 0
   }
+  atualizarReservaSucesso = false;
+  atualizarReservaErro = false;
   precoAntigo = 0;
   precoNovaReserva = 0;
   reservaEdicao: Reserva = {
@@ -91,6 +93,7 @@ export class ClienteReservasComponent implements OnInit {
   checkOutNovaReserva= new Date();
   cartaoId= "";
   message="";
+  datasErro= false;
   confirmarCartao = false;
   link='hoteisPSI/' + sessionStorage.getItem('hotelNome') + '/cliente';
 
@@ -134,6 +137,20 @@ export class ClienteReservasComponent implements OnInit {
     });
   }
 
+  changeSucessoReserva(){
+    this.atualizarReservaSucesso = !this.atualizarReservaSucesso;
+    window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/cliente/reservas';
+  }
+
+  changeErroReserva(){
+    this.atualizarReservaErro= !this.atualizarReservaErro;
+    window.location.href = 'hoteisPSI/' + sessionStorage.getItem('hotelNome')+'/cliente/reservas';
+  }
+
+  changeDatasErro(){
+    this.datasErro = !this.datasErro;
+  }
+
   getReservas(){
     this.userService.getUserReservas(localStorage.getItem('userAtual')).subscribe(listReservas => {
       this.reservas = listReservas as Reserva[];
@@ -165,6 +182,11 @@ export class ClienteReservasComponent implements OnInit {
     console.log(valor);
   }
 
+  confirmarReserva(){
+    this.cartaoId = this.reservaEdicao.metodoDePagamento._id;
+    this.updateReserva();
+  }
+
   delete(reserva){
     alert("delete");
   }
@@ -182,8 +204,12 @@ export class ClienteReservasComponent implements OnInit {
     this.reservaEdicao.checkOut = new Date(datasValue.dataCheckOut);
     this.calcularPreco(this.reservaEdicao);
     this.reservaEdicao.preco = this.precoNovaReserva;
-    this.alterarDatas = false;
-    this.confirmarCartao = true;
+    if(new Date(this.reservaEdicao.checkIn) < new Date(this.reservaEdicao.checkOut)){
+      this.alterarDatas = false;
+      this.confirmarCartao = true;
+    } else{
+      this.datasErro = true;
+    }
   }
 
   mudaCI(data){
@@ -228,6 +254,12 @@ export class ClienteReservasComponent implements OnInit {
     this.reservaEdicao.metodoDePagamento = this.cartaoId;
     console.log(this.cartaoId);
     console.log(this.reservaEdicao);
-    this.userService.updateReserva(this.reservaEdicao).subscribe(result =>  this.message = result.message);
+    this.userService.updateReserva(this.reservaEdicao).subscribe(result =>   {
+      if(result.message === "success"){
+        this.atualizarReservaSucesso = true;
+      }else{
+        this.atualizarReservaErro = true;
+      }
+    });
   }
 }

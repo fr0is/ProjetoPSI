@@ -216,10 +216,10 @@ exports.reserva_update = [
             }, function(err, results) {
                 if (err) { return next(err); }
                 async.parallel({
-                    instances: function(callback){
+                    instances: function(callback) {
                         QuartoInstance.find({ 'quarto': results.atual.quarto }).populate('reservas').exec(callback);
                     }
-                }, function(err, results){
+                }, function(err, results) {
                     if (err) { return next(err); }
                     var quartoinstance;
                     for (let inst of results.instances) {
@@ -271,7 +271,7 @@ exports.reserva_update = [
                         });
                         Reserva.replaceOne({ _id: req.body._id }, reserva, function(err, theReserva) {
                             if (err) { return next(err); }
-                            res.json({ 'message': 'Reserva atualizada' });
+                            res.json({ 'message': 'success' });
                         });
                     }
                 });
