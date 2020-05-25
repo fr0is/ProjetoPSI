@@ -1,7 +1,6 @@
 #bookContainer {
     min-height: 600px;
-    width: 100%;
-    margin: 5%;
+    
     padding-bottom: 13%;
 }
 
@@ -29,7 +28,7 @@ button:focus {
     cursor: pointer;
     backface-visibility: visible;
     margin: auto;
-    margin-left: 45%;
+    
     width: 40%;
 }
 
