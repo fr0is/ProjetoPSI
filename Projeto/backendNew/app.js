@@ -15,7 +15,7 @@ var app = express();
 
 //Conexão appserver
 var port = process.env.PORT || 3071;
-app.set('port', 3071);
+app.set('port', process.env.PORT || 3071);
 app.listen(port, () => {
     console.log("server started at port:" + port);
 });
