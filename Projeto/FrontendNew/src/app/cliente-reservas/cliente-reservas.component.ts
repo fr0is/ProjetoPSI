@@ -81,7 +81,7 @@ export class ClienteReservasComponent implements OnInit {
   cartoes: CartaoMB[] = [];
   cartoesUser: CartaoMB[] = [];
   down = [];
-  precoFiltro: Number = 500;
+  precoFiltro: Number = 0;
   dataFiltro: Date = new Date(1900, 2, 1);
   checkIn: Date = new Date(2000);
   hotel: Hotel;
